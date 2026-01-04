@@ -193,7 +193,7 @@ if (!fs.existsSync(templateCssPath)) {
 }
 
 const templateHtml = fs.readFileSync(templateHtmlPath, "utf8");
-const stylesCss = fs.readFileSync(templateCssPath, "utf8");
+let stylesCss = fs.readFileSync(templateCssPath, "utf8");
 
 // ---------------------
 // Load logo as base64 (optional)
@@ -213,6 +213,13 @@ if (fs.existsSync(logoPathPng)) {
   logoSrc =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
 }
+
+// ---------------------
+// Load background image as base64 (if referenced in CSS)
+// ---------------------
+// Base64 conversion disabled - user will manually paste base64 value in CSS
+// The CSS template contains: url(data:image/png;base64,PASTE_YOUR_BASE64_HERE)
+// User should replace PASTE_YOUR_BASE64_HERE with actual base64 string
 
 // ---------------------
 // Build overview
