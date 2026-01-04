@@ -1,0 +1,413 @@
+import fs from "fs";
+import path from "path";
+import { chromium } from "playwright";
+
+// ---------------------
+// CLI Args
+// ---------------------
+function getArg(name, fallback = null) {
+  const idx = process.argv.indexOf(`--${name}`);
+  if (idx !== -1 && process.argv[idx + 1]) return process.argv[idx + 1];
+  return fallback;
+}
+
+// ---------------------
+// Load config
+// ---------------------
+const configPath = getArg("config", null);
+
+if (!configPath) {
+  console.error("❌ Missing --config. Example:");
+  console.error("   node scripts/build.mjs --config topics/linux/quiz.config.json");
+  process.exit(1);
+}
+
+if (!fs.existsSync(configPath)) {
+  console.error(`❌ Config not found: ${configPath}`);
+  process.exit(1);
+}
+
+const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+
+// ---------------------
+// Resolve args (CLI overrides config)
+// ---------------------
+const topic = getArg("topic", config.topic || "Topic");
+const input = getArg("input", config.input || null);
+const templateName = getArg("template", config.template || "quiz");
+
+const community = getArg("community", config.community || "Bilgisayar Kavramları Topluluğu");
+
+const startDate = getArg("startDate", config.startDate || "2026-01-04"); // used if q.date is missing
+const perDay = parseInt(getArg("perDay", String(config.perDay ?? 1)), 10);
+
+const format = getArg("format", config.format || "png"); // png | jpg
+const size = getArg("size", config.size || "square"); // square | story | custom
+const showAnswer = getArg("showAnswer", String(config.showAnswer ?? false)) === "true";
+const onExists = getArg("onExists", config.onExists || "fail"); // fail | overwrite
+
+// Optional advanced config
+const outputDir = getArg("outputDir", config.outputDir || "output");
+const filenamePattern = getArg(
+  "filenamePattern",
+  config.filenamePattern || "{set}_{date}_q{qno}_{id}.{ext}"
+);
+const includeSlug = getArg("includeSlug", String(config.includeSlug ?? false)) === "true";
+const slugMaxLen = parseInt(getArg("slugMaxLen", String(config.slugMaxLen ?? 40)), 10);
+const clean = getArg("clean", String(config.clean ?? false)) === "true";
+
+// Custom size
+const width = parseInt(getArg("width", String(config.width ?? 1080)), 10);
+const height = parseInt(getArg("height", String(config.height ?? 1080)), 10);
+
+// ---------------------
+// Validate
+// ---------------------
+if (!input) {
+  console.error('❌ Missing "input" in config.json');
+  process.exit(1);
+}
+if (!fs.existsSync(input)) {
+  console.error(`❌ Input not found: ${input}`);
+  process.exit(1);
+}
+if (!["png", "jpg"].includes(format)) {
+  console.error(`❌ Invalid format: ${format} (allowed: png|jpg)`);
+  process.exit(1);
+}
+if (!["square", "story", "custom"].includes(size)) {
+  console.error(`❌ Invalid size: ${size} (allowed: square|story|custom)`);
+  process.exit(1);
+}
+if (!["fail", "overwrite"].includes(onExists)) {
+  console.error(`❌ Invalid onExists: ${onExists} (allowed: fail|overwrite)`);
+  process.exit(1);
+}
+
+// ---------------------
+// Viewport
+// ---------------------
+const viewport =
+  size === "custom"
+    ? { width, height }
+    : size === "story"
+      ? { width: 1080, height: 1920 }
+      : { width: 1080, height: 1080 };
+
+// ---------------------
+// Helpers
+// ---------------------
+function ensureDir(p) {
+  fs.mkdirSync(p, { recursive: true });
+}
+
+function parseDate(str) {
+  const [y, m, d] = str.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
+}
+
+function formatDate(date) {
+  const y = date.getUTCFullYear();
+  const m = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const d = String(date.getUTCDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function addDays(date, days) {
+  const d = new Date(date.getTime());
+  d.setUTCDate(d.getUTCDate() + days);
+  return d;
+}
+
+function slugify(str, maxLen = 40) {
+  return String(str || "")
+    .toLowerCase()
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ı/g, "i")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "")
+    .slice(0, maxLen);
+}
+
+function escapeHtml(text) {
+  return String(text ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function applyPattern(pattern, vars) {
+  return pattern.replace(/\{(\w+)\}/g, (_, key) => (vars[key] ?? ""));
+}
+
+function rmDirSafe(dirPath) {
+  if (fs.existsSync(dirPath)) {
+    fs.rmSync(dirPath, { recursive: true, force: true });
+  }
+}
+
+// Generic engine supports: {{field}}, {{nested.field}}, {{field|default}}
+function getValue(obj, keyPath) {
+  if (!keyPath) return "";
+  const parts = keyPath.split(".");
+  let cur = obj;
+  for (const p of parts) {
+    if (cur && Object.prototype.hasOwnProperty.call(cur, p)) cur = cur[p];
+    else return "";
+  }
+  return cur ?? "";
+}
+
+function renderGeneric(template, data) {
+  return template.replace(/\{\{([^}]+)\}\}/g, (_, raw) => {
+    const expr = raw.trim();
+    const [keyPath, defVal] = expr.split("|").map((s) => s.trim());
+    const val = getValue(data, keyPath);
+    const finalVal =
+      val === "" || val === null || val === undefined ? (defVal ?? "") : String(val);
+    return escapeHtml(finalVal);
+  });
+}
+
+// ---------------------
+// Load data + template
+// ---------------------
+const data = JSON.parse(fs.readFileSync(input, "utf8"));
+
+const templateHtmlPath = `template/${templateName}/card.html`;
+const templateCssPath = `template/${templateName}/styles.css`;
+
+if (!fs.existsSync(templateHtmlPath)) {
+  console.error(`❌ Template HTML not found: ${templateHtmlPath}`);
+  process.exit(1);
+}
+if (!fs.existsSync(templateCssPath)) {
+  console.error(`❌ Template CSS not found: ${templateCssPath}`);
+  process.exit(1);
+}
+
+const templateHtml = fs.readFileSync(templateHtmlPath, "utf8");
+const stylesCss = fs.readFileSync(templateCssPath, "utf8");
+
+// ---------------------
+// Load logo as base64 (optional)
+// ---------------------
+const logoPathPng = "template/logo.png";
+const logoPathJpg = "template/logo.jpg";
+let logoSrc = "";
+
+if (fs.existsSync(logoPathPng)) {
+  const buf = fs.readFileSync(logoPathPng);
+  logoSrc = `data:image/png;base64,${buf.toString("base64")}`;
+} else if (fs.existsSync(logoPathJpg)) {
+  const buf = fs.readFileSync(logoPathJpg);
+  logoSrc = `data:image/jpeg;base64,${buf.toString("base64")}`;
+} else {
+  // transparent 1x1 fallback
+  logoSrc =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
+}
+
+// ---------------------
+// Build overview
+// ---------------------
+const baseDate = parseDate(startDate);
+const total = data.length;
+const setBaseName = path.basename(input, path.extname(input)); // e.g. question1
+const setName = slugify(setBaseName, 30);
+
+console.log("=====================================");
+console.log("🧾 Card Render Build");
+console.log("Config:", configPath);
+console.log("Input:", input);
+console.log("Topic:", topic);
+console.log("Template:", templateName);
+console.log("Set:", setName);
+console.log("StartDate:", startDate);
+console.log("PerDay:", perDay);
+console.log("Format:", format);
+console.log("Size:", size, viewport);
+console.log("Total Items:", total);
+console.log("OnExists:", onExists);
+console.log("OutputDir:", outputDir);
+console.log("FilenamePattern:", filenamePattern);
+console.log("IncludeSlug:", includeSlug);
+console.log("Clean:", clean);
+console.log("=====================================");
+
+// ---------------------
+// Output folder
+// output/<topic>/<template>/
+ensureDir(outputDir);
+const outRoot = path.join(outputDir, topic, templateName);
+
+if (clean) {
+  console.warn(`⚠️ Clean enabled. Deleting: ${outRoot}`);
+  rmDirSafe(outRoot);
+}
+
+ensureDir(outRoot);
+
+// ---------------------
+// Render
+// ---------------------
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport });
+
+for (let i = 0; i < data.length; i++) {
+  const q = data[i];
+
+  // Date logic:
+  // 1) If JSON has `date`, use it (YYYY-MM-DD)
+  // 2) Else auto-calc from startDate & perDay
+  const dateStr = q.date
+    ? String(q.date)
+    : formatDate(addDays(baseDate, Math.floor(i / perDay)));
+
+  const qNo = String(i + 1).padStart(3, "0");
+  const qIdRaw = q.id || `${topic}-${qNo}`;
+  const qIdSafe = slugify(qIdRaw, 50);
+
+  // for filename slug (optional)
+  const baseTextForSlug =
+    q.question || q.title || q.content || q.subtitle || qIdRaw || "";
+  const qSlug = slugify(baseTextForSlug, slugMaxLen);
+
+  // Common data for generic templates
+  const commonData = {
+    ...q,
+    TOPIC: topic,
+    TEMPLATE: templateName,
+    COMMUNITY: community,
+    DATE: dateStr,
+    NO: String(i + 1),
+    ID: qIdRaw,
+    LOGO_SRC: logoSrc
+  };
+
+  let html = "";
+
+  // ---------------------
+  // Special templates
+  // ---------------------
+  if (templateName === "quiz") {
+    const qText = q.question || "";
+    const options = Array.isArray(q.options) ? q.options : [];
+
+    const optionsHtml = options
+      .map((opt) => `<li>${escapeHtml(String(opt))}</li>`)
+      .join("\n");
+
+    const explanation = q.explanation ? String(q.explanation) : "";
+    const explanationBlock = explanation
+      ? `<div class="explanation"><div class="title">Açıklama</div>${escapeHtml(explanation)}</div>`
+      : "";
+
+    html = templateHtml
+      .replaceAll("{{LOGO_SRC}}", logoSrc)
+      .replaceAll("{{COMMUNITY}}", escapeHtml(community))
+      .replaceAll("{{TOPIC}}", escapeHtml(topic))
+      .replaceAll("{{DATE}}", escapeHtml(dateStr))
+      .replaceAll("{{NO}}", escapeHtml(String(i + 1)))
+      .replaceAll("{{ID}}", escapeHtml(qIdRaw))
+      .replaceAll("{{QUESTION}}", escapeHtml(qText))
+      .replaceAll("{{OPTIONS}}", optionsHtml)
+      .replaceAll("{{EXPLANATION_BLOCK}}", explanationBlock);
+
+    // showAnswer only affects quiz templates
+    if (showAnswer && q.answerIndex !== undefined && q.answerIndex !== null) {
+      const answerLetter = String.fromCharCode(65 + Number(q.answerIndex));
+      // Inject after options list (safe if template has </ol>)
+      html = html.replace(
+        "</ol>",
+        `</ol><div style="margin-top:16px;color:rgba(255,255,255,0.7);font-weight:800;">Cevap: ${answerLetter}</div>`
+      );
+    }
+
+  } else if (templateName === "info") {
+    const title = q.title || "";
+    const content = q.content || "";
+    const example = q.example ? String(q.example) : "";
+
+    const exampleBlock = example
+      ? `<div class="example"><div class="title">Örnek</div><pre>${escapeHtml(example)}</pre></div>`
+      : "";
+
+    html = templateHtml
+      .replaceAll("{{LOGO_SRC}}", logoSrc)
+      .replaceAll("{{COMMUNITY}}", escapeHtml(community))
+      .replaceAll("{{TOPIC}}", escapeHtml(topic))
+      .replaceAll("{{DATE}}", escapeHtml(dateStr))
+      .replaceAll("{{NO}}", escapeHtml(String(i + 1)))
+      .replaceAll("{{ID}}", escapeHtml(qIdRaw))
+      .replaceAll("{{TITLE}}", escapeHtml(title))
+      .replaceAll("{{CONTENT}}", escapeHtml(content))
+      .replaceAll("{{EXAMPLE_BLOCK}}", exampleBlock);
+
+  } else {
+    // ---------------------
+    // Generic template
+    // Any {{field}} will map from JSON automatically
+    // Supports default: {{field|Default Text}}
+    // Also includes: {{TOPIC}}, {{COMMUNITY}}, {{DATE}}, {{NO}}, {{ID}}, {{LOGO_SRC}}
+    html = renderGeneric(templateHtml, commonData);
+  }
+
+  // Inline CSS
+  const fullHtml = html.replace(
+    '<link rel="stylesheet" href="./styles.css" />',
+    `<style>${stylesCss}</style>`
+  );
+
+  await page.setContent(fullHtml, { waitUntil: "networkidle" });
+
+  // Build filename
+  const vars = {
+    topic,
+    set: setName,
+    date: dateStr,
+    qno: qNo,
+    id: qIdSafe,
+    slug: includeSlug ? qSlug : "",
+    ext: format
+  };
+
+  const fileName = applyPattern(filenamePattern, vars)
+    .replace(/__+/g, "_")
+    .replace(/-_+/g, "-")
+    .replace(/_-+/g, "_")
+    .replace(/(^[_-]+|[_-]+$)/g, "");
+
+  const outFile = path.join(outRoot, fileName);
+
+  if (fs.existsSync(outFile)) {
+    if (onExists === "overwrite") {
+      console.warn(`⚠️ Exists, overwriting: ${outFile}`);
+    } else {
+      console.error(`❌ Output already exists (onExists=fail): ${outFile}`);
+      console.error("   - Delete output files OR set onExists=overwrite in config.");
+      await browser.close();
+      process.exit(1);
+    }
+  }
+
+  await page.screenshot({
+    path: outFile,
+    type: format === "jpg" ? "jpeg" : "png",
+    fullPage: false
+  });
+
+  console.log(`✅ [${i + 1}/${total}] -> ${outFile}`);
+}
+
+await browser.close();
+
+console.log("=====================================");
+console.log("🎉 Done. Output folder ready:", path.resolve(outputDir));
+console.log("=====================================");
