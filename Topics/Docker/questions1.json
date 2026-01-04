@@ -1,0 +1,90 @@
+[
+  {
+    "id": "docker-0001",
+    "question": "Bir Docker imajı oluşturmak için temel komut hangisidir?",
+    "options": [
+      "docker compose build",
+      "docker create",
+      "docker build -t",
+      "docker image run"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "docker-0002",
+    "question": "Çalışan bir konteyner içinde komut çalıştırmak için hangi komut kullanılır?",
+    "options": [
+      "docker start",
+      "docker exec -it <id>",
+      "docker attach -d",
+      "docker run -d"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "docker-0003",
+    "question": "Dockerfile'da COPY ile ADD arasındaki temel fark nedir?",
+    "options": [
+      "COPY sıkıştırılmış arşivi açar, ADD açmaz",
+      "ADD URL ve arşiv açmayı destekler, COPY sadece yerel kopyalar",
+      "COPY remote URL'den alır",
+      "Fark yok"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "docker-0004",
+    "question": "Dockerfile'da build cache'i kırmak için hangi komut bloğu iyi bir yere alınmalıdır?",
+    "options": [
+      "COPY . .",
+      "RUN apt-get update",
+      "EXPOSE 80",
+      "CMD [\"npm\", \"start\"]"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "docker-0005",
+    "question": "Çok-katmanlı build (multi-stage) kullanımının amacı nedir?",
+    "options": [
+      "Port açmak",
+      "Entry point ayarlamak",
+      "Son imajı küçültmek",
+      "Network köprüsü kurmak"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "docker-0006",
+    "question": "Bridge network'te konteyner isimleriyle erişmek için ne gerekir?",
+    "options": [
+      "--net host",
+      "docker compose kullanmak",
+      "Custom bridge network'te olmak",
+      "Macvlan ayarlamak"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "docker-0007",
+    "question": "docker system prune komutu ne yapar?",
+    "options": [
+      "Tüm imajları siler",
+      "Kullanılmayan imaj/volume/network/container'ları temizler",
+      "Sadece logları temizler",
+      "Running konteynerleri durdurur"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "docker-0008",
+    "question": "Registry push öncesi imajı etiketlemek için hangi komut kullanılır?",
+    "options": [
+      "docker label",
+      "docker tag kaynak hedef",
+      "docker push --tag",
+      "docker save --tag"
+    ],
+    "answerIndex": 1
+  }
+]

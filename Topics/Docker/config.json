@@ -1,0 +1,10 @@
+{
+  "topic": "Docker",
+  "input": "Topics/Docker/questions1.json",
+  "startDate": "2026-01-07",
+  "perDay": 1,
+  "format": "png",
+  "size": "square",
+  "showAnswer": false,
+  "onExists": "fail"
+}

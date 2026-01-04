@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Info Card</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="brand-left">
+          <div class="logo-wrap">
+            <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
+          </div>
+          <div class="brand-text">
+            <div class="community">{{COMMUNITY}}</div>
+            <div class="topic">{{TOPIC}}</div>
+          </div>
+        </div>
+
+        <div class="date-wrap">
+          <div class="date">{{DATE}}</div>
+          <div class="type">Bilgi Kartı</div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="title">{{TITLE}}</div>
+
+      <!-- Content -->
+      <div class="content">
+        {{CONTENT}}
+      </div>
+
+      <!-- Example -->
+      {{EXAMPLE_BLOCK}}
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="meta">{{ID}}</div>
+        <div class="badge">🧠 knowledge</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

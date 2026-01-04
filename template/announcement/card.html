@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Announcement</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="event-card">
+
+      <div class="glow"></div>
+
+      <!-- TOP BAR -->
+      <div class="top">
+        <div class="left">
+          <div class="logo-wrap">
+            <!-- JSON'da "logo" varsa bunu kullan -->
+            <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
+          </div>
+          <div class="tag">{{tag}}</div>
+        </div>
+
+        <!-- Sağ üst mini bilgi (istersen kaldırabilirsin) -->
+        <div class="meta-mini">
+          <div class="mini">
+            <span class="k">📅</span>
+            <span class="v">{{date}}</span>
+          </div>
+          <div class="mini">
+            <span class="k">🕗</span>
+            <span class="v">{{time}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN TEXT -->
+      <div class="info">
+        <div class="title">{{title}}</div>
+        <div class="subtitle">{{subtitle}}</div>
+        <div class="planning">{{planning}}</div>
+      </div>
+
+      <!-- META CARDS -->
+      <div class="right">
+        <div class="meta">
+          <div class="meta-item">
+            <div class="label">📅 Başlangıç</div>
+            <div class="value">{{date}}</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">🕗 Program</div>
+            <div class="value">{{time}}</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">📍 Platform</div>
+            <div class="value">{{location}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER (YAN YANA)
+      <div class="footer">
+        <div class="location">
+          <span class="loc-ico">📍</span>
+          <span>{{location}}</span>
+        </div>
+
+        <a class="cta" href="{{cta_url}}">
+          {{cta}}
+        </a>
+      </div> -->
+
+    </div>
+  </div>
+
+</body>
+</html>

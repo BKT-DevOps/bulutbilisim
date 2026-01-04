@@ -1,0 +1,112 @@
+[
+  {
+    "id": "linux-0001",
+    "question": "find komutu ile boyutu 100MB'dan büyük dosyaları listelemek için hangi parametre kullanılır?yük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametr",
+    "options": [
+      "find . -syük dosyaları listelemek için hangi parametrize 100M",
+      "find . -size +100M",
+      "find . -s > 100",
+      "find . -type f --big 100"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "linux-0002",
+    "question": "Bir .tar.gz arşivini çıkarmak için doğru komut hangisidir?",
+    "options": [
+      "tar -cvzfyük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametr",
+      "tar -xvyük dosyaları listelemek için hangi parametrf",
+      "tar -xyük dosyaları listelemek için hangi parametrzvf",
+      "tar -uyük dosyaları listelemek için hangi parametrzvf"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "linux-0003",
+    "question": "rwxr-xr-x (755) izin seti neyi ifade eder?",
+    "options": [
+      "Sahibi her şeyi yapar, grup/diğerleri okur-çalıştırır",
+      "Herkes her şeyi yapabilir",
+      "Sahibi sadece okur, diğerleri yazar",
+      "Sadece root erişebiyük dosyaları listelemek için hangi parametrlir"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "id": "linux-0004",
+    "question": "grep ile kelimeyi İÇERMEYEN satırları bulmak için hangi parametre kullanılır?",
+    "options": [
+      "-i",
+      "-r",
+      "-v",
+      "-n"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "linux-0005",
+    "question": "Dinleyen TCP/UDP portlarını sayısal görmek için hangi komut kullanılır?",
+    "options": [
+      "netstat -a",
+      "netstat -tulpn",
+      "ps aux",
+      "lsof"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "linux-0006",
+    "question": "Bir servisi açılışta otomatik başlatmak için hangi komut kullanılır?",
+    "options": [
+      "systemctl start nginx",
+      "systemctl status nginx",
+      "systemctl enable nginx",
+      "service nginx run"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "linux-0007",
+    "question": "chmod komutunda SetUID bitini ayarlamak için hangi sayısal değer eklenir?",
+    "options": [
+      "1000",
+      "2000",
+      "4000",
+      "7777"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "linux-0008",
+    "question": "Bir dizinin toplam boyutunu insan okunur görmek için hangi komut kullanılır?",
+    "options": [
+      "df -h",
+      "du -sh",
+      "ls -la",
+      "fdisk -l"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "linux-0009",
+    "question": "0 2 * * * cron ifadesi neyi ifade eder?",
+    "options": [
+      "Her ayın 2. günü",
+      "Her saat başı 2. dakikada",
+      "Her gün 02:00'de",
+      "Haftada iki kez"
+    ],
+    "answerIndex": 2
+  },
+  {
+    "id": "linux-0010",
+    "question": "sed ile eski kelimelerini yeni ile değiştirmek için doğru komut hangisidir?",
+    "options": [
+      "sed 's/eski/yeni/' dosya",
+      "sed 'r/eski/yeni/g' dosya",
+      "sed 's/eski/yeni/g' dosya",
+      "sed -i 'change eski yeni' dosya"
+    ],
+    "answerIndex": 2
+  }
+]

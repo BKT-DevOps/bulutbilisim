@@ -1,0 +1,289 @@
+/* ================================
+   RESET + BASE
+================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg:#070b16;
+  --card: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.12);
+  --text:#ffffff;
+  --muted: rgba(255,255,255,0.80);
+  --soft: rgba(255,255,255,0.06);
+  --accent:#7c3aed;
+  --accent2:#22c55e;
+}
+
+html, body { width:100%; height:100%; }
+
+body{
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(124,58,237,0.38), transparent 44%),
+    radial-gradient(circle at 80% 32%, rgba(34,197,94,0.26), transparent 48%),
+    radial-gradient(circle at 46% 90%, rgba(59,130,246,0.16), transparent 50%),
+    var(--bg);
+}
+
+/* ================================
+   FULL CANVAS LAYOUT (custom safe)
+================================ */
+.container{
+  width:100%;
+  height:100%;
+  padding: clamp(20px, 3vw, 56px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.event-card{
+  width: 100%;
+  height: 100%;
+  padding: clamp(26px, 3.4vw, 58px);
+  border-radius: clamp(22px, 2.4vw, 38px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 110px rgba(0,0,0,0.58);
+  position: relative;
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+  gap: clamp(14px, 1.8vw, 30px);
+}
+
+/* üst çizgi */
+.event-card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0;
+  width:100%;
+  height: clamp(6px, 0.7vw, 10px);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* arka glow */
+.event-card::after{
+  content:"";
+  position:absolute;
+  width: 44%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.38), transparent 65%);
+  right: -16%;
+  bottom: -18%;
+  filter: blur(12px);
+  opacity: 0.92;
+  pointer-events:none;
+}
+
+/* ikinci glow */
+.glow{
+  position:absolute;
+  width: 70%;
+  height: 70%;
+  left: -30%;
+  top: 10%;
+  background: radial-gradient(circle, rgba(34,197,94,0.22), transparent 60%);
+  filter: blur(12px);
+  opacity: 0.8;
+  pointer-events:none;
+}
+
+/* ================================
+   TOP
+================================ */
+.top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.left{
+  display:flex;
+  align-items:center;
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.logo-wrap{
+  width: clamp(74px, 7.2vw, 120px);
+  aspect-ratio: 1/1;
+  border-radius: clamp(18px, 1.8vw, 26px);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.07);
+  overflow:hidden;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo{ width:100%; height:100%; object-fit:cover; }
+
+.tag{
+  padding: clamp(12px, 1.5vw, 18px) clamp(18px, 1.8vw, 26px);
+  border-radius: 999px;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 1100;
+  letter-spacing: 0.5px;
+  color: #0b0f19;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+  white-space: nowrap;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.info{
+  display:flex;
+  flex-direction:column;
+  gap: clamp(12px, 1.5vw, 22px);
+}
+
+.title{
+  font-size: clamp(44px, 5.4vw, 86px);
+  font-weight: 1250;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  text-shadow: 0 12px 60px rgba(0,0,0,0.35);
+}
+
+.subtitle{
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 850;
+  line-height: 1.55;
+  opacity: 0.96;
+  white-space: pre-line;
+}
+
+/* planning: satır atlat, okunaklı */
+.planning{
+  margin-top: clamp(6px, 1vw, 14px);
+  padding: clamp(16px, 2vw, 28px);
+  border-radius: clamp(18px, 2vw, 28px);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 18px 54px rgba(0,0,0,0.25);
+
+  font-size: clamp(18px, 2vw, 30px);
+  font-weight: 780;
+  line-height: 1.55;
+  opacity: 0.95;
+  white-space: pre-line;
+}
+
+/* ================================
+   META (ALWAYS SIDE BY SIDE)
+   Başlangıç / Program / Platform
+================================ */
+.right{
+  width: 100%;
+}
+
+.meta{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap !important; /* ASLA alt alta düşme */
+  gap: clamp(10px, 1.2vw, 18px);
+  width: 100%;
+}
+
+.meta-item{
+  flex: 1 1 0;
+  min-width: 0; /* ellipsis için şart */
+  padding: clamp(16px, 1.8vw, 26px);
+  border-radius: clamp(18px, 2vw, 28px);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 18px 54px rgba(0,0,0,0.25);
+  white-space: wrap;
+
+
+  display:flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 12px);
+}
+
+.label{
+  font-size: clamp(15px, 1.5vw, 22px);
+  opacity: 0.78;
+  font-weight: 900;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value{
+  font-size: clamp(20px, 2.4vw, 40px);
+  font-weight: 1150;
+  letter-spacing: 0.2px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================================
+   CTA (BOTTOM)
+================================ */
+.cta{
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  white-space: nowrap;
+
+  margin-top: auto;
+
+  padding: clamp(18px, 2.3vw, 32px);
+  border-radius: clamp(18px, 2.2vw, 30px);
+  background: #fff;
+  color: #0b0f19;
+
+  font-size: clamp(18px, 2vw, 30px);
+  font-weight: 1200;
+  letter-spacing: 0.2px;
+
+  box-shadow: 0 26px 84px rgba(0,0,0,0.40);
+  transition: .2s ease;
+
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.cta:hover{
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* ================================
+   PHONE / STORY BOOST
+================================ */
+@media (max-aspect-ratio: 3/4) {
+  .event-card{
+    padding: clamp(32px, 5vw, 78px);
+  }
+  .title{
+    font-size: clamp(54px, 6.6vw, 108px);
+  }
+  .subtitle{
+    font-size: clamp(24px, 3vw, 42px);
+  }
+  .planning{
+    font-size: clamp(20px, 2.6vw, 38px);
+  }
+  .cta{
+    font-size: clamp(20px, 2.4vw, 34px);
+  }
+}
+
+/* ================================
+   SMALL CANVAS
+================================ */
+@media (max-width: 560px){
+  .top{ flex-direction: column; align-items:flex-start; }
+}

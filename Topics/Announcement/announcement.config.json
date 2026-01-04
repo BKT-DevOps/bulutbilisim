@@ -1,0 +1,13 @@
+{
+  "topic": "General",
+  "template": "announcement",
+  "input": "topics/Announcement/post1.json",
+  "startDate": "2026-01-07",
+  "perDay": 1,
+  "format": "png",
+  "size": "custom",
+  "width": 1080,
+  "height": 1080,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_a{qno}_{id}.{ext}"
+}

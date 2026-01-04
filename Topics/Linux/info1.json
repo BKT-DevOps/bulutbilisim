@@ -1,0 +1,50 @@
+[
+  {
+    "id": "linux-info-0001",
+    "title": "find komutu ile dosya arama",
+    "content": "find, Linux üzerinde dosya ve dizin aramak için kullanılan güçlü bir komuttur. Filtrelerle (name, type, size, mtime) detaylı arama yapmanı sağlar.",
+    "example": "find . -type f -name \"*.log\" -size +100M"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  },
+  {
+    "id": "linux-info-0002",
+    "title": "grep komutu ile metin arama",
+    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "example": "grep -rin \"ERROR\" /var/log"
+  }
+]

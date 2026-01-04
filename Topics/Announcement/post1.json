@@ -1,0 +1,14 @@
+[
+  {
+    "id": "event-0001",
+    "logo": "../logo.png",
+    "tag": "DUYURU",
+    "title": "Bulut Bilişim Grubu Yenilendi!",
+    "subtitle": "Arkadaşlar selam! 👋 Grubumuz, yeni yönetim ekibiyle faaliyetlerine çok daha güçlü bir şekilde başlıyor. Amacımız sadece bir topluluk olmak değil, kariyer yolculuğunuzda size somut katkı sağlamak.",
+    "planning": "Yeni dönem planımız:\n\n🎯 Kariyer Hedefleri: Yol haritanızı belirlemenize yardımcı olacak rehberlikler.\n🎓 Eğitimler: Temelden ileri seviyeye teknik yetkinlik kazanımı.\n🏆 Sertifika Çalışma Grupları: AWS, Azure veya Google Cloud sertifikalarına birlikte hazırlanacağız.\n🛠️ Projeler: Teoriyi pratiğe dökeceğimiz gerçek hayat senaryoları.\n⚡ Mini Challenge'lar: Bilgimizi taze tutacak rekabetçi ve eğlenceli yarışmalar.\n🌍 Gündem Takibi: Bulut teknolojilerindeki son trendler ve haberler.\n\nBu oluşumda aktif rol almak ve kendini geliştirmek isteyen herkesi çalışmalarımızda aktif rol almaya çağırıyoruz. Birlikte çok güzel işler başaracağız!",
+    "date": "Çok Yakında",
+    "time": "Haftalık Program",
+    "location": "Bilgisayar Kavramları Topluluğu WhatsApp Grubu",
+    "cta": "WhatsApp Grubuna katılın →"
+  }
+]

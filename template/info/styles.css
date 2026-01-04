@@ -1,0 +1,208 @@
+:root {
+  --bg: #070b14;
+  --card: rgba(16, 24, 40, 0.86);
+  --border: rgba(255,255,255,0.10);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.70);
+  --muted2: rgba(255,255,255,0.55);
+  --accent: #22c55e;
+  --accent2: #22d3ee;
+  --shadow: rgba(0,0,0,0.5);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(900px 700px at 10% 10%, rgba(34,197,94,0.18), transparent 60%),
+    radial-gradient(900px 700px at 90% 90%, rgba(34,211,238,0.18), transparent 60%),
+    radial-gradient(700px 500px at 70% 20%, rgba(124,58,237,0.12), transparent 60%),
+    var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 56px;
+}
+
+.card {
+  height: 100%;
+  background: linear-gradient(180deg, rgba(16,24,40,0.92), rgba(16,24,40,0.70));
+  border: 1px solid var(--border);
+  border-radius: 38px;
+  padding: 42px;
+  box-shadow: 0 30px 90px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(120deg, rgba(34,197,94,0.22), transparent 45%, rgba(34,211,238,0.16));
+  filter: blur(18px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.card > * { position: relative; z-index: 1; }
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-text .community {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.80);
+}
+
+.brand-text .topic {
+  margin-top: 5px;
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(34,197,94,0.12);
+  color: rgba(255,255,255,0.88);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+/* Date + Type */
+.date-wrap {
+  text-align: right;
+}
+
+.date {
+  font-weight: 900;
+  color: var(--muted2);
+  letter-spacing: 0.2px;
+  font-size: 15px;
+}
+
+.type {
+  margin-top: 6px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+/* Title */
+.title {
+  margin-top: 6px;
+  font-size: 42px;
+  line-height: 1.12;
+  font-weight: 950;
+  letter-spacing: -0.7px;
+}
+
+/* Content */
+.content {
+  margin-top: 18px;
+  font-size: 24px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.86);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px 18px;
+}
+
+/* Example block */
+.example {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px dashed rgba(34,197,94,0.35);
+  background: rgba(34,197,94,0.08);
+}
+
+.example .title {
+  font-size: 18px;
+  font-weight: 950;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.90);
+}
+
+.example pre {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+  padding: 14px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.10);
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: rgba(255,255,255,0.92);
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  color: var(--muted2);
+  font-weight: 700;
+}
+
+.meta {
+  font-size: 14px;
+  color: rgba(255,255,255,0.50);
+}
+
+.badge {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(34,211,238,0.10);
+  color: rgba(255,255,255,0.82);
+  font-weight: 950;
+  letter-spacing: 0.4px;
+}
