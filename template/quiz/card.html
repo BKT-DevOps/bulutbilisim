@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Question Card</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="brand-left">
+          <!-- Logo: template/logo.png veya template/logo.jpg koy -->
+          <div class="logo-wrap">
+            <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
+          </div>
+          <div class="brand-text">
+            <div class="community">Bilgisayar Kavramları Topluluğu</div>
+            <div class="group-name">Bulut Bilişim Grubu</div>
+            <div class="topic">{{TOPIC}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="question">{{QUESTION}}</div>
+
+      <ol class="options" type="A">
+        {{OPTIONS}}
+      </ol>
+
+      <!-- Optional explanation (if provided in JSON) -->
+      <!-- {{EXPLANATION_BLOCK}} -->
+
+      <!-- Footer -->
+      <!-- <div class="footer">
+        <div class="meta">{{ID}}</div>
+      </div> -->
+
+    </div>
+  </div>
+</body>
+</html>
