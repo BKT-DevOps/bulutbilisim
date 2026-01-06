@@ -14,7 +14,9 @@
     "build:aws:quiz": "node scripts/build.mjs --config Topics/AWS/quiz.config.json",
     "build:aws:info": "node scripts/build.mjs --config Topics/AWS/info.config.json",
     "build:announcement": "node scripts/build.mjs --config Topics/Announcement/info.config.json",
-    "build:announcement:social": "node scripts/build.mjs --config Topics/Announcement/social.config.json"
+    "build:announcement:social": "node scripts/build.mjs --config Topics/Announcement/social.config.json",
+    "build:git:quiz": "node scripts/build.mjs --config Topics/Git/quiz.config.json",
+    "build:git:info": "node scripts/build.mjs --config Topics/Git/info.config.json"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,90 @@
+[
+  {
+    "question": "Yeni bir Git deposu (repository) oluşturmak için hangi komut kullanılır?",
+    "options": [
+      "git new",
+      "git create",
+      "git init",
+      "git start"
+    ],
+    "answerIndex": 2,
+    "explanation": "git init komutu, bulunduğunuz dizinde yeni ve boş bir Git deposu (.git klasörü) oluşturur."
+  },
+  {
+    "question": "Uzak bir depoyu yerel bilgisayara kopyalamak için hangi komut kullanılır?",
+    "options": [
+      "git copy",
+      "git clone",
+      "git pull",
+      "git fetch"
+    ],
+    "answerIndex": 1,
+    "explanation": "git clone <url> komutu, uzak bir sunucudaki (GitHub, GitLab vb.) depoyu tüm geçmişiyle birlikte bilgisayarınıza indirir."
+  },
+  {
+    "question": "Yapılan değişiklikleri geçici bölgeye (staging area) eklemek için hangisi kullanılır?",
+    "options": [
+      "git add",
+      "git stage",
+      "git commit",
+      "git push"
+    ],
+    "answerIndex": 0,
+    "explanation": "git add <dosya> komutu, dosyalardaki değişiklikleri bir sonraki commit için hazırlar (staging area'ya ekler)."
+  },
+  {
+    "question": "Değişiklikleri kalıcı olarak kaydetmek (versiyon oluşturmak) için hangi komut kullanılır?",
+    "options": [
+      "git save",
+      "git store",
+      "git commit",
+      "git record"
+    ],
+    "answerIndex": 2,
+    "explanation": "git commit -m \"mesaj\" komutu, stage edilmiş değişiklikleri yerel depoya kalıcı bir anlık görüntü (snapshot) olarak kaydeder."
+  },
+  {
+    "question": "Yerel depodaki değişiklikleri uzak sunucuya göndermek için hangisi kullanılır?",
+    "options": [
+      "git upload",
+      "git send",
+      "git push",
+      "git update"
+    ],
+    "answerIndex": 2,
+    "explanation": "git push komutu, yerel commitlerinizi uzak depoya (remote repository) yükler."
+  },
+  {
+    "question": "Uzak sunucudaki değişiklikleri alıp yerel depoyla birleştirmek için ne kullanılır?",
+    "options": [
+      "git get",
+      "git pull",
+      "git fetch",
+      "git merge"
+    ],
+    "answerIndex": 1,
+    "explanation": "git pull komutu, uzak depodaki değişiklikleri indirir (fetch) ve mevcut çalışma dalınızla birleştirir (merge)."
+  },
+  {
+    "question": "Dosyaların durumunu (değişen, eklenen, silinen) görmek için hangi komut kullanılır?",
+    "options": [
+      "git check",
+      "git log",
+      "git status",
+      "git diff"
+    ],
+    "answerIndex": 2,
+    "explanation": "git status komutu, hangi dosyaların değiştirildiğini, hangilerinin stage edildiğini veya takip edilmediğini gösterir."
+  },
+  {
+    "question": "Yeni bir çalışma dalı (branch) oluşturmak için hangi komut kullanılır?",
+    "options": [
+      "git branch <isim>",
+      "git checkout <isim>",
+      "git new-branch <isim>",
+      "git create <isim>"
+    ],
+    "answerIndex": 0,
+    "explanation": "git branch <isim> komutu yeni bir dal oluşturur. O dala geçmek için ise git switch veya git checkout kullanılır."
+  }
+]

@@ -42,6 +42,7 @@ const community = getArg(
   "community",
   config.community || "Bilgisayar Kavramları Topluluğu"
 );
+const groupName = getArg("group", config.group || "Bulut Bilişim Grubu");
 
 const startDate = getArg("startDate", config.startDate || "2026-01-04"); // used if q.date is missing
 const perDay = parseInt(getArg("perDay", String(config.perDay ?? 1)), 10);
@@ -187,6 +188,19 @@ function renderGeneric(template, data) {
   });
 }
 
+function loadLogo(pathOrBuffer) {
+  if (!pathOrBuffer) return "";
+  try {
+     const buf = fs.readFileSync(pathOrBuffer);
+     const ext = path.extname(pathOrBuffer).toLowerCase();
+     const mime = ext === ".jpg" || ext === ".jpeg" ? "jpeg" : "png";
+     return `data:image/${mime};base64,${buf.toString("base64")}`;
+  } catch (e) {
+    console.warn(`⚠️ Failed to load logo: ${pathOrBuffer}`);
+    return "";
+  }
+}
+
 // ---------------------
 // Load data + template
 // ---------------------
@@ -210,38 +224,39 @@ let stylesCss = fs.readFileSync(templateCssPath, "utf8");
 // ---------------------
 // Load logo as base64 (optional)
 // ---------------------
-const logoPathPng = "template/logo.png";
-const logoPathJpg = "template/logo.jpg";
+// Transparent 1x1 pixel fallback
+const TRANSPARENT_PIXEL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
+
+// Check config for overrides, else default
+let logo1Path = config.logo1;
+if (logo1Path === undefined) {
+  if (fs.existsSync("template/logo.png")) logo1Path = "template/logo.png";
+  else if (fs.existsSync("template/logo.jpg")) logo1Path = "template/logo.jpg";
+}
+
+let logo2Path = config.logo2;
+if (logo2Path === undefined) {
+  if (fs.existsSync("template/logo2.png")) logo2Path = "template/logo2.png";
+  else if (fs.existsSync("template/logo2.jpg")) logo2Path = "template/logo2.jpg";
+}
+
 let logoSrc = "";
-
-if (fs.existsSync(logoPathPng)) {
-  const buf = fs.readFileSync(logoPathPng);
-  logoSrc = `data:image/png;base64,${buf.toString("base64")}`;
-} else if (fs.existsSync(logoPathJpg)) {
-  const buf = fs.readFileSync(logoPathJpg);
-  logoSrc = `data:image/jpeg;base64,${buf.toString("base64")}`;
+if (logo1Path && fs.existsSync(logo1Path)) {
+  logoSrc = loadLogo(logo1Path);
 } else {
-  // transparent 1x1 fallback
-  logoSrc =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
+  logoSrc = TRANSPARENT_PIXEL;
 }
 
-// ---------------------
-// Load Secondary Logo (logo2)
-// ---------------------
-const logo2PathPng = "template/logo2.png";
-const logo2PathJpg = "template/logo2.jpg";
 let logo2Src = "";
-
-if (fs.existsSync(logo2PathPng)) {
-  const buf = fs.readFileSync(logo2PathPng);
-  logo2Src = `data:image/png;base64,${buf.toString("base64")}`;
-} else if (fs.existsSync(logo2PathJpg)) {
-  const buf = fs.readFileSync(logo2PathJpg);
-  logo2Src = `data:image/jpeg;base64,${buf.toString("base64")}`;
+if (logo2Path && fs.existsSync(logo2Path)) {
+  logo2Src = loadLogo(logo2Path);
 } else {
-  logo2Src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
+  logo2Src = TRANSPARENT_PIXEL;
 }
+
+const logo1Visibility = logoSrc === TRANSPARENT_PIXEL ? "hidden" : "";
+const logo2Visibility = logo2Src === TRANSPARENT_PIXEL ? "hidden" : "";
+
 
 // ---------------------
 // Load background image as base64 (if referenced in CSS)
@@ -345,6 +360,7 @@ for (let i = 0; i < data.length; i++) {
     TOPIC: topic,
     TEMPLATE: templateName,
     COMMUNITY: community,
+    GROUP_NAME: groupName,
     DATE: dateStr,
     NO: String(i + 1),
     ID: qIdRaw,
@@ -376,7 +392,10 @@ for (let i = 0; i < data.length; i++) {
     html = templateHtml
       .replaceAll("{{LOGO_SRC}}", logoSrc)
       .replaceAll("{{LOGO2_SRC}}", logo2Src)
+      .replaceAll("{{LOGO1_VISIBILITY}}", logo1Visibility)
+      .replaceAll("{{LOGO2_VISIBILITY}}", logo2Visibility)
       .replaceAll("{{COMMUNITY}}", escapeHtml(community))
+      .replaceAll("{{GROUP_NAME}}", escapeHtml(groupName))
       .replaceAll("{{TOPIC}}", escapeHtml(topic))
       .replaceAll("{{DATE}}", escapeHtml(dateStr))
       .replaceAll("{{NO}}", escapeHtml(String(i + 1)))
@@ -408,7 +427,10 @@ for (let i = 0; i < data.length; i++) {
     html = templateHtml
       .replaceAll("{{LOGO_SRC}}", logoSrc)
       .replaceAll("{{LOGO2_SRC}}", logo2Src)
+      .replaceAll("{{LOGO1_VISIBILITY}}", logo1Visibility)
+      .replaceAll("{{LOGO2_VISIBILITY}}", logo2Visibility)
       .replaceAll("{{COMMUNITY}}", escapeHtml(community))
+      .replaceAll("{{GROUP_NAME}}", escapeHtml(groupName))
       .replaceAll("{{TOPIC}}", escapeHtml(topic))
       .replaceAll("{{DATE}}", escapeHtml(dateStr))
       .replaceAll("{{NO}}", escapeHtml(String(i + 1)))
@@ -445,10 +467,35 @@ for (let i = 0; i < data.length; i++) {
   }
 
   // Inline CSS
-  const fullHtml = html.replace(
+  let fullHtml = html.replace(
     '<link rel="stylesheet" href="./styles.css" />',
     `<style>${stylesCss}</style>`
   );
+
+  // ---------------------
+  // Theme Injection
+  // ---------------------
+  if (config.theme) {
+    const t = config.theme;
+    let themeCss = ":root {";
+    if (t.background) themeCss += ` --bg-color: ${t.background};`;
+    if (t.accent) {
+       themeCss += ` --text-accent: ${t.accent};`;
+       themeCss += ` --option-border-active: ${t.accent};`;
+       themeCss += ` --accent: ${t.accent};`;
+    }
+    if (t.gradient) themeCss += ` --accent-gradient: ${t.gradient};`;
+    if (t.textPrimary) themeCss += ` --text-primary: ${t.textPrimary};`;
+    if (t.textSecondary) themeCss += ` --text-secondary: ${t.textSecondary};`;
+    if (t.cardGlass) themeCss += ` --card-glass: ${t.cardGlass};`;
+    if (t.cardBorder) themeCss += ` --card-border: ${t.cardBorder};`;
+    themeCss += "}";
+    
+    // Check if </style> exists in fullHtml, append before it so it overrides
+    // Actually, appending AFTER standard styles is better for override.
+    // We already inlined styles. So we can just append this block.
+    fullHtml = fullHtml.replace("</style>", `${themeCss}</style>`);
+  }
 
   await page.setContent(fullHtml, { waitUntil: "networkidle" });
 

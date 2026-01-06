@@ -1,0 +1,50 @@
+[
+  {
+    "id": "git-info-0001",
+    "title": "git init - Depo Oluşturma",
+    "content": "Bulunduğunuz dizini bir Git deposuna dönüştürür. Bu komut, projenizin versiyon kontrolü için gerekli olan gizli .git klasörünü oluşturur. Projeye başlarken sadece bir kez çalıştırılır.",
+    "example": "git init"
+  },
+  {
+    "id": "git-info-0002",
+    "title": "git clone - Depo Kopyalama",
+    "content": "GitHub, GitLab gibi uzak bir sunucuda bulunan mevcut bir depoyu bilgisayarınıza indirir. Tüm proje dosyaları, tarihçesi ve şubeleriyle birlikte kopyalanır.",
+    "example": "git clone https://github.com/user/repo.git"
+  },
+  {
+    "id": "git-info-0003",
+    "title": "git add - Değişiklikleri Hazırlama",
+    "content": "Dosyalar üzerinde yaptığınız değişiklikleri 'Staging Area' denilen geçici bölgeye ekler. Commit etmeden önce hangi dosyaların paketleneceğini seçmenizi sağlar. Tüm dosyalar için nokta (.) kullanılır.",
+    "example": "git add ."
+  },
+  {
+    "id": "git-info-0004",
+    "title": "git commit - Kaydetme",
+    "content": "Staging Area'daki değişiklikleri kalıcı bir versiyon (snapshot) olarak kaydeder. Her commit'in benzersiz bir kimliği (hash) ve açıklayıcı bir mesajı olmalıdır.",
+    "example": "git commit -m \"İlk özellik eklendi\""
+  },
+  {
+    "id": "git-info-0005",
+    "title": "git status - Durum Kontrolü",
+    "content": "Çalışma dizininizin o anki durumunu gösterir. Hangi dosyaların değiştiğini, hangilerinin stage edildiğini (add yapıldığını) veya hangilerinin Git tarafından takip edilmediğini (untracked) söyler.",
+    "example": "git status"
+  },
+  {
+    "id": "git-info-0006",
+    "title": "git push - Sunucuya Gönderme",
+    "content": "Bilgisayarınızdaki (yerel) commitleri uzak sunucuya (GitHub vb.) yükler. Böylece ekip arkadaşlarınız değişikliklerinizi görebilir ve kodunuz yedeklenmiş olur.",
+    "example": "git push origin main"
+  },
+  {
+    "id": "git-info-0007",
+    "title": "git pull - Güncellemeleri Alma",
+    "content": "Uzak sunucuda başkaları tarafından yapılmış değişiklikleri indirir ve çalışma dosyanızla birleştirir. Çalışmaya başlamadan önce güncel kodu çekmek için kullanılır.",
+    "example": "git pull origin main"
+  },
+  {
+    "id": "git-info-0008",
+    "title": "git branch - Dal Yönetimi",
+    "content": "Projeden saparak farklı özellikleri izole bir şekilde geliştirmenizi sağlar. 'git branch' dalları listeler, 'git branch yeni-dal' yeni dal oluşturur. Dallar arası geçiş için 'git switch' veya 'git checkout' kullanılır.",
+    "example": "git branch ozellik-1"
+  }
+]
