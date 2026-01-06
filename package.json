@@ -10,7 +10,11 @@
     "build:linux:quiz": "node scripts/build.mjs --config topics/linux/quiz.config.json",
     "build:linux:info": "node scripts/build.mjs --config topics/linux/info.config.json",
     "build:docker:quiz": "node scripts/build.mjs --config Topics/Docker/quiz.config.json",
-    "build:docker:info": "node scripts/build.mjs --config Topics/Docker/info.config.json"
+    "build:docker:info": "node scripts/build.mjs --config Topics/Docker/info.config.json",
+    "build:aws:quiz": "node scripts/build.mjs --config Topics/AWS/quiz.config.json",
+    "build:aws:info": "node scripts/build.mjs --config Topics/AWS/info.config.json",
+    "build:announcement": "node scripts/build.mjs --config Topics/Announcement/info.config.json",
+    "build:announcement:social": "node scripts/build.mjs --config Topics/Announcement/social.config.json"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "social-001",
+    "title": "Haftanın Etkinlikleri",
+    "content": "Bu hafta Bulut Bilişim Grubu olarak Docker ve Kubernetes üzerine derinlemesine atölye çalışmaları gerçekleştireceğiz. Katılım detayları için Discord kanalımızı takip edin!",
+    "footer": "Bilgisayar Kavramları Topluluğu"
+  },
+  {
+    "id": "social-002",
+    "title": "DevOps İpucu: K8s vs Docker",
+    "content": "Docker tekil konteynerleri yönetirken, Kubernetes (K8s) yüzlerce konteyneri yönetir (Orchestration). İşte temel fark:",
+    "code": "Docker: docker run my-app\nKubernetes: kubectl apply -f pod.yaml",
+    "footer": "@slymanmrcan"
+  },
+  {
+    "id": "social-003",
+    "title": "Yeni Makale Yayında!",
+    "content": "AWS Lambda ve Serverless mimariler üzerine hazırladığımız kapsamlı rehber bloğumuzda yayında. Link bios'ta.",
+    "footer": "bkt-cloud"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "docker-info-0001",
+    "title": "docker run - Konteyner Başlatma",
+    "content": "docker run, yeni bir konteyner oluşturup başlatmak için kullanılan en temel komuttur. İmajı indirir (yoksa), konteyneri oluşturur ve çalıştırır. -d arka planda (detach), -p port yönlendirme, --name isim verme için kullanılır.",
+    "example": "docker run -d -p 80:80 --name webserver nginx"
+  },
+  {
+    "id": "docker-info-0002",
+    "title": "docker ps - Konteyner Listeleme",
+    "content": "Çalışan konteynerleri listelemek için kullanılır. Tüm konteynerleri (durmuş olanlar dahil) görmek için -a parametresi eklenir. Konteyner ID, İmaj, Komut, Oluşturulma Zamanı, Durum ve Port bilgilerini gösterir.",
+    "example": "docker ps -a"
+  },
+  {
+    "id": "docker-info-0003",
+    "title": "docker images - İmaj Listeleme",
+    "content": "Sistemde yüklü olan (pull edilmiş veya build edilmiş) Docker imajlarını listeler. Repository, Tag, Image ID, Oluşturulma Tarihi ve Boyut bilgilerini sunar. İmajları silmek için docker rmi kullanılır.",
+    "example": "docker images"
+  },
+  {
+    "id": "docker-info-0004",
+    "title": "docker exec - Komut Çalıştırma",
+    "content": "Çalışan bir konteynerin içinde komut çalıştırmayı sağlar. Genellikle konteynerin içine interaktif shell (bash/sh) ile bağlanmak için -it parametresi ile birlikte kullanılır.",
+    "example": "docker exec -it webserver bash"
+  },
+  {
+    "id": "docker-info-0005",
+    "title": "docker logs - Log Görüntüleme",
+    "content": "Bir konteynerin stdout/stderr çıktılarını (loglarını) görmek için kullanılır. -f parametresi ile logları canlı olarak takip edebilir (follow), --tail ile son n satırı görüntüleyebilirsiniz.",
+    "example": "docker logs -f --tail 100 webserver"
+  },
+  {
+    "id": "docker-info-0006",
+    "title": "docker build - İmaj Oluşturma",
+    "content": "Bir Dockerfile dosyasını kullanarak yeni bir Docker imajı oluşturur. -t parametresi ile imaja isim (tag) verilir. Sonundaki nokta (.) Dockerfile'ın bulunduğu dizini belirtir.",
+    "example": "docker build -t myapp:v1 ."
+  },
+  {
+    "id": "docker-info-0007",
+    "title": "docker volume - Veri Kalıcılığı",
+    "content": "Konteynerler silindiğinde verilerin kaybolmaması için Volume kullanılır. docker volume create ile oluşturulur, docker run -v ile konteynere bağlanır. Veritabanı gibi kalıcı veri gerektiren işlerde kritiktir.",
+    "example": "docker volume create mydata"
+  },
+  {
+    "id": "docker-info-0008",
+    "title": "docker network - Ağ Yönetimi",
+    "content": "Konteynerlerin birbirleriyle ve dış dünyayla iletişimini yönetir. Bridge (varsayılan), Host ve None gibi sürücüler vardır. Özel bir ağ oluşturup konteynerleri ismen haberleştirmek için kullanılır.",
+    "example": "docker network create mynet"
+  }
+]

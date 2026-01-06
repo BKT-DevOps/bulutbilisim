@@ -1,0 +1,90 @@
+[
+  {
+    "question": "AWS'de sanal sunucu hizmeti sağlayan servis nedir?",
+    "options": [
+      "Lambda",
+      "EC2",
+      "S3",
+      "RDS"
+    ],
+    "answerIndex": 1,
+    "explanation": "Amazon EC2 (Elastic Compute Cloud), ölçeklenebilir sanal sunucular sağlayan temel AWS işlem servisidir."
+  },
+  {
+    "question": "Sınırsız ölçeklenebilir nesne depolama servisi hangisidir?",
+    "options": [
+      "EBS",
+      "EFS",
+      "S3",
+      "Glacier"
+    ],
+    "answerIndex": 2,
+    "explanation": "Amazon S3 (Simple Storage Service), internet üzerinden erişilebilen, sınırsız depolama kapasitesine sahip nesne depolama servisidir."
+  },
+  {
+    "question": "Kullanıcı erişimlerini ve yetkilerini yöneten servis hangisidir?",
+    "options": [
+      "Cognito",
+      "IAM",
+      "WAF",
+      "Shield"
+    ],
+    "answerIndex": 1,
+    "explanation": "AWS IAM (Identity and Access Management), AWS kaynaklarına erişimi güvenli bir şekilde kontrol etmenizi sağlar."
+  },
+  {
+    "question": "AWS'de sanal bir ağ oluşturmanızı sağlayan servis nedir?",
+    "options": [
+      "VPN",
+      "Direct Connect",
+      "VPC",
+      "Route 53"
+    ],
+    "answerIndex": 2,
+    "explanation": "Amazon VPC (Virtual Private Cloud), AWS bulutunda izole edilmiş sanal bir ağ oluşturmanıza olanak tanır."
+  },
+  {
+    "question": "İlişkisel veritabanı yönetimini kolaylaştıran servis hangisidir?",
+    "options": [
+      "DynamoDB",
+      "Redshift",
+      "RDS",
+      "ElastiCache"
+    ],
+    "answerIndex": 2,
+    "explanation": "Amazon RDS (Relational Database Service), SQL tabanlı veritabanlarını (MySQL, PostgreSQL vb.) bulutta kolayca kurmanızı ve yönetmenizi sağlar."
+  },
+  {
+    "question": "Sunucusuz (Serverless) kod çalıştırma servisi hangisidir?",
+    "options": [
+      "EC2",
+      "Fargate",
+      "Lambda",
+      "Beanstalk"
+    ],
+    "answerIndex": 2,
+    "explanation": "AWS Lambda, sunucu yönetimi gerektirmeden kodunuzu çalıştırmanızı sağlayan olay tabanlı bir servistir."
+  },
+  {
+    "question": "AWS'nin DNS (Domain Name System) yönetim servisi nedir?",
+    "options": [
+      "CloudFront",
+      "Route 53",
+      "API Gateway",
+      "Direct Connect"
+    ],
+    "answerIndex": 1,
+    "explanation": "Amazon Route 53, yüksek oranda erişilebilir ve ölçeklenebilir bir bulut DNS web hizmetidir."
+  },
+  {
+    "question": "İçerik dağıtım ağı (CDN) hizmeti hangisidir?",
+    "options": [
+      "CloudFront",
+      "Global Accelerator",
+      "S3 Transfer Acceleration",
+      "VPN"
+    ],
+    "answerIndex": 0,
+    "explanation": "Amazon CloudFront, verileri, videoları, uygulamaları ve API'leri küresel olarak düşük gecikmeyle dağıtan bir CDN servisidir."
+  }
+]

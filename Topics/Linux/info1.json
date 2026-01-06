@@ -2,49 +2,49 @@
   {
     "id": "linux-info-0001",
     "title": "find komutu ile dosya arama",
-    "content": "find, Linux üzerinde dosya ve dizin aramak için kullanılan güçlü bir komuttur. Filtrelerle (name, type, size, mtime) detaylı arama yapmanı sağlar.",
-    "example": "find . -type f -name \"*.log\" -size +100M"
+    "content": "find komutu Linux/Unix sistemlerde dosya ve dizinleri filtrelerle aramak için kullanılır. -name/-iname ile ada göre, -type ile türüne göre, -size ile boyuta göre, -mtime/-mmin ile zamana göre arama yapılabilir. Ayrıca -exec ile bulunan dosyalarda işlem yapılabilir.",
+    "example": "find /var/log -type f -name \"*.log\" -size +100M -mtime -7"
   },
   {
     "id": "linux-info-0002",
     "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
+    "content": "grep komutu dosya içeriklerinde kelime veya regex aramak için kullanılır. -i büyük/küçük harf duyarsız arama yapar, -r dizin altında recursive arar, -n satır numarası gösterir, -v eşleşmeyen satırları döner. Log analizi ve hata takibi için çok kullanışlıdır.",
     "example": "grep -rin \"ERROR\" /var/log"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0003",
+    "title": "tail komutu ile log takibi",
+    "content": "tail komutu dosyanın son satırlarını gösterir. Log takibi için özellikle -f kullanılır (dosya büyüdükçe canlı takip eder). -n ile kaç satır gösterileceği seçilebilir.",
+    "example": "tail -n 200 -f /var/log/syslog"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0004",
+    "title": "head komutu ile dosyanın başını görmek",
+    "content": "head komutu dosyanın ilk satırlarını gösterir. Özellikle büyük dosyalarda hızlıca başlangıcı görmek için kullanılır. -n ile kaç satır gösterileceği belirlenebilir.",
+    "example": "head -n 50 access.log"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0005",
+    "title": "wc komutu ile satır/kelime/byte sayma",
+    "content": "wc komutu bir dosyada satır, kelime ve byte sayısını verir. -l sadece satır sayısını, -w sadece kelime sayısını, -c byte sayısını gösterir. Log kaç satır olmuş hızlıca görmek için idealdir.",
+    "example": "wc -l /var/log/nginx/access.log"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0006",
+    "title": "ls komutu ile dosya listeleme",
+    "content": "ls komutu dizin içeriğini listeler. -l detaylı bilgi verir, -a gizli dosyaları gösterir, -h boyutları okunabilir yapar. Genelde ls -lah en kullanışlı kombinasyondur.",
+    "example": "ls -lah /etc"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0007",
+    "title": "du komutu ile disk kullanımını kontrol etme",
+    "content": "du komutu dizin veya dosyaların disk kullanımını gösterir. -h okunabilir format, -s toplam değer, --max-depth derinlik sınırı verir. Büyük yer kaplayan klasörleri tespit etmek için kullanılır.",
+    "example": "du -sh /var/* | sort -h"
   },
   {
-    "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime, regex veya pattern aramak için kullanılır. -i büyük/küçük harf duyarsız, -r recursive arama yapar.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "id": "linux-info-0008",
+    "title": "df komutu ile disk doluluk oranı",
+    "content": "df komutu disk bölümlerinin doluluk oranını gösterir. -h okunabilir format verir. Sistem disk dolu mu, hangi partition dolmuş görmek için kullanılır.",
+    "example": "df -h"
   }
 ]

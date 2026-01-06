@@ -18,7 +18,9 @@ const configPath = getArg("config", null);
 
 if (!configPath) {
   console.error("❌ Missing --config. Example:");
-  console.error("   node scripts/build.mjs --config topics/linux/quiz.config.json");
+  console.error(
+    "   node scripts/build.mjs --config topics/linux/quiz.config.json"
+  );
   process.exit(1);
 }
 
@@ -36,14 +38,18 @@ const topic = getArg("topic", config.topic || "Topic");
 const input = getArg("input", config.input || null);
 const templateName = getArg("template", config.template || "quiz");
 
-const community = getArg("community", config.community || "Bilgisayar Kavramları Topluluğu");
+const community = getArg(
+  "community",
+  config.community || "Bilgisayar Kavramları Topluluğu"
+);
 
 const startDate = getArg("startDate", config.startDate || "2026-01-04"); // used if q.date is missing
 const perDay = parseInt(getArg("perDay", String(config.perDay ?? 1)), 10);
 
 const format = getArg("format", config.format || "png"); // png | jpg
 const size = getArg("size", config.size || "square"); // square | story | custom
-const showAnswer = getArg("showAnswer", String(config.showAnswer ?? false)) === "true";
+const showAnswer =
+  getArg("showAnswer", String(config.showAnswer ?? false)) === "true";
 const onExists = getArg("onExists", config.onExists || "fail"); // fail | overwrite
 
 // Optional advanced config
@@ -52,8 +58,12 @@ const filenamePattern = getArg(
   "filenamePattern",
   config.filenamePattern || "{set}_{date}_q{qno}_{id}.{ext}"
 );
-const includeSlug = getArg("includeSlug", String(config.includeSlug ?? false)) === "true";
-const slugMaxLen = parseInt(getArg("slugMaxLen", String(config.slugMaxLen ?? 40)), 10);
+const includeSlug =
+  getArg("includeSlug", String(config.includeSlug ?? false)) === "true";
+const slugMaxLen = parseInt(
+  getArg("slugMaxLen", String(config.slugMaxLen ?? 40)),
+  10
+);
 const clean = getArg("clean", String(config.clean ?? false)) === "true";
 
 // Custom size
@@ -91,8 +101,8 @@ const viewport =
   size === "custom"
     ? { width, height }
     : size === "story"
-      ? { width: 1080, height: 1920 }
-      : { width: 1080, height: 1080 };
+    ? { width: 1080, height: 1920 }
+    : { width: 1080, height: 1080 };
 
 // ---------------------
 // Helpers
@@ -143,7 +153,7 @@ function escapeHtml(text) {
 }
 
 function applyPattern(pattern, vars) {
-  return pattern.replace(/\{(\w+)\}/g, (_, key) => (vars[key] ?? ""));
+  return pattern.replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? "");
 }
 
 function rmDirSafe(dirPath) {
@@ -170,7 +180,9 @@ function renderGeneric(template, data) {
     const [keyPath, defVal] = expr.split("|").map((s) => s.trim());
     const val = getValue(data, keyPath);
     const finalVal =
-      val === "" || val === null || val === undefined ? (defVal ?? "") : String(val);
+      val === "" || val === null || val === undefined
+        ? defVal ?? ""
+        : String(val);
     return escapeHtml(finalVal);
   });
 }
@@ -215,11 +227,51 @@ if (fs.existsSync(logoPathPng)) {
 }
 
 // ---------------------
+// Load Secondary Logo (logo2)
+// ---------------------
+const logo2PathPng = "template/logo2.png";
+const logo2PathJpg = "template/logo2.jpg";
+let logo2Src = "";
+
+if (fs.existsSync(logo2PathPng)) {
+  const buf = fs.readFileSync(logo2PathPng);
+  logo2Src = `data:image/png;base64,${buf.toString("base64")}`;
+} else if (fs.existsSync(logo2PathJpg)) {
+  const buf = fs.readFileSync(logo2PathJpg);
+  logo2Src = `data:image/jpeg;base64,${buf.toString("base64")}`;
+} else {
+  logo2Src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO3Z9pEAAAAASUVORK5CYII=";
+}
+
+// ---------------------
 // Load background image as base64 (if referenced in CSS)
 // ---------------------
-// Base64 conversion disabled - user will manually paste base64 value in CSS
-// The CSS template contains: url(data:image/png;base64,PASTE_YOUR_BASE64_HERE)
-// User should replace PASTE_YOUR_BASE64_HERE with actual base64 string
+let bgSrc = "";
+const bgPathPng = `template/${templateName}/background.png`;
+const bgPathJpg = `template/${templateName}/background.jpg`;
+
+if (fs.existsSync(bgPathPng)) {
+  const buf = fs.readFileSync(bgPathPng);
+  bgSrc = `data:image/png;base64,${buf.toString("base64")}`;
+} else if (fs.existsSync(bgPathJpg)) {
+  const buf = fs.readFileSync(bgPathJpg);
+  bgSrc = `data:image/jpeg;base64,${buf.toString("base64")}`;
+}
+
+// Replace in CSS if placeholder exists
+if (bgSrc) {
+  stylesCss = stylesCss.replace("{{BG_SRC}}", bgSrc);
+} else {
+  // If no image, remove the url() wrapper if it exists or just empty
+  // Better approach: User uses url('{{BG_SRC}}') in CSS.
+  // If empty, we might want to replace with empty string or fallback.
+  // For now, let's just make it empty which might break url('').
+  // A cleaner way relies on CSS structure. Let's assume user handles fallback or we replace the whole declaration.
+  // Simplest: Replace {{BG_SRC}} with emptiness or a 1x1 transparent pixel if needed to avoid syntax errors?
+  // Let's replace with empty string, user CSS should handle valid values.
+  // Actually, if I replace url('{{BG_SRC}}') with url(''), it is valid but empty.
+  stylesCss = stylesCss.replace("{{BG_SRC}}", "");
+}
 
 // ---------------------
 // Build overview
@@ -287,6 +339,7 @@ for (let i = 0; i < data.length; i++) {
   const qSlug = slugify(baseTextForSlug, slugMaxLen);
 
   // Common data for generic templates
+  // Common data for generic templates
   const commonData = {
     ...q,
     TOPIC: topic,
@@ -295,7 +348,8 @@ for (let i = 0; i < data.length; i++) {
     DATE: dateStr,
     NO: String(i + 1),
     ID: qIdRaw,
-    LOGO_SRC: logoSrc
+    LOGO_SRC: logoSrc,
+    LOGO2_SRC: logo2Src,
   };
 
   let html = "";
@@ -304,6 +358,7 @@ for (let i = 0; i < data.length; i++) {
   // Special templates
   // ---------------------
   if (templateName === "quiz") {
+    // ... (quiz logic remains same, it already has it)
     const qText = q.question || "";
     const options = Array.isArray(q.options) ? q.options : [];
 
@@ -313,11 +368,14 @@ for (let i = 0; i < data.length; i++) {
 
     const explanation = q.explanation ? String(q.explanation) : "";
     const explanationBlock = explanation
-      ? `<div class="explanation"><div class="title">Açıklama</div>${escapeHtml(explanation)}</div>`
+      ? `<div class="explanation"><div class="title">Açıklama</div>${escapeHtml(
+          explanation
+        )}</div>`
       : "";
 
     html = templateHtml
       .replaceAll("{{LOGO_SRC}}", logoSrc)
+      .replaceAll("{{LOGO2_SRC}}", logo2Src)
       .replaceAll("{{COMMUNITY}}", escapeHtml(community))
       .replaceAll("{{TOPIC}}", escapeHtml(topic))
       .replaceAll("{{DATE}}", escapeHtml(dateStr))
@@ -336,18 +394,20 @@ for (let i = 0; i < data.length; i++) {
         `</ol><div style="margin-top:16px;color:rgba(255,255,255,0.7);font-weight:800;">Cevap: ${answerLetter}</div>`
       );
     }
-
   } else if (templateName === "info") {
     const title = q.title || "";
     const content = q.content || "";
     const example = q.example ? String(q.example) : "";
 
     const exampleBlock = example
-      ? `<div class="example"><div class="title">Örnek</div><pre>${escapeHtml(example)}</pre></div>`
+      ? `<div class="example"><div class="title">Örnek</div><pre>${escapeHtml(
+          example
+        )}</pre></div>`
       : "";
 
     html = templateHtml
       .replaceAll("{{LOGO_SRC}}", logoSrc)
+      .replaceAll("{{LOGO2_SRC}}", logo2Src)
       .replaceAll("{{COMMUNITY}}", escapeHtml(community))
       .replaceAll("{{TOPIC}}", escapeHtml(topic))
       .replaceAll("{{DATE}}", escapeHtml(dateStr))
@@ -356,7 +416,25 @@ for (let i = 0; i < data.length; i++) {
       .replaceAll("{{TITLE}}", escapeHtml(title))
       .replaceAll("{{CONTENT}}", escapeHtml(content))
       .replaceAll("{{EXAMPLE_BLOCK}}", exampleBlock);
+  } else if (templateName === "social") {
+    // Social template: Title + Content + Signature (Minimal)
+    const title = q.title || q.question || "";
+    // If content missing, fallback to question's explanation or raw text
+    const content = q.content || q.explanation || "";
+    const footerText = q.footer || "Bilgisayar Kavramları Topluluğu"; // Default if empty
+    
+    // Code block handling
+    const code = q.code ? String(q.code) : "";
+    const codeBlock = code
+      ? `<div class="code-snippet">${escapeHtml(code)}</div>`
+      : "";
 
+    html = templateHtml
+      .replaceAll("{{TITLE}}", escapeHtml(title))
+      .replaceAll("{{CONTENT}}", escapeHtml(content))
+      .replaceAll("{{FOOTER}}", escapeHtml(footerText))
+      .replaceAll("{{CODE_BLOCK}}", codeBlock);
+      
   } else {
     // ---------------------
     // Generic template
@@ -382,7 +460,7 @@ for (let i = 0; i < data.length; i++) {
     qno: qNo,
     id: qIdSafe,
     slug: includeSlug ? qSlug : "",
-    ext: format
+    ext: format,
   };
 
   const fileName = applyPattern(filenamePattern, vars)
@@ -398,7 +476,9 @@ for (let i = 0; i < data.length; i++) {
       console.warn(`⚠️ Exists, overwriting: ${outFile}`);
     } else {
       console.error(`❌ Output already exists (onExists=fail): ${outFile}`);
-      console.error("   - Delete output files OR set onExists=overwrite in config.");
+      console.error(
+        "   - Delete output files OR set onExists=overwrite in config."
+      );
       await browser.close();
       process.exit(1);
     }
@@ -407,7 +487,7 @@ for (let i = 0; i < data.length; i++) {
   await page.screenshot({
     path: outFile,
     type: format === "jpg" ? "jpeg" : "png",
-    fullPage: false
+    fullPage: true,
   });
 
   console.log(`✅ [${i + 1}/${total}] -> ${outFile}`);

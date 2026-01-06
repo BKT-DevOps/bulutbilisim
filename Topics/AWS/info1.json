@@ -1,0 +1,50 @@
+[
+  {
+    "id": "aws-info-0001",
+    "title": "Amazon EC2 (Elastic Compute Cloud)",
+    "content": "Amazon EC2, AWS bulutunda ölçeklenebilir bilgi işlem kapasitesi (sanal sunucular) sağlayan temel servistir. İhtiyacınıza göre CPU, RAM ve disk seçenekleri sunan 'Instance Type'lar seçebilir, dakikalar içinde sunucu başlatabilirsiniz.",
+    "example": "T3 (Burstable), M5 (General Purpose), C5 (Compute Optimized) gibi farklı aileleri vardır."
+  },
+  {
+    "id": "aws-info-0002",
+    "title": "Amazon S3 (Simple Storage Service)",
+    "content": "Amazon S3, internet ölçeğinde veri depolama hizmetidir. %99.999999999 (11 dokuz) dayanıklılık sunar. Dosyalar 'Bucket' adı verilen klasörlerde tutulur ve her yerden erişilebilir. Statik web sitesi barındırmak için de kullanılır.",
+    "example": "aws s3 cp dosya.txt s3://my-bucket/"
+  },
+  {
+    "id": "aws-info-0003",
+    "title": "AWS IAM (Identity & Access Management)",
+    "content": "IAM, AWS kaynaklarına kimlerin erişebileceğini (Authentication) ve neler yapabileceğini (Authorization) yönetir. Kullanıcılar (Users), Gruplar (Groups) ve Roller (Roles) oluşturarak 'Least Privilege' (En az yetki) prensibine göre izinler tanımlanır.",
+    "example": "IAM Policy örneği: Sadece S3 okuma izni veren 'AmazonS3ReadOnlyAccess'"
+  },
+  {
+    "id": "aws-info-0004",
+    "title": "AWS Lambda (Serverless Compute)",
+    "content": "Lambda, sunucu kurulumu ve yönetimi yapmadan kod çalıştırmanızı sağlayan 'Serverless' bir servistir. Sadece kodun çalıştığı süre (milisaniye) kadar ücret ödersiniz. Bir dosya yüklendiğinde veya API çağrısı geldiğinde tetiklenebilir.",
+    "example": "Node.js, Python, Java, Go gibi dilleri destekler."
+  },
+  {
+    "id": "aws-info-0005",
+    "title": "Amazon VPC (Virtual Private Cloud)",
+    "content": "AWS bulutunda size özel, izole edilmiş sanal bir ağ oluşturur. IP aralıklarını (CIDR), alt ağları (Subnets), yönlendirme tablolarını (Route Tables) ve ağ geçitlerini (Gateways) siz yönetirsiniz. Güvenlik için Security Group ve NACL kullanılır.",
+    "example": "VPC CIDR: 10.0.0.0/16, Public Subnet: 10.0.1.0/24"
+  },
+  {
+    "id": "aws-info-0006",
+    "title": "Amazon RDS (Relational Database Service)",
+    "content": "İlişkisel veritabanlarını (MySQL, PostgreSQL, Oracle, SQL Server) bulutta kolayca kurmayı, işletmeyi ve ölçeklemeyi sağlar. Yedekleme, yamama ve bakım işlemlerini AWS otomatik olarak yönetir.",
+    "example": "Multi-AZ özelliği ile otomatik 'Failover' (arıza durumunda yedek sunucuya geçiş) sağlar."
+  },
+  {
+    "id": "aws-info-0007",
+    "title": "Amazon CloudWatch",
+    "content": "AWS kaynaklarınızı ve uygulamalarınızı izleyen (Monitoring) servistir. CPU kullanımı, disk okuma/yazma gibi metrikleri toplar, logları saklar ve belirlenen eşik değerleri aşıldığında Alarm (uyarı) üretir.",
+    "example": "CPU kullanımı %80'i geçerse yöneticiye e-posta gönder."
+  },
+  {
+    "id": "aws-info-0008",
+    "title": "AWS CloudFormation",
+    "content": "Altyapınızı kod olarak (Infrastructure as Code - IaC) yönetmenizi sağlar. JSON veya YAML dosyalarıyla tüm AWS kaynaklarınızı (EC2, VPC, S3 vb.) şablon olarak tanımlayıp, tekrarlanabilir ve kontrollü bir şekilde oluşturabilirsiniz.",
+    "example": "YAML şablonunda 'Type: AWS::EC2::Instance' tanımlayarak sunucu oluşturma."
+  }
+]

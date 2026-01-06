@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
   <title>Question Card</title>
 </head>
 <body>
@@ -12,17 +15,24 @@
 
       <!-- Header -->
       <div class="header">
-        <div class="brand-left">
-          <!-- Logo: template/logo.png veya template/logo.jpg koy -->
-          <div class="logo-wrap">
-            <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
-          </div>
-          <div class="brand-text">
-            <div class="community">Bilgisayar Kavramları Topluluğu</div>
-            <div class="group-name">Bulut Bilişim Grubu</div>
-            <div class="topic">{{TOPIC}}</div>
-          </div>
+        
+        <!-- Logo 1 (Left) -->
+        <div class="logo-wrap">
+          <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
         </div>
+
+        <!-- Middle Text -->
+        <div class="brand-text">
+          <div class="community">Bilgisayar Kavramları Topluluğu</div>
+          <div class="group-name">Bulut Bilişim Grubu</div>
+          <div class="topic">{{TOPIC}}</div>
+        </div>
+
+        <!-- Logo 2 (Right) -->
+        <div class="logo-wrap">
+          <img class="logo" src="{{LOGO2_SRC}}" alt="" />
+        </div>
+
       </div>
 
       <!-- Body -->
