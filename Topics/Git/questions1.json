@@ -1,90 +1,222 @@
 [
   {
-    "question": "Yeni bir Git deposu (repository) oluşturmak için hangi komut kullanılır?",
+    "question": "Interactive rebase'in temel amaci nedir?",
     "options": [
-      "git new",
-      "git create",
-      "git init",
-      "git start"
-    ],
-    "answerIndex": 2,
-    "explanation": "git init komutu, bulunduğunuz dizinde yeni ve boş bir Git deposu (.git klasörü) oluşturur."
-  },
-  {
-    "question": "Uzak bir depoyu yerel bilgisayara kopyalamak için hangi komut kullanılır?",
-    "options": [
-      "git copy",
-      "git clone",
-      "git pull",
-      "git fetch"
+      "Remote eklemek",
+      "Commit tarihcesini duzenlemek",
+      "Dosya izinlerini degistirmek",
+      "Binary dosyalari saklamak"
     ],
     "answerIndex": 1,
-    "explanation": "git clone <url> komutu, uzak bir sunucudaki (GitHub, GitLab vb.) depoyu tüm geçmişiyle birlikte bilgisayarınıza indirir."
+    "explanation": "Rebase -i ile commitleri duzenleyebilir, birlestirebilir ve mesajlari degistirebilirsiniz."
   },
   {
-    "question": "Yapılan değişiklikleri geçici bölgeye (staging area) eklemek için hangisi kullanılır?",
+    "question": "git bisect hangi problem icin kullanilir?",
     "options": [
-      "git add",
-      "git stage",
-      "git commit",
-      "git push"
-    ],
-    "answerIndex": 0,
-    "explanation": "git add <dosya> komutu, dosyalardaki değişiklikleri bir sonraki commit için hazırlar (staging area'ya ekler)."
-  },
-  {
-    "question": "Değişiklikleri kalıcı olarak kaydetmek (versiyon oluşturmak) için hangi komut kullanılır?",
-    "options": [
-      "git save",
-      "git store",
-      "git commit",
-      "git record"
-    ],
-    "answerIndex": 2,
-    "explanation": "git commit -m \"mesaj\" komutu, stage edilmiş değişiklikleri yerel depoya kalıcı bir anlık görüntü (snapshot) olarak kaydeder."
-  },
-  {
-    "question": "Yerel depodaki değişiklikleri uzak sunucuya göndermek için hangisi kullanılır?",
-    "options": [
-      "git upload",
-      "git send",
-      "git push",
-      "git update"
-    ],
-    "answerIndex": 2,
-    "explanation": "git push komutu, yerel commitlerinizi uzak depoya (remote repository) yükler."
-  },
-  {
-    "question": "Uzak sunucudaki değişiklikleri alıp yerel depoyla birleştirmek için ne kullanılır?",
-    "options": [
-      "git get",
-      "git pull",
-      "git fetch",
-      "git merge"
+      "Merge conflict cozmek",
+      "Hatayi getiren commiti bulmak",
+      "Branch silmek",
+      "Remote silmek"
     ],
     "answerIndex": 1,
-    "explanation": "git pull komutu, uzak depodaki değişiklikleri indirir (fetch) ve mevcut çalışma dalınızla birleştirir (merge)."
+    "explanation": "Bisection algoritmasi ile hatali commiti hizli bulur."
   },
   {
-    "question": "Dosyaların durumunu (değişen, eklenen, silinen) görmek için hangi komut kullanılır?",
+    "question": "reflog neyi kaydeder?",
     "options": [
-      "git check",
-      "git log",
-      "git status",
-      "git diff"
+      "Remote URL'leri",
+      "HEAD hareketlerini",
+      "Branch izinlerini",
+      "Submodule listelerini"
     ],
-    "answerIndex": 2,
-    "explanation": "git status komutu, hangi dosyaların değiştirildiğini, hangilerinin stage edildiğini veya takip edilmediğini gösterir."
+    "answerIndex": 1,
+    "explanation": "Yanlis reset/rebase sonrasi kurtarma icin HEAD hareketleri tutulur."
   },
   {
-    "question": "Yeni bir çalışma dalı (branch) oluşturmak için hangi komut kullanılır?",
+    "question": "reset ve revert arasindaki temel fark nedir?",
     "options": [
-      "git branch <isim>",
-      "git checkout <isim>",
-      "git new-branch <isim>",
-      "git create <isim>"
+      "Ikisi aynidir",
+      "reset history'yi yazar, revert yeni commit uretir",
+      "revert remote'u siler",
+      "reset sadece tag'leri etkiler"
     ],
-    "answerIndex": 0,
-    "explanation": "git branch <isim> komutu yeni bir dal oluşturur. O dala geçmek için ise git switch veya git checkout kullanılır."
+    "answerIndex": 1,
+    "explanation": "Paylasilan branch'lerde revert daha guvenlidir."
+  },
+  {
+    "question": "Cherry-pick ne zaman tercih edilir?",
+    "options": [
+      "Tüm branch'i birlestirmek icin",
+      "Belirli commitleri tasimak icin",
+      "Tag olusturmak icin",
+      "Repository silmek icin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Secili commitleri hedef branch'e uygular."
+  },
+  {
+    "question": "Fast-forward merge ne anlama gelir?",
+    "options": [
+      "Merge commit olusur",
+      "Branch uzerinde yeni commit yoksa pointer ileri tasinir",
+      "Conflict her zaman olur",
+      "Tag otomatik atilir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sadece pointer hareket eder, ek merge commit olmaz."
+  },
+  {
+    "question": "git worktree'in faydasi nedir?",
+    "options": [
+      "Tek branch ile calismayi zorlar",
+      "Ayni repo uzerinde paralel calisma dizinleri acar",
+      "Remote ayarlarini sifirlar",
+      "LFS dosyalarini siler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Farkli branch'leri ayni anda ayri klasorlerde calistirir."
+  },
+  {
+    "question": "Sparse checkout neyi cozer?",
+    "options": [
+      "Binary merge",
+      "Buyuk monorepo'da sadece gereken dizinleri cekme",
+      "Push hızlandirma",
+      "Commit mesajini duzeltme"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sadece ihtiyac duyulan dizinleri checkout ederek performans kazandirir."
+  },
+  {
+    "question": "Annotated tag'in avantajı nedir?",
+    "options": [
+      "Sadece numeric isim verir",
+      "Metadata ve imza icerebilir",
+      "Tag'leri otomatik siler",
+      "Sadece local'da kalir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Release notlari ve GPG imzasi gibi bilgiler eklenebilir."
+  },
+  {
+    "question": "GPG imzali commit ne saglar?",
+    "options": [
+      "Commit'i hizlandirir",
+      "Commit'in guvenilirligini dogrular",
+      "Branch'i kilitler",
+      "Submodule'leri gunceller"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kimlik dogrulama ve guven zinciri saglar."
+  },
+  {
+    "question": "git blame ne icin kullanilir?",
+    "options": [
+      "Binary diff",
+      "Satir bazli degisim sorumlusu",
+      "Remote listesi",
+      "Merge strategisi"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bir satirin hangi commit/kisi tarafindan degistirildigini gosterir."
+  },
+  {
+    "question": "rerere ozelligi ne ise yarar?",
+    "options": [
+      "Commitleri sıkıştırır",
+      "Merge conflict cozumlerini yeniden kullanir",
+      "Branch'i siler",
+      "Remote'u degistirir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Benzer conflict'lerde onceki cozumleri otomatik uygular."
+  },
+  {
+    "question": "git add -p hangi ihtiyaca yoneliktir?",
+    "options": [
+      "Tum dosyalari siler",
+      "Secmeli hunk stage etmek",
+      "Merge commit uretmek",
+      "Tag silmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Ayni dosyada farkli degisiklikleri ayri commitlere bolmek icin kullanilir."
+  },
+  {
+    "question": "git clean -fd komutu ne yapar?",
+    "options": [
+      "Tracked dosyalari siler",
+      "Untracked dosyalari siler",
+      "Commitleri siler",
+      "Branch'i siler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Untracked dosya ve dizinleri temizler."
+  },
+  {
+    "question": "Reset --soft ile --hard arasindaki fark nedir?",
+    "options": [
+      "Soft dosyalari siler, hard silmez",
+      "Soft stage'i korur, hard her seyi geri alir",
+      "Hard sadece tag'leri etkiler",
+      "Soft sadece remote'u etkiler"
+    ],
+    "answerIndex": 1,
+    "explanation": "--hard ile calisma dizini de geri alinir."
+  },
+  {
+    "question": "Upstream branch ayarlamak neden faydali?",
+    "options": [
+      "Tag'leri otomatik uretir",
+      "push/pull komutlarini kisa hale getirir",
+      "Commit hash'ini degistirir",
+      "Submodule ekler"
+    ],
+    "answerIndex": 1,
+    "explanation": "git push/pull komutlarini parametresiz kullanmayi saglar."
+  },
+  {
+    "question": "Submodule kullanmanin en buyuk riski nedir?",
+    "options": [
+      "Disk alanini azaltir",
+      "Versiyon guncellemelerinin unutulmasi",
+      "Merge conflict olmaz",
+      "Branch yapisini yok eder"
+    ],
+    "answerIndex": 1,
+    "explanation": "Submodule referansi manuel guncellenmezse eski commit'te kalir."
+  },
+  {
+    "question": "git log --pretty=format ne ise yarar?",
+    "options": [
+      "LFS dosyalarini listeler",
+      "Log cikisini ozel formatta verir",
+      "Remote ekler",
+      "Branch'i siler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Audit veya rapor cikarmak icin formatlanmis log saglar."
+  },
+  {
+    "question": "Hook'larin temel amaci nedir?",
+    "options": [
+      "Imaj build etmek",
+      "Commit/push oncesi otomasyon",
+      "Branch isimlendirmek",
+      "Tag silmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pre-commit/pre-push gibi noktalarda otomatik kontrol calistirir."
+  },
+  {
+    "question": "git switch ve git checkout farki en iyi nasil ozetlenir?",
+    "options": [
+      "switch sadece dosya degistirir",
+      "switch branch degistirmeye odakli, checkout daha genis kapsamli",
+      "checkout yeni branch acmaz",
+      "switch sadece remote icindir"
+    ],
+    "answerIndex": 1,
+    "explanation": "switch branch degistirme icin tasarlanmistir; checkout daha fazla is gorur."
   }
 ]

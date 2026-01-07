@@ -2,8 +2,6 @@
   "topic": "Docker",
   "input": "topics/docker/questions1.json",
   "template": "quiz",
-  "community": "Bilgisayar Kavramları Topluluğu",
-  "group": "Bulut Bilişim Grubu",
   "startDate": "2026-01-07",
   "perDay": 1,
   "format": "png",
@@ -13,8 +11,6 @@
   "showAnswer": false,
   "onExists": "overwrite",
   "filenamePattern": "{set}_{date}_q{qno}_{id}.{ext}",
-  "logo1": "template/quiz/logo1.png",
-  "logo2": "template/quiz/logo2.png",
   "theme": {
     "accent": "#ef4444",
     "gradient": "linear-gradient(135deg, #ef4444 0%, #f97316 100%)",

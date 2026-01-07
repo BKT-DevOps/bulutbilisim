@@ -2,7 +2,6 @@
   "topic": "Announcement",
   "input": "topics/announcement/social.json",
   "template": "social",
-  "community": "Bilgisayar Kavramları Topluluğu",
   "startDate": "2026-01-07",
   "perDay": 1,
   "format": "png",

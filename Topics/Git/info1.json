@@ -1,50 +1,122 @@
 [
   {
     "id": "git-info-0001",
-    "title": "git init - Depo Oluşturma",
-    "content": "Bulunduğunuz dizini bir Git deposuna dönüştürür. Bu komut, projenizin versiyon kontrolü için gerekli olan gizli .git klasörünü oluşturur. Projeye başlarken sadece bir kez çalıştırılır.",
-    "example": "git init"
+    "title": "Rebase (ozellikle interactive)",
+    "content": "Rebase, commit tarihcesini duzenlemek ve daha temiz bir history uretmek icin kullanilir. Interactive rebase ile commitleri birlestirebilir, mesaj duzeltebilir, hatta yeniden siralayabilirsiniz.",
+    "example": "git rebase -i HEAD~5"
   },
   {
     "id": "git-info-0002",
-    "title": "git clone - Depo Kopyalama",
-    "content": "GitHub, GitLab gibi uzak bir sunucuda bulunan mevcut bir depoyu bilgisayarınıza indirir. Tüm proje dosyaları, tarihçesi ve şubeleriyle birlikte kopyalanır.",
-    "example": "git clone https://github.com/user/repo.git"
+    "title": "Cherry-pick ile tek commit tasima",
+    "content": "Cherry-pick, baska bir branch'ten belirli commitleri secip mevcut branch'e uygular. Hotfix veya secili ozellik transferi icin idealdir.",
+    "example": "git cherry-pick a1b2c3d"
   },
   {
     "id": "git-info-0003",
-    "title": "git add - Değişiklikleri Hazırlama",
-    "content": "Dosyalar üzerinde yaptığınız değişiklikleri 'Staging Area' denilen geçici bölgeye ekler. Commit etmeden önce hangi dosyaların paketleneceğini seçmenizi sağlar. Tüm dosyalar için nokta (.) kullanılır.",
-    "example": "git add ."
+    "title": "Bisect ile hata avlama",
+    "content": "git bisect, bisection ile hatayi getiren commiti hizli bulur. 'good' ve 'bad' noktalar verilir, Git araliklari yarilayarak commit bulur.",
+    "example": "git bisect start\ngit bisect bad\ngit bisect good v1.2.0"
   },
   {
     "id": "git-info-0004",
-    "title": "git commit - Kaydetme",
-    "content": "Staging Area'daki değişiklikleri kalıcı bir versiyon (snapshot) olarak kaydeder. Her commit'in benzersiz bir kimliği (hash) ve açıklayıcı bir mesajı olmalıdır.",
-    "example": "git commit -m \"İlk özellik eklendi\""
+    "title": "Reflog ile kurtarma",
+    "content": "reflog, HEAD hareketlerini tutar. Yanlis reset/rebase sonrasi kayip commitleri bulup geri alabilirsiniz.",
+    "example": "git reflog\ngit checkout HEAD@{2}"
   },
   {
     "id": "git-info-0005",
-    "title": "git status - Durum Kontrolü",
-    "content": "Çalışma dizininizin o anki durumunu gösterir. Hangi dosyaların değiştiğini, hangilerinin stage edildiğini (add yapıldığını) veya hangilerinin Git tarafından takip edilmediğini (untracked) söyler.",
-    "example": "git status"
+    "title": "Reset vs revert",
+    "content": "reset tarihceyi degistirir (history rewrite), revert ise yeni bir geri alma commiti uretir. Paylasilan branch'lerde revert daha guvenlidir.",
+    "example": "git revert a1b2c3d"
   },
   {
     "id": "git-info-0006",
-    "title": "git push - Sunucuya Gönderme",
-    "content": "Bilgisayarınızdaki (yerel) commitleri uzak sunucuya (GitHub vb.) yükler. Böylece ekip arkadaşlarınız değişikliklerinizi görebilir ve kodunuz yedeklenmiş olur.",
-    "example": "git push origin main"
+    "title": "Merge stratejileri",
+    "content": "Fast-forward, no-ff ve squash merge farkli history modeli sunar. Takim standardina gore strateji secmek code review ve izlenebilirlik icin kritiktir.",
+    "example": "git merge --no-ff feature/auth"
   },
   {
     "id": "git-info-0007",
-    "title": "git pull - Güncellemeleri Alma",
-    "content": "Uzak sunucuda başkaları tarafından yapılmış değişiklikleri indirir ve çalışma dosyanızla birleştirir. Çalışmaya başlamadan önce güncel kodu çekmek için kullanılır.",
-    "example": "git pull origin main"
+    "title": "Stash ile gecici saklama",
+    "content": "Stash, commit atmadan degisiklikleri saklar. Coklu stash'ler tutulur ve geri alinabilir. Patch olarak da uygulanabilir.",
+    "example": "git stash push -m \"wip\"\ngit stash pop"
   },
   {
     "id": "git-info-0008",
-    "title": "git branch - Dal Yönetimi",
-    "content": "Projeden saparak farklı özellikleri izole bir şekilde geliştirmenizi sağlar. 'git branch' dalları listeler, 'git branch yeni-dal' yeni dal oluşturur. Dallar arası geçiş için 'git switch' veya 'git checkout' kullanılır.",
-    "example": "git branch ozellik-1"
+    "title": "Worktree ile paralel calisma",
+    "content": "Worktree, tek repo uzerinde birden fazla calisma dizini acar. Farkli branch'lerde ayni anda calismak icin idealdir.",
+    "example": "git worktree add ../hotfix hotfix/login"
+  },
+  {
+    "id": "git-info-0009",
+    "title": "Sparse checkout",
+    "content": "Buyuk monorepo'larda sadece gerekli alt dizinleri cekmek icin kullanilir. Performans ve disk kazanci saglar.",
+    "example": "git sparse-checkout init --cone\ngit sparse-checkout set services/api"
+  },
+  {
+    "id": "git-info-0010",
+    "title": "Submodule yonetimi",
+    "content": "Submodule, baska bir repo'yu belirli bir commit ile baglar. Versiyon kilitleme saglar ama guncelleme disiplini ister.",
+    "example": "git submodule add https://github.com/org/lib.git libs/lib"
+  },
+  {
+    "id": "git-info-0011",
+    "title": "Tag (annotated) ve release",
+    "content": "Annotated tag, release metadata ve imza icerebilir. CI pipeline'larda release tetiklemek icin kullanilir.",
+    "example": "git tag -a v2.0.0 -m \"Release 2.0.0\""
+  },
+  {
+    "id": "git-info-0012",
+    "title": "GPG imzali commit",
+    "content": "Imzali commit, commitin guvenilirligini saglar. Kurumsal repolarda guven zinciri icin tercih edilir.",
+    "example": "git config commit.gpgsign true"
+  },
+  {
+    "id": "git-info-0013",
+    "title": "Hooks ile otomasyon",
+    "content": "Git hooks, commit veya push oncesi otomatik test/lint calistirir. Kalite kapisi saglamak icin kullanilir.",
+    "example": "./.git/hooks/pre-commit"
+  },
+  {
+    "id": "git-info-0014",
+    "title": "Blame ve line history",
+    "content": "git blame satir bazli degisim izini gosterir. Kodun neden degistigini bulmak ve sorumluyu tespit etmek icin kullanilir.",
+    "example": "git blame -L 120,150 src/app.js"
+  },
+  {
+    "id": "git-info-0015",
+    "title": "Log formatlama",
+    "content": "Log ciktilari ozel formatla raporlanabilir. Audit, release notu veya metrik cikartmak icin faydalidir.",
+    "example": "git log --pretty=format:'%h %an %ad %s' --date=short"
+  },
+  {
+    "id": "git-info-0016",
+    "title": "Rerere (reuse recorded resolution)",
+    "content": "Rerere, merge conflict cozumu kaydeder ve benzer conflict'lerde otomatik uygular. Buyuk ve uzun suren feature branch'lerde hayat kurtarir.",
+    "example": "git config rerere.enabled true"
+  },
+  {
+    "id": "git-info-0017",
+    "title": "Clean ile calisma alanini sifirlama",
+    "content": "Untracked dosyalari siler. Build ciktilari veya gecici dosyalari temizlemek icin kullanilir. Kullanmadan once -n ile kontrol etmek guvenlidir.",
+    "example": "git clean -fd"
+  },
+  {
+    "id": "git-info-0018",
+    "title": "Reset --soft vs --mixed vs --hard",
+    "content": "--soft sadece HEAD'i geri alir (stage korunur), --mixed stage'i temizler, --hard her seyi geri alir. Yanlis kullanimi veri kaybina neden olabilir.",
+    "example": "git reset --soft HEAD~1"
+  },
+  {
+    "id": "git-info-0019",
+    "title": "Patch mode ile secmeli stage",
+    "content": "Ayni dosyada birden fazla degisiklik varsa, sadece belirli hunk'lari stage etmek icin patch mode kullanilir.",
+    "example": "git add -p"
+  },
+  {
+    "id": "git-info-0020",
+    "title": "Remote ve tracking branch",
+    "content": "Remote ayarlari ve tracking branch, push/pull davranisini belirler. Upstream ayarlamak, her seferinde origin/main yazma ihtiyacini kaldirir.",
+    "example": "git push -u origin feature/auth"
   }
 ]

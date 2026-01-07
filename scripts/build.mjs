@@ -15,6 +15,7 @@ function getArg(name, fallback = null) {
 // Load config
 // ---------------------
 const configPath = getArg("config", null);
+const baseConfigPath = getArg("base", "config/base.config.json");
 
 if (!configPath) {
   console.error("❌ Missing --config. Example:");
@@ -29,7 +30,21 @@ if (!fs.existsSync(configPath)) {
   process.exit(1);
 }
 
-const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+let baseConfig = {};
+if (baseConfigPath && fs.existsSync(baseConfigPath)) {
+  baseConfig = JSON.parse(fs.readFileSync(baseConfigPath, "utf8"));
+}
+
+const fileConfig = JSON.parse(fs.readFileSync(configPath, "utf8"));
+const mergedTheme = {
+  ...(baseConfig.theme || {}),
+  ...(fileConfig.theme || {}),
+};
+const config = {
+  ...baseConfig,
+  ...fileConfig,
+  ...(Object.keys(mergedTheme).length ? { theme: mergedTheme } : {}),
+};
 
 // ---------------------
 // Resolve args (CLI overrides config)
@@ -243,6 +258,8 @@ if (logo2Path === undefined) {
 let logoSrc = "";
 if (logo1Path && fs.existsSync(logo1Path)) {
   logoSrc = loadLogo(logo1Path);
+} else if (logo1Path) {
+  console.warn(`⚠️ Logo not found: ${logo1Path}`);
 } else {
   logoSrc = TRANSPARENT_PIXEL;
 }
@@ -250,6 +267,8 @@ if (logo1Path && fs.existsSync(logo1Path)) {
 let logo2Src = "";
 if (logo2Path && fs.existsSync(logo2Path)) {
   logo2Src = loadLogo(logo2Path);
+} else if (logo2Path) {
+  console.warn(`⚠️ Logo not found: ${logo2Path}`);
 } else {
   logo2Src = TRANSPARENT_PIXEL;
 }
@@ -262,10 +281,23 @@ const logo2Visibility = logo2Src === TRANSPARENT_PIXEL ? "hidden" : "";
 // Load background image as base64 (if referenced in CSS)
 // ---------------------
 let bgSrc = "";
+const bgPathFromConfig =
+  config.backgroundImage ?? config.background ?? undefined;
 const bgPathPng = `template/${templateName}/background.png`;
 const bgPathJpg = `template/${templateName}/background.jpg`;
 
-if (fs.existsSync(bgPathPng)) {
+if (bgPathFromConfig !== undefined && bgPathFromConfig !== null) {
+  if (bgPathFromConfig) {
+    if (fs.existsSync(bgPathFromConfig)) {
+      const buf = fs.readFileSync(bgPathFromConfig);
+      const ext = path.extname(bgPathFromConfig).toLowerCase();
+      const mime = ext === ".jpg" || ext === ".jpeg" ? "jpeg" : "png";
+      bgSrc = `data:image/${mime};base64,${buf.toString("base64")}`;
+    } else {
+      console.warn(`⚠️ Background not found: ${bgPathFromConfig}`);
+    }
+  }
+} else if (fs.existsSync(bgPathPng)) {
   const buf = fs.readFileSync(bgPathPng);
   bgSrc = `data:image/png;base64,${buf.toString("base64")}`;
 } else if (fs.existsSync(bgPathJpg)) {

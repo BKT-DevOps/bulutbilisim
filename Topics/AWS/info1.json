@@ -1,50 +1,122 @@
 [
   {
     "id": "aws-info-0001",
-    "title": "Amazon EC2 (Elastic Compute Cloud)",
-    "content": "Amazon EC2, AWS bulutunda ölçeklenebilir bilgi işlem kapasitesi (sanal sunucular) sağlayan temel servistir. İhtiyacınıza göre CPU, RAM ve disk seçenekleri sunan 'Instance Type'lar seçebilir, dakikalar içinde sunucu başlatabilirsiniz.",
-    "example": "T3 (Burstable), M5 (General Purpose), C5 (Compute Optimized) gibi farklı aileleri vardır."
+    "title": "IAM Role ve STS assume-role",
+    "content": "Role'lar uzun sureli anahtar yerine gecici credential saglar. STS ile role assume edilerek minimum yetki prensibi uygulanir. Cross-account erisimde standart yaklasimdir.",
+    "example": "aws sts assume-role --role-arn arn:aws:iam::123:role/ReadOnly"
   },
   {
     "id": "aws-info-0002",
-    "title": "Amazon S3 (Simple Storage Service)",
-    "content": "Amazon S3, internet ölçeğinde veri depolama hizmetidir. %99.999999999 (11 dokuz) dayanıklılık sunar. Dosyalar 'Bucket' adı verilen klasörlerde tutulur ve her yerden erişilebilir. Statik web sitesi barındırmak için de kullanılır.",
-    "example": "aws s3 cp dosya.txt s3://my-bucket/"
+    "title": "KMS ve envelope encryption",
+    "content": "KMS, veriyi sarmalayan anahtarlari yonetir. Uygulama, data key kullanir; master key asla disari cikmaz. Audit ve key rotation icin kritiktir.",
+    "example": "aws kms encrypt --key-id alias/app-key --plaintext fileb://data.bin"
   },
   {
     "id": "aws-info-0003",
-    "title": "AWS IAM (Identity & Access Management)",
-    "content": "IAM, AWS kaynaklarına kimlerin erişebileceğini (Authentication) ve neler yapabileceğini (Authorization) yönetir. Kullanıcılar (Users), Gruplar (Groups) ve Roller (Roles) oluşturarak 'Least Privilege' (En az yetki) prensibine göre izinler tanımlanır.",
-    "example": "IAM Policy örneği: Sadece S3 okuma izni veren 'AmazonS3ReadOnlyAccess'"
+    "title": "S3 storage class ve lifecycle",
+    "content": "S3 Standard, IA, Glacier gibi siniflar maliyet optimizasyonu saglar. Lifecycle policy ile otomatik gecis ve expiration tanimlanir.",
+    "example": "30 gun sonra STANDARD_IA, 90 gun sonra GLACIER"
   },
   {
     "id": "aws-info-0004",
-    "title": "AWS Lambda (Serverless Compute)",
-    "content": "Lambda, sunucu kurulumu ve yönetimi yapmadan kod çalıştırmanızı sağlayan 'Serverless' bir servistir. Sadece kodun çalıştığı süre (milisaniye) kadar ücret ödersiniz. Bir dosya yüklendiğinde veya API çağrısı geldiğinde tetiklenebilir.",
-    "example": "Node.js, Python, Java, Go gibi dilleri destekler."
+    "title": "S3 Object Lock ve immutable backup",
+    "content": "Object Lock ile WORM (write once read many) saglanir. Ransomware senaryolarinda kritik koruma saglar.",
+    "example": "S3 bucket retention mode: COMPLIANCE"
   },
   {
     "id": "aws-info-0005",
-    "title": "Amazon VPC (Virtual Private Cloud)",
-    "content": "AWS bulutunda size özel, izole edilmiş sanal bir ağ oluşturur. IP aralıklarını (CIDR), alt ağları (Subnets), yönlendirme tablolarını (Route Tables) ve ağ geçitlerini (Gateways) siz yönetirsiniz. Güvenlik için Security Group ve NACL kullanılır.",
-    "example": "VPC CIDR: 10.0.0.0/16, Public Subnet: 10.0.1.0/24"
+    "title": "CloudFront cache ve origin policy",
+    "content": "CDN cache davranisi Cache Policy ile belirlenir. Header, cookie ve query string kontrolu ile hit ratio optimize edilir.",
+    "example": "Cache Policy: Managed-CachingOptimized"
   },
   {
     "id": "aws-info-0006",
-    "title": "Amazon RDS (Relational Database Service)",
-    "content": "İlişkisel veritabanlarını (MySQL, PostgreSQL, Oracle, SQL Server) bulutta kolayca kurmayı, işletmeyi ve ölçeklemeyi sağlar. Yedekleme, yamama ve bakım işlemlerini AWS otomatik olarak yönetir.",
-    "example": "Multi-AZ özelliği ile otomatik 'Failover' (arıza durumunda yedek sunucuya geçiş) sağlar."
+    "title": "Route 53 weighted ve latency routing",
+    "content": "Weighted routing ile trafik yuzde bazli dagitilir. Latency routing ise kullaniciyi en dusuk gecikmeye sahip bolgeye yonlendirir.",
+    "example": "A kaydi 80/20 oraninda dagitma"
   },
   {
     "id": "aws-info-0007",
-    "title": "Amazon CloudWatch",
-    "content": "AWS kaynaklarınızı ve uygulamalarınızı izleyen (Monitoring) servistir. CPU kullanımı, disk okuma/yazma gibi metrikleri toplar, logları saklar ve belirlenen eşik değerleri aşıldığında Alarm (uyarı) üretir.",
-    "example": "CPU kullanımı %80'i geçerse yöneticiye e-posta gönder."
+    "title": "VPC subnet, IGW ve NAT",
+    "content": "Public subnet IGW uzerinden internete cikar. Private subnet NAT Gateway uzerinden disari cikar ama disaridan erisim almaz.",
+    "example": "Public: 10.0.1.0/24, Private: 10.0.2.0/24"
   },
   {
     "id": "aws-info-0008",
-    "title": "AWS CloudFormation",
-    "content": "Altyapınızı kod olarak (Infrastructure as Code - IaC) yönetmenizi sağlar. JSON veya YAML dosyalarıyla tüm AWS kaynaklarınızı (EC2, VPC, S3 vb.) şablon olarak tanımlayıp, tekrarlanabilir ve kontrollü bir şekilde oluşturabilirsiniz.",
-    "example": "YAML şablonunda 'Type: AWS::EC2::Instance' tanımlayarak sunucu oluşturma."
+    "title": "Security Group vs NACL",
+    "content": "Security Group stateful, NACL stateless'tir. SG instance bazli, NACL subnet bazli kontrol saglar. Ikisi birlikte kullanilir.",
+    "example": "SG: inbound 443, NACL: inbound 443/outbound 1024-65535"
+  },
+  {
+    "id": "aws-info-0009",
+    "title": "ALB ve NLB secimi",
+    "content": "ALB L7 routing (path/host) ve HTTP ozellikleri saglar. NLB L4 performans ve sabit IP sunar. Use-case'e gore secilir.",
+    "example": "ALB: /api -> target group A, /web -> target group B"
+  },
+  {
+    "id": "aws-info-0010",
+    "title": "Auto Scaling policy",
+    "content": "Target tracking veya step scaling ile otomatik kapasite ayarlanir. Doğru cooldown ve metric secimi maliyeti dusurur.",
+    "example": "CPU %50 hedefi ile target tracking"
+  },
+  {
+    "id": "aws-info-0011",
+    "title": "ECS vs EKS vs Fargate",
+    "content": "ECS AWS-native orkestrasyondur, EKS Kubernetes yonetimidir. Fargate ise node yonetimi olmadan pod/task calistirir.",
+    "example": "ECS Fargate ile altyapi yonetimi olmadan servis"
+  },
+  {
+    "id": "aws-info-0012",
+    "title": "Lambda concurrency ve cold start",
+    "content": "Provisioned Concurrency, cold start gecikmesini azaltir. Burst limit ve concurrency siniri performansi etkiler.",
+    "example": "Provisioned Concurrency: 5"
+  },
+  {
+    "id": "aws-info-0013",
+    "title": "API Gateway throttling",
+    "content": "API Gateway istek limitleri ile DDoS veya ani yukleri kontrol eder. Usage plan ve API key ile rate limit uygulanir.",
+    "example": "Rate: 100 rps, Burst: 200"
+  },
+  {
+    "id": "aws-info-0014",
+    "title": "SQS ve DLQ",
+    "content": "SQS, mesaj kuyrugu saglar. Basarisiz mesajlar DLQ'ya (dead-letter queue) yonlendirilir. Retry ve hata izolasyonu saglanir.",
+    "example": "maxReceiveCount=5 -> DLQ"
+  },
+  {
+    "id": "aws-info-0015",
+    "title": "SNS fanout",
+    "content": "SNS bir mesaji birden fazla hedefe (Lambda, SQS, HTTP) yayar. Event-driven mimarilerde kullanilir.",
+    "example": "SNS topic -> 3 SQS queue"
+  },
+  {
+    "id": "aws-info-0016",
+    "title": "EventBridge rules",
+    "content": "EventBridge, servis event'lerini kurallarla dinler ve hedeflere yonlendirir. SaaS entegrasyonlari da destekler.",
+    "example": "EC2 state-change -> Lambda"
+  },
+  {
+    "id": "aws-info-0017",
+    "title": "CloudTrail ve denetim",
+    "content": "CloudTrail, API cagrilarinin tamamini loglar. Guvenlik denetimi ve incident response icin gereklidir.",
+    "example": "CloudTrail -> S3 + CloudWatch Logs"
+  },
+  {
+    "id": "aws-info-0018",
+    "title": "AWS Config ile uyumluluk",
+    "content": "Config, kaynak degisikliklerini izler ve uyumluluk kurallari calistirir. Drift detection ve audit icin kullanilir.",
+    "example": "S3 bucket public olmasin kuralı"
+  },
+  {
+    "id": "aws-info-0019",
+    "title": "Organizations ve SCP",
+    "content": "Organizations ile coklu account yonetilir. SCP (Service Control Policy) ile hesap bazli ust seviye kisit konur.",
+    "example": "SCP: us-east-1 disi yasak"
+  },
+  {
+    "id": "aws-info-0020",
+    "title": "Secrets Manager vs SSM Parameter Store",
+    "content": "Secrets Manager otomatik rotation ve audit saglar. Parameter Store daha uygun maliyetlidir ama rotation ozelligi sinirlidir.",
+    "example": "Secret ARN ile uygulama cekme"
   }
 ]

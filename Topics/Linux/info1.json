@@ -1,50 +1,122 @@
 [
   {
     "id": "linux-info-0001",
-    "title": "find komutu ile dosya arama",
-    "content": "find komutu Linux/Unix sistemlerde dosya ve dizinleri filtrelerle aramak için kullanılır. -name/-iname ile ada göre, -type ile türüne göre, -size ile boyuta göre, -mtime/-mmin ile zamana göre arama yapılabilir. Ayrıca -exec ile bulunan dosyalarda işlem yapılabilir.",
-    "example": "find /var/log -type f -name \"*.log\" -size +100M -mtime -7"
+    "title": "systemd unit yapisi",
+    "content": "Systemd unit dosyalari servislerin nasil baslayacagini tanimlar. [Unit], [Service], [Install] bolumleriyle bagimlilik, calisma sekli ve enable ayarlari yapilir.",
+    "example": "systemctl status nginx"
   },
   {
     "id": "linux-info-0002",
-    "title": "grep komutu ile metin arama",
-    "content": "grep komutu dosya içeriklerinde kelime veya regex aramak için kullanılır. -i büyük/küçük harf duyarsız arama yapar, -r dizin altında recursive arar, -n satır numarası gösterir, -v eşleşmeyen satırları döner. Log analizi ve hata takibi için çok kullanışlıdır.",
-    "example": "grep -rin \"ERROR\" /var/log"
+    "title": "journalctl ile log analizi",
+    "content": "Systemd tabanli sistemlerde journald loglari journalctl ile sorgulanir. Zaman araligi ve servis bazli filtreleme yapilabilir.",
+    "example": "journalctl -u nginx --since \"1 hour ago\""
   },
   {
     "id": "linux-info-0003",
-    "title": "tail komutu ile log takibi",
-    "content": "tail komutu dosyanın son satırlarını gösterir. Log takibi için özellikle -f kullanılır (dosya büyüdükçe canlı takip eder). -n ile kaç satır gösterileceği seçilebilir.",
-    "example": "tail -n 200 -f /var/log/syslog"
+    "title": "ACL (getfacl/setfacl)",
+    "content": "Klasik rwx izinleri yetmediginde ACL ile detayli yetkilendirme yapilir. Belirli kullaniciya ek izin vermek icin kullanilir.",
+    "example": "setfacl -m u:deploy:rw /var/www/app"
   },
   {
     "id": "linux-info-0004",
-    "title": "head komutu ile dosyanın başını görmek",
-    "content": "head komutu dosyanın ilk satırlarını gösterir. Özellikle büyük dosyalarda hızlıca başlangıcı görmek için kullanılır. -n ile kaç satır gösterileceği belirlenebilir.",
-    "example": "head -n 50 access.log"
+    "title": "Linux capabilities",
+    "content": "Root yetkisini parcali yetkilere ayirir (CAP_NET_BIND_SERVICE vb.). Servisleri tam root vermeden calistirmak icin kullanilir.",
+    "example": "setcap 'cap_net_bind_service=+ep' /usr/bin/node"
   },
   {
     "id": "linux-info-0005",
-    "title": "wc komutu ile satır/kelime/byte sayma",
-    "content": "wc komutu bir dosyada satır, kelime ve byte sayısını verir. -l sadece satır sayısını, -w sadece kelime sayısını, -c byte sayısını gösterir. Log kaç satır olmuş hızlıca görmek için idealdir.",
-    "example": "wc -l /var/log/nginx/access.log"
+    "title": "sudoers best practice",
+    "content": "sudoers dosyasi ile komut bazli yetki verilebilir. NOPASSWD dogru kullanilmazsa guvenlik acigi olusturur.",
+    "example": "visudo"
   },
   {
     "id": "linux-info-0006",
-    "title": "ls komutu ile dosya listeleme",
-    "content": "ls komutu dizin içeriğini listeler. -l detaylı bilgi verir, -a gizli dosyaları gösterir, -h boyutları okunabilir yapar. Genelde ls -lah en kullanışlı kombinasyondur.",
-    "example": "ls -lah /etc"
+    "title": "SSH config ve bastion",
+    "content": "~/.ssh/config ile host, user, key ve ProxyJump ayarlanir. Bastion uzerinden guvenli erisim saglar.",
+    "example": "Host prod\n  HostName 10.0.1.10\n  User ubuntu\n  ProxyJump bastion"
   },
   {
     "id": "linux-info-0007",
-    "title": "du komutu ile disk kullanımını kontrol etme",
-    "content": "du komutu dizin veya dosyaların disk kullanımını gösterir. -h okunabilir format, -s toplam değer, --max-depth derinlik sınırı verir. Büyük yer kaplayan klasörleri tespit etmek için kullanılır.",
-    "example": "du -sh /var/* | sort -h"
+    "title": "ip ve ss komutlari",
+    "content": "ifconfig yerine ip kullanilir. ss, netstat'in daha hizli alternatifidir. Port ve socket analizi icin kritiktir.",
+    "example": "ss -tulpn"
   },
   {
     "id": "linux-info-0008",
-    "title": "df komutu ile disk doluluk oranı",
-    "content": "df komutu disk bölümlerinin doluluk oranını gösterir. -h okunabilir format verir. Sistem disk dolu mu, hangi partition dolmuş görmek için kullanılır.",
-    "example": "df -h"
+    "title": "nftables/ufw temel yonetim",
+    "content": "Modern dagitimlarda iptables yerine nftables kullanilir. ufw, basit firewall yonetimi saglar.",
+    "example": "ufw allow 22/tcp"
+  },
+  {
+    "id": "linux-info-0009",
+    "title": "SELinux/AppArmor",
+    "content": "MAC (Mandatory Access Control) katmani saglar. Servisler belirli policy'lerle sinirlanir. Debug icin audit loglari incelenir.",
+    "example": "getenforce"
+  },
+  {
+    "id": "linux-info-0010",
+    "title": "ulimit ve process limitleri",
+    "content": "Dosya descriptor veya proses limitleri ulimit ile kontrol edilir. Yük altinda FD limitleri kritik olabilir.",
+    "example": "ulimit -n 65535"
+  },
+  {
+    "id": "linux-info-0011",
+    "title": "cgroups ile kaynak izolasyonu",
+    "content": "cgroups CPU/memory limitleri saglar. Container runtime'larin temelidir. systemd slice ile servis bazli limit verilebilir.",
+    "example": "systemd-run --scope -p MemoryMax=512M stress --vm 1"
+  },
+  {
+    "id": "linux-info-0012",
+    "title": "namespaces ve izolasyon",
+    "content": "PID, NET, MNT namespace'leri süreç izolasyonu saglar. Container teknolojisinin temelini olusturur.",
+    "example": "unshare --net --pid --fork bash"
+  },
+  {
+    "id": "linux-info-0013",
+    "title": "cron vs systemd timer",
+    "content": "cron klasik zamanlayicidir, systemd timer ise loglama ve bagimliliklarla daha gucludur. Yeni projelerde timer tercih edilir.",
+    "example": "systemctl list-timers"
+  },
+  {
+    "id": "linux-info-0014",
+    "title": "logrotate",
+    "content": "Loglarin disk doldurmamasi icin rotate kurallari tanimlanir. periyodik rotate ve compress islemleri yapılir.",
+    "example": "/etc/logrotate.d/nginx"
+  },
+  {
+    "id": "linux-info-0015",
+    "title": "rsync ile farkli kopyalama",
+    "content": "rsync sadece degisen bloklari tasir. Backup ve deploy icin verimlidir. -aHAX ile metadata korunur.",
+    "example": "rsync -avz ./app/ user@host:/srv/app/"
+  },
+  {
+    "id": "linux-info-0016",
+    "title": "tar ile stream backup",
+    "content": "tar dosyalari tek arşive alir. Pipe ile remote host'a stream edilebilir. Backup ve transfer icin klasik yontemdir.",
+    "example": "tar czf - /var/www | ssh user@host 'cat > backup.tgz'"
+  },
+  {
+    "id": "linux-info-0017",
+    "title": "lsof ile dosya kilidi",
+    "content": "lsof acik dosyalari ve o dosyayi kullanan prosesleri gosterir. Silinmeyen disk alaninin nedeni burada bulunur.",
+    "example": "lsof +L1"
+  },
+  {
+    "id": "linux-info-0018",
+    "title": "strace ile sistem cagrilari",
+    "content": "Bir prosesi syscalls seviyesinde izler. Beklenmedik hata veya permission sorunlarini tespit etmekte kullanilir.",
+    "example": "strace -f -p 1234"
+  },
+  {
+    "id": "linux-info-0019",
+    "title": "mount ve fstab",
+    "content": "Kalici disk baglantilari /etc/fstab ile tanimlanir. UUID kullanmak device isim degisimlerinde sorunu onler.",
+    "example": "mount -a"
+  },
+  {
+    "id": "linux-info-0020",
+    "title": "sysctl kernel tuning",
+    "content": "Kernel parametreleri runtime'da sysctl ile degistirilir. Network tuning ve sistem limitleri icin kullanilir.",
+    "example": "sysctl -w net.core.somaxconn=1024"
   }
 ]

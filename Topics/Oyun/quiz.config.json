@@ -1,8 +1,9 @@
 {
-  "topic": "Linux",
-  "input": "topics/linux/question1.json",
+  "topic": "Oyun",
+  "input": "topics/oyun/questions1.json",
   "template": "quiz",
-  "startDate": "2026-01-07",
+  "group": "Oyun Geliştirme Grubu",
+  "startDate": "2026-01-09",
   "perDay": 1,
   "format": "png",
   "size": "custom",

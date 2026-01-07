@@ -2,7 +2,6 @@
   "topic": "Docker",
   "input": "topics/docker/info1.json",
   "template": "info",
-  "community": "Bilgisayar Kavramları Topluluğu",
   "startDate": "2026-01-07",
   "perDay": 1,
   "format": "png",

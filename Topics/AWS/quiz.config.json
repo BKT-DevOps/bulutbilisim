@@ -2,7 +2,6 @@
   "topic": "AWS",
   "input": "topics/aws/questions1.json",
   "template": "quiz",
-  "community": "Bilgisayar Kavramları Topluluğu",
   "startDate": "2026-01-07",
   "perDay": 1,
   "format": "png",

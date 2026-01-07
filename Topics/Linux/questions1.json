@@ -1,0 +1,222 @@
+[
+  {
+    "question": "systemd unit dosyasinda servis hangi bolumde tanimlanir?",
+    "options": [
+      "[Install]",
+      "[Service]",
+      "[Unit]",
+      "[Timer]"
+    ],
+    "answerIndex": 1,
+    "explanation": "[Service] bolumu komut, restart policy ve environment gibi alanlari icerir."
+  },
+  {
+    "question": "journalctl ile belirli bir servisin loglarini goruntulemek icin hangisi dogrudur?",
+    "options": [
+      "journalctl --service nginx",
+      "journalctl -u nginx",
+      "journalctl -p nginx",
+      "journalctl --app nginx"
+    ],
+    "answerIndex": 1,
+    "explanation": "-u parametresi unit/servis adina gore filtreler."
+  },
+  {
+    "question": "ACL kullanmanin ana faydasi nedir?",
+    "options": [
+      "Dosya boyutunu kucultmek",
+      "Klasik rwx disinda detayli yetki vermek",
+      "Process hizlandirmak",
+      "Disk mount etmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "ACL ile belirli kullanicilara ozel izinler tanimlanir."
+  },
+  {
+    "question": "Linux capabilities neyi saglar?",
+    "options": [
+      "Her seyi root yapar",
+      "Root yetkisini parcali yetkilere ayirir",
+      "Only Windows'ta calisir",
+      "Networku kapatir"
+    ],
+    "answerIndex": 1,
+    "explanation": "CAP_NET_BIND_SERVICE gibi parcali yetkilerle minimum yetki saglar."
+  },
+  {
+    "question": "setcap komutu ne icin kullanilir?",
+    "options": [
+      "Disk bolumu olusturmak",
+      "Binary'ye capability vermek",
+      "Process kill etmek",
+      "SSH key olusturmak"
+    ],
+    "answerIndex": 1,
+    "explanation": "Binary'lere spesifik capability eklemek icin kullanilir."
+  },
+  {
+    "question": "ss komutu neyin modern alternatifidir?",
+    "options": [
+      "top",
+      "netstat",
+      "ps",
+      "lsof"
+    ],
+    "answerIndex": 1,
+    "explanation": "ss daha hizli socket ve port bilgisi saglar."
+  },
+  {
+    "question": "SELinux/AppArmor ne tur guvenlik saglar?",
+    "options": [
+      "DAC",
+      "MAC",
+      "RBAC",
+      "ABAC"
+    ],
+    "answerIndex": 1,
+    "explanation": "Mandatory Access Control uygular."
+  },
+  {
+    "question": "ulimit -n neyi ayarlar?",
+    "options": [
+      "CPU cekirdegi",
+      "Acilabilir dosya descriptor limiti",
+      "Disk kotasi",
+      "Network buffer"
+    ],
+    "answerIndex": 1,
+    "explanation": "Dosya descriptor limiti yuk altinda kritik olabilir."
+  },
+  {
+    "question": "cgroups neyi saglar?",
+    "options": [
+      "Paket yonetimi",
+      "Kaynak limitleri ve izolasyon",
+      "Disk formatlama",
+      "SSH tunnel"
+    ],
+    "answerIndex": 1,
+    "explanation": "CPU/memory limitleri ve kaynak kontrolu saglar."
+  },
+  {
+    "question": "Namespace'ler neyi amaclar?",
+    "options": [
+      "Disk sifirlama",
+      "Sistem kaynaklarini izole etmek",
+      "Loglari silmek",
+      "Paketleri guncellemek"
+    ],
+    "answerIndex": 1,
+    "explanation": "PID/NET/MNT namespace'leri izolasyon saglar."
+  },
+  {
+    "question": "systemd timer ile cron arasindaki farklardan biri nedir?",
+    "options": [
+      "Timer log tutmaz",
+      "Timer unit bagimliliklari destekler",
+      "Cron sadece root icindir",
+      "Cron systemd gerektirir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Systemd timer'lar unit bagimliliklari ve loglama saglar."
+  },
+  {
+    "question": "logrotate'un temel amaci nedir?",
+    "options": [
+      "Kernel guncellemek",
+      "Log dosyalarini dondurmek ve temizlemek",
+      "Disk bolumu genisletmek",
+      "SSH anahtari degistirmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Log dosyalarinin buyuyerek diski doldurmasini onler."
+  },
+  {
+    "question": "rsync'in avantajlarindan biri nedir?",
+    "options": [
+      "Sadece tam kopya alir",
+      "Sadece degisen bloklari tasir",
+      "Sifreleme saglamaz",
+      "Sadece Windows'ta calisir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Delta transfer ile hiz ve bant genisligi tasarrufu saglar."
+  },
+  {
+    "question": "lsof +L1 komutu neyi gosterir?",
+    "options": [
+      "Acik portlari",
+      "Silinmis ama acik dosyalari",
+      "CPU kullanan processleri",
+      "Kernel modullerini"
+    ],
+    "answerIndex": 1,
+    "explanation": "Silinmis fakat proses tarafindan acik tutulan dosyalari gosterir."
+  },
+  {
+    "question": "strace komutu hangi seviyede izleme yapar?",
+    "options": [
+      "Kernel kaynak kodu",
+      "System call",
+      "Network paket",
+      "Disk sector"
+    ],
+    "answerIndex": 1,
+    "explanation": "System call seviyesinde proses davranisini izler."
+  },
+  {
+    "question": "fstab dosyasinin amaci nedir?",
+    "options": [
+      "Kernel modullerini listeler",
+      "Kalici mount tanimlarini tutar",
+      "Yukleme sirasi",
+      "Paket reposu"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sistem acilisinda mount edilecek diskleri tanimlar."
+  },
+  {
+    "question": "sysctl ne icin kullanilir?",
+    "options": [
+      "Paket guncellemek",
+      "Kernel parametrelerini ayarlamak",
+      "Kullanici eklemek",
+      "Disk formatlamak"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kernel parametreleri runtime'da degistirilebilir."
+  },
+  {
+    "question": "ProxyJump ayari hangi dosyada yapilir?",
+    "options": [
+      "/etc/hosts",
+      "~/.ssh/config",
+      "/etc/fstab",
+      "/etc/sudoers"
+    ],
+    "answerIndex": 1,
+    "explanation": "SSH config dosyasi uzerinden bastion ayarlanir."
+  },
+  {
+    "question": "nftables/ufw'nin temel amaci nedir?",
+    "options": [
+      "Disk mount",
+      "Firewall kural yonetimi",
+      "CPU tuning",
+      "Log parse"
+    ],
+    "answerIndex": 1,
+    "explanation": "Paket filtreleme ve firewall kurallarini yonetir."
+  },
+  {
+    "question": "systemd-run --scope komutu ne yapar?",
+    "options": [
+      "Kernel'i restart eder",
+      "Geçici scope altında proses calistirir",
+      "Disk formatlar",
+      "Network bridge kurar"
+    ],
+    "answerIndex": 1,
+    "explanation": "Geçici cgroup/scope ile proses calistirir, kaynak limitleri verilebilir."
+  }
+]

@@ -1,50 +1,122 @@
 [
   {
     "id": "docker-info-0001",
-    "title": "docker run - Konteyner Başlatma",
-    "content": "docker run, yeni bir konteyner oluşturup başlatmak için kullanılan en temel komuttur. İmajı indirir (yoksa), konteyneri oluşturur ve çalıştırır. -d arka planda (detach), -p port yönlendirme, --name isim verme için kullanılır.",
-    "example": "docker run -d -p 80:80 --name webserver nginx"
+    "title": "buildx ve multi-arch imaj",
+    "content": "Buildx, BuildKit tabanli gelismis build altyapisidir. Tek bir komutla birden fazla mimariye (amd64/arm64) imaj uretir ve manifest list ile registry'ye iter. CI/CD'de farkli platformlara yayinlamak icin kritiktir.",
+    "example": "docker buildx build --platform linux/amd64,linux/arm64 -t org/app:1.0 --push ."
   },
   {
     "id": "docker-info-0002",
-    "title": "docker ps - Konteyner Listeleme",
-    "content": "Çalışan konteynerleri listelemek için kullanılır. Tüm konteynerleri (durmuş olanlar dahil) görmek için -a parametresi eklenir. Konteyner ID, İmaj, Komut, Oluşturulma Zamanı, Durum ve Port bilgilerini gösterir.",
-    "example": "docker ps -a"
+    "title": "Multi-stage build",
+    "content": "Multi-stage build, build zamani araclarini final imajdan ayirarak daha kucuk ve guvenli imajlar uretir. Build araclari (node, gcc) sadece ilk asamada kullanilir, son asamada minimal runtime kalir.",
+    "example": "FROM node:20 AS build\nRUN npm ci && npm run build\nFROM nginx:alpine\nCOPY --from=build /app/dist /usr/share/nginx/html"
   },
   {
     "id": "docker-info-0003",
-    "title": "docker images - İmaj Listeleme",
-    "content": "Sistemde yüklü olan (pull edilmiş veya build edilmiş) Docker imajlarını listeler. Repository, Tag, Image ID, Oluşturulma Tarihi ve Boyut bilgilerini sunar. İmajları silmek için docker rmi kullanılır.",
-    "example": "docker images"
+    "title": ".dockerignore ile context kucultme",
+    "content": "Build context ne kadar buyukse build o kadar yavas olur ve cache verimsiz calisir. .dockerignore ile node_modules, .git gibi gereksiz dosyalarin gonderilmesi engellenir.",
+    "example": "node_modules\n.git\n*.log"
   },
   {
     "id": "docker-info-0004",
-    "title": "docker exec - Komut Çalıştırma",
-    "content": "Çalışan bir konteynerin içinde komut çalıştırmayı sağlar. Genellikle konteynerin içine interaktif shell (bash/sh) ile bağlanmak için -it parametresi ile birlikte kullanılır.",
-    "example": "docker exec -it webserver bash"
+    "title": "Layer cache stratejisi",
+    "content": "Dockerfile'da degisme ihtimali dusuk olan katmanlar en ustte tutulmali. Bu sayede cache daha fazla kullanilir. Ornek: once package manifest kopyala, sonra dependencies kur, en sonda uygulama kodunu kopyala.",
+    "example": "COPY package*.json ./\nRUN npm ci\nCOPY . ."
   },
   {
     "id": "docker-info-0005",
-    "title": "docker logs - Log Görüntüleme",
-    "content": "Bir konteynerin stdout/stderr çıktılarını (loglarını) görmek için kullanılır. -f parametresi ile logları canlı olarak takip edebilir (follow), --tail ile son n satırı görüntüleyebilirsiniz.",
-    "example": "docker logs -f --tail 100 webserver"
+    "title": "ENTRYPOINT vs CMD",
+    "content": "ENTRYPOINT sabit giris komutunu belirler, CMD varsayilan argumanlari saglar. ENTRYPOINT + CMD birlikte kullanildiginda, CMD runtime'da override edilebilir.",
+    "example": "ENTRYPOINT [\"python\", \"app.py\"]\nCMD [\"--port\", \"8080\"]"
   },
   {
     "id": "docker-info-0006",
-    "title": "docker build - İmaj Oluşturma",
-    "content": "Bir Dockerfile dosyasını kullanarak yeni bir Docker imajı oluşturur. -t parametresi ile imaja isim (tag) verilir. Sonundaki nokta (.) Dockerfile'ın bulunduğu dizini belirtir.",
-    "example": "docker build -t myapp:v1 ."
+    "title": "HEALTHCHECK",
+    "content": "HEALTHCHECK, konteynerin sagligini periyodik test eder. Orkestratorler unhealthy durumunu gorup yeniden baslatabilir. Uygulamanin sadece calismasi degil, saglikli olmasi hedeflenir.",
+    "example": "HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:8080/health || exit 1"
   },
   {
     "id": "docker-info-0007",
-    "title": "docker volume - Veri Kalıcılığı",
-    "content": "Konteynerler silindiğinde verilerin kaybolmaması için Volume kullanılır. docker volume create ile oluşturulur, docker run -v ile konteynere bağlanır. Veritabanı gibi kalıcı veri gerektiren işlerde kritiktir.",
-    "example": "docker volume create mydata"
+    "title": "Kaynak limitleri",
+    "content": "CPU ve bellek limitleri, noisy neighbor etkisini azaltir. --memory ve --cpus ile runtime kisitlari konulur. Limitsiz konteyner, host'u OOM'a goturebilir.",
+    "example": "docker run --memory=512m --cpus=1.5 myapp"
   },
   {
     "id": "docker-info-0008",
-    "title": "docker network - Ağ Yönetimi",
-    "content": "Konteynerlerin birbirleriyle ve dış dünyayla iletişimini yönetir. Bridge (varsayılan), Host ve None gibi sürücüler vardır. Özel bir ağ oluşturup konteynerleri ismen haberleştirmek için kullanılır.",
-    "example": "docker network create mynet"
+    "title": "Rootless ve userns-remap",
+    "content": "Rootless Docker veya user namespace remap ile konteyner icindeki root, host'ta yetkisiz bir kullaniciya map edilir. Guvenlik riskleri azalir.",
+    "example": "dockerd --userns-remap=default"
+  },
+  {
+    "id": "docker-info-0009",
+    "title": "Volume vs bind mount",
+    "content": "Volume Docker tarafindan yonetilir ve tasinabilir. Bind mount dogrudan host dizinini baglar. Uretimde kalici veri icin volume tercih edilir, gelistirmede bind mount avantajlidir.",
+    "example": "docker run -v mydata:/var/lib/postgresql/data postgres"
+  },
+  {
+    "id": "docker-info-0010",
+    "title": "Network driver secimi",
+    "content": "Bridge lokal konteynerler icin varsayilan driver'dir. Overlay coklu host ortaminda servisleri baglar. Host driver direkt host network kullanir (daha hizli ama izolasyon az).",
+    "example": "docker network create --driver overlay app-net"
+  },
+  {
+    "id": "docker-info-0011",
+    "title": "Docker Compose profiles",
+    "content": "Compose profiles, ortam bazli servisleri ac/kapa yapmaya yarar. Ornegin sadece dev ortaminda debug servisi acilir.",
+    "example": "docker compose --profile debug up"
+  },
+  {
+    "id": "docker-info-0012",
+    "title": "Logging driver secimi",
+    "content": "Konteyner loglari json-file, journald, awslogs gibi driver'lara yonlendirilebilir. Merkezi log toplama icin uygun driver secimi onemlidir.",
+    "example": "docker run --log-driver=awslogs --log-opt awslogs-group=/app myapp"
+  },
+  {
+    "id": "docker-info-0013",
+    "title": "docker inspect ile deep debug",
+    "content": "inspect, konteyner/imageler hakkinda detayli JSON dondurur. Mount, env, network ve runtime ayarlarini troubleshoot etmek icin kullanilir.",
+    "example": "docker inspect --format '{{.NetworkSettings.IPAddress}}' web"
+  },
+  {
+    "id": "docker-info-0014",
+    "title": "Restart policy",
+    "content": "Restart policy, konteyner crash oldugunda otomatik yeniden baslatmayi saglar. always, unless-stopped, on-failure gibi secenekler vardir.",
+    "example": "docker run --restart=unless-stopped myapp"
+  },
+  {
+    "id": "docker-info-0015",
+    "title": "Image tag ve digest",
+    "content": "Tag degisebilir, digest ise icerige bagimli ve degismez. Uretimde deterministik deploy icin digest kullanmak daha guvenlidir.",
+    "example": "docker pull alpine@sha256:..."
+  },
+  {
+    "id": "docker-info-0016",
+    "title": "Secrets ve configs",
+    "content": "Swarm modunda secret/config ile hassas bilgiler imajdan ayrilir. Dosya olarak konteyner icine sadece runtime'da enjekte edilir.",
+    "example": "docker secret create db_password ./secret.txt"
+  },
+  {
+    "id": "docker-info-0017",
+    "title": "Build args ve gizli degerler",
+    "content": "Build-time parametreler ARG ile verilir. Ancak ARG degerleri layer history'de gorunebilir; gizli bilgileri build secret ile gecmek daha guvenlidir.",
+    "example": "docker build --build-arg APP_ENV=prod ."
+  },
+  {
+    "id": "docker-info-0018",
+    "title": "docker prune temizlik",
+    "content": "Kullanilmayan image, container, network ve volume'leri temizler. Disk alanini geri kazanmak icin periyodik kullanilir.",
+    "example": "docker system prune -af"
+  },
+  {
+    "id": "docker-info-0019",
+    "title": "Registry authentication",
+    "content": "Private registry'lerde login ile credential store kullanilir. CI'de token bazli login ve short-lived credential tercih edilir.",
+    "example": "docker login registry.example.com"
+  },
+  {
+    "id": "docker-info-0020",
+    "title": "Image guvenlik taramasi",
+    "content": "Imajlarin CVE taramasi release kalitesini artirir. SBOM ve scan ciktilari CI pipeline'inda kalite kapisi olarak kullanilir.",
+    "example": "docker scan myapp:latest"
   }
 ]

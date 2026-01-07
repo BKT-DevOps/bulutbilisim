@@ -1,0 +1,13 @@
+[
+  {
+    "question": "Oyunlarda FPS (Frames Per Second) neyi ifade eder?",
+    "options": [
+      "Ekran çözünürlüğünü",
+      "Saniyedeki kare sayısını",
+      "Oyun dosya boyutunu",
+      "Ses kalitesini"
+    ],
+    "answerIndex": 1,
+    "explanation": "FPS, bir saniyede ekrana çizilen kare sayısını ifade eder ve akıcılığı doğrudan etkiler."
+  }
+]

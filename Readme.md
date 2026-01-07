@@ -76,6 +76,28 @@ Bu dosya ile tüm tasarımı yönetebilirsin:
 }
 ```
 
+### 🌐 Global Base Config (Opsiyonel)
+
+Tek bir yerde marka bilgilerini (community, group, logo, tema vb.) yönetmek için
+`config/base.config.json` kullanabilirsin. Konu config'i aynı alanları verirse
+base üzerine yazar.
+
+```json
+{
+  "community": "Bilgisayar Kavramları Topluluğu",
+  "group": "Bulut Bilişim Grubu",
+  "logo1": "template/logo1.png",
+  "logo2": "template/logo2.png",
+  "backgroundImage": "template/quiz/background.png"
+}
+```
+
+İstersen farklı bir base dosyası belirtmek için:
+
+```bash
+node scripts/build.mjs --config Topics/Docker/quiz.config.json --base config/base.config.json
+```
+
 ## 📂 Veri Formatları (JSON)
 
 ### 1. Quiz Formatı (`questions.json`)

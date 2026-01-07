@@ -1,90 +1,222 @@
 [
   {
-    "id": "docker-0001",
-    "question": "Bir Docker imajı oluşturmak için temel komut hangisidir?",
+    "question": "Dockerfile'da cache verimliligi icin hangi sira en dogrudur?",
     "options": [
-      "docker compose build",
-      "docker create",
-      "docker build -t",
-      "docker image run"
+      "Uygulama kodu -> package.json -> deps install",
+      "package.json -> deps install -> uygulama kodu",
+      "Deps install -> package.json -> uygulama kodu",
+      "Uygulama kodu -> deps install -> package.json"
     ],
-    "answerIndex": 2
+    "answerIndex": 1,
+    "explanation": "Degisme ihtimali dusuk katmanlar (manifest) once, kod en sonda olursa cache daha cok kullanilir."
   },
   {
-    "id": "docker-0002",
-    "question": "Çalışan bir konteyner içinde komut çalıştırmak için hangi komut kullanılır?",
+    "question": "Multi-stage build'in temel amaci nedir?",
     "options": [
-      "docker start",
-      "docker exec -it <id>",
-      "docker attach -d",
-      "docker run -d"
+      "Konteynerleri paralel calistirmak",
+      "Final imaji kucultmek ve build araclarini ayirmak",
+      "Network izolasyonu saglamak",
+      "Container loglarini ayirmak"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "Build asamasindaki araclari final imajdan cikartarak boyut ve guvenligi iyilestirir."
   },
   {
-    "id": "docker-0003",
-    "question": "Dockerfile'da COPY ile ADD arasındaki temel fark nedir?",
+    "question": "ENTRYPOINT ile CMD birlikte kullanildiginda dogru ifade hangisidir?",
     "options": [
-      "COPY sıkıştırılmış arşivi açar, ADD açmaz",
-      "ADD URL ve arşiv açmayı destekler, COPY sadece yerel kopyalar",
-      "COPY remote URL'den alır",
-      "Fark yok"
+      "CMD, ENTRYPOINT'i override eder",
+      "ENTRYPOINT sabit komut, CMD varsayilan argumandir",
+      "Ikisi de ayni seydir, fark yoktur",
+      "ENTRYPOINT sadece Windows'ta calisir"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "ENTRYPOINT komutu sabitler, CMD ise varsayilan parametreleri saglar."
   },
   {
-    "id": "docker-0004",
-    "question": "Dockerfile'da build cache'i kırmak için hangi komut bloğu iyi bir yere alınmalıdır?",
+    "question": "Docker Buildx hangi yetenegi saglar?",
     "options": [
-      "COPY . .",
-      "RUN apt-get update",
-      "EXPOSE 80",
-      "CMD [\"npm\", \"start\"]"
+      "Konteyner icine SSH ile baglanma",
+      "Multi-arch imaj uretme",
+      "Loglari merkezi toplama",
+      "Dockerfile lint"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "Buildx, BuildKit uzerinde coklu mimari (amd64/arm64) imaj uretir."
   },
   {
-    "id": "docker-0005",
-    "question": "Çok-katmanlı build (multi-stage) kullanımının amacı nedir?",
+    "question": "HEALTHCHECK kullanmanin ana faydasi nedir?",
     "options": [
-      "Port açmak",
-      "Entry point ayarlamak",
-      "Son imajı küçültmek",
-      "Network köprüsü kurmak"
+      "Konteyneri otomatik scale etmek",
+      "Saglik durumunu orkestratorlere bildirmek",
+      "Disk kullanimini azaltmak",
+      "Imaj guvenligi saglamak"
     ],
-    "answerIndex": 2
+    "answerIndex": 1,
+    "explanation": "Unhealthy durumlarini bildirerek yeniden baslatma/rota degistirme kararlarini tetikler."
   },
   {
-    "id": "docker-0006",
-    "question": "Bridge network'te konteyner isimleriyle erişmek için ne gerekir?",
+    "question": "Container runtime'da CPU limitini belirtmek icin hangisi kullanilir?",
     "options": [
-      "--net host",
-      "docker compose kullanmak",
-      "Custom bridge network'te olmak",
-      "Macvlan ayarlamak"
+      "--cpu-shares",
+      "--cpus",
+      "--cpu-pin",
+      "--cpu-count"
     ],
-    "answerIndex": 2
+    "answerIndex": 1,
+    "explanation": "--cpus, konteynerin kullanabilecegi CPU cekirdegini sinirlar."
   },
   {
-    "id": "docker-0007",
-    "question": "docker system prune komutu ne yapar?",
+    "question": "Rootless Docker veya userns-remap neyi hedefler?",
     "options": [
-      "Tüm imajları siler",
-      "Kullanılmayan imaj/volume/network/container'ları temizler",
-      "Sadece logları temizler",
-      "Running konteynerleri durdurur"
+      "Daha hizli network",
+      "Host'ta root yetkisi riskini azaltmak",
+      "Daha kucuk imaj",
+      "Daha hizli build"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "Root'u host'ta yetkisiz kullaniciya map ederek guvenligi artirir."
   },
   {
-    "id": "docker-0008",
-    "question": "Registry push öncesi imajı etiketlemek için hangi komut kullanılır?",
+    "question": "Bind mount ile volume arasindaki temel fark nedir?",
     "options": [
-      "docker label",
-      "docker tag kaynak hedef",
-      "docker push --tag",
-      "docker save --tag"
+      "Bind mount sadece Windows'ta calisir",
+      "Volume Docker tarafindan yonetilir, bind mount host dizinini baglar",
+      "Bind mount sadece read-only olur",
+      "Volume kopyalanamaz"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "Volume Docker tarafindan yonetilen depodur, bind mount dogrudan host path'tir."
+  },
+  {
+    "question": "Overlay network ne zaman kullanilir?",
+    "options": [
+      "Tek host icindeki konteynerler",
+      "Coklu host'lar arasi container haberlesmesi",
+      "Sadece local development",
+      "Sadece Windows"
+    ],
+    "answerIndex": 1,
+    "explanation": "Overlay, Swarm/Kubernetes gibi coklu host ortamlarinda servisleri birlestirir."
+  },
+  {
+    "question": "Logging driver secimi en cok hangi ihtiyaci karsilar?",
+    "options": [
+      "Imaj boyutunu kucultma",
+      "Loglari merkezi sisteme yonlendirme",
+      "Network izolasyonu",
+      "Konteyneri hizlandirma"
+    ],
+    "answerIndex": 1,
+    "explanation": "Farkli log altyapilarina (awslogs, journald) yonlendirme saglar."
+  },
+  {
+    "question": "docker inspect ile asagidakilerden hangisi alinabilir?",
+    "options": [
+      "CPU sicakligi",
+      "Konteynerin IP adresi",
+      "Host BIOS bilgisi",
+      "Registry uyarilari"
+    ],
+    "answerIndex": 1,
+    "explanation": "inspect cikisi container network bilgilerini icerir."
+  },
+  {
+    "question": "Restart policy "unless-stopped" ne anlama gelir?",
+    "options": [
+      "Konteyner her zaman kapali kalir",
+      "Konteyner manuel durdurulana kadar otomatik yeniden baslar",
+      "Sadece hata olursa baslar",
+      "Sadece host reboot edilirse baslar"
+    ],
+    "answerIndex": 1,
+    "explanation": "Manuel stop edilirse yeniden baslamaz, aksi durumda otomatik baslar."
+  },
+  {
+    "question": "Tag yerine digest ile deploy etmenin avantajı nedir?",
+    "options": [
+      "Daha kucuk imaj",
+      "Deterministik ve degismez referans",
+      "Daha hizli download",
+      "Daha az bellek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Digest icerige baglidir ve degismez, prod stabilitesi saglar."
+  },
+  {
+    "question": "Docker Swarm'da secret nasil enjekte edilir?",
+    "options": [
+      "ENV ile build-time",
+      "Runtime'da /run/secrets uzerinden",
+      "Dockerfile COPY ile",
+      "Sadece volume ile"
+    ],
+    "answerIndex": 1,
+    "explanation": "Secret'lar runtime'da dosya olarak /run/secrets altinda görünür."
+  },
+  {
+    "question": "Build arg ile secret gecmek neden risklidir?",
+    "options": [
+      "Networki yavaslatir",
+      "Layer history'de gorunebilir",
+      "Imaj boyutunu kucultur",
+      "Container portlarini kapatir"
+    ],
+    "answerIndex": 1,
+    "explanation": "ARG degerleri imaj history'sinde gorunebilir."
+  },
+  {
+    "question": "docker system prune -af komutu ne yapar?",
+    "options": [
+      "Sadece calisan konteynerleri siler",
+      "Kullanilmayan objeleri agresif temizler",
+      "Sadece networkleri siler",
+      "Sadece image cache'i temizler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kullanilmayan imaj, konteyner, network vb. kaynaklari temizler."
+  },
+  {
+    "question": "Container taramalarinda SBOM neden onemlidir?",
+    "options": [
+      "Network ayarlarini listeler",
+      "Imajdaki dependency envanterini cikarir",
+      "Logları sifirlar",
+      "Dockerfile'i saklar"
+    ],
+    "answerIndex": 1,
+    "explanation": "SBOM, dependency ve bileşenlerin envanterini cikartir."
+  },
+  {
+    "question": ".dockerignore kullanmanin ana etkisi nedir?",
+    "options": [
+      "Konteyneri hizlandirir",
+      "Build context'i kucultup cache'i iyilestirir",
+      "Networki sifirlar",
+      "Image tag'lerini otomatikler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Gereksiz dosyalar build context'e girmedigi icin hiz ve guvenlik artar."
+  },
+  {
+    "question": "Docker Compose profile hangi problem icin kullanilir?",
+    "options": [
+      "Container imajlarini optimize etmek",
+      "Ortam bazli servisleri ac/kapatmak",
+      "Log formatini degistirmek",
+      "Network driver secmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Dev/test/ci servislerini profil bazli ac/kapatmaya yarar."
+  },
+  {
+    "question": "Container icinde calisan process 1 (PID 1) neden ozel oneme sahiptir?",
+    "options": [
+      "Loglama yapar",
+      "Signal handling ve zombie reaping sorumlulugu vardir",
+      "Networku yonetir",
+      "Diski optimize eder"
+    ],
+    "answerIndex": 1,
+    "explanation": "PID 1 sinyalleri handle etmeli ve zombie processleri reaper olarak toplamalidir."
   }
 ]

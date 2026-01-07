@@ -1,90 +1,222 @@
 [
   {
-    "question": "AWS'de sanal sunucu hizmeti sağlayan servis nedir?",
+    "question": "IAM Role kullanmanin temel avantajı nedir?",
     "options": [
-      "Lambda",
-      "EC2",
-      "S3",
-      "RDS"
+      "Uzun sureli access key uretmek",
+      "Gecici credential ve least privilege saglamak",
+      "S3 bucket olusturmak",
+      "CloudWatch loglarini silmek"
     ],
     "answerIndex": 1,
-    "explanation": "Amazon EC2 (Elastic Compute Cloud), ölçeklenebilir sanal sunucular sağlayan temel AWS işlem servisidir."
+    "explanation": "Role'lar STS ile gecici anahtar uretir ve riskleri azaltir."
   },
   {
-    "question": "Sınırsız ölçeklenebilir nesne depolama servisi hangisidir?",
+    "question": "KMS envelope encryption neyi ifade eder?",
     "options": [
-      "EBS",
-      "EFS",
-      "S3",
-      "Glacier"
-    ],
-    "answerIndex": 2,
-    "explanation": "Amazon S3 (Simple Storage Service), internet üzerinden erişilebilen, sınırsız depolama kapasitesine sahip nesne depolama servisidir."
-  },
-  {
-    "question": "Kullanıcı erişimlerini ve yetkilerini yöneten servis hangisidir?",
-    "options": [
-      "Cognito",
-      "IAM",
-      "WAF",
-      "Shield"
+      "Veriyi tek anahtarla sifrelemek",
+      "Data key kullanip master key'i sarmalamak",
+      "S3 versiyonlama",
+      "TLS sertifikasi"
     ],
     "answerIndex": 1,
-    "explanation": "AWS IAM (Identity and Access Management), AWS kaynaklarına erişimi güvenli bir şekilde kontrol etmenizi sağlar."
+    "explanation": "Data key ile veri sifrelenir, master key data key'i korur."
   },
   {
-    "question": "AWS'de sanal bir ağ oluşturmanızı sağlayan servis nedir?",
+    "question": "S3 lifecycle policy ne icin kullanilir?",
     "options": [
-      "VPN",
-      "Direct Connect",
-      "VPC",
-      "Route 53"
-    ],
-    "answerIndex": 2,
-    "explanation": "Amazon VPC (Virtual Private Cloud), AWS bulutunda izole edilmiş sanal bir ağ oluşturmanıza olanak tanır."
-  },
-  {
-    "question": "İlişkisel veritabanı yönetimini kolaylaştıran servis hangisidir?",
-    "options": [
-      "DynamoDB",
-      "Redshift",
-      "RDS",
-      "ElastiCache"
-    ],
-    "answerIndex": 2,
-    "explanation": "Amazon RDS (Relational Database Service), SQL tabanlı veritabanlarını (MySQL, PostgreSQL vb.) bulutta kolayca kurmanızı ve yönetmenizi sağlar."
-  },
-  {
-    "question": "Sunucusuz (Serverless) kod çalıştırma servisi hangisidir?",
-    "options": [
-      "EC2",
-      "Fargate",
-      "Lambda",
-      "Beanstalk"
-    ],
-    "answerIndex": 2,
-    "explanation": "AWS Lambda, sunucu yönetimi gerektirmeden kodunuzu çalıştırmanızı sağlayan olay tabanlı bir servistir."
-  },
-  {
-    "question": "AWS'nin DNS (Domain Name System) yönetim servisi nedir?",
-    "options": [
-      "CloudFront",
-      "Route 53",
-      "API Gateway",
-      "Direct Connect"
+      "EC2'yi otomatik durdurmak",
+      "Objeleri zamanla storage class degistirmek",
+      "VPC route ayarlamak",
+      "RDS backup almak"
     ],
     "answerIndex": 1,
-    "explanation": "Amazon Route 53, yüksek oranda erişilebilir ve ölçeklenebilir bir bulut DNS web hizmetidir."
+    "explanation": "Maliyet optimizasyonu icin otomatik sinif degistirme ve silme yapar."
   },
   {
-    "question": "İçerik dağıtım ağı (CDN) hizmeti hangisidir?",
+    "question": "S3 Object Lock hangi senaryoda kritiktir?",
     "options": [
-      "CloudFront",
-      "Global Accelerator",
+      "Daha hizli download",
+      "Immutable backup ve ransomware korumasi",
+      "CDN cache",
+      "VPC peering"
+    ],
+    "answerIndex": 1,
+    "explanation": "WORM (write once read many) ile silinemez kopya saglar."
+  },
+  {
+    "question": "CloudFront cache policy neyi belirler?",
+    "options": [
+      "EC2 instance tipi",
+      "Cache key ve TTL davranisi",
+      "RDS snapshot",
+      "IAM user yetkisi"
+    ],
+    "answerIndex": 1,
+    "explanation": "Header/cookie/query string davranisi cache hit oranini etkiler."
+  },
+  {
+    "question": "Route 53 weighted routing hangi amacla kullanilir?",
+    "options": [
+      "DNSSEC",
+      "Trafik yuzde bazli dagitmak",
+      "Subnet bolmek",
+      "CDN kurmak"
+    ],
+    "answerIndex": 1,
+    "explanation": "A/B test veya kademeli gecis icin yuzde bazli dagitim saglar."
+  },
+  {
+    "question": "Public subnet ile private subnet farki nedir?",
+    "options": [
+      "Private subnet IGW'ye direkt cikabilir",
+      "Public subnet IGW uzerinden internete cikar",
+      "Private subnet sadece Windows icindir",
+      "Public subnet sadece database icindir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Public subnet route table'da IGW rotasi vardir."
+  },
+  {
+    "question": "Security Group ve NACL arasindaki temel fark nedir?",
+    "options": [
+      "Ikisi de stateful",
+      "SG stateful, NACL stateless",
+      "NACL instance bazli",
+      "SG subnet bazli"
+    ],
+    "answerIndex": 1,
+    "explanation": "SG instance bazli stateful, NACL subnet bazli stateless'tir."
+  },
+  {
+    "question": "ALB ve NLB farki dogru ifade hangisidir?",
+    "options": [
+      "ALB L4, NLB L7",
+      "ALB L7 routing, NLB L4 performans",
+      "NLB sadece HTTP",
+      "ALB sadece TCP"
+    ],
+    "answerIndex": 1,
+    "explanation": "ALB HTTP/host/path routing saglar, NLB L4 ve sabit IP verir."
+  },
+  {
+    "question": "Auto Scaling target tracking ne yapar?",
+    "options": [
+      "Sabit instance sayisi tutar",
+      "Belirli metrik hedefini korur",
+      "Loglari siler",
+      "Snapshot alir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Orn. CPU %50 hedefi icin otomatik scale eder."
+  },
+  {
+    "question": "ECS ve EKS arasindaki temel fark nedir?",
+    "options": [
+      "ECS Kubernetes kullanir",
+      "EKS Kubernetes managed servistir",
+      "ECS sadece Windows'ta calisir",
+      "EKS sadece serverless'tir"
+    ],
+    "answerIndex": 1,
+    "explanation": "EKS, AWS uzerinde managed Kubernetes saglar."
+  },
+  {
+    "question": "Lambda'da cold start'i azaltmak icin ne kullanilir?",
+    "options": [
+      "Provisioned Concurrency",
       "S3 Transfer Acceleration",
-      "VPN"
+      "CloudFront",
+      "NAT Gateway"
     ],
     "answerIndex": 0,
-    "explanation": "Amazon CloudFront, verileri, videoları, uygulamaları ve API'leri küresel olarak düşük gecikmeyle dağıtan bir CDN servisidir."
+    "explanation": "Provisioned Concurrency cold start gecikmesini azaltir."
+  },
+  {
+    "question": "API Gateway throttling neyi kontrol eder?",
+    "options": [
+      "Disk boyutu",
+      "Istek hizi ve burst limit",
+      "Subnet sayisi",
+      "IAM policy"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rate ve burst limit ile API yukunu kontrol eder."
+  },
+  {
+    "question": "SQS DLQ ne amacla kullanilir?",
+    "options": [
+      "Mesajlari sifrelemek",
+      "Basarisiz mesajlari izole etmek",
+      "Loglari depolamak",
+      "DNS yonetmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Basarisiz mesajlar DLQ'ya aktarilir, yeniden isleme kolaylasir."
+  },
+  {
+    "question": "SNS fanout neyi saglar?",
+    "options": [
+      "Tek hedefe gonderim",
+      "Tek mesaji birden fazla hedefe yayma",
+      "Sadece email",
+      "VPC routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "SNS, SQS/Lambda/HTTP gibi birden fazla hedefe dagitabilir."
+  },
+  {
+    "question": "EventBridge rule ne yapar?",
+    "options": [
+      "S3 bucket olusturur",
+      "Event'i dinleyip hedefe yonlendirir",
+      "EC2'yi durdurur",
+      "DNS kaydi ekler"
+    ],
+    "answerIndex": 1,
+    "explanation": "Event pattern ile eslesen event'leri hedeflere iletir."
+  },
+  {
+    "question": "CloudTrail'in temel rolu nedir?",
+    "options": [
+      "Cache saglamak",
+      "API cagrilarini loglamak",
+      "Load balancing",
+      "Secret yonetmek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Guvenlik ve audit icin tum API cagrilarini kaydeder."
+  },
+  {
+    "question": "AWS Config ne icin kullanilir?",
+    "options": [
+      "Servis kesintisi",
+      "Kaynak degisikliklerini izleme ve uyumluluk",
+      "Domain satmak",
+      "Container orchestration"
+    ],
+    "answerIndex": 1,
+    "explanation": "Resource history ve compliance kurallari saglar."
+  },
+  {
+    "question": "Organizations SCP neyi hedefler?",
+    "options": [
+      "Instance tipi secmek",
+      "Account bazli ust seviye kisit koymak",
+      "S3 versioning",
+      "Lambda runtime"
+    ],
+    "answerIndex": 1,
+    "explanation": "SCP ile hesaplarin kullanabilecegi servisler sinirlanir."
+  },
+  {
+    "question": "Secrets Manager ile SSM Parameter Store arasindaki temel fark nedir?",
+    "options": [
+      "Secrets Manager otomatik rotation destekler",
+      "SSM rotation destekler, Secrets Manager desteklemez",
+      "SSM sadece file store'dur",
+      "Secrets Manager sadece S3 icindir"
+    ],
+    "answerIndex": 0,
+    "explanation": "Secrets Manager rotation ve audit icin daha gelismistir."
   }
 ]
