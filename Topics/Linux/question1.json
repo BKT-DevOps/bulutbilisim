@@ -1,112 +1,362 @@
 [
   {
     "id": "linux-0001",
-    "question": "find komutu ile boyutu 100MB'dan büyük dosyaları listelemek için hangi parametre kullanılır?yük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametr",
+    "question": "find komutu ile boyutu 100MB'dan buyuk dosyalari listelemek icin hangi parametre kullanilir?",
     "options": [
-      "find . -syük dosyaları listelemek için hangi parametrize 100M",
+      "find . -size 100M",
       "find . -size +100M",
       "find . -s > 100",
       "find . -type f --big 100"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "find icin +100M ifadesi 100MB'dan buyuklari secer; -size 100M sadece tam 100MB olanlari listeler."
   },
   {
     "id": "linux-0002",
-    "question": "Bir .tar.gz arşivini çıkarmak için doğru komut hangisidir?",
+    "question": "Bir .tar.gz arsivini cikarmak icin dogru komut hangisidir?",
     "options": [
-      "tar -cvzfyük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametryük dosyaları listelemek için hangi parametr",
-      "tar -xvyük dosyaları listelemek için hangi parametrf",
-      "tar -xyük dosyaları listelemek için hangi parametrzvf",
-      "tar -uyük dosyaları listelemek için hangi parametrzvf"
+      "tar -cvzf dosya.tar.gz",
+      "tar -xvf dosya.tar.gz",
+      "tar -xvzf dosya.tar.gz",
+      "tar -uvzf dosya.tar.gz"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "-x cikarma, -z gzip, -v ayrinti, -f dosya belirtir; tar -xvzf dogru kombinasyondur."
   },
   {
     "id": "linux-0003",
     "question": "rwxr-xr-x (755) izin seti neyi ifade eder?",
     "options": [
-      "Sahibi her şeyi yapar, grup/diğerleri okur-çalıştırır",
-      "Herkes her şeyi yapabilir",
-      "Sahibi sadece okur, diğerleri yazar",
-      "Sadece root erişebiyük dosyaları listelemek için hangi parametrlir"
+      "Sahibi her seyi yapar, grup/digerleri okur-calistirir",
+      "Herkes her seyi yapabilir",
+      "Sahibi sadece okur, digerleri yazar",
+      "Sadece root erisebilir"
     ],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "755'te sahibi rwx, grup ve digerleri r-x izinlerine sahiptir."
   },
   {
     "id": "linux-0004",
-    "question": "grep ile kelimeyi İÇERMEYEN satırları bulmak için hangi parametre kullanılır?",
+    "question": "grep ile kelimeyi ICERMEYEN satirlari bulmak icin hangi parametre kullanilir?",
     "options": [
       "-i",
       "-r",
       "-v",
       "-n"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "-v eslesmeyi tersine cevirir ve eslesmeyen satirlari listeler."
   },
   {
     "id": "linux-0005",
-    "question": "Dinleyen TCP/UDP portlarını sayısal görmek için hangi komut kullanılır?",
+    "question": "Dinleyen TCP/UDP portlarini sayisal gormek icin hangi komut kullanilir?",
     "options": [
       "netstat -a",
       "netstat -tulpn",
       "ps aux",
       "lsof"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "-tulpn TCP/UDP dinleyen soketleri PID/port bilgisiyle sayisal gosterir."
   },
   {
     "id": "linux-0006",
-    "question": "Bir servisi açılışta otomatik başlatmak için hangi komut kullanılır?",
+    "question": "Bir servisi acilista otomatik baslatmak icin hangi komut kullanilir?",
     "options": [
       "systemctl start nginx",
       "systemctl status nginx",
       "systemctl enable nginx",
       "service nginx run"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "systemctl enable servisi boot hedeflerine baglar; start sadece o an baslatir."
   },
   {
     "id": "linux-0007",
-    "question": "chmod komutunda SetUID bitini ayarlamak için hangi sayısal değer eklenir?",
+    "question": "chmod komutunda SetUID bitini ayarlamak icin hangi sayisal deger eklenir?",
     "options": [
       "1000",
       "2000",
       "4000",
       "7777"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "SetUID biti 4000 ile temsil edilir."
   },
   {
     "id": "linux-0008",
-    "question": "Bir dizinin toplam boyutunu insan okunur görmek için hangi komut kullanılır?",
+    "question": "Bir dizinin toplam boyutunu insan okunur gormek icin hangi komut kullanilir?",
     "options": [
       "df -h",
       "du -sh",
       "ls -la",
       "fdisk -l"
     ],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "du -sh dizin boyutunu tek satirda ve okunur bicimde verir."
   },
   {
     "id": "linux-0009",
     "question": "0 2 * * * cron ifadesi neyi ifade eder?",
     "options": [
-      "Her ayın 2. günü",
-      "Her saat başı 2. dakikada",
-      "Her gün 02:00'de",
+      "Her ayin 2. gunu",
+      "Her saat basi 2. dakikada",
+      "Her gun 02:00'de",
       "Haftada iki kez"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "Dakika=0, saat=2, gun/ay/hafta her deger; her gun 02:00'de calisir."
   },
   {
     "id": "linux-0010",
-    "question": "sed ile eski kelimelerini yeni ile değiştirmek için doğru komut hangisidir?",
+    "question": "sed ile eski kelimelerini yeni ile degistirmek icin dogru komut hangisidir?",
     "options": [
       "sed 's/eski/yeni/' dosya",
       "sed 'r/eski/yeni/g' dosya",
       "sed 's/eski/yeni/g' dosya",
       "sed -i 'change eski yeni' dosya"
     ],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "s/// ifadesi degistirir, g ise satirdaki tum eslesmeleri kapsar."
+  },
+  {
+    "id": "linux-0011",
+    "question": "Bir servisin loglarini systemd ile goruntulemek icin hangi komut kullanilir?",
+    "options": [
+      "systemctl logs nginx",
+      "journalctl -u nginx",
+      "dmesg -u nginx",
+      "logctl nginx"
+    ],
+    "answerIndex": 1,
+    "explanation": "journalctl -u servisadi ilgili unit loglarini filtreler."
+  },
+  {
+    "id": "linux-0012",
+    "question": "Sembol link (symlink) olusturmak icin dogru komut hangisidir?",
+    "options": [
+      "ln -s hedef baglantı",
+      "ln hedef baglantı",
+      "link -s hedef baglantı",
+      "cp -s hedef baglantı"
+    ],
+    "answerIndex": 0,
+    "explanation": "ln -s sembolik baglantı olusturur; ln tek basina hard linktir."
+  },
+  {
+    "id": "linux-0013",
+    "question": "Bir prosesin PID'sini isme gore bulmak icin hangi komut kullanilir?",
+    "options": [
+      "ps aux",
+      "pgrep nginx",
+      "top",
+      "kill -l"
+    ],
+    "answerIndex": 1,
+    "explanation": "pgrep adina gore PID dondurur."
+  },
+  {
+    "id": "linux-0014",
+    "question": "Bir dosyanin son 50 satirini izleyerek (canli) gormek icin hangi komut kullanilir?",
+    "options": [
+      "tail -f -n 50 dosya",
+      "head -f -n 50 dosya",
+      "less -n 50 dosya",
+      "cat -f dosya"
+    ],
+    "answerIndex": 0,
+    "explanation": "tail -f dosyadaki yeni satirlari takip eder; -n 50 son 50 satiri getirir."
+  },
+  {
+    "id": "linux-0015",
+    "question": "Bir dosyayi sahipligiyle birlikte baska bir makineye kopyalamak icin hangi arac kullanilir?",
+    "options": [
+      "scp",
+      "rsync",
+      "wget",
+      "curl"
+    ],
+    "answerIndex": 1,
+    "explanation": "rsync -a sahiplik, izin ve zaman damgalarini korur; scp varsayilan olarak hepsini korumaz."
+  },
+  {
+    "id": "linux-0016",
+    "question": "Bir kullaniciyi yeni bir gruba eklemek icin dogru komut hangisidir?",
+    "options": [
+      "useradd -G grup kullanici",
+      "usermod -aG grup kullanici",
+      "groupadd -u kullanici grup",
+      "addgroup kullanici"
+    ],
+    "answerIndex": 1,
+    "explanation": "usermod -aG mevcut gruplari koruyarak yeni gruba ekler."
+  },
+  {
+    "id": "linux-0017",
+    "question": "Bir dosyanin hangi paket tarafindan saglandigini gormek icin (Debian/Ubuntu) hangi komut kullanilir?",
+    "options": [
+      "apt show dosya",
+      "dpkg -S /yol/dosya",
+      "apt-cache search dosya",
+      "dpkg -L paket"
+    ],
+    "answerIndex": 1,
+    "explanation": "dpkg -S verilen dosya yolunun ait oldugu paketi bulur."
+  },
+  {
+    "id": "linux-0018",
+    "question": "Dosya sistemi disk kullanimini dosya sistemine gore gormek icin hangi komut kullanilir?",
+    "options": [
+      "df -h",
+      "du -sh",
+      "lsblk",
+      "mount"
+    ],
+    "answerIndex": 0,
+    "explanation": "df -h her dosya sistemi icin doluluk ve kapasiteyi gosterir."
+  },
+  {
+    "id": "linux-0019",
+    "question": "Bir surec onceligini (nice) dusurmek icin hangi komut kullanilir?",
+    "options": [
+      "nice -n 10 komut",
+      "nice -n -10 komut",
+      "renice -10 PID",
+      "chrt -f 99 komut"
+    ],
+    "answerIndex": 0,
+    "explanation": "Pozitif nice degeri onceligi dusurur; -10 onceligi artirir (genelde yetki ister)."
+  },
+  {
+    "id": "linux-0020",
+    "question": "Bir dosyanin yetkilerini sayisal olarak 640 yapmak icin hangi komut kullanilir?",
+    "options": [
+      "chmod 640 dosya",
+      "chmod 755 dosya",
+      "chmod 0640 dosya",
+      "chmod u=rw,g=r,o=r dosya"
+    ],
+    "answerIndex": 0,
+    "explanation": "chmod 640 sahibi rw, grup r, digerleri --- olacak sekilde ayarlar."
+  },
+  {
+    "id": "linux-0021",
+    "question": "Bir servis icin systemd unit dosyalarinin yerini gormek icin hangi komut kullanilir?",
+    "options": [
+      "systemctl cat nginx",
+      "systemctl show nginx",
+      "systemctl list-units nginx",
+      "systemctl status nginx --path"
+    ],
+    "answerIndex": 0,
+    "explanation": "systemctl cat unit dosyasini ve drop-in'leri gosterir."
+  },
+  {
+    "id": "linux-0022",
+    "question": "Bir dosyada birden fazla kelimeyi OR kosuluyla aramak icin grep'te hangi secenek kullanilir?",
+    "options": [
+      "grep -E 'foo|bar' dosya",
+      "grep -o 'foo bar' dosya",
+      "grep -v 'foo|bar' dosya",
+      "grep -w 'foo|bar' dosya"
+    ],
+    "answerIndex": 0,
+    "explanation": "-E genisletilmis regex kullanir; | OR anlamina gelir."
+  },
+  {
+    "id": "linux-0023",
+    "question": "Bir dizini ve altindakileri belirli bir hedefe ayni yapida kopyalamak icin hangi komut kullanilir?",
+    "options": [
+      "cp -r kaynak hedef",
+      "cp -a kaynak hedef",
+      "mv -r kaynak hedef",
+      "scp -r kaynak hedef"
+    ],
+    "answerIndex": 1,
+    "explanation": "cp -a izinleri, sahipligi ve zaman damgalarini koruyarak kopyalar."
+  },
+  {
+    "id": "linux-0024",
+    "question": "Bir dosyanin degisip degismedigini kontrol etmek icin SHA256 ozetini almakta hangi komut kullanilir?",
+    "options": [
+      "md5sum dosya",
+      "sha1sum dosya",
+      "sha256sum dosya",
+      "cksum dosya"
+    ],
+    "answerIndex": 2,
+    "explanation": "sha256sum SHA-256 ozetini hesaplar ve dogrulamada kullanilir."
+  },
+  {
+    "id": "linux-0025",
+    "question": "Sadece bir kullanicinin kendi proseslerini gormek icin hangi komut kullanilir?",
+    "options": [
+      "ps aux",
+      "ps -u kullanici",
+      "top -p kullanici",
+      "pstree -p"
+    ],
+    "answerIndex": 1,
+    "explanation": "ps -u kullanici belirtilen kullanicinin proseslerini listeler."
+  },
+  {
+    "id": "linux-0026",
+    "question": "Bir dosyayi birden fazla komutla boru (pipe) uzerinden islemek icin hangi sembol kullanilir?",
+    "options": [
+      ">",
+      "|",
+      "&",
+      ";"
+    ],
+    "answerIndex": 1,
+    "explanation": "| sembolu bir komutun cikisini digerine aktarir."
+  },
+  {
+    "id": "linux-0027",
+    "question": "Bir komutun cikisini hem ekranda gormek hem dosyaya yazmak icin hangi arac kullanilir?",
+    "options": [
+      "tee",
+      "cat",
+      "dd",
+      "xargs"
+    ],
+    "answerIndex": 0,
+    "explanation": "tee stdin'i hem ekrana yazar hem de dosyaya kaydeder."
+  },
+  {
+    "id": "linux-0028",
+    "question": "Dosya ararken sadece dosya tipini secmek icin find'da hangi parametre kullanilir?",
+    "options": [
+      "-type f",
+      "-name f",
+      "-file",
+      "-f"
+    ],
+    "answerIndex": 0,
+    "explanation": "-type f sadece normal dosyalari secer."
+  },
+  {
+    "id": "linux-0029",
+    "question": "Bir dizinin icindeki dosya sayisini (alt dizinler dahil) saymak icin hangi komut kullanilir?",
+    "options": [
+      "ls | wc -l",
+      "find . -type f | wc -l",
+      "du -a | wc -l",
+      "tree | wc -l"
+    ],
+    "answerIndex": 1,
+    "explanation": "find . -type f ile tum dosyalar bulunur, wc -l satir sayar."
+  },
+  {
+    "id": "linux-0030",
+    "question": "sudo yetkisi vermeden baska bir kullanici olarak komut calistirmak icin hangi komut kullanilir?",
+    "options": [
+      "sudo -u kullanici komut",
+      "su - kullanici -c komut",
+      "login -u kullanici komut",
+      "runuser -l komut"
+    ],
+    "answerIndex": 1,
+    "explanation": "su - kullanici -c komut belirli komutu o kullanici olarak calistirir; sudo yetkisi gerekebilir."
   }
 ]
