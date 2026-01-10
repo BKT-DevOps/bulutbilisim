@@ -1,0 +1,327 @@
+[
+  {
+    "id": 126,
+    "question": "Which AWS support plan includes access to Technical Account Managers (TAMs), proactive reviews, and a concierge billing team?",
+    "options": {
+      "A": "Basic",
+      "B": "Developer",
+      "C": "Business",
+      "D": "Enterprise On-Ramp",
+      "E": "Enterprise"
+    },
+    "correctAnswer": "E",
+    "explanation": "The Enterprise Support plan provides a TAM, concierge billing, and proactive guidance. Basic (A) and Developer (B) do not. Business (C) adds 24/7 support but no dedicated TAM. Enterprise On-Ramp (D) offers guidance but not the full Enterprise benefits including a dedicated TAM."
+  },
+  {
+    "id": 127,
+    "question": "Which feature helps allocate AWS costs by letting you apply metadata to resources and then report by that metadata in Cost Explorer?",
+    "options": {
+      "A": "Resource Groups",
+      "B": "Cost Allocation Tags",
+      "C": "AWS Budgets",
+      "D": "AWS Billing Conductor",
+      "E": "AWS Organizations"
+    },
+    "correctAnswer": "B",
+    "explanation": "Cost allocation tags (user-defined or AWS-generated) enable grouping and reporting in billing and Cost Explorer. Resource Groups (A) organize resources but not costs. Budgets (C) sets alerts. Billing Conductor (D) customizes chargeback/showback. Organizations (E) manages accounts, not per-resource cost metadata."
+  },
+  {
+    "id": 128,
+    "question": "Which AWS service can automatically take actions (like stopping EC2 or removing IAM permissions) when a budget threshold is exceeded?",
+    "options": {
+      "A": "AWS Budgets with Budgets Actions",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Trusted Advisor",
+      "D": "AWS Billing Console",
+      "E": "AWS CloudTrail"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Budgets Actions let you trigger automated responses (e.g., EC2 stop, IAM policy changes) when cost/usage thresholds are met. Cost Explorer (B) analyzes costs. Trusted Advisor (C) provides checks, not automated budget actions. Billing Console (D) is the UI. CloudTrail (E) audits API calls."
+  },
+  {
+    "id": 129,
+    "question": "Which purchase option provides the highest discount for EC2 but may be interrupted with a 2-minute notice?",
+    "options": {
+      "A": "On-Demand",
+      "B": "Standard Reserved Instances",
+      "C": "Convertible Reserved Instances",
+      "D": "Savings Plans",
+      "E": "Spot Instances"
+    },
+    "correctAnswer": "E",
+    "explanation": "Spot Instances offer steep discounts compared to On-Demand but can be interrupted. RIs (B/C) and Savings Plans (D) provide discounts without interruption risk. On-Demand (A) has no discount."
+  },
+  {
+    "id": 130,
+    "question": "Which EC2 storage is ephemeral and is deleted when the instance stops or terminates?",
+    "options": {
+      "A": "Amazon EBS",
+      "B": "Instance Store",
+      "C": "Amazon S3",
+      "D": "Amazon EFS",
+      "E": "FSx for Lustre"
+    },
+    "correctAnswer": "B",
+    "explanation": "Instance store is ephemeral block storage physically attached to the host; data is lost when the instance stops or terminates. EBS (A) is persistent. S3 (C) is object storage. EFS (D) is NFS file storage. FSx (E) is managed file systems."
+  },
+  {
+    "id": 131,
+    "question": "Which feature allows you to share an AMI privately with other AWS accounts in the same Region?",
+    "options": {
+      "A": "AMI public launch permission",
+      "B": "AMI launch permissions to specific account IDs",
+      "C": "S3 bucket policy",
+      "D": "AWS Resource Access Manager (RAM)",
+      "E": "VPC peering"
+    },
+    "correctAnswer": "B",
+    "explanation": "You can add launch permissions to an AMI for specific AWS account IDs. Public launch permission (A) makes it available to all. S3 policy (C) is unrelated. RAM (D) shares certain resource types (e.g., subnets), not AMIs. VPC peering (E) is networking."
+  },
+  {
+    "id": 132,
+    "question": "To restrict direct access from the internet to an S3 bucket while serving content via CloudFront, what should you configure?",
+    "options": {
+      "A": "Origin Access Identity (OAI) or Origin Access Control (OAC)",
+      "B": "Bucket ACL: public read",
+      "C": "S3 Transfer Acceleration",
+      "D": "S3 Replication",
+      "E": "S3 Requester Pays"
+    },
+    "correctAnswer": "A",
+    "explanation": "CloudFront OAI/OAC allows CloudFront to access the bucket while blocking public access to S3. Public ACL (B) exposes data. Transfer Acceleration (C) speeds transfers. Replication (D) copies objects. Requester Pays (E) shifts data transfer cost to downloaders."
+  },
+  {
+    "id": 133,
+    "question": "Which S3 capability sends events (like object creation) to services such as Lambda, SQS, or SNS?",
+    "options": {
+      "A": "S3 Event Notifications",
+      "B": "S3 Lifecycle",
+      "C": "S3 Select",
+      "D": "S3 Object Lock",
+      "E": "S3 Inventory"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Event Notifications trigger actions on object-level events. Lifecycle (B) manages storage transitions. Select (C) retrieves partial object data. Object Lock (D) enforces WORM. Inventory (E) generates object lists/metadata."
+  },
+  {
+    "id": 134,
+    "question": "Which Lambda control limits the maximum concurrent executions for a function to prevent it from consuming all account concurrency?",
+    "options": {
+      "A": "Provisioned Concurrency",
+      "B": "Reserved Concurrency",
+      "C": "Function memory size",
+      "D": "Environment variables",
+      "E": "Layers"
+    },
+    "correctAnswer": "B",
+    "explanation": "Reserved concurrency sets a hard cap for a function and guarantees that amount is available. Provisioned Concurrency (A) keeps functions warm for lower latency but doesn’t cap overall account usage. Memory size (C), env vars (D), and Layers (E) are unrelated to concurrency limits."
+  },
+  {
+    "id": 135,
+    "question": "In Amazon API Gateway, which mechanism protects your APIs from excessive requests by setting limits on requests per second and burst capacity?",
+    "options": {
+      "A": "Usage plans and API keys",
+      "B": "Authorizers",
+      "C": "Request validators",
+      "D": "Custom domain names",
+      "E": "Mock integrations"
+    },
+    "correctAnswer": "A",
+    "explanation": "Usage plans with API keys allow setting throttling limits (rate and burst) and quotas per client. Authorizers (B) handle auth. Validators (C) check request schema. Custom domains (D) map DNS. Mock integrations (E) return static responses."
+  },
+  {
+    "id": 136,
+    "question": "Which service routes SaaS and AWS service events to targets (Lambda, Step Functions, SQS) using rules and event buses?",
+    "options": {
+      "A": "Amazon EventBridge",
+      "B": "Amazon SQS",
+      "C": "Amazon SNS",
+      "D": "AWS Step Functions",
+      "E": "AWS CloudTrail"
+    },
+    "correctAnswer": "A",
+    "explanation": "EventBridge is the event bus service for routing events from AWS services, custom apps, and SaaS to targets via rules. SQS (B) queues messages. SNS (C) is pub/sub notifications. Step Functions (D) orchestrates workflows. CloudTrail (E) logs API calls."
+  },
+  {
+    "id": 137,
+    "question": "Which Route 53 record type can point a DNS name directly to AWS resources like an ALB or CloudFront distribution without incurring extra query charges?",
+    "options": {
+      "A": "CNAME",
+      "B": "A",
+      "C": "AAAA",
+      "D": "Alias",
+      "E": "TXT"
+    },
+    "correctAnswer": "D",
+    "explanation": "Alias records provide a Route 53-specific mapping to AWS resources (ALB, CloudFront, S3 website), resolving to the appropriate IPs and avoiding additional query charges. CNAME (A) cannot be used at the zone apex. A (B)/AAAA (C) require IPs. TXT (E) stores text."
+  },
+  {
+    "id": 138,
+    "question": "Which VPC connectivity option is non-transitive and only allows peering between two VPCs at a time?",
+    "options": {
+      "A": "VPC Peering",
+      "B": "AWS Transit Gateway",
+      "C": "VPC Lattice",
+      "D": "VPN CloudHub",
+      "E": "Direct Connect"
+    },
+    "correctAnswer": "A",
+    "explanation": "VPC Peering connects two VPCs in a non-transitive manner; routes do not propagate through a third VPC. Transit Gateway (B) enables scalable, transitive connectivity. VPC Lattice (C) is for service-to-service networking. VPN CloudHub (D) is a hub for VPNs. Direct Connect (E) is private connectivity to AWS."
+  },
+  {
+    "id": 139,
+    "question": "Compared to NAT Gateways, which statement is TRUE about NAT Instances?",
+    "options": {
+      "A": "They are fully managed and scale automatically",
+      "B": "They require manual maintenance and can be a single point of failure",
+      "C": "They support IPv6 egress by default",
+      "D": "They are cheaper and offer the same availability",
+      "E": "They do not require security groups"
+    },
+    "correctAnswer": "B",
+    "explanation": "NAT Instances are self-managed EC2 instances that require patching, scaling, and HA configuration; they can be a single point of failure if not architected properly. NAT Gateways are managed, highly available within an AZ. IPv6 egress (C) requires egress-only Internet Gateway. Security groups (E) apply."
+  },
+  {
+    "id": 140,
+    "question": "Which AWS feature lets you deploy CloudFormation-managed resources across multiple accounts and Regions from a single template?",
+    "options": {
+      "A": "Change Sets",
+      "B": "Nested Stacks",
+      "C": "StackSets",
+      "D": "Drift Detection",
+      "E": "CDK Constructs"
+    },
+    "correctAnswer": "C",
+    "explanation": "CloudFormation StackSets enable deploying stacks to multiple accounts and Regions centrally. Change Sets (A) preview changes. Nested Stacks (B) structure templates. Drift Detection (D) identifies configuration differences. CDK (E) is a higher-level IaC framework."
+  },
+  {
+    "id": 141,
+    "question": "Which service helps manage and monitor service-to-service communication (traffic routing, retries, observability) in microservices?",
+    "options": {
+      "A": "AWS App Mesh",
+      "B": "Amazon API Gateway",
+      "C": "AWS X-Ray",
+      "D": "Amazon CloudFront",
+      "E": "AWS Shield"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS App Mesh is a service mesh that standardizes service-to-service communication across microservices with routing, retries, and metrics. API Gateway (B) exposes APIs to clients. X-Ray (C) traces but is not a mesh. CloudFront (D) is CDN. Shield (E) protects against DDoS."
+  },
+  {
+    "id": 142,
+    "question": "Which AWS Backup feature enforces write-once, read-many (WORM) retention on backup vaults to prevent deletion or modification?",
+    "options": {
+      "A": "Backup Plans",
+      "B": "Backup Vault Lock",
+      "C": "Cross-Region Backup",
+      "D": "Lifecycle Transitions",
+      "E": "Backup Audit Manager"
+    },
+    "correctAnswer": "B",
+    "explanation": "Backup Vault Lock enforces WORM compliance on vaults. Backup plans (A) define schedules/policies. Cross-Region (C) copies backups to other Regions. Lifecycle (D) moves backups to cold storage. Audit Manager (E) tracks backup compliance."
+  },
+  {
+    "id": 143,
+    "question": "Which KMS capability allows automatic cryptographic key material rotation for customer managed keys?",
+    "options": {
+      "A": "Grant tokens",
+      "B": "Key aliases",
+      "C": "Automatic key rotation",
+      "D": "Envelope encryption",
+      "E": "Cross-account key sharing"
+    },
+    "correctAnswer": "C",
+    "explanation": "KMS supports automatic annual rotation for eligible customer managed symmetric keys. Grants (A) delegate access. Aliases (B) provide friendly names. Envelope encryption (D) uses data keys and a CMK. Cross-account sharing (E) requires key policy and grants, not a rotation feature."
+  },
+  {
+    "id": 144,
+    "question": "Which CloudWatch feature triggers actions (SNS notifications, Auto Scaling policies, EC2 recover) based on metric thresholds?",
+    "options": {
+      "A": "CloudWatch Logs",
+      "B": "CloudWatch Alarms",
+      "C": "CloudWatch Dashboards",
+      "D": "CloudWatch Synthetics",
+      "E": "CloudWatch Metric Math"
+    },
+    "correctAnswer": "B",
+    "explanation": "CloudWatch Alarms evaluate metrics against thresholds and can trigger actions like SNS messages, Auto Scaling, or EC2 recover. Logs (A) store log streams. Dashboards (C) visualize. Synthetics (D) runs canaries. Metric Math (E) computes derived metrics."
+  },
+  {
+    "id": 145,
+    "question": "Which EC2 security best practice helps prevent certain credential exposure by requiring session tokens and protecting against SSRF for instance metadata?",
+    "options": {
+      "A": "Enable IMDSv2",
+      "B": "Disable EBS encryption",
+      "C": "Open SSH to 0.0.0.0/0",
+      "D": "Use instance store only",
+      "E": "Use custom AMIs"
+    },
+    "correctAnswer": "A",
+    "explanation": "IMDSv2 (Instance Metadata Service v2) requires session-based requests with hop-limit, mitigating SSRF and credential theft risks. Disabling encryption (B) is insecure. Opening SSH to the world (C) is insecure. Storage choices (D) and custom AMIs (E) are unrelated to metadata security."
+  },
+  {
+    "id": 146,
+    "question": "Which elements are REQUIRED in a basic IAM policy statement to allow actions on resources?",
+    "options": {
+      "A": "Version and Sid",
+      "B": "Effect, Action, Resource",
+      "C": "Effect, Principal, Condition",
+      "D": "Action, Condition, Sid",
+      "E": "Principal, Resource, Version"
+    },
+    "correctAnswer": "B",
+    "explanation": "A typical identity-based policy statement requires Effect (Allow/Deny), Action(s), and Resource(s). Version (A/E) is at the document level. Principal (C/E) is required for resource-based policies, not identity-based. Condition (C/D) is optional. Sid (A/D) is optional."
+  },
+  {
+    "id": 147,
+    "question": "Which S3 upload method improves throughput and reliability for large files by splitting them into parts and uploading in parallel?",
+    "options": {
+      "A": "Single PUT",
+      "B": "Multipart Upload",
+      "C": "Requester Pays",
+      "D": "Batch Operations",
+      "E": "S3 Select"
+    },
+    "correctAnswer": "B",
+    "explanation": "Multipart Upload divides large objects into parts uploaded in parallel, improving performance and resilience. Single PUT (A) uploads the object in one request. Requester Pays (C) affects billing. Batch Operations (D) performs large-scale object actions. Select (E) retrieves partial object data."
+  },
+  {
+    "id": 148,
+    "question": "Which RDS backup capability automatically creates daily snapshots and retains transaction logs for point-in-time recovery?",
+    "options": {
+      "A": "Manual snapshots",
+      "B": "Automated backups",
+      "C": "Read replicas",
+      "D": "Multi-AZ",
+      "E": "Cross-Region snapshot copy"
+    },
+    "correctAnswer": "B",
+    "explanation": "Automated backups capture daily snapshots and transaction logs to enable point-in-time recovery within the retention window. Manual snapshots (A) are user-initiated. Read replicas (C) are for scaling reads. Multi-AZ (D) provides HA. Cross-Region copy (E) moves snapshots across Regions."
+  },
+  {
+    "id": 149,
+    "question": "Which feature allows connecting to Amazon RDS (MySQL/PostgreSQL) using IAM authentication tokens instead of database passwords?",
+    "options": {
+      "A": "RDS Proxy",
+      "B": "IAM database authentication",
+      "C": "Kerberos authentication",
+      "D": "Certificate rotation",
+      "E": "Enhanced Monitoring"
+    },
+    "correctAnswer": "B",
+    "explanation": "IAM database authentication lets you use temporary authentication tokens for MySQL and PostgreSQL on RDS. RDS Proxy (A) pools connections but doesn't replace auth. Kerberos (C) applies to certain engines like SQL Server/Oracle with AD integration. Certificate rotation (D) updates SSL certs. Enhanced Monitoring (E) provides OS metrics."
+  },
+  {
+    "id": 150,
+    "question": "Which CloudFront feature lets you restrict access to content by issuing time-limited signed URLs or signed cookies?",
+    "options": {
+      "A": "Origin Access Identity",
+      "B": "Signed URLs and Signed Cookies",
+      "C": "Field-level encryption",
+      "D": "Lambda@Edge",
+      "E": "Origin Shield"
+    },
+    "correctAnswer": "B",
+    "explanation": "CloudFront signed URLs and signed cookies control viewer access to content for a limited time or specific conditions. OAI (A) restricts origin access. Field-level encryption (C) protects sensitive fields. Lambda@Edge (D) runs code at edge locations. Origin Shield (E) improves cache hit ratio."
+  }
+]

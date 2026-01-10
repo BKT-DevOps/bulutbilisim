@@ -7,10 +7,12 @@ Topluluklar, eğitimciler ve içerik üreticileri için; Instagram, LinkedIn ve 
 ## ✨ Öne Çıkan Özellikler
 
 - **Tamamen Generik Yapı**: "BKT" veya "Bulut Bilişim" bağımlılığı yoktur. Config dosyasından kendi marka adını, logosunu ve renklerini verebilirsin.
-- **3 Ana Şablon**:
+- **5 Ana Şablon**:
   1.  **Quiz**: Çoktan seçmeli sorular için (1080x1300).
   2.  **Info**: Bilgi ve kod örnekleri için (1080x1300).
   3.  **Social**: Logosuz, geniş format duyuru ve ipuçları için (1200x628).
+  4.  **AWS-Cert**: AWS sertifika soruları için yatay premium tasarım (1200x900).
+  5.  **Certificate**: Gonullu/egitim sertifikasi icin yatay A4 civari tasarim (3508x2480).
 - **Tema Sistemi**: CSS ile uğraşmadan config dosyasından renkleri (gradient, accent, background) değiştirebilirsin.
 - **Akıllı Logo Yönetimi**: Logo vermezsen kutusu gizlenir, simetri bozulmaz.
 - **Otomatik İsimlendirme**: Tarih sırasına göre düzenli dosya isimleri üretir.
@@ -115,6 +117,24 @@ Soru cevap kartları için kullanılır.
 ]
 ```
 
+Alternatif olarak `options` obje olabilir ve doğru cevap `correctAnswer` ile verilebilir:
+
+```json
+[
+  {
+    "question": "Which AWS service is best suited for object storage?",
+    "options": {
+      "A": "Amazon EBS",
+      "B": "Amazon S3",
+      "C": "Amazon RDS",
+      "D": "Amazon EFS"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon S3 is object storage."
+  }
+]
+```
+
 ### 2. Info Formatı (`info.json`)
 
 Bilgi kartları ve kod örnekleri için kullanılır.
@@ -144,6 +164,30 @@ Logosuz, geniş ekran paylaşımlar için.
 ]
 ```
 
+### 4. Certificate Formatı (`certificate.json`)
+
+Sertifika kartları için kullanılır.
+
+```json
+[
+  {
+    "id": "CERT-2026-0001",
+    "name": "Ayse Yilmaz",
+    "award_text": "Bu sertifika",
+    "description": "Gonullu olarak egitim icerigi uretimine sagladigi katkidan dolayi verilmistir.",
+    "program": "Gonullu Egitim Destegi",
+    "date": "2026-01-12",
+    "verify_code": "AWS-TR-8K2Q-91X",
+    "approver_1": "Mert Kaya",
+    "approver_1_title": "Program Yurutucusu",
+    "approver_2": "Zeynep Arslan",
+    "approver_2_title": "Egitim Koordinatoru",
+    "cert_title": "Gonullu Katki Sertifikasi",
+    "cert_subtitle": "Topluluk Egitim Programi",
+    "footer_text": "Bu sertifika dijital olarak uretilmistir."
+  }
+]
+```
 ---
 
 ## 📁 Proje Yapısı
@@ -158,10 +202,12 @@ Topics/             # İçerik ve Config dosyaları burada tutulur
   ├── AWS/
   ├── Linux/
   └── Git/
-templates/          # HTML/CSS şablonları
+template/           # HTML/CSS şablonları
   ├── quiz/
   ├── info/
-  └── social/
+  ├── social/
+  ├── aws-cert/
+  └── certificate/
 scripts/            # Build scriptleri (Ellemenize gerek yok)
 output/             # Çıktı klasörü (Buraya basılır)
 ```
@@ -176,6 +222,12 @@ C: Config dosyasına `theme` objesi ekle. `background` ve `accent` renklerini de
 
 **S: Çıktılar nereye gidiyor?**
 C: Varsayılan olarak `output/` klasörüne, konu adıyla (Örn: `output/Docker/quiz/...`) kaydedilir.
+
+**S: AWS sertifika setlerini nasıl basarım?**
+C: `npm run build:aws:certification:all` komutu `aws-cert-1`..`aws-cert-4` setlerini üretir.
+
+**S: Sertifika şablonunu nasıl basarım?**
+C: `npm run build:certificate` komutu `Topics/Certificate/certificate-1.json` girdisini basar.
 
 ---
 

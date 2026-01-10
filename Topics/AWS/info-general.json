@@ -1,0 +1,206 @@
+[
+  {
+    "id": "bb-info-genel-064",
+    "title": "Altyapı Olarak Hizmet (IaaS — Infrastructure as a Service)",
+    "content": "IaaS, sanal makine (virtual machine), depolama (storage) ve ağ (network) gibi temel altyapı bileşenlerini hizmet olarak (as-a-service) sunar. Kullanıcı, işletim sistemi (operating system) ve uygulama katmanını yönetirken, fiziksel donanım ve hipervizör (hypervisor) sağlayıcı tarafından yönetilir.\n\nAvantajlar: esneklik (flexibility), hızlı sağlama (rapid provisioning), kullanım bazlı maliyet (pay-as-you-go). Uygunluk: lift-and-shift, özel yazılım gereksinimleri, tam kontrol gereken iş yükleri.",
+    "example": "Miras uygulamaların taşınması:\nBir şirket, veri merkezindeki monolitik uygulamayı hızlıca taşımak için IaaS üzerinde VM’ler oluşturur; OS konfigürasyonlarını koruyarak üretime geçer.\n\nGeçici test ortamları:\nProje ekipleri sprint başında IaaS ile test altyapısı kurar, testler bitince ortamı kapatarak maliyeti düşürür."
+  },
+  {
+    "id": "bb-info-genel-065",
+    "title": "Platform Olarak Hizmet (PaaS — Platform as a Service)",
+    "content": "PaaS, uygulama çalışma zamanını (runtime), çerçeveleri (frameworks) ve yönetilen veritabanlarını (managed databases) sağlayarak altyapı işlerini soyutlar. Geliştiriciler kod ve yapılandırmaya (configuration) odaklanır; ölçekleme (scaling), patch ve altyapı işletimi platform tarafından yapılır.\n\nAvantajlar: daha hızlı teslimat (faster delivery), az operasyon yükü (reduced ops), yerleşik güvenlik ve güncellemeler.",
+    "example": "Web uygulama geliştirme:\nEkip, PaaS üzerinde otomatik ölçeklenen bir web uygulaması ve yönetilen veritabanı ile hızlı MVP çıkarır; bakım yükü azalır.\n\nEntegre CI/CD:\nPlatformun sağladığı build/deploy boru hatlarıyla (pipelines) her commit otomatik olarak ortama yayınlanır."
+  },
+  {
+    "id": "bb-info-genel-066",
+    "title": "Yazılım Olarak Hizmet (SaaS — Software as a Service)",
+    "content": "SaaS, uygulamayı tamamen servis olarak sunar; kullanıcılar tarayıcı veya istemci (client) üzerinden erişir. Sağlayıcı uygulama, platform ve altyapıyı yönetir; müşteri genellikle yalnız veri ve erişim politikalarını (access policies) yönetir.\n\nAvantajlar: hızlı devreye alma (quick adoption), düşük başlangıç maliyeti (low upfront cost), otomatik güncellemeler.",
+    "example": "CRM kullanımı:\nSatış ekibi, bir SaaS CRM’i kullanarak fırsat ve müşteri takibini yapar; şirket, sunucu bakımıyla uğraşmaz.\n\nİş birliği araçları:\nEkipler ofis yazılımlarını SaaS olarak kullanır; lisans ve güncellemeler merkezi şekilde yönetilir."
+  },
+  {
+    "id": "bb-info-genel-067",
+    "title": "Genel Bulut (Public Cloud)",
+    "content": "Genel bulut, sağlayıcının çok kiracılı (multi-tenant) altyapı üzerinde hizmet sunduğu modeldir. Kaynaklar mantıksal olarak izole edilir, fiziksel altyapı sağlayıcıda ortak kullanımdadır.\n\nAvantajlar: esneklik, global ölçek (global scale), geniş servis kataloğu (broad catalog). Uygunluk: yeni girişimler, değişken yükler, hızlı büyüme.",
+    "example": "Girişim ölçeklenmesi:\nStart-up, genel bulut üzerinden küresel müşteri kitlesine hızla hizmet verir; talep artışına göre kapasiteyi dinamik artırır.\n\nAraştırma ve geliştirme:\nDeneysel projeler için kısa süreli kaynaklar ayrılır; maliyetler kullanım kadar oluşur."
+  },
+  {
+    "id": "bb-info-genel-068",
+    "title": "Özel Bulut (Private Cloud)",
+    "content": "Özel bulut, tek bir kurum için ayrılmış altyapı üzerinde bulut benzeri (cloud-like) yetenekler sağlar. Veri egemenliği (data sovereignty), uyumluluk (compliance) ve özel güvenlik talepleri için tercih edilir.\n\nAvantajlar: özelleştirilebilirlik (customization), sıkı kontrol (tight control). Maliyet ve işletim sorumluluğu kurumda olabilir.",
+    "example": "Regülasyon odaklı sektör:\nFinans kurumu, hassas verileri özel bulutta barındırarak denetim gereksinimlerini karşılar; erişim katmanları sıkı kontrol edilir.\n\nGizli Ar-Ge:\nPatent öncesi çalışmalar izolasyon içinde yürütülür; ağ ve veri erişimi kurum politikalarıyla yönetilir."
+  },
+  {
+    "id": "bb-info-genel-069",
+    "title": "Hibrit Bulut (Hybrid Cloud)",
+    "content": "Hibrit bulut, özel bulut/on‑prem ile genel bulutun birlikte kullanımıdır. İş yükleri (workloads) gereksinime göre iki ortam arasında dağıtılır ve bağlanır.\n\nAvantajlar: esnek konumlandırma (flexible placement), aşamalı geçiş (phased migration), veri yerelliği (data locality) ve yedeklilik.",
+    "example": "ERP + Analitik:\nKurumsal ERP on‑prem’de kalır; analitik ve raporlama iş yükleri bulutta çalışır, veri güvenli köprülerle taşınır.\n\nTepe yüklerde burst:\nKampanya döneminde ek kapasite buluta taşar (cloud burst); normale dönünce kaynaklar on‑prem’e indirgenir."
+  },
+  {
+    "id": "bb-info-genel-070",
+    "title": "Çoklu Bulut (Multi-Cloud)",
+    "content": "Çoklu bulut, birden fazla bulut sağlayıcısının hizmetlerini birlikte kullanmaktır. Amaçlar: tedarikçi bağımlılığını azaltma (vendor lock‑in mitigation), coğrafi kapsama (geodiversity) ve en iyi hizmet seçimi (best‑of‑breed).\n\nZorluklar: operasyon karmaşıklığı (operational complexity), taşınabilirlik (portability), tutarlılık (consistency) ve maliyet izleme.",
+    "example": "Kritik hizmet ayrıştırma:\nÖdeme altyapısı ve veri analitiği farklı sağlayıcılarda konumlandırılır; risk bölünerek bağımlılık azaltılır.\n\nUygun servis seçimi:\nGörüntü analizi için bir sağlayıcıdaki güçlü AI servisi, depolama için başka bir sağlayıcının ekonomik çözümü kullanılır."
+  },
+  {
+    "id": "bb-info-genel-071",
+    "title": "Bulut Doğalı Mimari (Cloud-Native Architecture)",
+    "content": "Bulut doğalı yaklaşım, mikroservisler (microservices), konteynerler (containers), deklaratif altyapı (declarative infrastructure) ve otomasyon (automation) ilkeleriyle tasarımı ifade eder. On‑demande ölçekleme, dayanıklılık ve hızlı teslimat amaçlanır.\n\nİlkeler: 12‑Factor App, immutable altyapı (immutable infrastructure), gözlemlenebilirlik (observability), CI/CD ve DevOps kültürü.",
+    "example": "Monolitin parçalanması:\nBüyük uygulama mikroservislere ayrılır; her servis kendi hayat döngüsüyle dağıtılıp ölçeklenir.\n\nHızlı sürüm döngüsü:\nKüçük, sürekli güncellemeler pipeline’lar ile otomatik üretime taşınır; geri alma (rollback) mekanizmaları hazırdır."
+  },
+  {
+    "id": "bb-info-genel-072",
+    "title": "Bölge (Region)",
+    "content": "Bölge, belirli bir coğrafi konumdaki veri merkezi kümelerini (data center clusters) ifade eder. Verinin yasal yeri (data residency), gecikme (latency) ve kullanıcı yakınlığı (proximity) seçimde rol oynar.\n\nGenellikle bölgeler birbirinden izole edilir; çok bölgeli dağıtım (multi‑region) felaket kurtarma (disaster recovery) ve küresel erişim sağlar.",
+    "example": "Kullanıcıya yakınlık:\nÜrün, hedef pazarın bulunduğu bölgeye yerleştirilir; sayfa yükleme süreleri iyileşir.\n\nUyumluluk gereksinimi:\nVeriler, yasal düzenlemelerin zorunlu kıldığı ülke/bölge sınırları içinde barındırılır."
+  },
+  {
+    "id": "bb-info-genel-073",
+    "title": "Kullanılabilirlik Alanı (Availability Zone)",
+    "content": "Kullanılabilirlik alanı, bir bölge içindeki bağımsız altyapı hatlarına (independent fault lines) sahip fiziksel olarak ayrık tesislerdir. Amaç: tekil arızaların (single failures) etkisini sınırlamak.\n\nÇok AZ’li dağıtım (multi‑AZ) yüksek erişilebilirlik (high availability) ve yedeklilik (redundancy) sağlar.",
+    "example": "Uygulama katmanı HA:\nWeb ve API servisleri en az iki AZ’de çalışır; bir AZ’de sorun olursa trafik otomatik diğerine yönelir.\n\nVeritabanı dayanıklılığı:\nEşzamanlı kopya ile veritabanı bir AZ arızasında otomatik devralma (failover) yapar."
+  },
+  {
+    "id": "bb-info-genel-074",
+    "title": "Uç Konum / PoP (Edge Location / Point of Presence)",
+    "content": "Uç konumlar, son kullanıcıya yakın önbellekleme (caching) ve içerik dağıtım (content delivery) noktalarıdır. PoP’lar gecikmeyi düşürür ve origin üzerindeki yükü azaltır.\n\nEdge bilişim (edge computing) ile bazı işlemler kullanıcıya yakın yapılır; IoT ve medya deneyimlerinde fayda sağlar.",
+    "example": "Medya hızlandırma:\nPopüler video içerikleri edge’de önbelleklenir; yoğun trafik dönemlerinde dahi sorunsuz izlenir.\n\nIoT veri özetleme:\nSensör verileri uçta filtrelenip özetlenir, yalnız gerekli bilgiler merkezi sisteme gönderilir."
+  },
+  {
+    "id": "bb-info-genel-075",
+    "title": "Hesap / Abonelik (Account / Subscription)",
+    "content": "Hesap/abonelik, kaynakların (resources) ve faturanın (billing) mantıksal sınırıdır. Ayrı erişim politikaları (access policies) ve maliyet izleme (cost tracking) sağlar.\n\nGenelde prod/stage/dev ayrımı ve iş birimi (business unit) bazlı ayrıştırma için kullanılır.",
+    "example": "Çevik yönetişim:\nHer ortam ayrı hesapta tutulur; yanlış dağıtımların üretimi etkilemesi engellenir.\n\nMaliyet görünürlüğü:\nBirimler kendi aboneliklerinden sorumlu olur; bütçe ve uyarılar (budgets & alerts) ayrı takip edilir."
+  },
+  {
+    "id": "bb-info-genel-076",
+    "title": "Kaynak Grubu (Resource Group)",
+    "content": "Kaynak grubu, bir uygulamanın/bileşenin ilişkili kaynaklarını (compute, storage, network, security) birlikte yönetmek için mantıksal kapsayıcıdır (logical container). Hayat döngüsü (lifecycle) işlemleri kolaylaşır.\n\nEtiketleme ve politika (policy) uygulamaları kaynak grup seviyesinde standartlaştırılabilir.",
+    "example": "Takım bazlı sahiplik:\nHer ekip kendi kaynak grubuna sahip olur; izinler ve maliyetler bu grup üzerinden yönetilir.\n\nOrtam temizliği:\nProje bittiğinde grup bir bütün olarak kaldırılır; artakalan kaynak riski azalır."
+  },
+  {
+    "id": "bb-info-genel-077",
+    "title": "Etiketleme (Tagging)",
+    "content": "Etiketleme, kaynaklara anahtar‑değer (key‑value) meta verisi ekleyerek sınıflandırma (classification), maliyet paylaştırma (cost allocation) ve otomasyon (automation) sağlar. Örnek anahtarlar: Owner, Project, Environment, Compliance.\n\nPolitika ve uyarıların etiket temelli uygulanması operasyonel disiplini artırır.",
+    "example": "Maliyet yönetimi:\nEtiketlerle proje ve ekip bazlı maliyetler ayrıştırılır; raporlama ve bütçe takibi netleşir.\n\nOtomatik denetim:\n‘Compliance=Strict’ etiketi taşıyan kaynaklarda ek güvenlik kontrolleri ve denetim politikaları uygulanır."
+  },
+  {
+    "id": "bb-info-genel-078",
+    "title": "En Az Yetki İlkesi (Least Privilege Principle)",
+    "content": "En az yetki, kullanıcılara/servislere yalnız işlerini yapmaya yetecek minimum izinlerin (minimum necessary permissions) verilmesidir. Saldırı yüzeyini (attack surface) ve yanlış kullanım riskini düşürür.\n\nZaman kısıtlı (time‑bound) ve bağlama duyarlı (context‑aware) yetki yükseltmeleri önerilir.",
+    "example": "Operasyon güvenliği:\nGeliştiricilere yalnız okuma ve belirli servislerde sınırlı yazma izni verilir; kritik eylemler ayrı onay akışına tabidir.\n\nGeçici ayrıcalık:\nDestek ekibi belirli bir olay için 2 saatlik yükseltilmiş yetki alır; süre sonunda otomatik düşer."
+  },
+  {
+    "id": "bb-info-genel-079",
+    "title": "Paylaşılan Sorumluluk Modeli (Shared Responsibility Model)",
+    "content": "Bu modelde sağlayıcı, fiziksel altyapı ve temel platform güvenliğinden (security of the cloud) sorumludur; müşteri ise kimlik ve erişim (identity & access), veri koruma (data protection), yapılandırma (configuration) ve uyumluluktan (compliance) sorumludur.\n\nSorumluluk kapsamı hizmet modeline (IaaS/PaaS/SaaS) göre değişir.",
+    "example": "IaaS senaryosu:\nMüşteri işletim sistemi yamalarını ve güvenlik gruplarını yönetir; altyapı donanım güvenliği sağlayıcıda kalır.\n\nSaaS senaryosu:\nKullanıcı erişimleri ve veri sınıflandırması müşteride; uygulama işletimi ve süreklilik sağlayıcıda."
+  },
+  {
+    "id": "bb-info-genel-080",
+    "title": "Dayanıklılık (Durability)",
+    "content": "Dayanıklılık, verinin uzun süre boyunca kaybolmama olasılığıdır (probability of non‑loss). Tipik olarak çoklu kopyalama (replication), denetim ve onarım (scrubbing & repair) mekanizmalarıyla sağlanır.\n\nYedekleme (backup), sürümleme (versioning) ve WORM politikaları dayanıklılığı güçlendirir.",
+    "example": "Kayıt arşivi:\nFinans dokümanları birden fazla kopya ve sürüm bilgisiyle saklanır; hatalı silme durumunda geri dönüş mümkündür.\n\nMedya deposu:\nBüyük içerik setleri dağıtık olarak tutulur; bit‑çürümesi (bit rot) denetimleri düzenli yapılır."
+  },
+  {
+    "id": "bb-info-genel-081",
+    "title": "Ölçeklenebilirlik (Scalability)",
+    "content": "Ölçeklenebilirlik, sistemin artan yükü (increasing load) karşılayacak şekilde kaynak ekleyebilmesidir. Dikey (vertical) ve yatay (horizontal) ölçekleme olarak iki ana yaklaşım vardır.\n\nİyi tasarım, duruma göre gereksiz bağımlılıkları azaltır ve yatay ölçeklemeyi kolaylaştırır.",
+    "example": "Kampanya trafiği:\nSatış döneminde API katmanı yeni örnekler eklenerek yatay ölçeklenir; kuyruklar ve cache ile yük dengelenir.\n\nBüyüyen veri:\nAnalitik motor daha fazla düğümle kapasitesini artırır; sorgu süreleri yüksek hacimde dahi kabul edilebilir kalır."
+  },
+  {
+    "id": "bb-info-genel-082",
+    "title": "Elastikiyet (Elasticity)",
+    "content": "Elastikiyet, yük değişimine göre kaynakların otomatik artıp azalmasıdır (automatic scale out/in). Amaç: performans hedefleri (performance targets) korunurken maliyetin optimize edilmesi.\n\nOlay odaklı ve metrik temelli politikalarla (event/metric‑based policies) esneklik sağlanır.",
+    "example": "Gece düşen trafik:\nAkşam saatlerinde örnek sayısı otomatik azalır; sabah yoğunluğu başladığında yeniden artar.\n\nBatch pencereleri:\nPlanlı görevler başlamadan kapasite yükselir; görev bitince minimum düzeye iner."
+  },
+  {
+    "id": "bb-info-genel-083",
+    "title": "Yüksek Erişilebilirlik (High Availability)",
+    "content": "Yüksek erişilebilirlik, servis kesintilerini (service interruptions) en aza indiren yedeklilik (redundancy) ve otomatik kurtarma (automatic recovery) tasarımlarıdır. Hedef: düşük RTO/RPO.\n\nÇok AZ/bölge dağıtımı, health check’ler, failover ve hatasız güncelleme (zero‑downtime updates) teknikleri kullanılır.",
+    "example": "Aktif‑pasif mimari:\nBirincil ortam izlenir; sorun tespit edilince trafik ikincil ortama aktarılır, kullanıcı etkisi minimum kalır.\n\nRolling güncellemeler:\nHavuzdaki örnekler sırayla güncellenir; hata oranı artarsa otomatik geri alma tetiklenir."
+  },
+  {
+    "id": "bb-info-genel-084",
+    "title": "Bastion Sunucu (Bastion Host)",
+    "content": "Bastion sunucu (bastion host), özel ağdaki sistemlere güvenli köprü (secure jump host) üzerinden erişim sağlar. Amaç, yönetim trafiğini (administrative access) tek bir sertleştirilmiş (hardened) uçtan geçirmek ve doğrudan internetten erişimi kapatarak saldırı yüzeyini (attack surface) azaltmaktır.\n\nUygulamalar: denetimli oturum (controlled sessions), kimlik doğrulama (authentication), çok faktörlü doğrulama (multi‑factor), kayıt/inceleme (session recording/forensics) ve izinli komut kümeleri (approved command sets).",
+    "example": "İç sistem yönetimi:\nOperasyon ekibi, veri tabanı ve uygulama sunucularına yalnız bastion üzerinden bağlanır; doğrudan inbound SSH/RDP kapalıdır.\n\nDenetim ve izlenebilirlik:\nBastion üzerinde tüm oturumlar kaydedilir; hatalı veya yetkisiz işlemler olay incelemesinde kolayca tespit edilir."
+  },
+  {
+    "id": "bb-info-genel-085",
+    "title": "Özel DNS Bölgesi (Private DNS Zone)",
+    "content": "Özel DNS bölgesi (private DNS zone), iç ağda (private network) yalnız kurum içi ad çözümlemesi (internal name resolution) sağlayan DNS alanıdır. Dış dünyaya (public internet) açılmaz ve uygulama servislerinin (application services) iç adları (internal FQDN) güvenli şekilde yönetilir.\n\nFaydalar: ad tutarlılığı (name consistency), hizmet keşfi (service discovery), politikalarla erişim kontrolü (policy‑based access control).",
+    "example": "İç servis adresleri:\n\"api.internal.local\" ve \"db.internal.local\" gibi adlar, yalnız şirket ağına bağlı sistemlerde çözümlenir.\n\nOrtam ayrımı:\nProd, stage ve dev için ayrı private DNS bölgeleri kullanılarak yanlış ortam çağrılarının önüne geçilir."
+  },
+  {
+    "id": "bb-info-genel-086",
+    "title": "Bölünmüş Ufuk DNS (Split-Horizon DNS)",
+    "content": "Split‑horizon DNS, aynı alan adı (same hostname) için sorgunun geldiği kaynağa (query source/network) göre farklı yanıt (different DNS answers) üretir. İç istemciler private IP’leri, dış istemciler public IP’leri görür.\n\nAmaç: güvenlik (security), performans (performance) ve doğru yönlendirme (proper routing) sağlamak; iç/dış erişim yollarını ayırmak.",
+    "example": "İç/dış web adresi:\n\"app.example.com\" iç ağdan private IP’ye, internetten public yük dengeleyici IP’sine çözülür.\n\nKademeli geçiş:\nTaşıma sırasında iç trafiği yeni ortama, dış trafiği eski ortama yönlendirerek kesintisiz geçiş yapılır."
+  },
+  {
+    "id": "bb-info-genel-087",
+    "title": "DNS Yönlendirme Politikaları (DNS Routing Policies — Weighted/Latency/Geolocation/Failover)",
+    "content": "DNS yönlendirme politikaları (DNS routing policies), istekleri ağırlık (weighted), gecikme (latency‑based), coğrafya (geolocation) veya yedekli hedeflere (failover) göre dağıtır. Küresel erişim (global reach) ve yüksek erişilebilirlik (high availability) için kullanılır.\n\nWeighted canary ile sürüm geçişi, latency ile kullanıcıya en yakın hedef (closest endpoint), geolocation ile ülke/bölge bazlı içerik ve failover ile otomatik yedek geçiş sağlanır.",
+    "example": "Canary ağırlıklandırma:\nTrafiğin %10’u yeni sürüme, %90’ı mevcut sürüme yönlendirilir; metrikler iyiyse oran kademeli artırılır.\n\nGecikme bazlı yönlendirme:\nAvrupa’daki kullanıcılar EU uç noktaya, Amerika’dakiler US uç noktaya otomatik yönlendirilir."
+  },
+  {
+    "id": "bb-info-genel-088",
+    "title": "Rezerve / Tasarruf Planları / Rezervasyonlar (Reserved Instances / Savings Plans / Reservations)",
+    "content": "Uzun süreli taahhüt (long‑term commitment) ve kapasite rezervi (capacity reservation) modelleri, öngörülebilir iş yüklerinde maliyeti düşürür (cost optimization). Saatlik/aylık kullanımı belirli süre (1–3 yıl) için taahhüt ederek indirim (discount) alınır.\n\nUygunluk: sürekli çalışan (steady‑state) sistemler, çekirdek altyapı (core infrastructure) ve iş kritik servisler.",
+    "example": "Sabit API katmanı:\nHer zaman en az 10 örnek çalışan web/API katmanı için rezervasyon yapılarak önemli maliyet avantajı elde edilir.\n\nBütçe planlama:\nFinans, yıllık taahhütlerle toplam bulut giderini öngörülebilir hale getirir; ani maliyet dalgalanmaları azalır."
+  },
+  {
+    "id": "bb-info-genel-089",
+    "title": "Sürümleme (Versioning)",
+    "content": "Sürümleme (versioning), artefaktların ve verilerin farklı sürümlerini saklayarak geri alma (rollback) ve izlenebilirlik (traceability) sağlar. Uygulama kodu, yapılandırmalar (configs) ve depolama nesneleri (objects) için geçerlidir.\n\nFaydalar: hatalı dağıtımları geri çevirme (revert), yanlış silme kurtarma (undelete), uyumluluk ve denetim (compliance/audit).",
+    "example": "Depolama nesnesi kurtarma:\nYanlışlıkla silinen dosya önceki sürümden geri alınır; iş kesintisi önlenir.\n\nUygulama sürümleri:\nYeni sürüm hatalıysa bir önceki uygulama imajına dönüş yapılır; kullanıcı etkisi minimize edilir."
+  },
+  {
+    "id": "bb-info-genel-090",
+    "title": "Sır Yönetimi (Secrets Manager / Key Vault)",
+    "content": "Sır yönetimi (secrets management), parolalar (passwords), API anahtarları (API keys) ve sertifikalar (certificates) gibi hassas bilgileri güvenli (secure) ve denetlenebilir (auditable) şekilde saklar. Erişim denetimi (access control) ve otomatik döndürme (rotation) yapar.\n\nAmaç: gizlileri koda gömmemek (no hard‑coded secrets), en az yetki (least privilege) ve düzenli anahtar/değer yenileme.",
+    "example": "Veritabanı parolası rotasyonu:\nUygulama, sır yöneticisinden yeni parolayı çekerek kesinti olmadan güncellenmiş kimlik bilgilerini kullanır.\n\nÜçüncü taraf entegrasyonları:\nHarici API anahtarları güvenli depoda tutulur; erişim sadece yetkili servis rollerine verilir."
+  },
+  {
+    "id": "bb-info-genel-091",
+    "title": "Sıfır Güven Mimari (Zero Trust Architecture)",
+    "content": "Sıfır güven (zero trust), ağ içinde/dışında hiçbir varlığı (no implicit trust) varsayılan olarak güvenilir saymaz. Her erişim isteği sürekli doğrulanır (continuous verification), mikro‑segmentasyon (micro‑segmentation) uygulanır ve en az yetki (least privilege) prensibi gözetilir.\n\nBileşenler: kimlik merkezli politikalar (identity‑centric policies), MFA, cihaz durumu (device posture), mTLS ve ayrıştırılmış ağlar.",
+    "example": "Uzaktan çalışma güvenliği:\nKullanıcılar kurumsal uygulamalara bağlama duyarlı (context‑aware) politikalarla erişir; uygunsuz cihazlar kısıtlanır.\n\nMikro‑segmentasyon:\nServisler arası trafik mTLS ve katı politikalarla sınırlandırılır; yanal hareket (lateral movement) riski azalır."
+  },
+  {
+    "id": "bb-info-genel-092",
+    "title": "Soğuk Başlangıç (Cold Start)",
+    "content": "Soğuk başlangıç (cold start), sunucusuz veya konteyner ortamında ilk çağrıda (first invocation) gerekli bileşenlerin yüklenmesi (bootstrap) nedeniyle artan gecikmedir (latency spike). Paket boyutu (package size), ağ ve bağımlılıklar etkiler.\n\nAzaltma: ön ısıtma (pre‑warming), sağlanmış eşzamanlılık (provisioned concurrency), hafif bağımlılıklar ve sıcak havuzlar (warm pools).",
+    "example": "Düşük gecikme API:\nGerçek zamanlı uç noktada ön ısıtma teknikleri kullanılarak ilk istekte gecikme kabul edilebilir düzeyde tutulur.\n\nBatch görevleri:\nZaman kritik olmayan toplu işlerde cold start etkisi sorun yaratmaz; maliyet verimliliği önceliklidir."
+  },
+  {
+    "id": "bb-info-genel-093",
+    "title": "Geçici Depolama /tmp (Ephemeral Storage /tmp)",
+    "content": "Geçici depolama (ephemeral storage), yaşam döngüsü oturumuna (execution/session lifecycle) bağlı, kalıcı olmayan (non‑persistent) disk alanıdır. /tmp gibi dizinlerde dosyalar işlem boyunca saklanır; süre bitince silinir.\n\nKısıtlar: kapasite (capacity limits), dayanıklılık yok (no durability) ve eşzamanlılıkta (concurrency) paylaşım kuralları.",
+    "example": "Medya işleme ara dosyaları:\nGörsel/video dönüştürmede geçici dosyalar /tmp’te tutulur; iş bitiminde temizlenir ve kalıcı depoya yazılır.\n\nBüyük dosya bölme:\nAkıştan gelen veriler parça parça /tmp’e yazılıp işlenir; limitler aşıldığında uygun şekilde parçalanır."
+  },
+  {
+    "id": "bb-info-genel-094",
+    "title": "CORS (Cross-Origin Resource Sharing)",
+    "content": "CORS, tarayıcıların farklı kaynak (cross‑origin) isteklerini kontrol eden güvenlik mekanizmasıdır. İzin verilen origin (allowed origin), yöntem (methods), başlıklar (headers) ve preflight (OPTIONS) süreçleriyle belirlenir.\n\nAmaç: modern web istemcilerinin (SPA/Single‑Page Apps) güvenli biçimde API’larla haberleşmesini sağlamak, kötü niyetli erişimi engellemek.",
+    "example": "Ön uç‑arka uç ayrımı:\n\"https://ui.example.com\" alanındaki uygulama \"https://api.example.com\" alanındaki API’ya CORS politikasıyla erişir.\n\nDosya yükleme senaryosu:\nTarayıcıdan depoya doğrudan yükleme için uygun yöntem ve başlıklar CORS’ta tanımlanır; preflight geçer."
+  },
+  {
+    "id": "bb-info-genel-095",
+    "title": "Çok Bölgeli Erişim Noktaları (Multi-Region Access Points)",
+    "content": "Çok bölgeli erişim noktaları (multi‑region access points), tek bir küresel uç (global endpoint) üzerinden birden fazla bölgedeki veri/servislere akıllı yönlendirme (smart routing) ve otomatik failover sağlar. Yakınlık (proximity) ve dayanıklılık (resilience) artar.\n\nKullanım: global içerik erişimi (global content access), veri yerelliği (data locality) ve bölgesel kesintiye karşı (regional outage) kesintisiz hizmet.",
+    "example": "Küresel medya dağıtımı:\nKullanıcılar coğrafi olarak en yakın bölgeden veri okur; yük ve gecikme dengelenir.\n\nDR senaryosu:\nBir bölge erişilemez olduğunda istekler otomatik diğer bölgeye yönlendirilir; uygulama kesintisiz çalışır."
+  },
+  {
+    "id": "bb-info-genel-096",
+    "title": "Önbellek Politikası (Cache Policy — TTL/Invalidation)",
+    "content": "Önbellek politikası (cache policy), içeriğin ne kadar süre (TTL/time‑to‑live) önbellekte tutulacağını ve ne zaman geçersiz kılınacağını (invalidation) tanımlar. Katmanlı cache (layered caching) ile istemci, edge ve origin seviyelerinde performans optimize edilir.\n\nAmaç: gecikmeyi (latency) ve origin yükünü (origin load) azaltmak; tutarlılığı (consistency) korumak için doğru invalidation stratejileri kullanmak.",
+    "example": "Katalog TTL ayarı:\nÜrün listeleri 5 dakika cache’lenir; fiyat güncellemesinde ilgili yollar invalidation ile temizlenir.\n\nKampanya başlangıcı:\nYeni içerik yayına girerken önbellek boşaltma (cache purge) yapılır; kullanıcılar anında güncel veriyi görür."
+  },
+  {
+    "id": "bb-info-genel-097",
+    "title": "Blue/Green ve Canary Dağıtım (Blue/Green & Canary Deployment)",
+    "content": "Blue/Green, iki ayrı ortam (two environments) arasında trafiği anahtarlayarak (traffic switch) kesintisiz sürüm değişimi (zero‑downtime releases) sağlar. Canary, trafiğin küçük bir yüzdesini (small traffic percentage) yeni sürüme göndererek kademeli doğrulama (progressive delivery) yapar.\n\nKilit kavramlar: sağlık kontrolleri (health checks), metrik izleme (metrics/observability), otomatik geri alma (automatic rollback) ve feature flag’ler.",
+    "example": "Kademeli geçiş:\nÖnce %5 canary, sonra %25–50–100; gecikme ve hata oranı hedefleri aşılırsa otomatik rollback tetiklenir.\n\nBlue/Green anahtarlama:\nYeni sürüm \"green\" ortamda doğrulanır; DNS/Load Balancer ile trafik green’e taşınır, sorun olursa hızla blue’ya geri alınır."
+  }
+]

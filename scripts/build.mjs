@@ -223,6 +223,7 @@ const data = JSON.parse(fs.readFileSync(input, "utf8"));
 
 const templateHtmlPath = `template/${templateName}/card.html`;
 const templateCssPath = `template/${templateName}/styles.css`;
+const outputTemplateName = config.outputTemplate || templateName;
 
 if (!fs.existsSync(templateHtmlPath)) {
   console.error(`❌ Template HTML not found: ${templateHtmlPath}`);
@@ -334,6 +335,7 @@ console.log("Config:", configPath);
 console.log("Input:", input);
 console.log("Topic:", topic);
 console.log("Template:", templateName);
+console.log("OutputTemplate:", outputTemplateName);
 console.log("Set:", setName);
 console.log("StartDate:", startDate);
 console.log("PerDay:", perDay);
@@ -351,7 +353,7 @@ console.log("=====================================");
 // Output folder
 // output/<topic>/<template>/
 ensureDir(outputDir);
-const outRoot = path.join(outputDir, topic, templateName);
+const outRoot = path.join(outputDir, topic, outputTemplateName);
 
 if (clean) {
   console.warn(`⚠️ Clean enabled. Deleting: ${outRoot}`);
@@ -405,10 +407,17 @@ for (let i = 0; i < data.length; i++) {
   // ---------------------
   // Special templates
   // ---------------------
-  if (templateName === "quiz") {
-    // ... (quiz logic remains same, it already has it)
+  if (templateName === "quiz" || templateName === "aws-cert") {
     const qText = q.question || "";
-    const options = Array.isArray(q.options) ? q.options : [];
+    let optionKeys = [];
+    let options = [];
+
+    if (Array.isArray(q.options)) {
+      options = q.options;
+    } else if (q.options && typeof q.options === "object") {
+      optionKeys = Object.keys(q.options).sort();
+      options = optionKeys.map((key) => q.options[key]);
+    }
 
     const optionsHtml = options
       .map((opt) => `<li>${escapeHtml(String(opt))}</li>`)
@@ -437,13 +446,37 @@ for (let i = 0; i < data.length; i++) {
       .replaceAll("{{EXPLANATION_BLOCK}}", explanationBlock);
 
     // showAnswer only affects quiz templates
-    if (showAnswer && q.answerIndex !== undefined && q.answerIndex !== null) {
-      const answerLetter = String.fromCharCode(65 + Number(q.answerIndex));
+    if (showAnswer) {
+      let answerIndex = q.answerIndex;
+
+      if ((answerIndex === undefined || answerIndex === null) && q.correctAnswer !== undefined && q.correctAnswer !== null) {
+        if (typeof q.correctAnswer === "number") {
+          const num = Number(q.correctAnswer);
+          if (Number.isFinite(num)) {
+            if (num >= 1 && num <= options.length) answerIndex = num - 1;
+            else if (num >= 0 && num < options.length) answerIndex = num;
+          }
+        } else if (typeof q.correctAnswer === "string") {
+          const trimmed = q.correctAnswer.trim();
+          const upper = trimmed.toUpperCase();
+          if (/^[A-Z]$/.test(upper)) {
+            const keyIndex = optionKeys.length ? optionKeys.indexOf(upper) : upper.charCodeAt(0) - 65;
+            if (keyIndex >= 0) answerIndex = keyIndex;
+          } else {
+            const idx = options.findIndex((opt) => String(opt).trim() === trimmed);
+            if (idx >= 0) answerIndex = idx;
+          }
+        }
+      }
+
+      if (answerIndex !== undefined && answerIndex !== null) {
+        const answerLetter = String.fromCharCode(65 + Number(answerIndex));
       // Inject after options list (safe if template has </ol>)
       html = html.replace(
         "</ol>",
         `</ol><div style="margin-top:16px;color:rgba(255,255,255,0.7);font-weight:800;">Cevap: ${answerLetter}</div>`
       );
+      }
     }
   } else if (templateName === "info") {
     const title = q.title || "";

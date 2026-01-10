@@ -1,0 +1,14 @@
+{
+  "topic": "Certificate",
+  "input": "Topics/Certificate/certificate-1.json",
+  "template": "certificate",
+  "startDate": "2026-01-12",
+  "perDay": 1,
+  "format": "png",
+  "size": "custom",
+  "width": 3508,
+  "height": 2480,
+  "showAnswer": false,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_q{qno}_{id}.{ext}"
+}

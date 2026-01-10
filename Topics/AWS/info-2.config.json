@@ -1,0 +1,14 @@
+{
+  "topic": "AWS",
+  "input": "topics/aws/info-2.json",
+  "template": "info",
+  "outputTemplate": "info-2",
+  "startDate": "2026-01-07",
+  "perDay": 1,
+  "format": "png",
+  "size": "custom",
+  "width": 1080,
+  "height": 1300,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_k{qno}_{id}.{ext}"
+}

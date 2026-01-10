@@ -1,0 +1,327 @@
+[
+  {
+    "id": 101,
+    "question": "Which AWS relational database engine is designed for high performance and availability, compatible with MySQL and PostgreSQL, and offers features like Global Database and Serverless options?",
+    "options": {
+      "A": "Amazon RDS for MySQL",
+      "B": "Amazon Aurora",
+      "C": "Amazon Redshift",
+      "D": "Amazon DynamoDB",
+      "E": "Amazon DocumentDB"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon Aurora is a cloud-optimized relational database compatible with MySQL and PostgreSQL, providing high performance, distributed storage, Global Database, and Serverless configurations. RDS for MySQL (A) is managed MySQL but lacks Aurora's storage engine and features. Redshift (C) is a data warehouse. DynamoDB (D) is NoSQL. DocumentDB (E) is a document database compatible with MongoDB APIs."
+  },
+  {
+    "id": 102,
+    "question": "You need to query data in S3 using your Redshift cluster without loading the data into Redshift tables. Which feature should you use?",
+    "options": {
+      "A": "Amazon Redshift Spectrum",
+      "B": "Amazon Athena",
+      "C": "Amazon EMR",
+      "D": "AWS Glue Studio",
+      "E": "Amazon OpenSearch Service"
+    },
+    "correctAnswer": "A",
+    "explanation": "Redshift Spectrum extends Redshift to query data directly in S3 using external tables. Athena (B) also queries S3 with SQL but is serverless and independent of Redshift. EMR (C) runs big data frameworks. Glue Studio (D) designs ETL jobs. OpenSearch (E) performs search/analytics on indexed data."
+  },
+  {
+    "id": 103,
+    "question": "Which managed service accelerates and automates online data transfer between on-premises storage and AWS services like S3, EFS, and FSx?",
+    "options": {
+      "A": "AWS DataSync",
+      "B": "AWS Snowball",
+      "C": "AWS Storage Gateway",
+      "D": "AWS Transfer Family",
+      "E": "AWS Direct Connect"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS DataSync securely automates and accelerates data transfers over the network to S3, EFS, and FSx. Snowball (B) is offline/physical transfer. Storage Gateway (C) integrates on-prem storage with cloud services. Transfer Family (D) provides managed SFTP/FTP/FTPS endpoints. Direct Connect (E) is a private network link, not specifically a transfer automation service."
+  },
+  {
+    "id": 104,
+    "question": "Which service enables targeted mobile engagement (SMS, push, email) with segmentation, journeys, and analytics?",
+    "options": {
+      "A": "Amazon Pinpoint",
+      "B": "Amazon SNS",
+      "C": "Amazon SES",
+      "D": "AWS AppSync",
+      "E": "Amazon SQS"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Pinpoint supports targeted campaigns, journeys, and analytics across channels. SNS (B) is pub/sub notifications. SES (C) sends email but lacks the full campaign analytics/journey features. AppSync (D) is GraphQL. SQS (E) is a queue."
+  },
+  {
+    "id": 105,
+    "question": "Before deploying a workload, which tool helps you estimate monthly AWS costs based on selected services and configurations?",
+    "options": {
+      "A": "AWS Pricing Calculator",
+      "B": "AWS Cost Explorer",
+      "C": "AWS Budgets",
+      "D": "AWS Billing Conductor",
+      "E": "AWS Trusted Advisor"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Pricing Calculator estimates future costs for planned architectures. Cost Explorer (B) analyzes historical and forecasted spend. Budgets (C) sets spend alerts. Billing Conductor (D) customizes chargeback/showback. Trusted Advisor (E) offers best-practice checks including some cost tips."
+  },
+  {
+    "id": 106,
+    "question": "Which S3 protection feature requires multi-factor authentication to permanently delete object versions when versioning is enabled?",
+    "options": {
+      "A": "S3 Object Lock",
+      "B": "MFA Delete",
+      "C": "S3 Access Points",
+      "D": "S3 Lifecycle Rules",
+      "E": "Bucket Policy"
+    },
+    "correctAnswer": "B",
+    "explanation": "MFA Delete (used with S3 Versioning) requires MFA for permanent delete operations on object versions. Object Lock (A) enforces WORM retention. Access Points (C) simplify access control. Lifecycle rules (D) manage transitions/expirations. Bucket policies (E) control access, not require MFA."
+  },
+  {
+    "id": 107,
+    "question": "You need a managed GraphQL service to build APIs that aggregate and securely access multiple data sources in real time. Which service should you choose?",
+    "options": {
+      "A": "AWS AppSync",
+      "B": "Amazon API Gateway",
+      "C": "Amazon Athena",
+      "D": "AWS Lambda",
+      "E": "Amazon RDS"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS AppSync is a managed GraphQL service that integrates with data sources (DynamoDB, Lambda, etc.), supports real-time subscriptions, and handles auth/authorization. API Gateway (B) manages REST/WebSocket APIs. Athena (C) queries data in S3. Lambda (D) is compute. RDS (E) is relational storage."
+  },
+  {
+    "id": 108,
+    "question": "Which managed file service provides fully managed SMB file shares for Windows workloads with Active Directory integration and DFS?",
+    "options": {
+      "A": "Amazon FSx for Windows File Server",
+      "B": "Amazon EFS",
+      "C": "Amazon FSx for Lustre",
+      "D": "Amazon S3",
+      "E": "Amazon FSx for NetApp ONTAP"
+    },
+    "correctAnswer": "A",
+    "explanation": "FSx for Windows File Server offers SMB shares, Windows-native features, AD integration, and DFS. EFS (B) is NFS for Linux. FSx for Lustre (C) is high-performance file system for HPC. S3 (D) is object storage. FSx for NetApp ONTAP (E) provides multiprotocol (NFS/SMB) but the dedicated Windows-native service is FSx for Windows File Server."
+  },
+  {
+    "id": 109,
+    "question": "Which managed service provides a centralized data catalog and serverless jobs to discover, transform, and load data at scale?",
+    "options": {
+      "A": "AWS Glue",
+      "B": "Amazon Athena",
+      "C": "Amazon EMR",
+      "D": "Amazon Redshift",
+      "E": "AWS Lake Formation"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Glue offers a Data Catalog and serverless ETL jobs. Athena (B) queries S3 with SQL. EMR (C) runs big data frameworks. Redshift (D) is a data warehouse. Lake Formation (E) builds and secures data lakes but ETL/catalog are Glue features."
+  },
+  {
+    "id": 110,
+    "question": "Your hybrid environment needs DNS resolution between on-premises and VPCs. Which service provides inbound and outbound DNS endpoints for hybrid DNS?",
+    "options": {
+      "A": "Amazon Route 53 Resolver",
+      "B": "Amazon Route 53 Hosted Zones",
+      "C": "AWS Global Accelerator",
+      "D": "AWS Direct Connect",
+      "E": "AWS Transit Gateway"
+    },
+    "correctAnswer": "A",
+    "explanation": "Route 53 Resolver offers inbound and outbound endpoints to integrate VPC DNS with on-prem DNS. Hosted Zones (B) host public/private DNS zones but don't provide hybrid endpoints. Global Accelerator (C) optimizes network paths. Direct Connect (D) is private connectivity. Transit Gateway (E) is network hub routing."
+  },
+  {
+    "id": 111,
+    "question": "Which AWS Systems Manager capability automates the discovery, approval, and deployment of OS and application patches across fleets of instances?",
+    "options": {
+      "A": "Patch Manager",
+      "B": "Parameter Store",
+      "C": "Automation",
+      "D": "Run Command",
+      "E": "OpsCenter"
+    },
+    "correctAnswer": "A",
+    "explanation": "Systems Manager Patch Manager centralizes patching with baselines and schedules. Parameter Store (B) holds configuration. Automation (C) runs runbooks. Run Command (D) executes commands remotely. OpsCenter (E) tracks operational items."
+  },
+  {
+    "id": 112,
+    "question": "Within a single AWS account, what IAM feature sets the maximum permissions a user or role can have, even if policies grant more?",
+    "options": {
+      "A": "Service Control Policies (SCPs)",
+      "B": "IAM Permissions Boundary",
+      "C": "IAM Inline Policy",
+      "D": "VPC Endpoint Policy",
+      "E": "Resource-based Policy"
+    },
+    "correctAnswer": "B",
+    "explanation": "Permissions boundaries define the maximum permissions for an IAM principal within an account. SCPs (A) apply at the Organizations level across accounts. Inline policies (C) grant permissions but don't constrain other grants. VPC endpoint (D) and resource-based policies (E) control resource access, not principal boundaries."
+  },
+  {
+    "id": 113,
+    "question": "Which file system is optimized for high-performance computing (HPC) and integrates with Amazon S3 for fast processing of large datasets?",
+    "options": {
+      "A": "Amazon EFS",
+      "B": "Amazon FSx for Lustre",
+      "C": "Amazon FSx for Windows File Server",
+      "D": "Amazon S3",
+      "E": "Amazon EBS"
+    },
+    "correctAnswer": "B",
+    "explanation": "FSx for Lustre provides a high-performance parallel file system ideal for HPC and can import/export data from Amazon S3. EFS (A) is general-purpose NFS. Windows File Server (C) is SMB. S3 (D) is object storage. EBS (E) is block storage attached to instances."
+  },
+  {
+    "id": 114,
+    "question": "Which EBS volume type offers the lowest cost for infrequently accessed, throughput-oriented workloads?",
+    "options": {
+      "A": "General Purpose SSD (gp3)",
+      "B": "Provisioned IOPS SSD (io2)",
+      "C": "Cold HDD (sc1)",
+      "D": "Throughput Optimized HDD (st1)",
+      "E": "Magnetic (standard)"
+    },
+    "correctAnswer": "C",
+    "explanation": "Cold HDD (sc1) is the lowest-cost EBS option for infrequent access and cold data. gp3 (A) is general-purpose SSD. io2 (B) is high-performance SSD for OLTP. st1 (D) is throughput-optimized HDD for frequently accessed, big-data workloads. Magnetic (E) is legacy and generally not recommended."
+  },
+  {
+    "id": 115,
+    "question": "Which service helps visualize and trace requests across distributed applications to identify performance bottlenecks and errors?",
+    "options": {
+      "A": "AWS X-Ray",
+      "B": "Amazon CloudWatch",
+      "C": "AWS CloudTrail",
+      "D": "AWS Config",
+      "E": "Amazon OpenSearch Service"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS X-Ray provides end-to-end tracing of requests across services, highlighting latency and errors. CloudWatch (B) collects metrics/logs. CloudTrail (C) audits API calls. Config (D) tracks configuration changes. OpenSearch (E) indexes/searches logs but is not a tracing tool."
+  },
+  {
+    "id": 116,
+    "question": "Which service lets you view, manage, and request increases for AWS service quotas (limits) across your account?",
+    "options": {
+      "A": "AWS Service Quotas",
+      "B": "AWS Trusted Advisor",
+      "C": "AWS Organizations",
+      "D": "AWS Billing Console",
+      "E": "AWS Support Center"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Service Quotas provides visibility and management for service limits, with integrated request workflows. Trusted Advisor (B) checks best practices including some limits. Organizations (C) manages accounts. Billing (D) handles invoices/costs. Support Center (E) manages support cases."
+  },
+  {
+    "id": 117,
+    "question": "Which AWS offering provides limited amounts of usage at no charge to help you explore and learn AWS services?",
+    "options": {
+      "A": "AWS Free Tier",
+      "B": "AWS Budgets",
+      "C": "AWS Savings Plans",
+      "D": "Reserved Instances",
+      "E": "Spot Instances"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Free Tier offers free usage allowances (always free, 12-month free, and trials) for many services. Budgets (B) alerts on costs. Savings Plans (C) and RIs (D) are discount commitments. Spot (E) provides discounted compute with interruption."
+  },
+  {
+    "id": 118,
+    "question": "Which managed database is purpose-built for graph workloads and supports Gremlin and SPARQL queries?",
+    "options": {
+      "A": "Amazon Neptune",
+      "B": "Amazon DynamoDB",
+      "C": "Amazon RDS for PostgreSQL",
+      "D": "Amazon QLDB",
+      "E": "Amazon DocumentDB"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Neptune is a graph database supporting Apache TinkerPop Gremlin and RDF/SPARQL. DynamoDB (B) is NoSQL key–value. RDS (C) is relational. QLDB (D) is a ledger database. DocumentDB (E) is a document database compatible with MongoDB APIs."
+  },
+  {
+    "id": 119,
+    "question": "Which managed database provides an immutable, cryptographically verifiable transaction log suitable for systems of record?",
+    "options": {
+      "A": "Amazon QLDB",
+      "B": "Amazon RDS",
+      "C": "Amazon DynamoDB",
+      "D": "Amazon Timestream",
+      "E": "Amazon Aurora"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Quantum Ledger Database (QLDB) offers a transparent, immutable, and cryptographically verifiable transaction log. RDS (B) and Aurora (E) are relational. DynamoDB (C) is NoSQL. Timestream (D) is time-series."
+  },
+  {
+    "id": 120,
+    "question": "Which service provides a simple way to load streaming data into destinations like S3, Redshift, and OpenSearch without managing consumers?",
+    "options": {
+      "A": "Amazon Kinesis Data Firehose",
+      "B": "Amazon Kinesis Data Streams",
+      "C": "AWS Glue",
+      "D": "Amazon MSK",
+      "E": "Amazon EMR"
+    },
+    "correctAnswer": "A",
+    "explanation": "Kinesis Data Firehose is a fully managed delivery service for streaming data to S3, Redshift, and OpenSearch. Kinesis Data Streams (B) is a streaming platform requiring consumer applications. Glue (C) is ETL. MSK (D) is managed Kafka. EMR (E) runs big data frameworks."
+  },
+  {
+    "id": 121,
+    "question": "You want to retrieve only a subset of data from a large object stored in S3 using SQL expressions without downloading the entire object. Which feature enables this?",
+    "options": {
+      "A": "S3 Select",
+      "B": "Athena",
+      "C": "Glacier Select",
+      "D": "S3 Access Analyzer",
+      "E": "S3 Object Lock"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Select lets you use SQL to retrieve portions of an object. Athena (B) queries S3 at the dataset level, not partial object reads. Glacier Select (C) applies to archival classes. Access Analyzer (D) analyzes policies. Object Lock (E) enforces WORM retention."
+  },
+  {
+    "id": 122,
+    "question": "Which security control adds a one-time code or hardware token in addition to a password when signing in to AWS?",
+    "options": {
+      "A": "Multi-Factor Authentication (MFA)",
+      "B": "Access Keys",
+      "C": "IAM Roles",
+      "D": "Security Groups",
+      "E": "AWS WAF"
+    },
+    "correctAnswer": "A",
+    "explanation": "MFA adds an additional authentication factor to strengthen sign-in security. Access keys (B) are credentials for programmatic access. IAM roles (C) grant temporary permissions. Security groups (D) filter network traffic. WAF (E) filters web requests at layer 7."
+  },
+  {
+    "id": 123,
+    "question": "Which managed desktop service provides persistent cloud-based Windows desktops accessible from anywhere?",
+    "options": {
+      "A": "Amazon WorkSpaces",
+      "B": "Amazon AppStream 2.0",
+      "C": "AWS Client VPN",
+      "D": "Amazon EC2",
+      "E": "AWS Lambda"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon WorkSpaces delivers managed, persistent virtual desktops. AppStream 2.0 (B) streams individual applications, not full desktops. Client VPN (C) provides secure network access. EC2 (D) is general compute. Lambda (E) is serverless functions."
+  },
+  {
+    "id": 124,
+    "question": "Which managed service streams desktop applications to a browser, enabling secure access without installing software on end-user devices?",
+    "options": {
+      "A": "Amazon AppStream 2.0",
+      "B": "Amazon WorkSpaces",
+      "C": "AWS Systems Manager Session Manager",
+      "D": "AWS Client VPN",
+      "E": "Amazon WorkDocs"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon AppStream 2.0 streams apps to users via a browser for secure delivery. WorkSpaces (B) provides full desktops. Session Manager (C) connects to instances. Client VPN (D) provides VPN access. WorkDocs (E) is a document collaboration service."
+  },
+  {
+    "id": 125,
+    "question": "Which Systems Manager capability provides hierarchical, versioned configuration storage with support for plaintext and SecureString parameters?",
+    "options": {
+      "A": "Parameter Store",
+      "B": "Patch Manager",
+      "C": "OpsCenter",
+      "D": "Fleet Manager",
+      "E": "State Manager"
+    },
+    "correctAnswer": "A",
+    "explanation": "Systems Manager Parameter Store stores configuration values with hierarchy, versioning, and support for SecureString (KMS-encrypted). Patch Manager (B) handles patching. OpsCenter (C) tracks operational issues. Fleet Manager (D) manages servers. State Manager (E) applies configuration across instances."
+  }
+]

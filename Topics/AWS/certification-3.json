@@ -1,0 +1,327 @@
+[
+  {
+    "id": 51,
+    "question": "Which AWS service provides a fully managed way to create, publish, secure, and monitor REST and WebSocket APIs at scale?",
+    "options": {
+      "A": "Amazon API Gateway",
+      "B": "AWS App Runner",
+      "C": "Amazon CloudFront",
+      "D": "Elastic Load Balancing",
+      "E": "AWS Lambda"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon API Gateway is purpose-built for creating and managing APIs with features like throttling, authorization, SDK generation, and monitoring. App Runner (B) deploys web apps/services. CloudFront (C) is a CDN. ELB (D) balances traffic to targets, not API management. Lambda (E) runs serverless functions but is typically integrated behind API Gateway for APIs."
+  },
+  {
+    "id": 52,
+    "question": "You need to orchestrate multiple microservices and Lambda functions with retries, parallel branches, and state tracking. Which service should you use?",
+    "options": {
+      "A": "AWS Step Functions",
+      "B": "Amazon SQS",
+      "C": "Amazon EventBridge",
+      "D": "AWS Batch",
+      "E": "Amazon Kinesis Data Streams"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Step Functions provides visual workflows and state machines to coordinate services with retries, error handling, and parallelization. SQS (B) is queueing, not orchestration. EventBridge (C) routes events. Batch (D) orchestrates batch jobs. Kinesis (E) ingests streaming data."
+  },
+  {
+    "id": 53,
+    "question": "Which service is best for scheduling, queuing, and scaling batch computing jobs on AWS without managing the underlying job scheduler?",
+    "options": {
+      "A": "AWS Batch",
+      "B": "Amazon EMR",
+      "C": "AWS Glue",
+      "D": "Amazon ECS",
+      "E": "AWS CodeBuild"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Batch is a managed service for batch workloads that dynamically provisions compute and integrates with containers. EMR (B) runs big data frameworks. Glue (C) is ETL. ECS (D) runs containers but not specifically a batch scheduler. CodeBuild (E) is for building code."
+  },
+  {
+    "id": 54,
+    "question": "Which service orchestrates end-to-end CI/CD workflows (source, build, test, deploy) using stages and actions?",
+    "options": {
+      "A": "AWS CodePipeline",
+      "B": "AWS CodeBuild",
+      "C": "AWS CodeCommit",
+      "D": "AWS CodeDeploy",
+      "E": "AWS CloudFormation"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS CodePipeline automates release pipelines across stages. CodeBuild (B) performs builds/tests. CodeCommit (C) is a Git service. CodeDeploy (D) deploys apps to targets. CloudFormation (E) provisions infrastructure, not CI/CD orchestration."
+  },
+  {
+    "id": 55,
+    "question": "Which service compiles source code, runs tests, and produces build artifacts in a fully managed, scalable environment?",
+    "options": {
+      "A": "AWS CodeBuild",
+      "B": "AWS CodePipeline",
+      "C": "AWS CodeCommit",
+      "D": "AWS CodeDeploy",
+      "E": "AWS Cloud9"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS CodeBuild is a managed build service that scales automatically and charges per build minute. CodePipeline (B) orchestrates pipelines. CodeCommit (C) hosts Git repos. CodeDeploy (D) handles deployments. Cloud9 (E) is a cloud IDE."
+  },
+  {
+    "id": 56,
+    "question": "You need a secure, highly available, managed Git repository service for your team's source code. Which service fits?",
+    "options": {
+      "A": "AWS CodeCommit",
+      "B": "Amazon S3",
+      "C": "AWS Artifact",
+      "D": "AWS CodeBuild",
+      "E": "AWS CodeDeploy"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS CodeCommit is a managed, highly available Git service. S3 (B) is object storage. Artifact (C) provides compliance reports. CodeBuild (D) builds code. CodeDeploy (E) deploys applications."
+  },
+  {
+    "id": 57,
+    "question": "Which service stores, secures, and scans container images for vulnerabilities and integrates with ECS/EKS for deployments?",
+    "options": {
+      "A": "Amazon ECR",
+      "B": "AWS Fargate",
+      "C": "Amazon S3",
+      "D": "AWS CodeArtifact",
+      "E": "Amazon EMR"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Elastic Container Registry (ECR) is a managed container image registry with security scanning and lifecycle policies. Fargate (B) runs containers. S3 (C) stores objects but isn't a container registry. CodeArtifact (D) manages package artifacts (npm, Maven). EMR (E) is big data."
+  },
+  {
+    "id": 58,
+    "question": "You want a simple, AWS-native container orchestration service without managing Kubernetes control planes. Which should you choose?",
+    "options": {
+      "A": "Amazon ECS",
+      "B": "Amazon EKS",
+      "C": "AWS Batch",
+      "D": "AWS App Runner",
+      "E": "Amazon Lightsail"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon ECS is AWS's native container orchestrator and can run on EC2 or Fargate without managing Kubernetes components. EKS (B) is managed Kubernetes. Batch (C) targets batch jobs. App Runner (D) deploys web services serverlessly. Lightsail (E) is simplified VPS hosting."
+  },
+  {
+    "id": 59,
+    "question": "You need to deploy a containerized web service directly from source code or a container registry with automatic scaling and HTTPS by default. Which service is designed for this?",
+    "options": {
+      "A": "AWS App Runner",
+      "B": "AWS Elastic Beanstalk",
+      "C": "Amazon ECS",
+      "D": "AWS Fargate",
+      "E": "Amazon Lightsail"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS App Runner simplifies deployment of containerized or source-based web apps with automatic scaling, HTTPS, and load balancing. Beanstalk (B) orchestrates broader app stacks. ECS (C) is orchestration. Fargate (D) is serverless compute for containers used by ECS/EKS. Lightsail (E) is VPS hosting."
+  },
+  {
+    "id": 60,
+    "question": "Instances in a private subnet need outbound internet access to download patches but must not be publicly reachable. What should you use?",
+    "options": {
+      "A": "Internet Gateway",
+      "B": "NAT Gateway",
+      "C": "VPC Peering",
+      "D": "AWS Direct Connect",
+      "E": "Transit Gateway"
+    },
+    "correctAnswer": "B",
+    "explanation": "A NAT Gateway enables outbound internet access for instances in private subnets while preventing unsolicited inbound connections. An Internet Gateway (A) is required for public subnets. VPC Peering (C) connects VPCs. Direct Connect (D) is private connectivity to on-prem. Transit Gateway (E) centralizes network connections."
+  },
+  {
+    "id": 61,
+    "question": "Which VPC endpoint type is used to privately connect to Amazon S3 without traversing the public internet?",
+    "options": {
+      "A": "Interface endpoint",
+      "B": "Gateway endpoint",
+      "C": "PrivateLink service endpoint",
+      "D": "NAT Gateway",
+      "E": "Internet Gateway"
+    },
+    "correctAnswer": "B",
+    "explanation": "Gateway endpoints are used for S3 and DynamoDB to route traffic privately via VPC route tables. Interface endpoints (A) use PrivateLink for other AWS services. PrivateLink (C) refers to the underlying technology for interface endpoints. NAT Gateway (D) and Internet Gateway (E) are not endpoints for S3 privacy."
+  },
+  {
+    "id": 62,
+    "question": "Which statement best describes a network ACL (NACL) in a VPC?",
+    "options": {
+      "A": "Stateful firewall applied to instances",
+      "B": "Stateless filter applied at the subnet level",
+      "C": "DNS resolver for the VPC",
+      "D": "Edge protection against DDoS",
+      "E": "Service that inspects application-layer traffic"
+    },
+    "correctAnswer": "B",
+    "explanation": "Network ACLs are stateless and applied to subnets, evaluating inbound and outbound rules for all traffic. Security groups (A) are stateful and attached to ENIs/instances. DNS (C) is Route 53/Resolver. Edge DDoS (D) is AWS Shield. Application-layer inspection (E) is typically AWS WAF."
+  },
+  {
+    "id": 63,
+    "question": "You require full control over encryption keys, including key policies, aliases, grants, and optional rotation settings. Which KMS key type should you use?",
+    "options": {
+      "A": "AWS managed keys (aws/*)",
+      "B": "Customer managed keys (CMKs)",
+      "C": "SSE-S3 (AES-256)",
+      "D": "SSE-C (customer-provided keys)",
+      "E": "TLS certificates in ACM"
+    },
+    "correctAnswer": "B",
+    "explanation": "Customer managed KMS keys provide full administrative control (policies, aliases, grants) and optional automatic rotation. AWS managed keys (A) are created/managed by AWS with limited control. SSE-S3 (C) and SSE-C (D) are S3 encryption modes, not KMS key types. ACM (E) manages TLS certificates, not data encryption keys."
+  },
+  {
+    "id": 64,
+    "question": "Which S3 server-side encryption option uses keys fully managed by S3 with AES-256 and requires no KMS configuration?",
+    "options": {
+      "A": "SSE-S3",
+      "B": "SSE-KMS",
+      "C": "SSE-C",
+      "D": "Client-side encryption",
+      "E": "S3 Object Lock"
+    },
+    "correctAnswer": "A",
+    "explanation": "SSE-S3 (AES-256) is managed entirely by S3 without KMS integration. SSE-KMS (B) uses KMS keys for encryption and access control. SSE-C (C) uses customer-provided keys for each request. Client-side (D) encrypts data before upload. Object Lock (E) enforces WORM retention, not encryption."
+  },
+  {
+    "id": 65,
+    "question": "You need to grant a time-limited, secure download link to a private S3 object without making the bucket public. What should you generate?",
+    "options": {
+      "A": "Bucket policy",
+      "B": "IAM inline policy",
+      "C": "Pre-signed URL",
+      "D": "ACL granting Everyone read",
+      "E": "CloudFront public distribution"
+    },
+    "correctAnswer": "C",
+    "explanation": "A pre-signed URL grants temporary, scoped access to a specific S3 object. Bucket policies (A) apply broader permissions. IAM policies (B) are for principals. ACLs (D) would expose the object publicly. CloudFront (E) can serve private content but requires signed cookies/URLs and additional setup."
+  },
+  {
+    "id": 66,
+    "question": "Which artifact lets you launch EC2 instances with preconfigured OS, packages, and application software?",
+    "options": {
+      "A": "Amazon Machine Image (AMI)",
+      "B": "EBS Snapshot",
+      "C": "Launch Template",
+      "D": "CloudFormation Stack",
+      "E": "User Data script"
+    },
+    "correctAnswer": "A",
+    "explanation": "An AMI is a template containing the OS and software to launch identical EC2 instances. EBS snapshots (B) capture volume state. Launch Templates (C) define instance parameters. CloudFormation (D) provisions resources. User Data (E) runs scripts at boot but doesn't package the full image."
+  },
+  {
+    "id": 67,
+    "question": "For compute-intensive workloads like high-performance web servers or scientific modeling, which EC2 instance family is most appropriate?",
+    "options": {
+      "A": "General Purpose (t family)",
+      "B": "Compute Optimized (c family)",
+      "C": "Memory Optimized (r family)",
+      "D": "Storage Optimized (i/d family)",
+      "E": "Accelerated Computing (p/g family)"
+    },
+    "correctAnswer": "B",
+    "explanation": "Compute Optimized (c family) provides high CPU-to-memory ratio for compute-bound workloads. General Purpose (A) balances resources. Memory Optimized (C) targets in-memory databases/analytics. Storage Optimized (D) focuses on I/O throughput and NVMe SSDs. Accelerated (E) provides GPUs/accelerators for ML/graphics."
+  },
+  {
+    "id": 68,
+    "question": "Which EC2 placement group type places instances close together within a single AZ to achieve low-latency networking and high throughput?",
+    "options": {
+      "A": "Spread",
+      "B": "Partition",
+      "C": "Cluster",
+      "D": "Multicast",
+      "E": "Edge"
+    },
+    "correctAnswer": "C",
+    "explanation": "Cluster placement groups pack instances within a single AZ to maximize network performance. Spread (A) distributes instances across hardware to reduce correlated failure. Partition (B) splits instances into isolated groups for large distributed systems. Multicast (D) and Edge (E) are not EC2 placement group types."
+  },
+  {
+    "id": 69,
+    "question": "Which AWS tool helps you review workloads against the Well-Architected Framework pillars and provides improvement plans?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Well-Architected Tool",
+      "C": "AWS Config",
+      "D": "AWS Security Hub",
+      "E": "Amazon CloudWatch"
+    },
+    "correctAnswer": "B",
+    "explanation": "The AWS Well-Architected Tool guides reviews across the framework pillars (operational excellence, security, reliability, performance efficiency, cost optimization) and suggests improvements. Trusted Advisor (A) provides best-practice checks but is not the formal review tool. Config (C) analyzes configurations. Security Hub (D) aggregates findings. CloudWatch (E) monitors metrics/logs."
+  },
+  {
+    "id": 70,
+    "question": "You need layer 7 features such as path-based routing, host-based routing, and HTTP headers for your application traffic. Which load balancer should you use?",
+    "options": {
+      "A": "Classic Load Balancer",
+      "B": "Network Load Balancer",
+      "C": "Application Load Balancer",
+      "D": "Gateway Load Balancer",
+      "E": "Global Accelerator"
+    },
+    "correctAnswer": "C",
+    "explanation": "Application Load Balancer (ALB) operates at layer 7 (HTTP/HTTPS) with advanced routing like path/host-based rules. Network Load Balancer (B) is layer 4 for TCP/UDP with ultra-high performance. Classic (A) is legacy. Gateway Load Balancer (D) is for deploying/ scaling third-party virtual appliances. Global Accelerator (E) optimizes internet routing, not load balancing within a VPC."
+  },
+  {
+    "id": 71,
+    "question": "Your application requires extremely high throughput and low latency for TCP/UDP traffic with static IPs per AZ. Which load balancer type fits?",
+    "options": {
+      "A": "Application Load Balancer",
+      "B": "Network Load Balancer",
+      "C": "Classic Load Balancer",
+      "D": "Gateway Load Balancer",
+      "E": "Amazon Route 53"
+    },
+    "correctAnswer": "B",
+    "explanation": "Network Load Balancer (NLB) provides ultra-high performance at layer 4 with static IPs per AZ and supports TCP/UDP. ALB (A) is layer 7. Classic (C) is legacy. Gateway LB (D) is for virtual appliances. Route 53 (E) is DNS, not a load balancer."
+  },
+  {
+    "id": 72,
+    "question": "You need a static, publicly routable IPv4 address that you can remap to another EC2 instance in case of failure. What should you allocate?",
+    "options": {
+      "A": "Elastic IP",
+      "B": "EBS Snapshot",
+      "C": "NAT Gateway",
+      "D": "Private IP",
+      "E": "Route 53 alias record"
+    },
+    "correctAnswer": "A",
+    "explanation": "An Elastic IP is a static, public IPv4 address that can be remapped to different instances. EBS snapshots (B) are storage backups. NAT Gateway (C) provides outbound internet for private subnets. Private IP (D) is non-routable externally. Route 53 alias (E) is a DNS mapping, not an IP address."
+  },
+  {
+    "id": 73,
+    "question": "You need to query and analyze your application logs stored in CloudWatch Logs using a SQL-like query language. Which feature should you use?",
+    "options": {
+      "A": "CloudWatch Metrics",
+      "B": "CloudWatch Logs Insights",
+      "C": "AWS X-Ray",
+      "D": "AWS Glue Data Catalog",
+      "E": "Amazon Athena"
+    },
+    "correctAnswer": "B",
+    "explanation": "CloudWatch Logs Insights provides a powerful query language to search and visualize CloudWatch Logs. Metrics (A) track numeric time-series. X-Ray (C) traces application requests. Glue Catalog (D) stores metadata for data lakes. Athena (E) queries data in S3, not CloudWatch Logs directly."
+  },
+  {
+    "id": 74,
+    "question": "Which service lets you securely connect to EC2 instances via a browser or CLI without opening inbound SSH ports or managing bastion hosts?",
+    "options": {
+      "A": "AWS Systems Manager Session Manager",
+      "B": "AWS Client VPN",
+      "C": "AWS Direct Connect",
+      "D": "Amazon WorkSpaces",
+      "E": "Amazon AppStream 2.0"
+    },
+    "correctAnswer": "A",
+    "explanation": "Session Manager provides secure, auditable, agent-based connections to instances without inbound SSH. Client VPN (B) enables user VPN access to VPCs. Direct Connect (C) is private links to AWS. WorkSpaces (D) and AppStream (E) deliver virtual desktops/app streaming, not instance access."
+  },
+  {
+    "id": 75,
+    "question": "You need a managed service to continuously replicate and recover physical/virtual servers from on-premises or other clouds into AWS for disaster recovery. Which service should you choose?",
+    "options": {
+      "A": "AWS Elastic Disaster Recovery (DRS)",
+      "B": "AWS Backup",
+      "C": "Amazon RDS Multi-AZ",
+      "D": "AWS Storage Gateway File Gateway",
+      "E": "Amazon S3 Cross-Region Replication"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Elastic Disaster Recovery (DRS) replicates source servers at the block level and enables quick recovery in AWS. AWS Backup (B) centralizes backups for AWS services. RDS Multi-AZ (C) is database HA, not server DR. Storage Gateway File Gateway (D) exposes NFS/SMB to S3. S3 CRR (E) replicates objects across Regions, not full server recovery."
+  }
+]

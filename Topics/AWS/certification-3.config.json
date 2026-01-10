@@ -1,0 +1,15 @@
+{
+  "topic": "AWS",
+  "input": "Topics/AWS/certification-3.json",
+  "template": "aws-cert",
+  "outputTemplate": "aws-cert-3",
+  "startDate": "2026-01-12",
+  "perDay": 1,
+  "format": "png",
+  "size": "custom",
+  "width": 1080,
+  "height": 1300,
+  "showAnswer": false,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_q{qno}_{id}.{ext}"
+}

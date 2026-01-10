@@ -1,0 +1,327 @@
+[
+  {
+    "id": 176,
+    "question": "Which S3 storage class automatically monitors access patterns and moves objects to the most cost‑effective tier without performance impact?",
+    "options": {
+      "A": "S3 Standard",
+      "B": "S3 Standard‑IA",
+      "C": "S3 Intelligent‑Tiering",
+      "D": "S3 One Zone‑IA",
+      "E": "S3 Glacier Flexible Retrieval"
+    },
+    "correctAnswer": "C",
+    "explanation": "S3 Intelligent‑Tiering automatically optimizes costs by moving objects between frequent and infrequent access tiers based on actual usage, with millisecond retrieval. Standard (A) and Standard‑IA (B) are fixed classes. One Zone‑IA (D) stores in a single AZ. Glacier Flexible Retrieval (E) is archival with minutes‑to‑hours retrieval."
+  },
+  {
+    "id": 177,
+    "question": "Which feature of Amazon EFS reduces storage costs by automatically moving infrequently accessed files to a lower‑cost tier?",
+    "options": {
+      "A": "EFS Lifecycle Management (IA tier)",
+      "B": "EBS Snapshot Lifecycle",
+      "C": "FSx Data Deduplication",
+      "D": "S3 Lifecycle Rules",
+      "E": "EFS Provisioned Throughput"
+    },
+    "correctAnswer": "A",
+    "explanation": "EFS Lifecycle Management automatically transitions files to the EFS Infrequent Access (IA) storage class after a set period of inactivity. EBS snapshots (B) and S3 lifecycle (D) are for different services. FSx deduplication (C) applies to certain FSx offerings. Provisioned throughput (E) relates to performance, not tiering."
+  },
+  {
+    "id": 178,
+    "question": "You want to continuously test your HTTP endpoints from multiple geographic locations and get alerts on failures. Which service should you use?",
+    "options": {
+      "A": "Amazon CloudWatch Synthetics",
+      "B": "Amazon Route 53 health checks",
+      "C": "AWS X‑Ray",
+      "D": "AWS Config",
+      "E": "AWS Global Accelerator"
+    },
+    "correctAnswer": "A",
+    "explanation": "CloudWatch Synthetics canaries run scripted checks against endpoints from various locations and alert on failures. Route 53 health checks (B) monitor endpoints but do not run scripted user journeys. X‑Ray (C) traces requests inside applications. Config (D) checks resource configurations. Global Accelerator (E) optimizes routing, not synthetic testing."
+  },
+  {
+    "id": 179,
+    "question": "Which statement best describes Amazon S3’s consistency model for new objects and object updates?",
+    "options": {
+      "A": "Eventual consistency for all operations",
+      "B": "Strong read‑after‑write for new objects and strong consistency for overwrite/delete",
+      "C": "Read‑your‑writes only in the same Region",
+      "D": "Strong consistency only for Glacier classes",
+      "E": "Strong consistency only when using S3 Transfer Acceleration"
+    },
+    "correctAnswer": "B",
+    "explanation": "S3 provides strong read‑after‑write consistency for new objects and strong consistency for overwrite and delete operations across all Regions. Eventual consistency (A) is outdated. Options C, D, and E incorrectly limit consistency to certain contexts."
+  },
+  {
+    "id": 180,
+    "question": "Which service enables sharing of certain AWS resources (like subnets, Route 53 Resolver rules) across accounts within an organization?",
+    "options": {
+      "A": "AWS Resource Access Manager (RAM)",
+      "B": "AWS Organizations",
+      "C": "AWS Control Tower",
+      "D": "AWS Service Catalog",
+      "E": "AWS CloudFormation StackSets"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS RAM allows you to securely share supported resources (e.g., subnets, Route 53 Resolver rules) across accounts. Organizations (B) provides account governance, not resource sharing. Control Tower (C) sets up landing zones. Service Catalog (D) curates products. StackSets (E) deploys stacks across accounts/Regions."
+  },
+  {
+    "id": 181,
+    "question": "Which Route 53 feature provides DNS‑level controls to block or allow specific domains using managed or custom domain lists?",
+    "options": {
+      "A": "Route 53 Resolver DNS Firewall",
+      "B": "Geolocation routing",
+      "C": "Latency‑based routing",
+      "D": "Failover routing",
+      "E": "Weighted routing"
+    },
+    "correctAnswer": "A",
+    "explanation": "Route 53 Resolver DNS Firewall lets you define rule groups using managed or custom domain lists to filter DNS queries. The other options are traffic routing policies, not DNS firewalls."
+  },
+  {
+    "id": 182,
+    "question": "Which VPC internet egress option allows IPv6 instances in private subnets to reach the internet while blocking inbound connections?",
+    "options": {
+      "A": "Internet Gateway",
+      "B": "NAT Gateway",
+      "C": "Egress‑Only Internet Gateway",
+      "D": "VPC Peering",
+      "E": "Transit Gateway"
+    },
+    "correctAnswer": "C",
+    "explanation": "An Egress‑Only Internet Gateway provides outbound‑only internet access for IPv6 traffic from private subnets. Internet Gateway (A) enables bidirectional for public subnets. NAT Gateway (B) is for IPv4. Peering (D) and Transit Gateway (E) connect networks, not direct internet egress."
+  },
+  {
+    "id": 183,
+    "question": "By default, what traffic is allowed by a new security group applied to an EC2 instance?",
+    "options": {
+      "A": "All inbound and all outbound",
+      "B": "No inbound and all outbound",
+      "C": "All inbound and no outbound",
+      "D": "No inbound and no outbound",
+      "E": "Inbound SSH only and all outbound"
+    },
+    "correctAnswer": "B",
+    "explanation": "Security groups are stateful. By default, new security groups have no inbound rules (deny), and allow all outbound traffic. Inbound rules must be explicitly added."
+  },
+  {
+    "id": 184,
+    "question": "Which statement about network ACLs (NACLs) is TRUE?",
+    "options": {
+      "A": "They are stateful and evaluate only inbound rules",
+      "B": "They are stateless and evaluate inbound and outbound rules with numbered order",
+      "C": "They apply at the instance level",
+      "D": "They can reference security group IDs in rules",
+      "E": "They only filter traffic to internet gateways"
+    },
+    "correctAnswer": "B",
+    "explanation": "NACLs are stateless, evaluated in rule order (lowest number first), and apply at the subnet level for both inbound and outbound traffic. Security groups (C/D) are instance/ENI‑level and stateful."
+  },
+  {
+    "id": 185,
+    "question": "Which IAM identity type is recommended for applications running on AWS services to obtain temporary credentials securely?",
+    "options": {
+      "A": "IAM user with long‑term access keys",
+      "B": "IAM role assumed via AWS STS",
+      "C": "Root user",
+      "D": "Local OS user",
+      "E": "Access key embedded in application code"
+    },
+    "correctAnswer": "B",
+    "explanation": "IAM roles provide temporary, automatically rotated credentials via AWS STS, following best practices. Long‑term keys (A/E) and root user (C) are insecure. Local OS users (D) are unrelated to AWS identity."
+  },
+  {
+    "id": 186,
+    "question": "What is the purpose of envelope encryption in AWS KMS?",
+    "options": {
+      "A": "Encrypting data only at rest",
+      "B": "Using a data key to encrypt data and a KMS CMK to encrypt the data key",
+      "C": "Sharing keys across accounts automatically",
+      "D": "Replacing IAM with key policies",
+      "E": "Encrypting network traffic"
+    },
+    "correctAnswer": "B",
+    "explanation": "Envelope encryption uses a data key to encrypt data, and then encrypts that data key with a KMS customer managed key (CMK), improving performance and security."
+  },
+  {
+    "id": 187,
+    "question": "Which service provides rich, curated checks across cost optimization, performance, security, and fault tolerance and can flag idle resources?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Config",
+      "C": "AWS Budgets",
+      "D": "AWS Security Hub",
+      "E": "AWS Artifact"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Trusted Advisor offers best‑practice checks (including cost optimization like idle resources), performance, security, and fault tolerance guidance. Config (B) is for configuration compliance. Budgets (C) is for cost alerts. Security Hub (D) aggregates findings. Artifact (E) provides compliance documents."
+  },
+  {
+    "id": 188,
+    "question": "Amazon EC2 AMIs are scoped to which level by default?",
+    "options": {
+      "A": "Global",
+      "B": "Account‑wide across all Regions",
+      "C": "Region‑specific",
+      "D": "Availability Zone‑specific",
+      "E": "VPC‑specific"
+    },
+    "correctAnswer": "C",
+    "explanation": "AMIs are Region‑specific. To use an AMI in another Region, you copy the AMI (or its backing snapshot) to that Region."
+  },
+  {
+    "id": 189,
+    "question": "Which feature enables default encryption for all new EBS volumes created in an account/Region?",
+    "options": {
+      "A": "EBS per‑volume encryption",
+      "B": "KMS automatic key rotation",
+      "C": "EBS Default Encryption",
+      "D": "CloudTrail data event logging",
+      "E": "IAM permissions boundary"
+    },
+    "correctAnswer": "C",
+    "explanation": "EBS Default Encryption enforces encryption of all newly created EBS volumes in the account/Region using a specified KMS key. Per‑volume encryption (A) is manual. Rotation (B) is key lifecycle. CloudTrail (D) and IAM boundaries (E) are unrelated."
+  },
+  {
+    "id": 190,
+    "question": "Which service provides SQL‑based analytics directly on streaming data from sources like Kinesis Data Streams or MSK?",
+    "options": {
+      "A": "Amazon Kinesis Data Analytics",
+      "B": "Amazon Athena",
+      "C": "AWS Glue",
+      "D": "Amazon EMR",
+      "E": "Amazon QuickSight"
+    },
+    "correctAnswer": "A",
+    "explanation": "Kinesis Data Analytics lets you run SQL or Apache Flink applications on streaming data. Athena (B) queries S3. Glue (C) is ETL. EMR (D) runs big‑data frameworks. QuickSight (E) is BI visualization."
+  },
+  {
+    "id": 191,
+    "question": "Which data service is purpose‑built for time‑series data, supporting fast ingestion and queries by time intervals?",
+    "options": {
+      "A": "Amazon Timestream",
+      "B": "Amazon RDS",
+      "C": "Amazon DynamoDB",
+      "D": "Amazon Aurora",
+      "E": "Amazon Neptune"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Timestream is designed for time‑series workloads with built‑in time interval functions and tiered storage. RDS/Aurora (B/D) are relational, DynamoDB (C) is NoSQL key‑value, Neptune (E) is graph."
+  },
+  {
+    "id": 192,
+    "question": "Which feature of API Gateway helps protect backend services by throttling requests per API key and enforcing usage quotas?",
+    "options": {
+      "A": "Usage plans",
+      "B": "Lambda authorizers",
+      "C": "Mock integrations",
+      "D": "Integration response mapping",
+      "E": "Binary media types"
+    },
+    "correctAnswer": "A",
+    "explanation": "Usage plans with API keys enable throttling (rate/burst) and quotas per client, protecting backends. Authorizers (B) handle authentication. The other options are unrelated to throttling or quotas."
+  },
+  {
+    "id": 193,
+    "question": "Which CloudFront operation allows you to remove outdated objects from edge caches before their TTL expires?",
+    "options": {
+      "A": "Invalidation",
+      "B": "Signed URLs",
+      "C": "Origin Shield",
+      "D": "Field‑level encryption",
+      "E": "Cache Behaviors"
+    },
+    "correctAnswer": "A",
+    "explanation": "CloudFront invalidations explicitly remove cached objects from edge locations. Signed URLs (B) control access. Origin Shield (C) improves cache hit ratio. Field‑level encryption (D) protects sensitive headers. Cache behaviors (E) define routing and caching rules."
+  },
+  {
+    "id": 194,
+    "question": "Which pillar of the AWS Well‑Architected Framework focuses on minimizing environmental impact of running workloads in the cloud?",
+    "options": {
+      "A": "Operational Excellence",
+      "B": "Security",
+      "C": "Reliability",
+      "D": "Sustainability",
+      "E": "Performance Efficiency"
+    },
+    "correctAnswer": "D",
+    "explanation": "The Sustainability pillar guides design choices to reduce environmental impact, complementing the other pillars such as Security and Reliability."
+  },
+  {
+    "id": 195,
+    "question": "Which service is best suited to catalog tables automatically by crawling data in S3 and creating schema in a central metadata store?",
+    "options": {
+      "A": "AWS Glue Crawlers",
+      "B": "Amazon Athena",
+      "C": "Amazon Redshift",
+      "D": "AWS Lake Formation",
+      "E": "Amazon EMR"
+    },
+    "correctAnswer": "A",
+    "explanation": "Glue Crawlers scan data sources (e.g., S3) to infer schemas and populate the AWS Glue Data Catalog. Athena (B) queries data; Lake Formation (D) manages data lake security; EMR (E) runs big‑data jobs; Redshift (C) is a warehouse."
+  },
+  {
+    "id": 196,
+    "question": "Which service provides a managed ledger database with verifiable history suitable for audit trails and systems of record?",
+    "options": {
+      "A": "Amazon QLDB",
+      "B": "Amazon Timestream",
+      "C": "Amazon DynamoDB",
+      "D": "Amazon RDS",
+      "E": "Amazon Aurora"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon QLDB offers an immutable, cryptographically verifiable transaction log and history—ideal for audit trails. Timestream (B) is time‑series; DynamoDB (C) is key‑value; RDS/Aurora (D/E) are relational."
+  },
+  {
+    "id": 197,
+    "question": "Which Amazon S3 feature records detailed access logs for requests to a bucket for auditing and analysis?",
+    "options": {
+      "A": "S3 Server Access Logging",
+      "B": "AWS CloudTrail data events",
+      "C": "S3 Object Lock",
+      "D": "S3 Inventory",
+      "E": "S3 Access Points"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Server Access Logging writes logs to a target bucket for each request. CloudTrail data events (B) can also log S3 object‑level actions but across AWS services; Server Access Logging is bucket‑native. Object Lock (C), Inventory (D), and Access Points (E) serve different purposes."
+  },
+  {
+    "id": 198,
+    "question": "Which service provides private connectivity to services across VPCs and accounts using service names, without exposing IP addresses, and is different from VPC peering?",
+    "options": {
+      "A": "AWS PrivateLink",
+      "B": "VPC Peering",
+      "C": "AWS Transit Gateway",
+      "D": "Direct Connect",
+      "E": "Global Accelerator"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS PrivateLink (via interface VPC endpoints) enables private connectivity to services using endpoint service names and ENIs. VPC peering (B) connects VPCs at layer 3. Transit Gateway (C) is a hub for routing. Direct Connect (D) is on‑prem to AWS. Global Accelerator (E) optimizes internet paths."
+  },
+  {
+    "id": 199,
+    "question": "Which AWS service helps you orchestrate workflow steps with human review tasks and service integrations, often used for business processes?",
+    "options": {
+      "A": "AWS Step Functions",
+      "B": "Amazon SWF (Simple Workflow Service)",
+      "C": "Amazon EventBridge",
+      "D": "AWS Batch",
+      "E": "AWS CodePipeline"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon SWF provides a workflow service with task lists and coordination including human tasks, suitable for long‑running processes. Step Functions (A) orchestrates serverless workflows but SWF is often used in legacy/business processes. EventBridge (C) routes events; Batch (D) schedules compute jobs; CodePipeline (E) is CI/CD."
+  },
+  {
+    "id": 200,
+    "question": "Which AWS service can securely import data from SaaS applications (like Salesforce or Zendesk) into AWS services using pre‑built connectors and mappings?",
+    "options": {
+      "A": "Amazon AppFlow",
+      "B": "AWS Glue",
+      "C": "AWS DataSync",
+      "D": "Amazon Kinesis Data Firehose",
+      "E": "AWS Transfer Family"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon AppFlow provides secure, bidirectional data integration with popular SaaS apps via pre‑built connectors, mapping, filtering, and field transformations. Glue (B) is ETL; DataSync (C) is online transfer; Firehose (D) delivers streaming data; Transfer Family (E) offers SFTP/FTP/FTPS."
+  }
+]

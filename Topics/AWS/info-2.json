@@ -1,0 +1,369 @@
+[
+  {
+    "id": "bb-info-genel-003",
+    "title": "Sanal Özel Bulut/Ağ (VPC/VNet — Virtual Private Cloud/Network) — (AWS: VPC / Azure: Virtual Network / GCP: VPC)",
+    "content": "VPC/VNet, bulut içinde mantıksal olarak izole edilmiş bir sanal ağ alanıdır (virtual private network) ve kendi IP aralığı (address space), alt ağları (subnets), yönlendirme (routing) ve güvenlik denetimleri (security controls) ile kaynaklarınızı organize eder.\n\nTemel bileşenler: alt ağ (subnet), yönlendirme tablosu (route table), güvenlik grubu (security group/NSG), internet/NAT ağ geçitleri (internet/NAT gateways) ve özel uç noktalar (private endpoints). Bu yapı, çok katmanlı mimariler (multi-tier architectures) ve mikroservislerin (microservices) ağ izolasyonunu sağlar.",
+    "example": "Kurumsal bölümlerin ayrıştırılması:\nFinans ve Ar-Ge ekipleri ayrı VPC/VNet’lerde çalışır; yalnızca belirli servisler peering ile birbirine erişir, geri kalan trafik politikalarla engellenir.\n\nÇevik test ortamları:\nHer sprint için geçici bir VPC/VNet oluşturulur; testler bittiğinde ortam kaldırılır ve maliyet kontrolü sağlanır."
+  },
+  {
+    "id": "bb-info-genel-004",
+    "title": "CIDR Adresleme (CIDR — Classless Inter-Domain Routing) — (AWS/Azure/GCP: CIDR)",
+    "content": "CIDR, IP adres alanlarını esnek alt ağlara (variable-length subnets) bölmek için kullanılan notasyon ve yönlendirme yöntemidir. Örnek: 10.0.0.0/16 ağ alanı, 10.0.1.0/24 gibi daha küçük alt ağlara bölünebilir.\n\nBulutta CIDR planlaması, adres çakışmalarını (address conflicts) önlemek, peering ve hibrit bağlantılar (hybrid connectivity) için geleceğe dönük ölçeklenebilirlik (scalability) sağlamak adına kritik öneme sahiptir.",
+    "example": "Çoklu ortam adres planı:\nProd 10.0.0.0/16, Stage 10.1.0.0/16, Dev 10.2.0.0/16 olarak ayrılır; peering ve VPN için çakışma riski azaltılır.\n\nTedarikçi entegrasyonu:\nPartner ağlarıyla güvenli bağlantı kurmak için önceden rezerv CIDR blokları ayrılır; overlap durumları engellenir."
+  },
+  {
+    "id": "bb-info-genel-005",
+    "title": "Alt Ağ (Subnet) — (AWS: Subnet / Azure: Subnet / GCP: Subnet)",
+    "content": "Alt ağ (subnet), VPC/VNet içindeki IP alanının bir bölümüdür ve kaynakların mantıksal/operasyonel ayrımını sağlar. Public subnet (public-facing) genellikle internet erişimi olan katman, private subnet (private-backend) ise iç sistemlerdir.\n\nAğ güvenliği (network security) ve erişim yolları (egress/ingress paths) subnet bazında yönetilir; üretim ve test katmanları ayrılarak blast radius (etki alanı) azaltılır.",
+    "example": "Katmanlı mimari:\nWeb katmanı public, uygulama ve veritabanı katmanları private subnet’lerde çalışır; güvenlik gruplarıyla katmanlar arası trafik kontrol edilir.\n\nVeri gizliliği:\nKişisel veriyi işleyen servisler özel (private) alt ağlarda tutulur ve yalnızca iç API’lardan erişilebilir."
+  },
+  {
+    "id": "bb-info-genel-006",
+    "title": "Yönlendirme Tablosu (Route Table) — (AWS: Route Table / Azure: Route Table (UDR) / GCP: Routes)",
+    "content": "Yönlendirme tabloları (route tables), paketlerin hedefe nasıl ulaşacağını belirleyen kuralları (routes) içerir. Varsayılan yerel yönlendirme (local routing) alt ağ içi trafiği, ek kurallar ise internet/NAT, peering ve VPN yolunu tanımlar.\n\nKritik kavramlar: varsayılan rota (default route), next hop (internet gateway/NAT/VPN/peering), öncelik ve kapsama (priority/scope). Doğru tasarım ağ akışını (traffic flow) ve güvenliği iyileştirir.",
+    "example": "Egress kontrolü:\nPrivate subnet’te 0.0.0.0/0 trafiği NAT’a yönlendirilir; dışa giden erişimler denetimli ve kayıt altındadır.\n\nMerkezî güvenlik katmanı:\nTüm egress trafiği bir güvenlik VPC/VNet’teki firewall’a yönlendirilerek içerik denetimi uygulanır."
+  },
+  {
+    "id": "bb-info-genel-007",
+    "title": "İnternet Ağ Geçidi (Internet Gateway) — (AWS: Internet Gateway / Azure: Sistem varsayılan internet çıkışı + Public IP / GCP: Default Internet Gateway)",
+    "content": "İnternet ağ geçidi (internet gateway), public subnet’lerdeki kaynakların internete erişmesini (internet access) sağlar. AWS/GCP’de özel kaynak vardır; Azure’da sistem yönlendirmeleri ve Public IP’lerle internet çıkışı sağlanır.\n\nGüvenlik (security) için inbound/outbound erişim, güvenlik grupları/NSG ve firewall politikaları ile sıkı şekilde kontrol edilmelidir.",
+    "example": "Müşteri-facing servisler:\nWeb uygulaması public subnet’te yayınlanır; WAF ve load balancer arkasında güvenli erişim sağlanır.\n\nBakım ve güncellemeler:\nSadece yönetim aracları için internet erişimi verilir; üretim sunucularının inbound bağlantıları kapalı tutulur."
+  },
+  {
+    "id": "bb-info-genel-008",
+    "title": "NAT Ağ Geçidi (NAT Gateway) — (AWS: NAT Gateway / Azure: NAT Gateway (Virtual Network NAT) / GCP: Cloud NAT)",
+    "content": "NAT Gateway, private subnet’teki kaynakların internete yalnız outbound (egress-only) erişmesini sağlar; inbound bağlantılar kabul edilmez. Paketler NAT cihazı üzerinden dış dünyaya çevrilir (address translation).\n\nGüncelleme (patching), paket depoları (package repositories) ve harici API çağrıları için güvenli çıkış (secure egress) sağlar.",
+    "example": "Sunucusuz iş yükleri:\nÖzel alt ağdaki fonksiyonlar harici API’lara NAT üzerinden erişir; IP allowlist yönetimi basitleşir.\n\nVeritabanı yedekleri:\nYedekleme aracı dış depolara yalnız NAT çıkışı ile ulaşır; inbound portlar kapalı kalarak risk azaltılır."
+  },
+  {
+    "id": "bb-info-genel-009",
+    "title": "Yalnızca Çıkış IPv6 Ağ Geçidi (Egress-Only Internet Gateway) — (AWS: Egress-Only Internet Gateway / Azure: N/A (IPv6 egress via system route+NSG) / GCP: N/A)",
+    "content": "Egress-Only Internet Gateway, IPv6 adresli private kaynakların internete yalnızca outbound trafik (outbound-only) göndermesini sağlar; inbound IPv6 bağlantıları engellenir. AWS’ye özgü bir bileşendir.\n\nIPv6 yığınında (IPv6 stack) güvenli egress tasarımı, modern istemci erişimleri ve büyük adres alanı avantajlarıyla birlikte kullanılır.",
+    "example": "Regülasyon uyumu:\nIPv6 etkin ortamda inbound erişim kapatılarak yalnız egress sağlanır; denetim gereksinimleri karşılanır.\n\nMaliyet/güvenlik dengesi:\nIPv6 üzerinden CDN/harici API’lara erişim yapılırken kaynaklar internetten doğrudan ulaşılamaz."
+  },
+  {
+    "id": "bb-info-genel-010",
+    "title": "Güvenlik Grubu (Security Group) — (AWS: Security Group / Azure: Network Security Group (NSG) / GCP: VPC Firewall Rules)",
+    "content": "Güvenlik grupları/NSG’ler, kaynak seviyesinde (per-instance/per-ENI) stateful kurallar (stateful firewall) ile inbound/outbound trafiği kontrol eder. GCP’de VPC firewall kuralları benzer işlevi görür.\n\nUygulama katmanlarına yakın mikro-segmentasyon (micro-segmentation) ve minimum yetki (least privilege) için esastır.",
+    "example": "Katmanlar arası erişim:\nWeb → Uygulama → Veritabanı trafiği yalnız gerekli portlarda izinlidir; gereksiz tüm erişimler engellenir.\n\nMavi/yeşil dağıtım:\nYeni sürüm grupları ayrı SG/NSG ile izole edilir; sorun durumunda hızlı geri dönüş sağlanır."
+  },
+  {
+    "id": "bb-info-genel-011",
+    "title": "Ağ Erişim Kontrol Listesi (Network ACL) — (AWS: NACL / Azure: N/A (NSG kullanılır) / GCP: N/A (VPC firewall kullanılır))",
+    "content": "NACL, AWS’de subnet seviyesinde stateless kurallar (stateless ACL) ile inbound/outbound trafiği değerlendirir. Azure/GCP’de eşdeğer bir NACL nesnesi yoktur; NSG/VPC firewall kuralları kullanılır.\n\nNACL’ler geniş ağ şeritlerini (broad network segments) korumak ve ek katmanlı güvenlik (defense-in-depth) sağlamak için tercih edilir.",
+    "example": "Genel engelleme:\nBelirli coğrafi IP aralıkları subnet seviyesinde NACL ile bloklanır; uygulama SG kuralları daha ince taneli olur.\n\nDeneysel izolasyon:\nSandbox subnet’leri NACL ile yalnızca NAT çıkışına izin verecek şekilde sınırlandırılır."
+  },
+  {
+    "id": "bb-info-genel-012",
+    "title": "Ağ Güvenlik Duvarı (Network Firewall) — (AWS: AWS Network Firewall / Azure: Azure Firewall / GCP: Hierarchical Firewall Policies + VPC Firewall)",
+    "content": "Yönetimli ağ güvenlik duvarları (managed network firewalls), L3–L7 denetim (inspection), egress kontrol, URL/DoH/SSL inceleme (TLS inspection) ve merkezi politika (centralized policy) uygulaması sunar.\n\nCampus/hub-topolojilerinde (hub-and-spoke) trafiğin merkezi denetimi, regülasyon ve denetim (compliance & audit) gereksinimlerini karşılar.",
+    "example": "Merkezî egress filtreleme:\nTüm VPC/VNet’lerden internet çıkışı tek bir güvenlik hub’ı üzerinden yapılır; zararlı alanlar engellenir.\n\nUygulama katmanı koruması:\nHTTP/S trafiği kötü niyetli imza/kalıplara karşı incelenir; veri sızıntısı riskleri azaltılır."
+  },
+  {
+    "id": "bb-info-genel-013",
+    "title": "VPC/VNet Peering (VPC/VNet Peering) — (AWS: VPC Peering / Azure: VNet Peering / GCP: VPC Peering)",
+    "content": "Peering, iki sanal ağı özel olarak (private connectivity) bağlar. Çoğu bulutta transitive routing desteklemez; hub-topolojiler için transit çözümler gerekir.\n\nBasit ve düşük gecikmeli (low latency) bağlantı ihtiyaçlarında, aynı veya farklı abonelik/hesaplarda (cross-account/subscription) uygulamalar arası iletişim sağlar.",
+    "example": "Paylaşılan servis erişimi:\nGünlükleme/kimlik gibi ortak servisler ayrı ağda tutulur; iş yükleri peering ile bu servislere erişir.\n\nBölünmüş mimari:\nFarklı ekiplerin ağları izole kalır, yalnız gerekli servisler peering üzerinden açılır."
+  },
+  {
+    "id": "bb-info-genel-014",
+    "title": "Transit Ağ Geçidi / Sanal WAN — (AWS: Transit Gateway / Azure: Virtual WAN (Hub) / GCP: Network Connectivity Center)",
+    "content": "Transit çözümler, çoklu VPC/VNet’leri hub-and-spoke mimaride birleştirir; transitive routing ve merkezî politika (central routing & policy) sağlar. Ölçekli kurumsal ağlarda karmaşıklığı azaltır.\n\nVPN/özel hat ve bulutlar arası bağlantılar (interconnect) bu hub üzerinden yönetilerek görünürlük (visibility) ve kontrol artırılır.",
+    "example": "Çoklu ortam birleştirme:\nProd, Stage ve ortak servis ağları transit hub’a bağlanır; yönlendirme ve güvenlik merkezîleşir.\n\nBirleşik güvenlik katmanı:\nTüm çıkışlar firewall/WAF üzerinden geçirilir; ağ ve uygulama politikaları tek noktadan uygulanır."
+  },
+  {
+    "id": "bb-info-genel-015",
+    "title": "Site-to-Site VPN (Site-to-Site VPN) — (AWS: Site-to-Site VPN / Azure: VPN Gateway / GCP: Cloud VPN)",
+    "content": "Site-to-Site VPN, kurum ağları ile bulut ağları arasında internet üzerinden şifreli tünel (IPsec tunnel) kurar. Hızlı devreye alma (rapid provisioning) ve maliyet etkin bağlantı sağlar.\n\nGenellikle DR/başlangıç (disaster recovery/initial connectivity) veya düşük hacimli iş yüklerinde özel hat öncesi köprü çözümü olarak kullanılır.",
+    "example": "Hızlı entegrasyon:\nYeni projede on-prem kaynaklar, bulut VPC/VNet’e VPN ile bağlanır; ilk gün veri akışı sağlanır.\n\nYedek hat:\nÖzel hat kesintilerinde VPN devreye girer; kritik sistemler çalışmaya devam eder."
+  },
+  {
+    "id": "bb-info-genel-016",
+    "title": "Özel Hat Bağlantısı (Direct Connect / ExpressRoute) — (AWS: Direct Connect / Azure: ExpressRoute / GCP: Dedicated/Partner Interconnect)",
+    "content": "Özel hat bağlantıları (private connectivity) interneti bypass ederek düşük gecikme (low latency), yüksek bant genişliği (high bandwidth) ve tutarlı performans (predictable performance) sunar.\n\nKritik üretim (mission-critical) ve veri yoğun iş yüklerinde (data-intensive workloads) güvenilirlik (reliability) ve güvenlik (security) için tercih edilir.",
+    "example": "Finans kurumları:\nRegülasyon gereği bulut bağlantıları özel hat üzerinden kurulur; gecikme ve güvenlik gereksinimleri karşılanır.\n\nVeri gölü yüklemeleri:\nBüyük batch aktarımlar düzenli olarak Interconnect/Direct Connect üzerinden yapılır; maliyet/performans optimize edilir."
+  },
+  {
+    "id": "bb-info-genel-017",
+    "title": "PrivateLink / Özel Uç Nokta (Private Endpoint) — (AWS: PrivateLink / Azure: Private Endpoint / GCP: Private Service Connect)",
+    "content": "Private Endpoint, yönetilen servisler veya SaaS uygulamalarına VPC/VNet içinden private IP (private IP access) ile erişim sağlar; trafik public internete çıkmadan (no public internet) yönlendirilir.\n\nUyumluluk (compliance) ve veri gizliliği (data privacy) gereksinimleri için yaygın; ağ erişimini sadeleştirir ve saldırı yüzeyini (attack surface) azaltır.",
+    "example": "Gizli veri işleme:\nVeri kasası/anahtar yönetimi servislerine private endpoint üzerinden erişim; public erişim kapalıdır.\n\nSaaS entegrasyonu:\nMuhasebe SaaS’ı VPC/VNet içinden PrivateLink/PSC ile bağlanır; IP allowlist ve kayıtlar basitleşir."
+  },
+  {
+    "id": "bb-info-genel-018",
+    "title": "Hizmet Uç Noktaları (Service Endpoints) — (AWS: VPC Endpoint (Gateway/Interface) / Azure: Service Endpoints / GCP: Private Service Connect)",
+    "content": "Hizmet uç noktaları, bulut servislerine özel ağ (private network path) üzerinden erişim sağlar. Azure’da Service Endpoints belirli servisler için yönlendirmeyi optimize eder; AWS’de gateway/interface VPC endpoints; GCP’de Private Service Connect benzer işlev görür.\n\nAmaç: bant genişliği ve güvenlik (bandwidth & security) iyileştirmesi, veri sızıntısı risklerini azaltma ve erişim denetimini (access control) güçlendirme.",
+    "example": "Depolama erişimi:\nObjeler yalnızca VPC/VNet’ten gelen taleplere izin verecek şekilde servis uç noktalarıyla sınırlandırılır.\n\nVeri çıkış maliyeti:\nİç ağ yolu kullanılarak egress maliyetleri ve gecikme azaltılır; büyük veri işlerinin verimi artar."
+  },
+  {
+    "id": "bb-info-genel-019",
+    "title": "Sanal Makine (Virtual Machine) — (AWS: Amazon EC2 / Azure: Virtual Machines / GCP: Compute Engine)",
+    "content": "Sanal makine (virtual machine, VM), işletim sistemi (operating system) ve uygulamaları çalıştıran hesaplama birimidir. CPU, bellek (memory), disk (storage) ve ağ (network) kaynakları boyutlandırılabilir.\n\nKullanım: durumlu uygulamalar (stateful apps), veritabanları, eski sistemlerin (legacy systems) modern ortama taşınması (lift-and-shift) ve özel yazılım gereksinimleri.",
+    "example": "Miras uygulama taşıma:\nOn‑prem monolitik uygulama, EC2/VM/Compute Engine üzerinde çalıştırılarak hızla buluta geçirilir.\n\nÖzel sürücüler:\nDonanım hızlandırma veya kernel modülü ihtiyaçları için VM’lerde özelleştirilmiş imajlar kullanılır."
+  },
+  {
+    "id": "bb-info-genel-020",
+    "title": "Makine Görüntüsü (AMI/Image — Machine Image) — (AWS: AMI / Azure: Managed Image / GCP: Image)",
+    "content": "Makine görüntüsü (machine image), işletim sistemi ve gerekli yazılımların (pre-baked OS & software) anlık kopyasıdır. Yeni VM’lerin hızlı ve tutarlı (consistent) şekilde oluşturulmasını sağlar.\n\nİmaj yönetimi (image management) sürümleme (versioning), güvenlik yamaları (patching), altın imaj (golden image) ve uyumluluk denetimleri (compliance checks) içerir.",
+    "example": "Golden image stratejisi:\nGüncel güvenlik yamaları ve ajanları içeren standart imajdan tüm VM’ler oluşturulur; drift azalır.\n\nAuto-scaling uyumu:\nASG/VMSS ölçeklendirmede aynı imaj kullanılarak yeni örnekler saniyeler içinde ayağa kaldırılır."
+  },
+  {
+    "id": "bb-info-genel-021",
+    "title": "Kullanıcı Verisi & Meta Veri (User Data & Instance Metadata) — (AWS: EC2 User Data & Instance Metadata / Azure: VM Custom Data & Instance Metadata Service / GCP: Startup Scripts & Metadata Server)",
+    "content": "User Data (kullanıcı verisi), örneğin ilk başlatmada (first boot) paket kurulumları ve konfigürasyonları otomatikleştiren başlangıç betikleri (bootstrap scripts) sağlar. Instance Metadata (örnek meta verisi), çalışma zamanında (runtime) örneğin kimlik, ağ, kimlik bilgisi token’ları ve konum gibi bilgileri güvenli bir endpoint’ten (metadata service) sunar.\n\nBu mekanizmalar altyapı otomasyonu (automation) ve yapılandırma yönetimi (configuration management) için kritik olup, kimlik bilgilerini koda gömmeden (no hard-coded secrets) dinamik konfigürasyon (dynamic configuration) ve ortam keşfi (environment discovery) sağlar.",
+    "example": "Otomatik kurulum:\nYeni açılan VM, User Data/Startup Script ile ajan (monitoring agent), log toplayıcı ve uygulama bağımlılıklarını kurar; ortam değişkenleri metadata service üzerinden çekilerek doğru cluster’a bağlanır.\n\nGüvenli kimlik devri:\nUygulama, metadata server’dan kısa ömürlü token (short-lived token) alır ve gizli yönetimi servisine (secrets manager) bağlanarak veritabanı parolasını dinamik olarak elde eder."
+  },
+  {
+    "id": "bb-info-genel-022",
+    "title": "Otomatik Ölçekleme (Auto Scaling / VM Scale Sets) — (AWS: Auto Scaling Groups / Azure: Virtual Machine Scale Sets / GCP: Managed Instance Groups)",
+    "content": "Auto Scaling, metriklere (metrics: CPU, latency, queue depth) veya zamanlamaya (scheduled scaling) göre örnek sayısını dinamik ayarlayarak (elastic scaling) maliyet ve performans optimizasyonu (cost & performance optimization) sağlar.\n\nPolitikalar (policies: target tracking, step scaling) ve sağlık kontrolleri (health checks) ile yük dalgalanmalarına (traffic spikes) dayanıklılık (resilience) ve yüksek erişilebilirlik (high availability) elde edilir.",
+    "example": "Kampanya trafiği:\nE-ticaret kampanyasında istek hacmi arttıkça ASG/VMSS/mig otomatik örnek ekler; gecikme metrikleri hedef aralıkta tutulur, kampanya bitince kapasite düşer.\n\nBatch iş yükleri:\nGece ETL görevleri başlamadan önce planlı ölçekleme kapasiteyi artırır; iş tamamlandığında otomatik olarak minimuma iner."
+  },
+  {
+    "id": "bb-info-genel-023",
+    "title": "Yerleşim Grupları (Placement Groups — Cluster/Partition/Spread) — (AWS: Placement Groups / Azure: Proximity Placement Groups / GCP: Placement Policies (Compact))",
+    "content": "Placement, VM’lerin fiziksel yerleşimini (physical placement) kontrol ederek gecikme (latency), bant genişliği (bandwidth) ve hata etki alanını (fault domain) optimize eder. Cluster yakın konumlandırma (low-latency, high-throughput), Partition büyük veri işlerinde bölümlere ayırma, Spread ise tekil örnekleri farklı donanımlara dağıtarak risk azaltımı sağlar.\n\nYakın konum (proximity) ve kompakt yerleşim (compact placement) HPC (high-performance computing), finansal işlem (trading) ve NoSQL/HBase gibi yüklerde performans faydası sunar.",
+    "example": "HPC iş yükleri:\nBilimsel simülasyonlar cluster yerleşimde çalıştırılarak düğümler arası gecikme minimize edilir, ağ throughput’u maksimuma çıkarılır.\n\nKritik servis ayrımı:\nSpread yerleşimle üç temel kontrolör farklı rafta barındırılır; donanım arızasında servis sürekliliği korunur."
+  },
+  {
+    "id": "bb-info-genel-024",
+    "title": "Nesne Depolama (Object Storage — S3/Blob/Cloud Storage) — (AWS: Amazon S3 / Azure: Blob Storage / GCP: Cloud Storage)",
+    "content": "Nesne depolama (object storage), veriyi düz ad alanında (flat namespace) nesneler (objects: data + metadata + key) olarak saklar; yüksek dayanıklılık (durability) ve ölçeklenebilirlik (scalability) sunar. Bucket/container ve HTTP tabanlı API’lerle (HTTP APIs) erişim sağlanır.\n\nSürümleme (versioning), yaşam döngüsü (lifecycle), erişim denetimi (IAM/RBAC), ve depolama sınıfları (storage classes: standard/nearline/archival) ile yedekleme (backup), log arşivleme (log archiving), medya ve veri gölü (data lake) kullanımına uygundur.",
+    "example": "Medya barındırma:\nVideo ve görseller S3/Blob/Cloud Storage üzerinde tutulur; CDN ile uç noktalara önbelleklenerek gecikme azaltılır.\n\nVeri gölü:\nHam veriler tek bir bucket’ta toplanır; ETL/ELT süreçleri metadata ve yaşam döngüsü politikalarıyla yönetilir."
+  },
+  {
+    "id": "bb-info-genel-025",
+    "title": "Blok Depolama (Block Storage — EBS/Azure Disk) — (AWS: EBS / Azure: Managed Disks / GCP: Persistent Disks)",
+    "content": "Blok depolama (block storage), düşük gecikmeli (low-latency) sanal disk hacimleri (volumes) sağlar; veritabanları ve transactional iş yükleri için idealdir. IOPS ve throughput gereksinimlerine göre farklı sınıflar (volume types) seçilir.\n\nHacimler örneklere bağlanır (attach) ve dosya sistemi düzeyinde yönetilir; snapshot’larla (snapshots) yedekleme ve veri taşınabilirliği sağlanır.",
+    "example": "Veritabanı performansı:\nIO yoğun PostgreSQL/SQL Server, yüksek IOPS disk sınıflarıyla tutarlı gecikme elde eder; bakım pencerelerinde snapshot alınır.\n\nUygulama güncellemeleri:\nYeni sürüm öncesi hacim snapshot’ı alınır; sorun çıkarsa snapshot’tan hızlı geri dönüş yapılır."
+  },
+  {
+    "id": "bb-info-genel-026",
+    "title": "Dosya Depolama (File Storage — EFS/Azure Files) — (AWS: EFS / Azure: Azure Files / GCP: Filestore)",
+    "content": "Dosya depolama (file storage), paylaşımlı dosya sistemi semantiği (shared file system semantics: NFS/SMB) sunar; çoklu örnek/uygulama tarafından aynı veri setine erişim sağlar. Uygulama uyumluluğu için POSIX/SMB özellikleri önemlidir.\n\nDurumlu microservisler (stateful services), CMS, veri bilimi çalışma alanları ve evrensel paylaşımlar (shared home directories) gibi senaryolarda kullanılır.",
+    "example": "Uygulama paylaşımları:\nBirden çok web örneği ortak statik içerik ve yüklemeleri EFS/Azure Files/Filestore üzerinden paylaşır.\n\nVeri bilimi ekip çalışması:\nModel ve veri setleri SMB/NFS ile paylaşılarak ekipler aynı dosya ağından çalışır; erişim denetimi RBAC/IAM ile yapılır."
+  },
+  {
+    "id": "bb-info-genel-027",
+    "title": "Yaşam Döngüsü Politikaları (Lifecycle Policies) — (AWS: S3 Lifecycle / Azure: Blob Lifecycle Management / GCP: Object Lifecycle Management)",
+    "content": "Lifecycle policies, nesneleri zamanla farklı sınıflara (storage class transitions) taşıyarak maliyeti optimize eder ve otomatik silme (expiration) uygular. Erişim paternlerine göre sıcak/soguk/arşiv (hot/cold/archive) depolamaya geçiş tanımlanır.\n\nUyumluluk (compliance) ve veri saklama stratejileri (data retention strategies) ile birlikte kullanıldığında operasyonel verimlilik (operational efficiency) ve tasarruf sağlar.",
+    "example": "Log arşivleme:\n30 gün aktif erişimli loglar IA sınıfına, 90 gün sonra arşive taşınır; bir yıl sonunda otomatik silinir.\n\nMedya yaşam döngüsü:\nEski kampanya görselleri nadir erişim sınıfına alınır; talep olursa geri çağırma (restore) işlemleri yapılır."
+  },
+  {
+    "id": "bb-info-genel-028",
+    "title": "Arşiv Depolama (Archive Storage — Glacier/Archive) — (AWS: S3 Glacier & Glacier Deep Archive / Azure: Blob Archive Tier / GCP: Cloud Storage Archive)",
+    "content": "Arşiv depolama (archive storage), nadiren erişilen veriler için düşük maliyetli (low-cost) ve uzun süreli saklama (long-term retention) sağlar. Erişim gecikmeleri (retrieval latency) ve geri getirme ücretleri (restore fees) kullanım planlamasında dikkate alınır.\n\nDenetim, yasal gereklilik (regulatory compliance) ve tarihî veri setleri (historical datasets) için uygundur; yaşam döngüsü politikaları ile otomatik arşiv akışı oluşturulur.",
+    "example": "Finans kayıtları:\n10 yıl saklama gerektiren işlem günlükleri arşiv tier’a alınır; denetimde ihtiyaç olduğunda planlı restore ile erişilir.\n\nMedikal görüntüler:\nNadiren erişilen MRI arşivde tutulur; klinik çalışma gerektiğinde geri çağırma penceresi planlanır."
+  },
+  {
+    "id": "bb-info-genel-029",
+    "title": "Nesne Kilitleme / WORM (Object Lock / Write-Once-Read-Many) — (AWS: S3 Object Lock / Azure: Immutable Blob Storage (Retention, Legal Hold) / GCP: Bucket Lock (Retention Policies))",
+    "content": "WORM, belirlenen süre boyunca (time-based retention) nesnelerin silinmesini veya üzerine yazılmasını engeller (immutability). Uygulama modları: governance (yetkili bypass) ve compliance (yasal koruma, no bypass).\n\nUyumluluk (compliance), denetim (audit) ve kayıt yönetimi (records management) süreçlerinde veri bütünlüğü (data integrity) ve kanıt zinciri (chain of custody) sağlar.",
+    "example": "Regülasyon verileri:\nFinans/sağlık kayıtları immutable olarak tutulur; yasal saklama süresi dolmadan hiçbir işlem yapılamaz.\n\nGünlük kanıtı:\nGüvenlik logları WORM politikası ile kilitlenir; olay incelemesinde değiştirilemez kanıt sunar."
+  },
+  {
+    "id": "bb-info-genel-030",
+    "title": "Sunucu Tarafı Şifreleme (Server-Side Encryption — SSE-S3/SSE-KMS/SSE-C) — (AWS: SSE-S3/SSE-KMS/SSE-C / Azure: Storage Service Encryption + CMK (Key Vault) / GCP: Google-managed keys + CMEK)",
+    "content": "Server-side encryption, veriyi sağlayıcı tarafında (at rest) otomatik şifreler. Algoritma ve anahtar yönetimi (key management) modlarına göre: sağlayıcı yönetimli (provider-managed), müşteri yönetimli anahtar (CMK/CMEK) ve müşteri sağladığı anahtar (SSE-C) seçenekleri bulunur.\n\nAnahtar döngüsü (key rotation), erişim denetimi (access control) ve denetim kayıtları (audit logs) ile uyumluluk gereklilikleri karşılanır.",
+    "example": "Uyumluluk denetimi:\nKişisel veriler CMK/CMEK ile şifrelenir; anahtar erişimleri denetlenir ve düzenli rotasyon politikası uygulanır.\n\nÇok kiracılı veri:\nTenant etiketlerine göre farklı anahtarlarla şifreleme yapılarak veri ayrışımı (data segregation) güçlendirilir."
+  },
+  {
+    "id": "bb-info-genel-031",
+    "title": "İstemci Tarafı Şifreleme (Client-Side Encryption) — (AWS: SDK Client-Side Crypto / Azure: Client-Side Encryption SDK / GCP: Client-Side Encryption)",
+    "content": "Client-side encryption, verinin uygulama tarafında (before upload) şifrelenmesini sağlar; bulut yalnız şifreli veriyi (encrypted payload) görür. Anahtarlar (keys) genellikle kurum içi KMS/HSM veya gizli yönetimi servisleriyle (secrets management) korunur.\n\nUçtan uca gizlilik (end-to-end privacy) ve hassas içerikler için (sensitive data) ek koruma katmanı sunar; zero trust yaklaşımlarına uygundur.",
+    "example": "Hassas belgeler:\nUygulama kullanıcı dosyalarını istemci tarafında şifreler; buluta yüklenen veri yalnız anahtar sahibi tarafından çözülebilir.\n\nAra ortaklarla paylaşım:\nPaylaşılan depoda dosyalar şifreli tutulur; iş ortağıyla yalnız geçici anahtarlar paylaşılır ve erişim süresi kısıtlanır."
+  },
+  {
+    "id": "bb-info-genel-032",
+    "title": "EBS Anlık Görüntü (EBS Snapshot) — (AWS: EBS Snapshot / Azure: Disk Snapshot / GCP: Persistent Disk Snapshot)",
+    "content": "Snapshots, blok hacimlerin (block volumes) artımlı (incremental) kopyalarını oluşturarak yedekleme (backup) ve hızlı geri dönüş (restore) sağlar. Bölge/bölgeler arası (cross-region) kopyalama DR (disaster recovery) için kullanılabilir.\n\nİş sürekliliği (business continuity) ve dev/test ortam çoğaltma (environment cloning) süreçlerini hızlandırır; veri tutarlılığı (data consistency) için uygulama bilinçli snapshot stratejileri gerekir.",
+    "example": "Sürüm öncesi güvenlik:\nDağıtım öncesi snapshot alınır; başarısızlıkta ilgili snapshot’tan hacim geri yüklenerek kesinti süresi azaltılır.\n\nDR hazırlığı:\nKritik hacimler periyodik olarak diğer bölgeye kopyalanır; tatbikatta (DR drill) hızlı geri dönüş test edilir."
+  },
+  {
+    "id": "bb-info-genel-033",
+    "title": "Hızlı Snapshot Kurtarma (Fast Snapshot Restore) — (AWS: Fast Snapshot Restore / Azure: N/A / GCP: N/A)",
+    "content": "Fast Snapshot Restore (FSR), snapshot’tan yeni hacim oluşturulduğunda başlangıçta tam performans (full performance at creation) sağlayarak ısınma gecikmesini (initial read latency/warm-up) ortadan kaldırır. Bu özellik AWS’ye özgüdür; diğer sağlayıcılarda eşdeğer davranış farklı mekanizmalarla sağlanabilir.\n\nYoğun I/O gerektiren (high I/O) üretim geri dönüşleri ve kritik bakım süreçlerinde ilk anlarda tutarlı performans (consistent performance) elde etmeye yardımcı olur.",
+    "example": "Acil geri yükleme:\nÜretim hacmi snapshot’tan geri dönülür; FSR etkin olduğundan uygulama ilk saniyeden itibaren beklenen IOPS’u görür.\n\nTest ortam klonlama:\nBirden fazla test hacmi aynı snapshot’tan oluşturulur; FSR ile hepsi eş zamanlı yüksek performansla başlar."
+  },
+  {
+    "id": "bb-info-genel-034",
+    "title": "IAM Kullanıcı (IAM User) — (AWS: IAM User / Azure: Entra ID User (Azure AD) / GCP: Google Account & Workforce User)",
+    "content": "IAM Kullanıcı (IAM user), uzun süreli kimlik bilgileri (long‑lived credentials) veya SSO ile oturum açan insan/uygulama kimliğidir (human/application identity). AWS’de access key/secret + console sign‑in; Azure’da Entra ID user (directory identity); GCP’de Google account veya workforce identity olarak temsil edilir.\n\nKullanım: ayrıcalıkların (privileges) asgari yetki (least privilege) ile verilmesi, denetim (audit) ve uyumluluk (compliance) için rollere (roles) ve gruplara (groups) atanması.",
+    "example": "Operasyon ayrımı:\nÜretim ortamına yalnız ‘ReadOnly’ rol atanan destek kullanıcıları erişir; değişiklik gerektiren işlemler denetimli yükseltme akışıyla (privilege escalation flow) gerçekleştirilir.\n\nSSO merkezileştirme:\nŞirket kullanıcıları kurumsal SSO ile bulut hesaplarına tek giriş (single sign‑on) yapar; parola ilkeleri ve MFA Entra ID üzerinde yönetilir."
+  },
+  {
+    "id": "bb-info-genel-035",
+    "title": "IAM Rol (IAM Role) — (AWS: IAM Role / Azure: RBAC Role + Service Principal / GCP: IAM Role + Service Account)",
+    "content": "IAM Rol (IAM role), bir varlığın (entity) STS ile geçici kimlik bilgilerini (temporary credentials) alarak izinleri (permissions) devralmasını sağlayan kimliktir (assumable identity). Azure’da rol ataması (role assignment) + service principal; GCP’de role binding + service account eşdeğer amaçla kullanılır.\n\nSunucusuz/konteyner iş yükleri (serverless/containers) ve otomasyon (automation) için gizli anahtar gömmeden (no hard‑coded secrets) güvenli erişim modeli sunar.",
+    "example": "Uygulama kimliği:\nMikroservis, veritabanı ve depolama kaynaklarına yalnız gerekli eylemleri (least privilege) içeren bir rolü assume ederek erişir; anahtar yönetimi operasyon yükünü azaltır.\n\nÇapraz hesap erişimi:\nDenetim servisi farklı hesaplarda log bucket’larına erişmek için trust policy ile izinli bir rolü geçici olarak devralır."
+  },
+  {
+    "id": "bb-info-genel-036",
+    "title": "IAM Politika (IAM Policy) — (AWS: IAM Policy (JSON) / Azure: RBAC Role Definition & Assignment / GCP: IAM Policy (Bindings))",
+    "content": "IAM Politika (IAM policy), eylemlere (actions) ve kaynaklara (resources) verilen izinleri tanımlar (allow/deny). AWS’de JSON politikalar; Azure’da rol tanımı (role definition) ve atamaları (assignments); GCP’de bağlamalar (bindings) ile principal→role→resource ilişkisi kurulur.\n\nPolitika koşulları (policy conditions), etiket/öznitelik tabanlı erişim (ABAC: attribute‑based access control) ve explicit deny (açık ret) güvenlik modeli (security model) için kritiktir.",
+    "example": "Bağlama duyarlı erişim:\nYalnız ‘Project=X’ etiketi taşıyan kaynaklarda yazma izni verilir; diğer tüm eylemler reddedilerek veri ayrışımı korunur.\n\nOperasyon güvenliği:\nKimlik yönetimi ve anahtar işlemleri (kms:*) gibi yüksek ayrıcalıklı eylemler sadece güvenli gruplara atanmış roller tarafından yapılır."
+  },
+  {
+    "id": "bb-info-genel-037",
+    "title": "Kaynak Tabanlı Politika (Resource-Based Policy) — (AWS: Resource Policy (S3, KMS, SNS…) / Azure: Resource-level RBAC (scope) / GCP: Resource IAM Policy)",
+    "content": "Kaynak tabanlı politika (resource‑based policy), izinleri doğrudan kaynağa (on the resource) ekler. Cross‑account veya harici erişim (cross‑tenant/access) senaryolarında ideal; principal’lar (principals) ve koşullar (conditions) kaynakta tanımlanır.\n\nAzure/GCP’de kaynak kapsamına (resource scope) RBAC/IAM bağlamaları yapılarak benzer etki elde edilir (equivalent effect via resource bindings).",
+    "example": "Veri paylaşımı:\nOrtak raporlama bucket’ı, belirli partner hesaplarına yalnızca ‘GetObject’ izni verecek şekilde kaynak politikasıyla yayımlanır.\n\nHizmet uç noktası şartı:\nDepoya erişim, yalnız private endpoint üzerinden gelen isteklerle sınırlanır; public ağdan erişim politika koşulu ile engellenir."
+  },
+  {
+    "id": "bb-info-genel-038",
+    "title": "İzin Sınırı (Permissions Boundary) — (AWS: Permissions Boundary / Azure: Custom Role + Deny Assignment / GCP: IAM Conditions + Org Policy Constraints)",
+    "content": "İzin sınırı (permissions boundary), bir kimliğin sahip olabileceği azami izinleri (maximum effective permissions) kısıtlayan üst sınırdır (upper bound). Bağlı politikalardan bağımsız olarak etkili izinler sınırın (boundary) ötesine geçemez; explicit deny (açık ret) her zaman önceliklidir.\n\nAzure/GCP’de birebir karşılık yoktur; custom role kapsamları, deny assignments ve organization policy (org policy) kısıtları benzer kontrol sağlar.",
+    "example": "Güvenli sandbox:\nGeliştirici rollerine geniş okuma izni verilir; boundary ile yazma/kimlik operasyonları tamamen engellenir.\n\nGeçici erişim:\nProje bazlı görevlerde kullanıcıların etkili izinleri proje kapsamı dışına çıkamaz; yanlış atamalarda dahi boundary koruması sürer."
+  },
+  {
+    "id": "bb-info-genel-039",
+    "title": "Hizmet Kontrol Politikaları (Service Control Policies — SCP) — (AWS: Organizations SCP / Azure: Azure Policy + Blueprints / GCP: Organization Policy)",
+    "content": "SCP, organizasyon düzeyinde (organization‑wide) hesapların kullanabileceği hizmet ve eylemlerin üst sınırını (guardrails/upper bounds) tanımlar. IAM izin vermez, yalnız kısıtlar (does not grant, restricts only).\n\nAzure’da Azure Policy + Blueprints; GCP’de Organization Policy kısıtları (constraints) ile benzer guardrail yaklaşımı uygulanır.",
+    "example": "Global kısıtlar:\nÜretim OU’sunda yalnız belirlenen bölgelerde kaynak oluşturulabilir; ‘stop’/‘delete’ gibi kritik eylemler belirli rollere sınırlandırılır.\n\nUyumluluk zorlaması:\nObjelerin public erişimi organizasyon seviyesinde engellenir; hesap içi hatalı politika atamaları bu kuralı bypass edemez."
+  },
+  {
+    "id": "bb-info-genel-040",
+    "title": "AWS Kimlik Merkezi / SSO (AWS Identity Center / SSO) — (AWS: Identity Center (SSO) / Azure: Entra ID Enterprise Apps SSO / GCP: Cloud Identity SSO)",
+    "content": "Merkezî SSO (single sign‑on), kullanıcıların (users) hesap ve rollere (accounts/roles) tek noktadan erişimini sağlar. Permission sets (izin setleri), grup temelli atamalar (group‑based assignments) ve çoklu hesap yönetimi (multi‑account management) ile operasyon basitleşir.\n\nAzure Entra ID ve GCP Cloud Identity benzer SSO akışlarını (SSO flows) ve uygulama federasyonunu (app federation) destekler.",
+    "example": "Rol tabanlı erişim:\nFinans ekibi ‘Billing‑Reader’, güvenlik ekibi ‘Security‑Auditor’ permission set’leriyle hesaplara atanır; erişim denetimi tek panelden yapılır.\n\nDış ortak erişimi:\nPartner kullanıcıları SSO ile yalnız ilgili projelere erişir; süre kısıtlı (time‑bound) atamalarla risk azaltılır."
+  },
+  {
+    "id": "bb-info-genel-041",
+    "title": "Kimlik Federasyonu (Federation — SAML/OIDC) — (AWS: SAML/OIDC Federation / Azure: Entra ID Federation / GCP: Identity Federation)",
+    "content": "Federasyon (federation), harici kimlik sağlayıcılarından (external identity providers: IdP) bulut kaynaklarına token‑tabanlı erişim (token‑based access) vermektir. Protokoller: SAML (enterprise federation), OIDC/OAuth 2.0 (modern web/mobile).\n\nGüven ilişkisi (trust relationship), rol eşlemesi (role mapping) ve öznitelik taşıma (attribute claims) doğru yetkilendirme için kritiktir.",
+    "example": "Kurumsal IdP entegrasyonu:\nŞirket, Entra ID/Okta ile federasyon kurar; kullanıcılar kurumsal oturumla bulutta rollerini otomatik devralır.\n\nMüşteri portalı:\nMüşteriler kendi IdP’leriyle uygulamaya SSO yapar; tenant kimliği ve roller OIDC id token üzerinde iletilir."
+  },
+  {
+    "id": "bb-info-genel-042",
+    "title": "Tek Oturum Açma (Single Sign-On — SSO) — (AWS: Identity Center SSO / Azure: Entra ID SSO / GCP: Cloud Identity SSO)",
+    "content": "SSO (single sign‑on), bir kez kimlik doğrulayan (authenticate once) kullanıcının birden fazla uygulamaya (multiple applications) tekrar giriş yapmadan erişmesini sağlar. Oturum ilkeleri (session policies), token ömürleri (token lifetimes) ve cihaz durumları (device posture) ile güvenlik dengelenir.\n\nKullanıcı deneyimi (user experience) ve güvenlik (security) arasında optimum denge için MFA (multi‑factor authentication) ve koşullar (conditions) uygulanır.",
+    "example": "Çalışan deneyimi:\nTek giriş ile CRM, BI ve bulut konsollarına erişim sağlanır; parola yorgunluğu (password fatigue) azalır.\n\nİş ortağı entegrasyonu:\nPartner portalları SSO ile bağlanır; erişim kapsamları (scopes) ve kotalar (quotas) merkezi olarak yönetilir."
+  },
+  {
+    "id": "bb-info-genel-043",
+    "title": "Çok Faktörlü Kimlik Doğrulama (Multi-Factor Authentication — MFA) — (AWS: MFA (Virtual/Hardware) / Azure: Entra MFA / GCP: 2‑Step Verification & Advanced Protection)",
+    "content": "MFA, parolaya ek ikinci faktör (second factor: OTP, push, hardware key) ile hesap güvenliğini (account security) güçlendirir. Kimlik avı (phishing) ve oturum ele geçirme (session hijacking) risklerini önemli ölçüde azaltır.\n\nYüksek ayrıcalıklı roller (privileged roles) ve kök hesaplar (root/global admin) için zorunlu (mandatory) olarak uygulanmalıdır.",
+    "example": "Privileged erişim:\nGüvenlik ve ağ yönetimi rollerinde MFA olmadan hiçbir işlem yapılamaz; denetim sırasında MFA kayıtları doğrulanır.\n\nRisk odaklı uygulama:\nŞüpheli konum/cihazlardan gelen oturumlarda MFA şart koşulur; normal davranışlarda ek faktör azaltılarak deneyim iyileştirilir."
+  },
+  {
+    "id": "bb-info-genel-044",
+    "title": "Koşullu Erişim (Conditional Access) — (AWS: IAM Policy Conditions & Verified Access / Azure: Entra Conditional Access / GCP: Context‑Aware Access (BeyondCorp))",
+    "content": "Koşullu erişim (conditional access), konum (location), cihaz durumu (device posture), risk (risk score) ve oturum bağlamına (session context) göre politikaların dinamik uygulanmasıdır (dynamic policy enforcement). Azure’da yerleşik CA; GCP’de context‑aware access; AWS’de policy condition keys ve Verified Access ile benzer yaklaşım.\n\nZero trust (zero‑trust) için bağlama duyarlı (context‑aware) izinler ve sürekli doğrulama (continuous verification) temeldir.",
+    "example": "Cihaz uyumluluğu:\nKurumsal uyumlu cihazdan gelmeyen talepler kritik API’lara erişemez; yalnız düşük riskli operasyonlara izin verilir.\n\nKonum bazlı kısıtlama:\nBelirli ülke/şehir dışından gelen oturumlar yalnız okuma yetkisi alır; yazma işlemleri engellenir."
+  },
+  {
+    "id": "bb-info-genel-045",
+    "title": "Parametre Deposu (Parameter Store) — (AWS: SSM Parameter Store / Azure: App Configuration & Key Vault / GCP: Secret Manager (for secure params))",
+    "content": "Parametre deposu (parameter store), uygulama yapılandırmalarını (configuration values) ve bazı gizli değerleri (secure parameters) merkezi olarak saklar. Versiyonlama (versioning), hiyerarşi (hierarchy) ve erişim denetimi (access control) ile dağıtık sistemlerde tutarlılık (consistency) sağlar.\n\nAzure’da App Configuration + güvenli anahtarlar için Key Vault; GCP’de secure parametreler Secret Manager’da yönetilir.",
+    "example": "Ortam bazlı konfigürasyon:\nDev/Stage/Prod için ayrı parametre yolları kullanılır; dağıtım pipeline’ları yanlış ortam verisi riskini ortadan kaldırır.\n\nGizli yönetimi entegrasyonu:\nUygulama başlatıldığında yalnız okuma izniyle parametreleri çeker; parola gibi değerler güvenli depodan alınır."
+  },
+  {
+    "id": "bb-info-genel-046",
+    "title": "Anahtar Yönetimi Hizmeti (KMS — Key Management Service) — (AWS: AWS KMS / Azure: Key Vault (Keys) & Managed HSM / GCP: Cloud KMS)",
+    "content": "KMS, kriptografik anahtarların (cryptographic keys) oluşturulması, saklanması ve kullanımı (generate, store, use) için yönetimli hizmettir. Envelope encryption (zarf şifreleme), anahtar döngüsü (key rotation), erişim denetimi (access control) ve denetim kayıtları (audit logs) sağlar.\n\nVeri şifreleme (data encryption: at rest/in transit), imzalama (signing) ve gizli yönetimi (secrets management) ile entegre çalışır.",
+    "example": "Uyumluluk gereksinimleri:\nKişisel veriler müşteri yönetimli anahtarlarla (CMK/CMEK) şifrelenir; anahtar erişimleri ayrı log havuzunda izlenir.\n\nAnahtar izolasyonu:\nFarklı iş birimleri için ayrı anahtar setleri kullanılarak yetki sınırları (segregation of duties) uygulanır."
+  },
+  {
+    "id": "bb-info-genel-047",
+    "title": "Sertifika Yönetimi (ACM / Certificate Manager) — (AWS: AWS Certificate Manager / Azure: Key Vault Certificates & App Service Managed Certs / GCP: Certificate Manager)",
+    "content": "Sertifika yönetimi (certificate management), TLS/SSL sertifikalarının (TLS/SSL certificates) oluşturulması, yenilenmesi (renewal) ve dağıtımı (deployment) süreçlerini otomatikleştirir. Özel ve ortak CA (private/public CA) entegrasyonları desteklenir.\n\nUygulama güvenliği (application security) ve kullanıcı güveni (user trust) için HTTPS zorlaması (HTTPS enforcement) ve otomatik yenileme kritiktir.",
+    "example": "HTTPS zorunluluğu:\nTüm harici API’lar ve kullanıcı arayüzleri yalnız TLS ile sunulur; sertifika yenilemeleri otomatik planlanır ve kesintisiz yapılır.\n\nİç servis sertifikaları:\nMikroservisler arası mTLS ile kimlik doğrulama sağlanır; sertifikalar merkezi yönetişimle (central governance) döndürülür."
+  },
+  {
+    "id": "bb-info-genel-048",
+    "title": "Web Uygulama Güvenlik Duvarı (WAF — Web Application Firewall) — (AWS: AWS WAF (+ Shield) / Azure: WAF on App Gateway & Front Door / GCP: Cloud Armor (WAF))",
+    "content": "WAF, HTTP/HTTPS trafiğini (web traffic) inceleyerek SQLi, XSS, RCE gibi saldırıları (attacks) engeller. Yönetilen kural setleri (managed rule sets), hız bazlı koruma (rate‑based protection), geo‑kısıtlama (geo‑restriction) ve bot azaltma (bot mitigation) sağlar.\n\nCDN ve yük dengeleyiciler (CDN/load balancers) ile entegre edilerek ölçekli (at scale) ve kenar konumlarda (edge) koruma sunar.",
+    "example": "Saldırı yüzeyi azaltma:\nKritik form ve API uçlarında WAF kural setleri uygulanır; anomali paternlerinde otomatik blok ve alarm tetiklenir.\n\nUyumluluk ve denetim:\nWAF logları merkezi SIEM’e akar; olay müdahalesi (incident response) ve adli analiz (forensics) için kanıt sağlanır."
+  },
+  {
+    "id": "bb-info-genel-049",
+    "title": "DDoS Koruması (AWS Shield / DDoS Protection) — (AWS: AWS Shield / Azure: DDoS Protection / GCP: Cloud Armor)",
+    "content": "DDoS koruması (Distributed Denial of Service — DDoS), volumetrik ve protokol saldırılarını (volumetric & L3/L4/L7 attacks) otomatik olarak tespit eder ve azaltır (auto‑mitigation). Kenar ağlarında (edge) trafik süzme (scrubbing), oran kısıtlama (rate limiting) ve anomali analizi (anomaly detection) ile hizmet sürekliliği (service availability) korunur.\n\nGelişmiş planlar, olay telemetrisi (attack telemetry), maliyet koruması (cost protection) ve uzman ekip desteği (expert response) sağlayabilir.",
+    "example": "Ürün lansmanı trafiği:\nBeklenmeyen yüksek trafik sırasında DDoS koruması meşru istekleri saldırı trafiğinden ayırır; uygulama yanıt süresi stabil kalır.\n\nRansom DDoS senaryosu:\nSaldırganların tehdit ettiği dönemde koruma servisi otomatik mitigasyon uygular; iş etkisi ve bant genişliği maliyeti minimize edilir."
+  },
+  {
+    "id": "bb-info-genel-050",
+    "title": "Denetim Günlükleri (CloudTrail / Activity Log) — (AWS: CloudTrail / Azure: Activity Log / GCP: Cloud Audit Logs)",
+    "content": "Denetim günlükleri (audit logs), yönetim düzlemi (control plane) ve veri olaylarını (data events) kaydederek kim, ne zaman, ne yaptı (who/when/what) sorularına yanıt verir. Uyumluluk (compliance), adli analiz (forensics) ve değişiklik izleme (change tracking) için temel kanıt zinciri (chain of custody) oluşturur.\n\nUzun süreli arşiv (long‑term retention), merkezi toplama (centralized logging) ve olay korelasyonu (correlation) ile güvenlik ekipleri görünürlük kazanır.",
+    "example": "Olay sonrası inceleme:\nYetkisiz silme işlemi tespit edilir; audit log üzerinden çağrıyı yapan kimlik, zaman damgası ve kaynak detayları çıkarılarak kök neden bulunur.\n\nDeğişiklik onayı:\nÜretim öncesi politika değişiklikleri denetim günlükleriyle karşılaştırılır; hatalı atamalar hızla geri alınır."
+  },
+  {
+    "id": "bb-info-genel-051",
+    "title": "Tehdit Tespiti ve Güvenlik Durumu (GuardDuty / Defender for Cloud) — (AWS: GuardDuty / Azure: Defender for Cloud / GCP: Security Command Center)",
+    "content": "Tehdit tespiti (threat detection) anomali ve kötü niyetli etkinlikleri (malicious activity) belirler; güvenlik durumu yönetimi (security posture management) yanlış yapılandırmaları (misconfigurations) ve zafiyetleri (vulnerabilities) raporlar. Bulgular (findings) önceliklendirilerek (prioritization) düzeltici aksiyon (remediation) önerilir.\n\nAğ akışları, DNS, kimlik davranışı ve konfigürasyon sinyalleri (signals) üzerinden sürekli değerlendirme (continuous assessment) yapılır.",
+    "example": "Kompromize anahtar uyarısı:\nAlışılmadık bölgeden API çağrıları görülür; sistem bulguyu yükseltir ve erişim anahtarı devre dışı bırakılıp zorunlu anahtar rotasyonu uygulanır.\n\nAçık depolama tespiti:\nHerkese açık hale gelen bucket/container hızla işaretlenir; politika düzeltmeleri ve otomatik kapatma akışı devreye girer."
+  },
+  {
+    "id": "bb-info-genel-052",
+    "title": "Sunucusuz Hesaplama (Serverless — Lambda/Azure Functions/Cloud Functions) — (AWS: Lambda / Azure: Functions / GCP: Cloud Functions)",
+    "content": "Sunucusuz (serverless) mimari, altyapı yönetimini sağlayıcıya devreder; olay tetiklemeli (event‑driven) ve kullanım başına ödeme (pay‑per‑use) modeliyle ölçeklenir. Stateless tasarım, soğuk başlangıç (cold start), eşzamanlılık sınırı (concurrency limit) ve idempotans (idempotency) kritik kavramlardır.\n\nBağımlılık yönetimi, gizli erişimi (secrets access) ve gözlemlenebilirlik (observability) ile modern mikroservislerin hızlı iterasyonunu destekler.",
+    "example": "Görüntü işleme:\nKullanıcı yüklemesi sonrası fonksiyon küçük resimler ve meta veriyi üretir; yüksek hacimde otomatik olarak paralel ölçeklenir.\n\nWebhook orkestra:\nÖdeme sağlayıcısı olaylarını karşılayıp sipariş durumunu güncelleyen fonksiyon, hatalarda tekrar deneme ve DLQ mantığı uygular."
+  },
+  {
+    "id": "bb-info-genel-053",
+    "title": "İzleme ve Günlükleme (Monitoring & Logging — CloudWatch/Monitor/Cloud Logging) — (AWS: CloudWatch & CloudWatch Logs / Azure: Monitor & Log Analytics / GCP: Cloud Monitoring & Cloud Logging)",
+    "content": "İzleme (monitoring) metrikler (metrics), günlükler (logs) ve izler (traces) ile gözlemlenebilirlik (observability) sağlar. Uyarılar (alerts), panolar (dashboards) ve SLO’lar (service level objectives) operasyonel mükemmelliği (operational excellence) destekler.\n\nKorelasyon (correlation), dağıtık izleme (distributed tracing) ve kök neden analizi (root cause analysis) ile sorunlar hızlıca teşhis edilir.",
+    "example": "SLO ihlali alarmı:\nGecikme metriği hedefi aşınca otomatik alarm devreye girer; ölçekleme ve önbellek politikaları gözden geçirilir.\n\nKök neden analizi:\nHata oranı artışında log ve trace verileri birleştirilerek hatalı sürüm ve problemli bağımlılık tespit edilir."
+  },
+  {
+    "id": "bb-info-genel-054",
+    "title": "Lambda Katmanları (Lambda Layers) — (AWS: Lambda Layers / Azure: Functions Extension Bundles & Shared Libraries / GCP: Shared Libraries)",
+    "content": "Katmanlar (layers), paylaşılan kod ve bağımlılıkları (shared code & dependencies) birden çok fonksiyon arasında yeniden kullanmayı sağlar; paket boyutunu azaltır ve yönetimi basitleştirir. Sertifikalar, SDK’lar ve yerel modüller standartlaştırılabilir.\n\nSürümleme (versioning) ile kontrollü güncellemeler yapılır; uyumluluk (compatibility) ve güvenlik yamaları (patches) merkezi takip edilir.",
+    "example": "Ortak SDK katmanı:\nTüm fonksiyonlar aynı kimlik ve gözlemlenebilirlik SDK’larını katman üzerinden kullanır; güvenlik güncellemeleri tek noktadan dağıtılır.\n\nKök sertifika paketi:\nDış API çağrılarında gerekli CA sertifikaları katmanda bulunur; deploy paketleri sade ve tutarlı kalır."
+  },
+  {
+    "id": "bb-info-genel-055",
+    "title": "Sunucusuz İş Akışı (Step Functions / Durable Functions) — (AWS: Step Functions / Azure: Durable Functions / GCP: Workflows)",
+    "content": "Sunucusuz orkestrasyon (serverless orchestration), durum yönetimi (state management), dallanma (branching), bekleme (wait) ve hata işlemleri (error handling) ile çok adımlı süreçleri (multi‑step workflows) koordine eder. Saga pattern ve telafi (compensation) kritik tasarım ilkeleridir.\n\nGörsel akış (visual flow), tekrar deneme (retries) ve idempotans (idempotency) üretim güvenilirliğini (reliability) artırır.",
+    "example": "Sipariş karşılama:\nÖdeme doğrulama → stok rezervasyonu → kargo etiketi adımlarında başarısızlıkta telafi mantığı çalışır; süreç güvenli ilerler.\n\nBelge süreçleri:\nİmzalama, onay ve arşivleme adımları orkestre edilir; API hatalarında bekleme ve yeniden deneme politikaları uygulanır."
+  },
+  {
+    "id": "bb-info-genel-056",
+    "title": "SQS Kuyrukları (SQS Queues — Standard/FIFO) — (AWS: SQS / Azure: Service Bus Queues / GCP: Pub/Sub (pull) & Cloud Tasks)",
+    "content": "Kuyruklar (queues), üretici ve tüketicileri (producers/consumers) gevşek bağlar (loose coupling). Standard en az bir kez teslim (at‑least‑once), FIFO tam sıralama (exact order) sağlar. Görünürlük zaman aşımı (visibility timeout) ve DLQ (dead‑letter queue) güvenilir işlemeyi destekler.\n\nUzun anket (long polling) ve geri çekilme (backoff) desenleri maliyeti ve churn’ü azaltır; idempotans kritik önemdedir.",
+    "example": "Ödeme sonrası e‑posta:\nSipariş tamamlandığında mesaj kuyruğa düşer; e‑posta servisi gecikmesiz ancak arka planda güvenli şekilde gönderir.\n\nYoğun kampanya işlemleri:\nTüketici sayısı artırılarak kuyruk boşaltılır; başarısız işlemler DLQ’ye alınır ve yeniden işleme planlanır."
+  },
+  {
+    "id": "bb-info-genel-057",
+    "title": "SNS Yayınla/Abone Ol (SNS — Publish/Subscribe) — (AWS: SNS / Azure: Service Bus Topics / GCP: Pub/Sub)",
+    "content": "Yayınla/Abone ol (publish/subscribe) deseni, bir konudan (topic) olayları birden çok aboneliğe (subscriptions) fan‑out ederek ölçekli bildirim ve entegrasyon sağlar. At‑least‑once teslim, filtreleme (filtering) ve çok hedef (multi‑target) dağıtım yaygındır.\n\nMikroservisleri gevşek bağlar; iş akışlarını paralelize eder ve ortak veri olaylarını merkezi bir kanaldan dağıtır.",
+    "example": "Sipariş olayı fan‑out:\n`order.created` mesajı muhasebe, stok, kargo ve bildirim servislerine eşzamanlı iletilir; ekipler ayrı hızda işleyebilir.\n\nPolitika duyuruları:\nGüncellemeler tek bir topic üzerinden tüm tenant’lara gönderilir; mobil bildirim, e‑posta ve webhook’lar aynı anda tetiklenir."
+  },
+  {
+    "id": "bb-info-genel-058",
+    "title": "RDS Proxy (RDS Proxy) — (AWS: RDS Proxy / Azure: SQL DB Connection Pooling (Gateway) / GCP: Cloud SQL Connectors & PgBouncer)",
+    "content": "Veritabanı proxy’si (database proxy), bağlantı havuzu (connection pooling) ve yeniden kullanım (reuse) ile sunucusuz iş yüklerinde (serverless) bağlantı fırtınasını (connection storm) önler. Failover sırasında oturum dayanıklılığı (session resilience) ve gizli yönetimi entegrasyonu (secrets integration) sağlar.\n\nLambda/Functions gibi kısa ömürlü istemcilerde veritabanı kaynak tüketimi ve gecikme (latency) önemli ölçüde azalır.",
+    "example": "Fonksiyon tabanlı API:\nAni trafik dalgalanmalarında proxy havuzu yeni bağlantı açmadan istekleri yönlendirir; veritabanı istikrarlı kalır.\n\nKesinti dayanıklılığı:\nDB failover olduğunda proxy uçları hızla yeni hedefe bağlanır; uygulama tarafında hata oranı ve yeniden deneme sayısı düşer."
+  },
+  {
+    "id": "bb-info-genel-059",
+    "title": "İçerik Dağıtım Ağı (CDN — CloudFront/Azure CDN/Cloud CDN) — (AWS: CloudFront / Azure: Azure CDN & Front Door / GCP: Cloud CDN)",
+    "content": "CDN, içeriği kenar konumlarında (edge locations) önbellekleyerek (caching) gecikmeyi (latency) ve origin yükünü azaltır. Önbellek politikası (cache policy), TTL, imzalı erişim (signed access) ve coğrafi kısıtlama (geo‑restriction) ile performans ve güvenlik dengelenir.\n\nOrigin shielding, HTTP/2/3 ve sıkıştırma (compression) iyileştirmeleriyle küresel dağıtım (global delivery) optimize edilir.",
+    "example": "Statik site ve medya:\nKatalog ve görseller edge’de cache’lenir; kampanya döneminde sayfa yüklenmesi hızlı kalır, origin maliyetleri düşer.\n\nYüksek hacimli indirme:\nYazılım güncellemeleri dünya çapında dağıtılır; bölgesel TTL’ler ve imzalı URL’lerle erişim kontrol edilir."
+  },
+  {
+    "id": "bb-info-genel-060",
+    "title": "Önceden İmzalı URL (Pre‑Signed URL) — (AWS: S3 Pre‑Signed URL / Azure: SAS (Shared Access Signature) / GCP: Signed URLs)",
+    "content": "Zaman kısıtlı (time‑bound) ve imzalı (signed) URL’ler, belirli nesnelere geçici erişim (temporary access) sağlar; yükleme (upload) ve indirme (download) işlemlerinde arka ucu (backend) veri akışından çıkararak (direct‑to‑storage) ölçek ve maliyet avantajı sunar.\n\nKapsam (scope), süre (expiry) ve yöntem (method) gibi parametrelerle ince taneli kontrol (fine‑grained control) sağlanır.",
+    "example": "Müşteri dosya erişimi:\nDestek sürecinde müşteriye 15 dakikalık indirme izni verilir; link süresi bitince erişim otomatik kapanır.\n\nTarayıcıdan doğrudan yükleme:\nÖn uç, imzalı upload URL’si ile dosyayı depoya yükler; API sunucuları yükü taşımadığı için maliyet ve gecikme azalır."
+  },
+  {
+    "id": "bb-info-genel-061",
+    "title": "S3 Erişim Noktaları (S3 Access Points) — (AWS: S3 Access Points / Azure: Blob per‑container policies & endpoints / GCP: Cloud Storage IAM)",
+    "content": "Erişim noktaları (access points), paylaşılan veri kümeleri (shared datasets) için uygulama/ekip bazlı erişim politikaları (per‑app policies) ve ağ yolları (network paths) tanımlamayı kolaylaştırır. VPC erişim noktaları (VPC access points) özel ağdan (private network) erişimi basitleştirir.\n\nBüyük ölçekli veri gölleri (data lakes) ve çok kiracılı (multi‑tenant) sistemlerde erişim yönetimi (access management) sadeleşir.",
+    "example": "Ekip bazlı erişim:\nAnalitik ve BI ekipleri aynı bucket’ta farklı erişim noktaları kullanır; her birinin path ve izinleri ayrı tanımlanır.\n\nGüvenli özel erişim:\nUygulama yalnız VPC erişim noktası üzerinden depoya ulaşır; public internet yüzeyi tamamen kapatılır."
+  },
+  {
+    "id": "bb-info-genel-062",
+    "title": "Yük Dengeleyici (Load Balancer — ALB/NLB/Azure LB/App Gateway) — (AWS: ALB/NLB/CLB / Azure: Load Balancer & Application Gateway / GCP: External/Internal Load Balancing)",
+    "content": "Yük dengeleyiciler (load balancers), trafiği hedeflere (targets) dağıtır; L4 (TCP/UDP) ve L7 (HTTP/HTTPS) yetenekleriyle sağlıklılık kontrolleri (health checks), yapısal yönlendirme (path/host routing) ve SSL sonlandırma (TLS termination) sunar.\n\nWAF entegrasyonu, yapışkan oturum (sticky sessions) ve mavi/yeşil (blue‑green) geçişleriyle ölçek ve güvenlik birlikte yönetilir.",
+    "example": "Mikroservis yönlendirme:\nALB/App Gateway host ve path kurallarıyla istekleri doğru servis havuzlarına iletir; hatalı hedefler otomatik dışlanır.\n\nYüksek throughput TCP:\nNLB/L4 LB ile milyonlarca kısa TCP bağlantısı dengelenir; düşük gecikme ve statik IP desteği sağlanır."
+  },
+  {
+    "id": "bb-info-genel-063",
+    "title": "Sağlık Kontrolü ve Failover (Health Check & Failover) — (AWS: Route 53 & ELB Health Checks / Azure: Traffic Manager & Front Door Health Probes / GCP: Load Balancer Health Checks)",
+    "content": "Sağlık kontrolleri (health checks) hedeflerin durumunu (target health) izler; başarısızlıkta otomatik devre dışı bırakma (out of rotation) ve yönlendirme (routing) yapar. Failover, birincil (primary) hedef erişilemez olduğunda ikincile (secondary) hedefe geçiştir (automatic failover).\n\nÇok bölgeli tasarım (multi‑region) ile düşük RTO (recovery time objective) ve hedef SLO’lar (service level objectives) korunur.",
+    "example": "Aktif‑yedek web katmanı:\nBirincil bölge hatasında trafik DNS/Global LB ile ikincil bölgeye taşınır; kullanıcı deneyimi kesintisiz kalır.\n\nDağıtım güvenliği:\nYeni sürüm havuzuna yalnız sağlıklı (healthy) örnekler alınır; hatalı sürüm otomatik olarak trafiğin dışına çıkarılır."
+  }
+]
+

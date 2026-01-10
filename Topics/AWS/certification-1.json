@@ -1,0 +1,327 @@
+[
+  {
+    "id": 1,
+    "question": "Which AWS service is best suited for storing and retrieving any amount of unstructured data (such as images and backups) with high durability and scalability?",
+    "options": {
+      "A": "Amazon EBS",
+      "B": "Amazon S3",
+      "C": "Amazon RDS",
+      "D": "Amazon EFS",
+      "E": "Amazon DynamoDB"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon S3) is correct because S3 is an object storage service designed for virtually unlimited scalability and very high durability (11 nines), making it ideal for unstructured data such as media files, logs, and backups. Option A (Amazon EBS) is incorrect because EBS provides block storage for EC2 instances, is volume-bound, and is optimized for low-latency, transactional workloads rather than large-scale object storage or web-scale access. Option C (Amazon RDS) is incorrect because RDS is a managed relational database for structured, relational data and is not intended to store large binary objects like images or backups. Option D (Amazon EFS) is incorrect because EFS is a scalable, managed NFS file system for Linux workloads requiring shared file access and POSIX semantics; it is not object storage and is less suited for web-scale object retrieval compared to S3. Option E (Amazon DynamoDB) is incorrect because DynamoDB is a NoSQL key–value and document database optimized for millisecond latency on small items; it is not designed to store large binary objects (items are size-limited) and is typically used alongside S3 for object storage."
+  },
+  {
+    "id": 2,
+    "question": "Which AWS service lets you run code without provisioning or managing servers, and automatically scales based on the number of requests?",
+    "options": {
+      "A": "Amazon EC2",
+      "B": "AWS Lambda",
+      "C": "Amazon ECS on EC2",
+      "D": "AWS Elastic Beanstalk",
+      "E": "Amazon EKS"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (AWS Lambda) is correct because Lambda is a serverless compute service that runs your code in response to events and scales automatically. Option A (Amazon EC2) requires you to provision and manage instances. Option C (Amazon ECS on EC2) still requires managing the underlying EC2 instances. Option D (Elastic Beanstalk) simplifies deployments but still provisions infrastructure under the hood. Option E (Amazon EKS) manages Kubernetes control planes, but you still manage worker capacity unless using Fargate."
+  },
+  {
+    "id": 3,
+    "question": "Which service distributes incoming application traffic across multiple targets (such as EC2 instances, containers, and IPs) in one or more Availability Zones?",
+    "options": {
+      "A": "Amazon Route 53",
+      "B": "AWS Global Accelerator",
+      "C": "Elastic Load Balancing (ELB)",
+      "D": "Amazon CloudFront",
+      "E": "Amazon API Gateway"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (Elastic Load Balancing) is correct because ELB balances incoming traffic across targets and AZs to improve availability and fault tolerance. Option A (Route 53) is DNS and does not load balance within a VPC. Option B (Global Accelerator) optimizes path over the AWS global network but is not a substitute for load balancing within a Region. Option D (CloudFront) is a CDN for cached/static and dynamic content delivery. Option E (API Gateway) provides managed API endpoints, not in-VPC traffic load balancing."
+  },
+  {
+    "id": 4,
+    "question": "Which AWS managed database service is best for traditional relational schemas and supports engines like MySQL, PostgreSQL, and SQL Server?",
+    "options": {
+      "A": "Amazon DynamoDB",
+      "B": "Amazon RDS",
+      "C": "Amazon Neptune",
+      "D": "Amazon ElastiCache",
+      "E": "Amazon Redshift"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon RDS) is correct because RDS is a managed relational database service supporting multiple engines such as MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server. Option A (DynamoDB) is NoSQL key–value/document. Option C (Neptune) is a graph database. Option D (ElastiCache) is an in-memory cache (Redis/Memcached). Option E (Redshift) is a managed data warehouse optimized for analytics, not OLTP."
+  },
+  {
+    "id": 5,
+    "question": "Your application needs single-digit millisecond latency at any scale for key–value and document data with built-in high availability. Which service should you use?",
+    "options": {
+      "A": "Amazon Aurora",
+      "B": "Amazon DynamoDB",
+      "C": "Amazon RDS for PostgreSQL",
+      "D": "Amazon S3",
+      "E": "Amazon Redshift"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon DynamoDB) is correct because DynamoDB is a fully managed NoSQL database built for single-digit millisecond performance at scale with multi-AZ replication. Option A (Aurora) is relational and optimized for different workloads. Option C (RDS for PostgreSQL) is relational and typically has higher latency at large scale for key–value access patterns. Option D (S3) is object storage, not a database. Option E (Redshift) is for analytical queries (OLAP), not low-latency key–value."
+  },
+  {
+    "id": 6,
+    "question": "Which AWS service uses a global network of edge locations to cache and deliver content with low latency to users worldwide?",
+    "options": {
+      "A": "Amazon Route 53",
+      "B": "Amazon CloudFront",
+      "C": "AWS Global Accelerator",
+      "D": "Amazon S3 Transfer Acceleration",
+      "E": "AWS Direct Connect"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon CloudFront) is correct because CloudFront is AWS's content delivery network (CDN) that caches content at edge locations to reduce latency. Option A (Route 53) is a scalable DNS service. Option C (Global Accelerator) accelerates TCP/UDP traffic to your applications but does not cache content. Option D (S3 Transfer Acceleration) speeds up S3 uploads/downloads using edge locations but is not a CDN for arbitrary origins. Option E (Direct Connect) provides dedicated network links; it is not for content delivery."
+  },
+  {
+    "id": 7,
+    "question": "Which service primarily collects and visualizes metrics, logs, and events from AWS resources and applications, enabling alarms and dashboards?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "AWS Config",
+      "C": "Amazon CloudWatch",
+      "D": "AWS Systems Manager",
+      "E": "Amazon OpenSearch Service"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (Amazon CloudWatch) is correct because CloudWatch ingests metrics and logs, creates alarms, and provides dashboards. Option A (CloudTrail) records API calls and account activity for governance/auditing. Option B (Config) tracks resource configurations and compliance. Option D (Systems Manager) provides operational tooling, not primarily metrics/alarms. Option E (OpenSearch) is a search/analytics engine, not the native AWS monitoring service."
+  },
+  {
+    "id": 8,
+    "question": "Which service records AWS API calls and account activity for governance, compliance, and auditing?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "Amazon CloudWatch",
+      "C": "AWS Config",
+      "D": "AWS Audit Manager",
+      "E": "AWS Trusted Advisor"
+    },
+    "correctAnswer": "A",
+    "explanation": "Option A (AWS CloudTrail) is correct because CloudTrail provides a history of API calls and account activity. Option B (CloudWatch) focuses on metrics/logs/alarms. Option C (Config) evaluates configuration changes and compliance. Option D (Audit Manager) helps audit readiness but does not record API activity by itself. Option E (Trusted Advisor) gives best-practice checks across cost, performance, security, and fault tolerance."
+  },
+  {
+    "id": 9,
+    "question": "You need to grant an EC2 instance temporary permissions to read from an S3 bucket without storing long-lived access keys on the instance. What should you use?",
+    "options": {
+      "A": "IAM user with access keys stored on the instance",
+      "B": "Resource-based policy on the S3 bucket only",
+      "C": "IAM role attached to the EC2 instance",
+      "D": "AWS KMS key",
+      "E": "VPC endpoint policy"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (IAM role attached to the EC2 instance) is correct because instance profiles provide temporary credentials automatically rotated by AWS STS. Option A is insecure and violates best practices. Option B (resource-based policy) controls access but still requires a principal identity/credentials. Option D (KMS) manages encryption keys, not identity. Option E (VPC endpoint policy) scopes traffic but is not a substitute for identity/credentials."
+  },
+  {
+    "id": 10,
+    "question": "Under the AWS Shared Responsibility Model, which of the following is AWS responsible for?",
+    "options": {
+      "A": "Patching guest operating systems on EC2 instances",
+      "B": "Physical security of data centers",
+      "C": "Configuring security groups correctly",
+      "D": "Application-level access control",
+      "E": "Classifying customer data"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B is correct: AWS is responsible for security *of* the cloud, including physical facilities, hardware, and the virtualization layer. Options A, C, D, and E fall under the customer's responsibility (security *in* the cloud), including OS patching, network configuration, application access, and data classification."
+  },
+  {
+    "id": 11,
+    "question": "Which statement best describes a security group in Amazon VPC?",
+    "options": {
+      "A": "It is a stateless network firewall that operates at the subnet level.",
+      "B": "It is a stateful virtual firewall that operates at the instance/ENI level.",
+      "C": "It controls DNS resolution within the VPC.",
+      "D": "It is used to create site-to-site VPN connections.",
+      "E": "It filters traffic at the edge locations."
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B is correct: security groups are stateful and applied at the instance/ENI level. Option A describes network ACLs (NACLs), which are stateless and applied at the subnet level. Options C, D, and E are unrelated to security groups."
+  },
+  {
+    "id": 12,
+    "question": "You need a lower-cost S3 storage class for infrequently accessed data that still requires millisecond retrieval and multi-AZ resilience. Which should you choose?",
+    "options": {
+      "A": "S3 Standard",
+      "B": "S3 Standard-Infrequent Access (S3 Standard-IA)",
+      "C": "S3 One Zone-Infrequent Access",
+      "D": "S3 Glacier Instant Retrieval",
+      "E": "S3 Glacier Deep Archive"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (S3 Standard-IA) is correct because it offers lower storage cost for infrequently accessed data with millisecond retrieval and multi-AZ redundancy. Option A (Standard) is for frequently accessed data. Option C (One Zone-IA) stores data in a single AZ (lower resilience). Option D (Glacier Instant Retrieval) is for archival objects accessed rarely; while it offers milliseconds retrieval, it targets archival patterns and may not be the best fit versus Standard-IA for general infrequent access. Option E (Deep Archive) has hours of retrieval latency."
+  },
+  {
+    "id": 13,
+    "question": "For archival data where retrieval is rare but when needed can take minutes to hours, which S3 storage class is most cost-effective?",
+    "options": {
+      "A": "S3 Glacier Instant Retrieval",
+      "B": "S3 Glacier Flexible Retrieval",
+      "C": "S3 Standard-IA",
+      "D": "S3 One Zone-IA",
+      "E": "S3 Standard"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (S3 Glacier Flexible Retrieval) is correct because it is designed for archival data with retrieval times from minutes to hours at very low storage costs. Option A (Glacier Instant Retrieval) offers millisecond retrieval at higher storage cost. Options C and D are for infrequently accessed but still hot data with millisecond retrieval. Option E (Standard) is for frequent access and has higher storage cost."
+  },
+  {
+    "id": 14,
+    "question": "Which pricing model offers significant discounts compared to On-Demand while providing flexibility across instance families, Regions, and operating systems for compute usage?",
+    "options": {
+      "A": "Standard Reserved Instances",
+      "B": "Convertible Reserved Instances",
+      "C": "Compute Savings Plans",
+      "D": "EC2 Instance Savings Plans",
+      "E": "Spot Instances"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (Compute Savings Plans) is correct because they apply to any EC2 instance regardless of family, Region, OS, tenancy, and also to Fargate and Lambda, offering broad flexibility with discounted rates. Option A (Standard RIs) and Option B (Convertible RIs) provide discounts but with more constraints (specific instance or convertible within families). Option D (EC2 Instance Savings Plans) are tied to a specific instance family in a Region. Option E (Spot) can be the cheapest but is interruption-prone and not a commitment-based discount program."
+  },
+  {
+    "id": 15,
+    "question": "Which EC2 purchasing option is most appropriate for stateless, fault-tolerant, and flexible workloads that can be interrupted and resumed later?",
+    "options": {
+      "A": "On-Demand Instances",
+      "B": "Reserved Instances",
+      "C": "Spot Instances",
+      "D": "Dedicated Hosts",
+      "E": "Savings Plans"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (Spot Instances) is correct because Spot provides steep discounts in exchange for the possibility of interruption, making it ideal for resilient, flexible workloads like batch processing or CI. Option A is pay-as-you-go with no commitment. Option B provides discounts for steady-state usage with commitments. Option D is for compliance/licensing needs requiring dedicated hardware. Option E is a discount model for compute usage, not a specific purchasing option."
+  },
+  {
+    "id": 16,
+    "question": "What RDS feature increases availability by synchronously replicating data to a standby in a different Availability Zone and automatically failing over during outages?",
+    "options": {
+      "A": "Read Replicas",
+      "B": "Multi-AZ deployments",
+      "C": "Aurora Serverless",
+      "D": "Cross-Region replication",
+      "E": "Database snapshots"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Multi-AZ deployments) is correct because Multi-AZ provides high availability via synchronous replication and automatic failover. Option A (Read Replicas) are for scaling reads and are asynchronous. Option C (Aurora Serverless) is an on-demand autoscaling configuration but not specifically an HA replica feature. Option D (Cross-Region replication) is for disaster recovery and latency, not automatic in-Region failover. Option E (Snapshots) provide backups, not high availability."
+  },
+  {
+    "id": 17,
+    "question": "Which service provides serverless compute for containers so you don't manage EC2 instances when running tasks or pods?",
+    "options": {
+      "A": "Amazon ECS with EC2 launch type",
+      "B": "Amazon EKS with self-managed nodes",
+      "C": "AWS Fargate",
+      "D": "Amazon Lightsail",
+      "E": "AWS Batch"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (AWS Fargate) is correct because Fargate runs containers without managing servers for both ECS and EKS. Options A and B require managing EC2 worker nodes. Option D (Lightsail) is a simplified VPS/platform not specific to serverless containers. Option E (AWS Batch) can leverage Fargate or EC2 but by itself is a batch orchestration service."
+  },
+  {
+    "id": 18,
+    "question": "Which managed service is designed for fast, petabyte-scale data warehousing and analytics using SQL?",
+    "options": {
+      "A": "Amazon RDS",
+      "B": "Amazon DynamoDB",
+      "C": "Amazon Redshift",
+      "D": "Amazon Athena",
+      "E": "AWS Glue"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (Amazon Redshift) is correct because Redshift is a managed, columnar, MPP data warehouse. Option A (RDS) is for transactional relational workloads. Option B (DynamoDB) is NoSQL. Option D (Athena) is serverless query over S3, not a data warehouse. Option E (Glue) is an ETL/data integration service."
+  },
+  {
+    "id": 19,
+    "question": "You want to run standard SQL queries directly on data stored in Amazon S3 without loading it into a database. Which service should you use?",
+    "options": {
+      "A": "Amazon Redshift",
+      "B": "Amazon Athena",
+      "C": "AWS Glue",
+      "D": "Amazon OpenSearch Service",
+      "E": "Amazon EMR"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon Athena) is correct because Athena is a serverless, interactive query service for data in S3 using SQL (Presto/Trino under the hood). Option A (Redshift) requires loading data (or use Spectrum, but that's different). Option C (Glue) is for ETL and data catalog, not interactive SQL queries. Option D (OpenSearch) is for search/analytics, not standard SQL on S3. Option E (EMR) runs big-data frameworks but is not the simplest serverless SQL-on-S3 option."
+  },
+  {
+    "id": 20,
+    "question": "Which service provides highly available Domain Name System (DNS) and can also register domain names and perform health checks?",
+    "options": {
+      "A": "AWS Global Accelerator",
+      "B": "Amazon Route 53",
+      "C": "Elastic Load Balancing",
+      "D": "AWS App Mesh",
+      "E": "Amazon CloudFront"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (Amazon Route 53) is correct because Route 53 provides authoritative DNS, domain registration, and health checking/routing policies. Option A (Global Accelerator) accelerates traffic but does not provide DNS. Option C (ELB) balances traffic but is not DNS. Option D (App Mesh) is a service mesh for microservices. Option E (CloudFront) is a CDN, not a DNS service."
+  },
+  {
+    "id": 21,
+    "question": "You need a dedicated, private network connection from your on-premises data center to AWS for consistent network performance. Which service should you use?",
+    "options": {
+      "A": "AWS Site-to-Site VPN",
+      "B": "AWS Direct Connect",
+      "C": "Amazon VPC Peering",
+      "D": "AWS Transit Gateway",
+      "E": "AWS Global Accelerator"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (AWS Direct Connect) is correct because it provides dedicated private connectivity between on-premises and AWS. Option A (Site-to-Site VPN) uses the public internet and is not dedicated. Option C (VPC Peering) connects VPCs, not on-prem to AWS. Option D (Transit Gateway) simplifies network connectivity but requires underlying links (VPN/DX). Option E (Global Accelerator) optimizes internet traffic paths, not private connectivity."
+  },
+  {
+    "id": 22,
+    "question": "Which tool lets you set custom cost or usage thresholds and receive alerts when your AWS spend approaches or exceeds those thresholds?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Pricing Calculator",
+      "D": "AWS Trusted Advisor",
+      "E": "AWS License Manager"
+    },
+    "correctAnswer": "B",
+    "explanation": "Option B (AWS Budgets) is correct because it allows setting cost/usage/RI/SP budgets with alerts. Option A (Cost Explorer) is for analyzing and visualizing historical and forecasted costs, not alerting thresholds. Option C (Pricing Calculator) estimates costs before deployment. Option D (Trusted Advisor) provides best practice checks including some cost optimization, but not budget alerts. Option E (License Manager) manages software licenses."
+  },
+  {
+    "id": 23,
+    "question": "Which service helps you visualize and analyze historical AWS costs and usage data, including filtering by service, tag, and time period?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Pricing Calculator",
+      "D": "AWS Trusted Advisor",
+      "E": "AWS Billing Conductor"
+    },
+    "correctAnswer": "A",
+    "explanation": "Option A (AWS Cost Explorer) is correct because it provides interactive reporting and analytics on historical and forecasted costs/usage. Option B (Budgets) is for thresholds and alerts. Option C (Pricing Calculator) is for pre-deployment estimates. Option D (Trusted Advisor) offers best-practice checks, not detailed cost analytics. Option E (Billing Conductor) customizes billing views for chargeback/showback, not interactive analytics dashboards."
+  },
+  {
+    "id": 24,
+    "question": "Which service is purpose-built to securely store, retrieve, and automatically rotate database credentials, API keys, and other secrets?",
+    "options": {
+      "A": "AWS Secrets Manager",
+      "B": "AWS Key Management Service (KMS)",
+      "C": "AWS Systems Manager Parameter Store (Standard tier)",
+      "D": "Amazon GuardDuty",
+      "E": "AWS Certificate Manager"
+    },
+    "correctAnswer": "A",
+    "explanation": "Option A (AWS Secrets Manager) is correct because it securely stores and rotates secrets with fine-grained access control and auditing. Option B (KMS) manages encryption keys, not secret values. Option C (Parameter Store Standard) stores configuration parameters; Advanced tier can store secure strings, but automatic rotation integrations are native to Secrets Manager. Option D (GuardDuty) is a threat detection service. Option E (Certificate Manager) manages TLS/SSL certificates."
+  },
+  {
+    "id": 25,
+    "question": "Which service helps protect web applications from common exploits (like SQL injection and XSS) by letting you define rules that filter HTTP(S) traffic?",
+    "options": {
+      "A": "AWS Shield Standard",
+      "B": "AWS Shield Advanced",
+      "C": "AWS WAF",
+      "D": "AWS Firewall Manager",
+      "E": "Amazon Inspector"
+    },
+    "correctAnswer": "C",
+    "explanation": "Option C (AWS WAF) is correct because it is a web application firewall that filters HTTP(S) traffic using rules and managed rule groups. Option A and B (AWS Shield) provide managed DDoS protection, not application-layer filtering rules. Option D (Firewall Manager) is a central management service for WAF, Shield Advanced, and VPC security groups across accounts but is not the WAF itself. Option E (Amazon Inspector) is for automated security assessment of resources, not web request filtering."
+  }
+]

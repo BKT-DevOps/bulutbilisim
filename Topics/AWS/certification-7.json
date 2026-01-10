@@ -1,0 +1,327 @@
+[
+  {
+    "id": 151,
+    "question": "Which AWS service continuously evaluates resource configurations against desired rules to identify noncompliant resources?",
+    "options": {
+      "A": "AWS CloudTrail",
+      "B": "AWS Config",
+      "C": "Amazon Inspector",
+      "D": "AWS Security Hub",
+      "E": "Amazon GuardDuty"
+    },
+    "correctAnswer": "B",
+    "explanation": "AWS Config records configurations and evaluates them against rules for compliance. CloudTrail (A) audits API calls. Inspector (C) scans for software vulnerabilities. Security Hub (D) aggregates findings. GuardDuty (E) detects threats from logs."
+  },
+  {
+    "id": 152,
+    "question": "Which AWS cost tool provides a detailed, line-item report (Parquet/CSV) of usage and charges that can be stored in S3 and queried with Athena?",
+    "options": {
+      "A": "AWS Cost Explorer",
+      "B": "AWS Budgets",
+      "C": "AWS Cost and Usage Report (CUR)",
+      "D": "AWS Pricing Calculator",
+      "E": "AWS Billing Conductor"
+    },
+    "correctAnswer": "C",
+    "explanation": "The Cost and Usage Report (CUR) delivers granular billing data to S3, often queried using Athena. Cost Explorer (A) visualizes costs. Budgets (B) sets alerts. Pricing Calculator (D) estimates future spend. Billing Conductor (E) customizes chargeback/showback views."
+  },
+  {
+    "id": 153,
+    "question": "Which statement about Amazon S3 Glacier Deep Archive is TRUE?",
+    "options": {
+      "A": "It provides millisecond retrieval at a higher storage cost",
+      "B": "It is designed for long-term archival with retrieval times measured in hours",
+      "C": "It stores data in a single Availability Zone",
+      "D": "It is intended for frequently accessed data",
+      "E": "It does not support lifecycle transitions"
+    },
+    "correctAnswer": "B",
+    "explanation": "S3 Glacier Deep Archive is the lowest-cost storage class for long-term archival, with retrieval typically taking hours. Instant Retrieval (A) is a different Glacier class. One Zone (C) refers to S3 One Zone-IA. Frequently accessed (D) is S3 Standard. Lifecycle transitions (E) are supported."
+  },
+  {
+    "id": 154,
+    "question": "Which EC2 feature saves the in-memory (RAM) state to EBS and allows an instance to resume faster after stop/start?",
+    "options": {
+      "A": "Hibernate",
+      "B": "Auto Recovery",
+      "C": "Instance Store",
+      "D": "Placement Groups",
+      "E": "Enhanced Networking"
+    },
+    "correctAnswer": "A",
+    "explanation": "EC2 Hibernate preserves RAM state to EBS on stop, enabling quicker resume. Auto Recovery (B) restarts impaired instances. Instance Store (C) is ephemeral storage. Placement Groups (D) control placement. Enhanced Networking (E) boosts network performance."
+  },
+  {
+    "id": 155,
+    "question": "Which VPC feature provides a managed NAT service for outbound internet access from private subnets without managing servers?",
+    "options": {
+      "A": "NAT Instance",
+      "B": "NAT Gateway",
+      "C": "Internet Gateway",
+      "D": "Egress-Only Internet Gateway",
+      "E": "Transit Gateway"
+    },
+    "correctAnswer": "B",
+    "explanation": "NAT Gateway is a managed, scalable service for outbound IPv4 access from private subnets. NAT Instances (A) are self-managed. Internet Gateway (C) is for public subnets. Egress-Only IGW (D) is for IPv6-only egress. Transit Gateway (E) connects networks at scale."
+  },
+  {
+    "id": 156,
+    "question": "Which service helps investigate relationships between AWS security findings and resources to identify the root cause of suspicious activity?",
+    "options": {
+      "A": "AWS Security Hub",
+      "B": "Amazon Detective",
+      "C": "AWS Config",
+      "D": "Amazon Inspector",
+      "E": "AWS CloudTrail"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon Detective analyzes and visualizes relationships among logs and findings to aid investigations. Security Hub (A) aggregates findings. Config (C) tracks configurations. Inspector (D) scans for vulnerabilities. CloudTrail (E) logs API activity."
+  },
+  {
+    "id": 157,
+    "question": "Which API Gateway type allows integrating with private resources inside a VPC using VPC endpoints?",
+    "options": {
+      "A": "Regional API",
+      "B": "Edge-Optimized API",
+      "C": "Private API",
+      "D": "HTTP API",
+      "E": "WebSocket API"
+    },
+    "correctAnswer": "C",
+    "explanation": "Private APIs in API Gateway are accessible via VPC endpoints (Interface endpoints), enabling private connectivity to VPC resources. Regional (A) and Edge-Optimized (B) are public. HTTP (D) and WebSocket (E) are API types but can be public; private requires endpoint integration."
+  },
+  {
+    "id": 158,
+    "question": "Which AWS service enables private connectivity from a VPC to most AWS services using interface endpoints powered by PrivateLink?",
+    "options": {
+      "A": "Gateway VPC Endpoint",
+      "B": "Interface VPC Endpoint",
+      "C": "Transit Gateway",
+      "D": "Direct Connect",
+      "E": "Global Accelerator"
+    },
+    "correctAnswer": "B",
+    "explanation": "Interface VPC Endpoints (PrivateLink) create ENIs with private IPs in your subnets for private connections to supported AWS services. Gateway endpoints (A) are for S3/DynamoDB. Transit Gateway (C) connects networks. Direct Connect (D) provides private link to AWS from on-prem. Global Accelerator (E) accelerates internet traffic."
+  },
+  {
+    "id": 159,
+    "question": "Which IAM feature lets you define conditions in policies (like source IP, time of day, or MFA present) to fine-tune access control?",
+    "options": {
+      "A": "IAM Roles",
+      "B": "IAM Policy Variables",
+      "C": "IAM Policy Conditions",
+      "D": "IAM Groups",
+      "E": "Access Keys"
+    },
+    "correctAnswer": "C",
+    "explanation": "IAM policy conditions (e.g., aws:SourceIp, aws:MultiFactorAuthPresent) refine access decisions. Roles (A) grant permissions to principals. Policy variables (B) substitute values but are not conditions. Groups (D) organize users. Access keys (E) are credentials."
+  },
+  {
+    "id": 160,
+    "question": "Which service provides centralized governance over network policies and resources across multiple accounts for AWS WAF, Shield Advanced, and VPC security groups?",
+    "options": {
+      "A": "AWS Firewall Manager",
+      "B": "AWS Security Hub",
+      "C": "AWS Control Tower",
+      "D": "AWS Config",
+      "E": "AWS Organizations"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Firewall Manager centrally configures and enforces network security policies (WAF, Shield Advanced, SGs) across accounts. Security Hub (B) aggregates findings. Control Tower (C) sets up landing zones. Config (D) evaluates compliance. Organizations (E) manages accounts and SCPs."
+  },
+  {
+    "id": 161,
+    "question": "Which EC2 Placement Group type reduces the risk of correlated failures by spreading instances across distinct hardware?",
+    "options": {
+      "A": "Cluster",
+      "B": "Partition",
+      "C": "Spread",
+      "D": "Multicast",
+      "E": "Edge"
+    },
+    "correctAnswer": "C",
+    "explanation": "Spread placement groups place instances on separate hardware to minimize correlated failures. Cluster (A) packs instances for low-latency. Partition (B) organizes instances into isolated partitions. Multicast (D) and Edge (E) are not EC2 placement group types."
+  },
+  {
+    "id": 162,
+    "question": "Which S3 feature provides inventory reports listing objects and metadata to help with auditing and management at scale?",
+    "options": {
+      "A": "S3 Inventory",
+      "B": "S3 Select",
+      "C": "S3 Object Lock",
+      "D": "S3 Access Analyzer",
+      "E": "S3 Replication"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Inventory generates CSV/ORC/Parquet reports of objects and their metadata. Select (B) retrieves partial object data. Object Lock (C) enforces WORM. Access Analyzer (D) identifies external access via policies. Replication (E) copies objects between buckets/Regions."
+  },
+  {
+    "id": 163,
+    "question": "Which service provides managed Active Directory in AWS and enables seamless integration with Windows workloads?",
+    "options": {
+      "A": "AWS Directory Service for Microsoft Active Directory",
+      "B": "Amazon Cognito",
+      "C": "AWS IAM",
+      "D": "AWS Single Sign-On (IAM Identity Center)",
+      "E": "AWS Secrets Manager"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Directory Service for Microsoft AD (aka AWS Managed Microsoft AD) provides a managed AD domain for Windows integration. Cognito (B) is for app user auth. IAM (C) manages AWS identities. IAM Identity Center (D) handles SSO for AWS accounts/apps. Secrets Manager (E) stores secrets."
+  },
+  {
+    "id": 164,
+    "question": "Which service provides a scalable, durable, and secure file storage built on NetApp ONTAP with support for NFS/SMB and advanced data management features?",
+    "options": {
+      "A": "Amazon EFS",
+      "B": "Amazon FSx for Windows File Server",
+      "C": "Amazon FSx for Lustre",
+      "D": "Amazon FSx for NetApp ONTAP",
+      "E": "Amazon S3"
+    },
+    "correctAnswer": "D",
+    "explanation": "FSx for NetApp ONTAP offers ONTAP features (snapshots, cloning, multi-protocol NFS/SMB) as a managed service. EFS (A) is NFS for Linux. FSx for Windows (B) is SMB for Windows. FSx for Lustre (C) is HPC file system. S3 (E) is object storage."
+  },
+  {
+    "id": 165,
+    "question": "Which AWS service provides managed email and calendar interoperability with Microsoft Exchange using a directory?",
+    "options": {
+      "A": "Amazon WorkMail",
+      "B": "Amazon WorkDocs",
+      "C": "Amazon Chime",
+      "D": "AWS Directory Service",
+      "E": "Amazon SES"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon WorkMail is a managed business email and calendaring service that integrates with Microsoft Exchange and AD. WorkDocs (B) is document collaboration. Chime (C) is communications. Directory Service (D) provides AD but not email. SES (E) is email sending, not full mailbox/calendar."
+  },
+  {
+    "id": 166,
+    "question": "Which DynamoDB feature automatically replicates tables across multiple Regions for low-latency global access?",
+    "options": {
+      "A": "DynamoDB Streams",
+      "B": "Global Tables",
+      "C": "TTL",
+      "D": "On-demand capacity",
+      "E": "Adaptive capacity"
+    },
+    "correctAnswer": "B",
+    "explanation": "DynamoDB Global Tables provide multi-Region, multi-master replication for global applications. Streams (A) capture item-level changes. TTL (C) expires items. On-demand (D) adjusts capacity automatically. Adaptive capacity (E) optimizes partition throughput."
+  },
+  {
+    "id": 167,
+    "question": "Which service provides centralized management of software licenses (BYOL) across AWS and on-premises environments?",
+    "options": {
+      "A": "AWS License Manager",
+      "B": "AWS Systems Manager",
+      "C": "AWS Marketplace",
+      "D": "AWS Artifact",
+      "E": "AWS Organizations"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS License Manager tracks, enforces, and manages software licenses for AWS and on-prem. Systems Manager (B) is ops tooling. Marketplace (C) sells third-party software. Artifact (D) provides compliance reports. Organizations (E) manages accounts/SCPs."
+  },
+  {
+    "id": 168,
+    "question": "Which RDS capability helps improve application resiliency by pooling and sharing database connections to reduce spikes in connection attempts?",
+    "options": {
+      "A": "RDS Proxy",
+      "B": "Multi-AZ",
+      "C": "Read Replicas",
+      "D": "Performance Insights",
+      "E": "Enhanced Monitoring"
+    },
+    "correctAnswer": "A",
+    "explanation": "RDS Proxy sits between apps and RDS to pool connections, improve scalability, and handle failovers more gracefully. Multi-AZ (B) improves availability. Read Replicas (C) scale reads. Performance Insights (D) provides tuning metrics. Enhanced Monitoring (E) adds OS-level metrics."
+  },
+  {
+    "id": 169,
+    "question": "Which S3 feature enforces object-level retention policies to meet compliance by preventing deletion or modification for a defined period?",
+    "options": {
+      "A": "S3 Versioning",
+      "B": "S3 Object Lock",
+      "C": "S3 Lifecycle",
+      "D": "S3 Replication",
+      "E": "S3 Block Public Access"
+    },
+    "correctAnswer": "B",
+    "explanation": "S3 Object Lock enforces WORM retention and legal holds on objects. Versioning (A) keeps multiple versions. Lifecycle (C) transitions/expirations. Replication (D) copies objects. Block Public Access (E) prevents public exposure."
+  },
+  {
+    "id": 170,
+    "question": "Which AWS networking service enables application-level (HTTP/HTTPS) name-based routing between services across VPCs and accounts without managing load balancers?",
+    "options": {
+      "A": "AWS App Mesh",
+      "B": "Amazon Route 53",
+      "C": "Amazon VPC Lattice",
+      "D": "AWS Global Accelerator",
+      "E": "Elastic Load Balancing"
+    },
+    "correctAnswer": "C",
+    "explanation": "Amazon VPC Lattice provides service-to-service networking with application-layer routing, auth, and observability across VPCs and accounts. App Mesh (A) is a service mesh but primarily for Envoy-based microservices. Route 53 (B) is DNS. Global Accelerator (D) optimizes global routing. ELB (E) balances traffic to targets."
+  },
+  {
+    "id": 171,
+    "question": "Which AWS service provides fully managed message brokerage compatible with APIs like AMQP, MQTT, and STOMP?",
+    "options": {
+      "A": "Amazon SQS",
+      "B": "Amazon SNS",
+      "C": "Amazon MQ",
+      "D": "Amazon Kinesis Data Streams",
+      "E": "AWS Step Functions"
+    },
+    "correctAnswer": "C",
+    "explanation": "Amazon MQ is a managed broker service (ActiveMQ/RabbitMQ) supporting traditional messaging protocols (AMQP, MQTT, STOMP). SQS (A) is queueing. SNS (B) is pub/sub notifications. Kinesis (D) is streaming data. Step Functions (E) orchestrates workflows."
+  },
+  {
+    "id": 172,
+    "question": "Which S3 capability allows cross-account replication of objects with ownership preserved using a dedicated IAM role and bucket policy?",
+    "options": {
+      "A": "S3 Replication with replication IAM role",
+      "B": "S3 Access Points",
+      "C": "S3 Object Lock",
+      "D": "Requester Pays",
+      "E": "S3 Transfer Acceleration"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Replication supports cross-account replication by configuring a replication IAM role and appropriate bucket policies, preserving object ownership. Access Points (B) simplify access control. Object Lock (C) enforces WORM. Requester Pays (D) changes billing. Transfer Acceleration (E) speeds transfers."
+  },
+  {
+    "id": 173,
+    "question": "Which AWS service helps you catalog, discover, and share machine learning features for reuse across teams?",
+    "options": {
+      "A": "Amazon SageMaker Feature Store",
+      "B": "Amazon SageMaker Model Registry",
+      "C": "AWS Glue Data Catalog",
+      "D": "Amazon OpenSearch Service",
+      "E": "AWS Data Exchange"
+    },
+    "correctAnswer": "A",
+    "explanation": "SageMaker Feature Store manages ML features for online/offline access and team reuse. Model Registry (B) tracks model versions/deployments. Glue Catalog (C) catalogs datasets, not ML features. OpenSearch (D) is search/analytics. Data Exchange (E) is a marketplace for third-party data."
+  },
+  {
+    "id": 174,
+    "question": "Which AWS service provides a marketplace to find, subscribe to, and deploy third-party software and data products that run on AWS?",
+    "options": {
+      "A": "AWS Marketplace",
+      "B": "AWS Data Exchange",
+      "C": "Amazon AppFlow",
+      "D": "AWS Partner Central",
+      "E": "AWS Quick Starts"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Marketplace is the catalog for third-party software and services. Data Exchange (B) focuses on third-party datasets. AppFlow (C) integrates SaaS apps and AWS services. Partner Central (D) is a partner portal. Quick Starts (E) are deployment guides and templates, not a marketplace."
+  },
+  {
+    "id": 175,
+    "question": "Which EC2 purchasing option provides a capacity reservation in a specific AZ for On-Demand Instances to ensure you can launch when needed?",
+    "options": {
+      "A": "Savings Plans",
+      "B": "Standard Reserved Instances",
+      "C": "Convertible Reserved Instances",
+      "D": "On-Demand Capacity Reservations",
+      "E": "Spot Instances"
+    },
+    "correctAnswer": "D",
+    "explanation": "On-Demand Capacity Reservations reserve capacity in a specific AZ for On-Demand usage, ensuring you can launch instances when needed. RIs (B/C) provide pricing discounts but not guaranteed capacity in a specific moment. Savings Plans (A) offer flexible discounts. Spot (E) is interruptible capacity."
+  }
+]

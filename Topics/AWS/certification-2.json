@@ -1,0 +1,327 @@
+[
+  {
+    "id": 26,
+    "question": "Which AWS service lets you define and provision infrastructure as code using templates (YAML/JSON) to consistently deploy resources?",
+    "options": {
+      "A": "AWS CloudFormation",
+      "B": "AWS Systems Manager",
+      "C": "AWS OpsWorks",
+      "D": "AWS Elastic Beanstalk",
+      "E": "AWS CodeDeploy"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS CloudFormation is the native IaC service that models, provisions, and updates AWS resources via declarative templates. Systems Manager (B) is for operations/automation. OpsWorks (C) manages Chef/Puppet stacks but is not the primary IaC service. Elastic Beanstalk (D) simplifies app deployment but abstracts infrastructure. CodeDeploy (E) automates application deployments, not full-stack resource provisioning."
+  },
+  {
+    "id": 27,
+    "question": "Your web application must automatically adjust the number of EC2 instances based on demand to maintain performance and reduce cost. Which service should you use?",
+    "options": {
+      "A": "Elastic Load Balancing",
+      "B": "Amazon CloudWatch",
+      "C": "EC2 Auto Scaling",
+      "D": "AWS Global Accelerator",
+      "E": "AWS Backup"
+    },
+    "correctAnswer": "C",
+    "explanation": "EC2 Auto Scaling adds or removes instances according to scaling policies and CloudWatch alarms to match demand. ELB (A) distributes traffic but does not change capacity. CloudWatch (B) provides metrics/alarms. Global Accelerator (D) optimizes network paths, not capacity. AWS Backup (E) centralizes backup, unrelated to scaling."
+  },
+  {
+    "id": 28,
+    "question": "You need to add sign-up and sign-in with secure, scalable user directories and OAuth/OIDC tokens for your mobile app. Which service should you choose?",
+    "options": {
+      "A": "AWS Identity and Access Management (IAM)",
+      "B": "Amazon Cognito",
+      "C": "AWS Secrets Manager",
+      "D": "AWS Directory Service",
+      "E": "Amazon API Gateway"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon Cognito provides user pools (authentication) and identity pools (federation) with OAuth/OIDC, hosted UI, MFA, and token management. IAM (A) manages AWS principals and permissions, not end-user auth. Secrets Manager (C) stores secrets. Directory Service (D) integrates with Microsoft AD but is not a mobile auth solution. API Gateway (E) manages APIs, not identity stores."
+  },
+  {
+    "id": 29,
+    "question": "Your on-premises backup software must write to a virtual tape library that stores backups durably in AWS without changing existing workflows. Which service fits best?",
+    "options": {
+      "A": "AWS Storage Gateway (Tape Gateway)",
+      "B": "AWS Snowball",
+      "C": "AWS Backup",
+      "D": "Amazon S3 Glacier Deep Archive",
+      "E": "AWS DataSync"
+    },
+    "correctAnswer": "A",
+    "explanation": "Storage Gateway Tape Gateway exposes a virtual tape library to on-prem backup apps, writing into S3 and archiving to Glacier classes. Snowball (B) is physical data transfer. AWS Backup (C) orchestrates backups of AWS resources. S3 Glacier Deep Archive (D) is a storage class, not a VTL. DataSync (E) accelerates file transfers, not VTL integration."
+  },
+  {
+    "id": 30,
+    "question": "You must transfer dozens of terabytes of data to AWS, but your WAN link is constrained. Which service provides a secure, shippable device to move data offline?",
+    "options": {
+      "A": "AWS DataSync",
+      "B": "AWS Snowball",
+      "C": "AWS Direct Connect",
+      "D": "Amazon S3 Transfer Acceleration",
+      "E": "AWS Snowmobile"
+    },
+    "correctAnswer": "B",
+    "explanation": "AWS Snowball is a rugged, secure appliance for offline data transfer at multi-terabyte scale. DataSync (A) accelerates network transfers. Direct Connect (C) is a dedicated network link, not offline. S3 Transfer Acceleration (D) speeds internet transfers. Snowmobile (E) is for exabyte-scale migrations (data center-sized), overkill for dozens of TB."
+  },
+  {
+    "id": 31,
+    "question": "You want to centrally manage multiple AWS accounts with consolidated billing and apply service control policies (SCPs). Which service enables this?",
+    "options": {
+      "A": "AWS Organizations",
+      "B": "AWS Control Tower",
+      "C": "AWS IAM",
+      "D": "AWS Billing Conductor",
+      "E": "AWS Trusted Advisor"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Organizations manages multi-account structures, consolidated billing, and SCPs. Control Tower (B) helps set up and govern landing zones *on top of* Organizations. IAM (C) manages identities/permissions per account. Billing Conductor (D) customizes billing views/chargeback, not account governance. Trusted Advisor (E) provides best-practice checks."
+  },
+  {
+    "id": 32,
+    "question": "Which Amazon Route 53 routing policy directs users to the endpoint that provides the lowest network latency for their location?",
+    "options": {
+      "A": "Weighted routing",
+      "B": "Failover routing",
+      "C": "Geolocation routing",
+      "D": "Latency-based routing",
+      "E": "Multivalue answer routing"
+    },
+    "correctAnswer": "D",
+    "explanation": "Latency-based routing sends users to the Region where latency is lowest. Weighted (A) splits traffic by configured weights. Failover (B) shifts to healthy secondary endpoints. Geolocation (C) routes by user's location. Multivalue answer (E) returns multiple records for simple availability improvements but isn't latency-aware."
+  },
+  {
+    "id": 33,
+    "question": "Which tool provides real-time guidance and checks across cost optimization, performance, security, fault tolerance, and service limits?",
+    "options": {
+      "A": "AWS Trusted Advisor",
+      "B": "AWS Config",
+      "C": "AWS CloudTrail",
+      "D": "AWS License Manager",
+      "E": "AWS Audit Manager"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Trusted Advisor evaluates your environment against best practices in categories including cost, performance, security, fault tolerance, and service limits. Config (B) records resource configurations/compliance. CloudTrail (C) audits API activity. License Manager (D) manages licenses. Audit Manager (E) helps with audit readiness."
+  },
+  {
+    "id": 34,
+    "question": "You need a scalable, managed NFS file system for Linux workloads, accessible by multiple EC2 instances with POSIX permissions. Which service is best?",
+    "options": {
+      "A": "Amazon EFS",
+      "B": "Amazon FSx for Windows File Server",
+      "C": "Amazon S3",
+      "D": "Amazon EBS",
+      "E": "Amazon FSx for Lustre"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon EFS provides elastic NFS file storage for Linux with shared access and POSIX semantics. FSx for Windows (B) offers SMB for Windows. S3 (C) is object storage. EBS (D) is block storage attached to a single instance at a time. FSx for Lustre (E) targets high-performance/HPC workloads."
+  },
+  {
+    "id": 35,
+    "question": "Which Amazon RDS feature improves read scalability by asynchronously replicating data to one or more read-only instances?",
+    "options": {
+      "A": "Multi-AZ deployments",
+      "B": "Read Replicas",
+      "C": "Automated backups",
+      "D": "Database snapshots",
+      "E": "Aurora Global Database"
+    },
+    "correctAnswer": "B",
+    "explanation": "Read Replicas provide read-only copies with asynchronous replication to scale read workloads. Multi-AZ (A) is for high availability with synchronous replication. Automated backups (C) and snapshots (D) are for restore. Aurora Global Database (E) spans Regions for low-latency reads and DR, but the general RDS feature for read scaling is Read Replicas."
+  },
+  {
+    "id": 36,
+    "question": "Which managed service provides a data catalog and serverless ETL capabilities to discover, transform, and load data?",
+    "options": {
+      "A": "AWS Glue",
+      "B": "Amazon Athena",
+      "C": "Amazon EMR",
+      "D": "Amazon Redshift",
+      "E": "AWS Lake Formation"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Glue offers a central Data Catalog and serverless ETL jobs. Athena (B) queries data in S3 using SQL. EMR (C) runs big data frameworks. Redshift (D) is a data warehouse. Lake Formation (E) simplifies building/ securing data lakes, often using Glue underneath, but Glue is the ETL/catalog service."
+  },
+  {
+    "id": 37,
+    "question": "Which service simplifies deploying web applications by automatically handling provisioning, load balancing, scaling, and health monitoring while letting you retain control of underlying resources?",
+    "options": {
+      "A": "AWS Elastic Beanstalk",
+      "B": "AWS CodePipeline",
+      "C": "AWS App Runner",
+      "D": "Amazon Lightsail",
+      "E": "AWS Lambda"
+    },
+    "correctAnswer": "A",
+    "explanation": "Elastic Beanstalk orchestrates resources (like EC2, ELB, Auto Scaling) for application deployments with managed health monitoring. CodePipeline (B) is CI/CD orchestration. App Runner (C) runs containerized/web apps serverlessly but abstracts resources; Beanstalk targets broader app stacks. Lightsail (D) is simplified VPS. Lambda (E) runs serverless functions, not full web app stacks."
+  },
+  {
+    "id": 38,
+    "question": "Your team needs a fully managed, highly available Apache Kafka service integrated with AWS security and monitoring. Which should you use?",
+    "options": {
+      "A": "Amazon Kinesis Data Streams",
+      "B": "Amazon MSK (Managed Streaming for Apache Kafka)",
+      "C": "Amazon SQS",
+      "D": "Amazon EventBridge",
+      "E": "Amazon OpenSearch Service"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon MSK provides managed Kafka clusters with integration to IAM, VPC, and CloudWatch. Kinesis (A) is a separate streaming service with different APIs. SQS (C) is message queuing. EventBridge (D) is event bus routing. OpenSearch (E) is search/analytics, not streaming."
+  },
+  {
+    "id": 39,
+    "question": "In the AWS global infrastructure, what are the locations used to cache content and run Lambda@Edge closer to users to reduce latency?",
+    "options": {
+      "A": "Availability Zones",
+      "B": "Local Zones",
+      "C": "Wavelength Zones",
+      "D": "Edge locations",
+      "E": "Data Centers"
+    },
+    "correctAnswer": "D",
+    "explanation": "Edge locations support Amazon CloudFront and Lambda@Edge for low-latency delivery. Availability Zones (A) are isolated locations within Regions for compute/storage. Local Zones (B) extend AWS closer to metro areas for low-latency compute. Wavelength Zones (C) embed compute at telecom 5G networks. 'Data centers' (E) is a generic term, not the AWS construct."
+  },
+  {
+    "id": 40,
+    "question": "Which Amazon SQS queue type guarantees message ordering and exactly-once processing (no duplicates)?",
+    "options": {
+      "A": "Standard queue",
+      "B": "FIFO queue",
+      "C": "Dead-letter queue",
+      "D": "Delay queue",
+      "E": "Priority queue"
+    },
+    "correctAnswer": "B",
+    "explanation": "SQS FIFO queues preserve strict ordering and ensure exactly-once processing via deduplication. Standard queues (A) offer at-least-once delivery and best-effort ordering. Dead-letter queues (C) store failed messages. Delay queues (D) defer message visibility. Priority queues (E) are not a native SQS type."
+  },
+  {
+    "id": 41,
+    "question": "For a latency-sensitive OLTP database on EC2 requiring high IOPS and low latency, which EBS volume type is most appropriate?",
+    "options": {
+      "A": "General Purpose SSD (gp3)",
+      "B": "Provisioned IOPS SSD (io2)",
+      "C": "Cold HDD (sc1)",
+      "D": "Throughput Optimized HDD (st1)",
+      "E": "Magnetic (standard)"
+    },
+    "correctAnswer": "B",
+    "explanation": "Provisioned IOPS SSD (io2) provides high, consistent IOPS and low latency suitable for transactional databases. gp3 (A) is versatile but not the highest IOPS/latency profile. sc1 (C) and st1 (D) are HDD types for throughput, not OLTP. Magnetic (E) is legacy."
+  },
+  {
+    "id": 42,
+    "question": "Which AWS service continuously monitors for malicious activity and unauthorized behavior using VPC Flow Logs, DNS logs, and CloudTrail events?",
+    "options": {
+      "A": "AWS Config",
+      "B": "Amazon Inspector",
+      "C": "AWS GuardDuty",
+      "D": "AWS Security Hub",
+      "E": "AWS Shield Advanced"
+    },
+    "correctAnswer": "C",
+    "explanation": "Amazon GuardDuty is a threat detection service analyzing logs for anomalies and potential compromise. Config (A) tracks configuration compliance. Inspector (B) assesses vulnerabilities. Security Hub (D) aggregates findings. Shield Advanced (E) protects against sophisticated DDoS attacks."
+  },
+  {
+    "id": 43,
+    "question": "You want a single pane of glass to aggregate and prioritize findings from GuardDuty, Inspector, and Macie across accounts. Which service should you use?",
+    "options": {
+      "A": "AWS Security Hub",
+      "B": "Amazon CloudWatch",
+      "C": "AWS Audit Manager",
+      "D": "AWS Control Tower",
+      "E": "AWS Trusted Advisor"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Security Hub consolidates and normalizes security findings across services and accounts to help prioritize remediation. CloudWatch (B) handles metrics/logs. Audit Manager (C) guides audit evidence collection. Control Tower (D) governs multi-account setups. Trusted Advisor (E) provides best-practice checks, not cross-service finding aggregation."
+  },
+  {
+    "id": 44,
+    "question": "Which Amazon S3 feature helps protect against accidental deletion or overwrites by keeping multiple versions of an object?",
+    "options": {
+      "A": "S3 Lifecycle policies",
+      "B": "S3 Object Lock (Compliance mode)",
+      "C": "S3 Versioning",
+      "D": "S3 Cross-Region Replication",
+      "E": "S3 Transfer Acceleration"
+    },
+    "correctAnswer": "C",
+    "explanation": "S3 Versioning stores multiple object versions, enabling recovery from deletes/overwrites. Lifecycle policies (A) manage transitions/expiration. Object Lock (B) enforces WORM retention. Cross-Region Replication (D) copies objects across Regions. Transfer Acceleration (E) speeds data transfers."
+  },
+  {
+    "id": 45,
+    "question": "To reduce storage costs, you want S3 objects to automatically transition to cheaper storage classes (e.g., Standard-IA or Glacier) after a set time. What should you configure?",
+    "options": {
+      "A": "S3 Object Lock",
+      "B": "S3 Lifecycle policies",
+      "C": "S3 Versioning",
+      "D": "S3 Replication Time Control",
+      "E": "Bucket policy"
+    },
+    "correctAnswer": "B",
+    "explanation": "S3 Lifecycle policies automate object transitions and expirations based on rules. Object Lock (A) applies retention/legal hold. Versioning (C) keeps multiple versions. RTC (D) ensures replication time guarantees. Bucket policies (E) control access, not lifecycle transitions."
+  },
+  {
+    "id": 46,
+    "question": "Which disaster recovery strategy provides the lowest RTO/RPO by running full workloads in two locations simultaneously?",
+    "options": {
+      "A": "Backup and Restore",
+      "B": "Pilot Light",
+      "C": "Warm Standby",
+      "D": "Multi-site Active/Active",
+      "E": "Cold Standby"
+    },
+    "correctAnswer": "D",
+    "explanation": "Multi-site Active/Active operates production in two sites at the same time, offering near-zero RTO/RPO. Backup and Restore (A) has highest RTO. Pilot Light (B) keeps minimal core services running. Warm Standby (C) runs a scaled-down environment. 'Cold Standby' (E) implies significant startup time."
+  },
+  {
+    "id": 47,
+    "question": "You want a simple, low-cost VPS with predictable pricing that bundles compute, storage, and networking to quickly host a small web app. Which service is ideal?",
+    "options": {
+      "A": "Amazon EC2",
+      "B": "Amazon Lightsail",
+      "C": "AWS Elastic Beanstalk",
+      "D": "AWS App Runner",
+      "E": "AWS Fargate"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon Lightsail provides simplified VPS instances with bundled resources and flat-rate pricing, ideal for small websites/apps. EC2 (A) is flexible but requires more setup. Beanstalk (C) manages app stacks. App Runner (D) is for containerized/web services. Fargate (E) runs containers serverlessly."
+  },
+  {
+    "id": 48,
+    "question": "Which feature allows multiple AWS accounts to receive a single consolidated bill and benefit from combined usage discounts?",
+    "options": {
+      "A": "AWS Billing Conductor",
+      "B": "Consolidated billing (via AWS Organizations)",
+      "C": "Compute Savings Plans",
+      "D": "Reserved Instances",
+      "E": "AWS Cost Explorer"
+    },
+    "correctAnswer": "B",
+    "explanation": "Consolidated billing through AWS Organizations aggregates usage and provides a single bill, enabling shared discounts across accounts. Billing Conductor (A) customizes chargeback/showback. Savings Plans (C) and RIs (D) are discount commitments but not billing aggregation. Cost Explorer (E) analyzes costs."
+  },
+  {
+    "id": 49,
+    "question": "Which networking construct provides logically isolated sections of the AWS cloud where you can define subnets, route tables, security groups, and NACLs?",
+    "options": {
+      "A": "Amazon VPC",
+      "B": "AWS Direct Connect",
+      "C": "AWS Transit Gateway",
+      "D": "Amazon Route 53",
+      "E": "AWS Global Accelerator"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon VPC creates an isolated virtual network with subnets, route tables, security groups, and NACLs. Direct Connect (B) provides private connectivity to AWS. Transit Gateway (C) connects VPCs and on-prem networks at scale. Route 53 (D) is DNS. Global Accelerator (E) optimizes internet traffic to fixed endpoints."
+  },
+  {
+    "id": 50,
+    "question": "Which managed service lets you ingest and search log data at scale and visualize it with dashboards (e.g., Kibana-compatible) for operational insights?",
+    "options": {
+      "A": "Amazon OpenSearch Service",
+      "B": "Amazon CloudWatch Logs Insights",
+      "C": "AWS X-Ray",
+      "D": "Amazon Athena",
+      "E": "AWS Glue"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon OpenSearch Service (formerly Elasticsearch Service) provides managed clusters for search/analytics and integrates with visualization dashboards. CloudWatch Logs Insights (B) queries logs serverlessly but is not a managed search cluster. X-Ray (C) traces requests. Athena (D) queries S3 data. Glue (E) provides ETL/ catalog."
+  }
+]

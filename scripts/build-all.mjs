@@ -13,16 +13,24 @@ function walk(dir) {
   return files;
 }
 
-const topicsDir = "topics";
-if (!fs.existsSync(topicsDir)) {
-  console.error(`❌ topics directory not found: ${topicsDir}`);
-  process.exit(1);
+const topicsDirLower = "topics";
+const topicsDirUpper = "Topics";
+let configs = [];
+
+if (fs.existsSync(topicsDirLower)) {
+  configs = configs.concat(
+    walk(topicsDirLower).filter((f) => f.endsWith(".config.json"))
+  );
 }
 
-const configs = walk(topicsDir).filter(f => f.endsWith(".config.json"));
+if (fs.existsSync(topicsDirUpper)) {
+  configs = configs.concat(
+    walk(topicsDirUpper).filter((f) => f.endsWith(".config.json"))
+  );
+}
 
 if (configs.length === 0) {
-  console.error("❌ No *.config.json found under topics/");
+  console.error("❌ No *.config.json found under topics/ or Topics/");
   process.exit(1);
 }
 

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>AWS Certification Card</title>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header class="header">
+        <div class="logo-block {{LOGO1_VISIBILITY}}">
+          <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
+        </div>
+
+        <div class="header-center">
+          <div class="eyebrow">{{COMMUNITY}}</div>
+          <div class="title">AWS Certification Practice</div>
+          <div class="subtitle">{{GROUP_NAME}}</div>
+        </div>
+
+        <div class="logo-block {{LOGO2_VISIBILITY}}">
+          <img class="logo" src="{{LOGO2_SRC}}" alt="Logo" />
+        </div>
+      </header>
+
+      <div class="meta-row">
+        <span class="pill">{{TOPIC}}</span>
+        <span class="pill">Question {{NO}}</span>
+        <span class="pill">{{DATE}}</span>
+      </div>
+
+      <div class="content">
+        <section class="question-panel">
+          <div class="panel-label">Question</div>
+          <div class="question">{{QUESTION}}</div>
+        </section>
+
+        <section class="options-panel">
+          <div class="panel-label">Options</div>
+          <ol class="options" type="A">
+            {{OPTIONS}}
+          </ol>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-left">{{COMMUNITY}}</div>
+        <div class="footer-right">{{ID}}</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

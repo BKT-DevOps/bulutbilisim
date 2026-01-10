@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Certificate</title>
+</head>
+<body>
+  <div class="page">
+    <div class="certificate">
+      <div class="ornament"></div>
+
+      <header class="header">
+        <div class="logo-wrap">
+          <img class="logo" src="{{LOGO_SRC}}" alt="Logo" />
+        </div>
+
+        <div class="header-center">
+          <div class="eyebrow">{{COMMUNITY|COMMUNITY}}</div>
+          <div class="cert-title">{{cert_title|Gonullu Katki Sertifikasi}}</div>
+          <div class="cert-subtitle">{{cert_subtitle|Egitim ve Destek Programi}}</div>
+        </div>
+
+        <div class="logo-wrap">
+          <img class="logo" src="{{LOGO2_SRC}}" alt="Logo" />
+        </div>
+      </header>
+
+      <section class="body">
+        <div class="award-text">{{award_text|Bu sertifika}}</div>
+        <div class="recipient">{{name}}</div>
+        <div class="description">{{description}}</div>
+
+        <div class="meta-row">
+          <div class="meta-block">
+            <div class="meta-label">Program</div>
+            <div class="meta-value">{{program}}</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Tarih</div>
+            <div class="meta-value">{{date}}</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Dogrulama Kodu</div>
+            <div class="meta-value code">{{verify_code}}</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="signatures">
+        <div class="signature">
+          <div class="sig-line"></div>
+          <div class="sig-name">{{approver_1}}</div>
+          <div class="sig-title">{{approver_1_title|Onaylayan}}</div>
+        </div>
+        <!-- <div class="signature">
+          <div class="sig-line"></div>
+          <div class="sig-name">{{approver_2}}</div>
+          <div class="sig-title">{{approver_2_title|Onaylayan}}</div>
+        </div> -->
+      </section>
+
+      <footer class="footer">
+        <div>{{footer_text|Bu sertifika dijital olarak uretilmistir.}}</div>
+        <div>{{ID}}</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

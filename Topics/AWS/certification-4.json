@@ -1,0 +1,327 @@
+[
+  {
+    "id": 76,
+    "question": "Which service allows IT administrators to curate approved products (templates, AMIs, CloudFormation stacks) so end users can self-serve deployments in a governed way?",
+    "options": {
+      "A": "AWS Service Catalog",
+      "B": "AWS CodePipeline",
+      "C": "AWS Control Tower",
+      "D": "AWS Marketplace",
+      "E": "AWS Systems Manager"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Service Catalog lets organizations define and manage portfolios of approved products (e.g., CloudFormation templates, AMIs) so users can provision resources in a controlled, compliant manner. CodePipeline (B) is CI/CD. Control Tower (C) sets up/ governs multi-account landing zones. Marketplace (D) is a software catalog from third parties. Systems Manager (E) is for operations and automation, not curated end-user product catalogs."
+  },
+  {
+    "id": 77,
+    "question": "You need to quickly set up a secure multi-account AWS environment with guardrails and best-practice blueprints. Which service provides an opinionated landing zone on top of AWS Organizations?",
+    "options": {
+      "A": "AWS Control Tower",
+      "B": "AWS Organizations",
+      "C": "AWS Config",
+      "D": "AWS CloudFormation",
+      "E": "AWS Trusted Advisor"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Control Tower automates the setup of a multi-account landing zone with prescriptive guardrails, account vending, and baseline configurations using AWS Organizations under the hood. Organizations (B) is the foundational service for multi-account management but doesn't provide the turnkey landing zone. Config (C) tracks configurations. CloudFormation (D) is IaC. Trusted Advisor (E) gives best-practice checks."
+  },
+  {
+    "id": 78,
+    "question": "Which statement best describes an IAM identity-based policy?",
+    "options": {
+      "A": "A policy attached to an AWS resource that specifies who can access it",
+      "B": "A policy attached to users, groups, or roles that defines what actions they can perform",
+      "C": "A policy that encrypts data in transit",
+      "D": "A policy that enforces network-level access via Security Groups",
+      "E": "A policy that restricts permissions across multiple accounts"
+    },
+    "correctAnswer": "B",
+    "explanation": "Identity-based policies are attached to IAM users, groups, or roles to specify allowed/denied actions on resources. Resource-based policies (A) attach to resources (e.g., S3 bucket policy). Option C refers to TLS. Option D describes network controls. Option E describes Service Control Policies (SCPs) in AWS Organizations."
+  },
+  {
+    "id": 79,
+    "question": "Your team in Account A needs to access an S3 bucket in Account B without sharing long-term credentials. Which approach follows AWS best practices?",
+    "options": {
+      "A": "Create an IAM user in Account B and share access keys",
+      "B": "Use AWS STS to assume a role in Account B and grant access via a bucket policy",
+      "C": "Make the bucket public temporarily",
+      "D": "Whitelist Account A's IPs in a bucket ACL",
+      "E": "Copy data to a public S3 bucket and restrict by prefix"
+    },
+    "correctAnswer": "B",
+    "explanation": "Cross-account access is best achieved by configuring a role in Account B that Account A principals can assume using AWS STS, with the S3 bucket policy permitting the role. Sharing long-term access keys (A) is insecure. Making the bucket public (C) is not recommended. Bucket ACL IP whitelisting (D) is not how S3 ACLs work. Option E exposes data unnecessarily."
+  },
+  {
+    "id": 80,
+    "question": "Which service brings native AWS infrastructure, services, APIs, and tools to your on-premises data center for a consistent hybrid experience?",
+    "options": {
+      "A": "AWS Outposts",
+      "B": "AWS Direct Connect",
+      "C": "AWS Snowball Edge",
+      "D": "AWS Storage Gateway",
+      "E": "AWS Local Zones"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Outposts extends AWS infrastructure and services on-premises for a truly consistent hybrid experience. Direct Connect (B) provides private network links. Snowball Edge (C) is for edge compute and data transfer, not a full AWS rack service. Storage Gateway (D) integrates on-prem storage with AWS. Local Zones (E) place AWS compute near metro areas, not inside your data center."
+  },
+  {
+    "id": 81,
+    "question": "Which AWS infrastructure option places compute, storage, and selected services closer to large population centers to deliver single-digit millisecond latency without being a full Region?",
+    "options": {
+      "A": "Availability Zones",
+      "B": "Local Zones",
+      "C": "Wavelength Zones",
+      "D": "Edge Locations",
+      "E": "Outposts"
+    },
+    "correctAnswer": "B",
+    "explanation": "Local Zones extend AWS services closer to end-users in metro areas for low-latency access. Availability Zones (A) are within Regions. Wavelength Zones (C) embed compute at 5G provider networks. Edge Locations (D) serve CDN/edge services. Outposts (E) bring AWS to customer data centers."
+  },
+  {
+    "id": 82,
+    "question": "Which AWS offering places compute and storage at the edge of 5G networks to serve ultra-low-latency mobile applications?",
+    "options": {
+      "A": "AWS Local Zones",
+      "B": "AWS Wavelength",
+      "C": "AWS Outposts",
+      "D": "Amazon CloudFront",
+      "E": "AWS Global Accelerator"
+    },
+    "correctAnswer": "B",
+    "explanation": "AWS Wavelength deploys AWS infrastructure within telecom 5G networks to minimize latency for mobile devices. Local Zones (A) are metro extensions. Outposts (C) is on-prem AWS. CloudFront (D) caches content via edge locations. Global Accelerator (E) optimizes internet routing but isn't 5G edge compute."
+  },
+  {
+    "id": 83,
+    "question": "Which managed AWS service provides business intelligence capabilities including interactive dashboards, ad-hoc analysis, and ML-powered insights?",
+    "options": {
+      "A": "Amazon QuickSight",
+      "B": "Amazon Athena",
+      "C": "Amazon Redshift",
+      "D": "AWS Glue",
+      "E": "Amazon OpenSearch Service"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon QuickSight is a serverless BI service for dashboards and analytics with ML-insights. Athena (B) queries S3 with SQL. Redshift (C) is a data warehouse. Glue (D) is ETL. OpenSearch (E) is search/analytics, not a BI visualization service."
+  },
+  {
+    "id": 84,
+    "question": "Your application needs a managed, in-memory cache. You need pub/sub, persistence, and advanced data structures. Which option fits best?",
+    "options": {
+      "A": "Amazon ElastiCache for Redis",
+      "B": "Amazon ElastiCache for Memcached",
+      "C": "Amazon RDS",
+      "D": "Amazon DynamoDB",
+      "E": "Amazon S3"
+    },
+    "correctAnswer": "A",
+    "explanation": "ElastiCache for Redis supports persistence, pub/sub, Lua scripts, and rich data structures. Memcached (B) is a simple, multi-threaded cache without persistence. RDS (C) is a relational DB. DynamoDB (D) is NoSQL. S3 (E) is object storage."
+  },
+  {
+    "id": 85,
+    "question": "You need to send high-deliverability transactional and bulk emails from your application. Which AWS service should you use?",
+    "options": {
+      "A": "Amazon SNS",
+      "B": "Amazon SES",
+      "C": "AWS AppSync",
+      "D": "Amazon Pinpoint",
+      "E": "Amazon SQS"
+    },
+    "correctAnswer": "B",
+    "explanation": "Amazon SES (Simple Email Service) sends transactional/marketing emails with reputation management and deliverability features. SNS (A) is pub/sub notifications. AppSync (C) is GraphQL. Pinpoint (D) is multi-channel engagement (email/SMS/push) with analytics; SES is the core email sending service. SQS (E) is a queue."
+  },
+  {
+    "id": 86,
+    "question": "Which service provisions, manages, and renews public and private SSL/TLS certificates for use with AWS services and your internal resources?",
+    "options": {
+      "A": "AWS Certificate Manager (ACM)",
+      "B": "AWS Key Management Service (KMS)",
+      "C": "AWS Secrets Manager",
+      "D": "Amazon Route 53",
+      "E": "AWS Directory Service"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Certificate Manager issues and manages SSL/TLS certificates for load balancers, CloudFront, and more. KMS (B) manages encryption keys, not certificates. Secrets Manager (C) stores secrets. Route 53 (D) is DNS. Directory Service (E) integrates with Microsoft AD."
+  },
+  {
+    "id": 87,
+    "question": "Which AWS service provides automatic protection against common DDoS attacks at no additional cost for applications on AWS?",
+    "options": {
+      "A": "AWS WAF",
+      "B": "AWS Shield Standard",
+      "C": "AWS Shield Advanced",
+      "D": "Amazon GuardDuty",
+      "E": "AWS Firewall Manager"
+    },
+    "correctAnswer": "B",
+    "explanation": "AWS Shield Standard is automatically included at no extra charge and protects against common, most frequent DDoS attacks. Shield Advanced (C) adds enhanced protections and support. WAF (A) filters HTTP(S) traffic using rules, not volumetric DDoS. GuardDuty (D) is threat detection. Firewall Manager (E) centrally manages security policies."
+  },
+  {
+    "id": 88,
+    "question": "Which feature captures information about IP traffic going to and from network interfaces in your VPC for security analysis and troubleshooting?",
+    "options": {
+      "A": "VPC Flow Logs",
+      "B": "AWS CloudTrail",
+      "C": "Amazon CloudWatch Logs Insights",
+      "D": "AWS Config",
+      "E": "AWS X-Ray"
+    },
+    "correctAnswer": "A",
+    "explanation": "VPC Flow Logs record IP traffic metadata for ENIs, subnets, or VPCs. CloudTrail (B) logs API calls. CloudWatch Logs Insights (C) queries logs. Config (D) tracks resource configurations. X-Ray (E) traces application requests."
+  },
+  {
+    "id": 89,
+    "question": "You want to centrally define backup plans and policies for services like EBS, RDS, DynamoDB, and EFS, storing backups in encrypted vaults. Which service should you use?",
+    "options": {
+      "A": "AWS Backup",
+      "B": "AWS Storage Gateway",
+      "C": "Amazon S3 Lifecycle",
+      "D": "AWS Elastic Disaster Recovery (DRS)",
+      "E": "AWS Systems Manager Automation"
+    },
+    "correctAnswer": "A",
+    "explanation": "AWS Backup centrally manages backups across many AWS services with backup plans, vaults, and policies. Storage Gateway (B) integrates on-prem storage. S3 Lifecycle (C) manages object transitions, not service-wide backups. DRS (D) is server replication for DR. Systems Manager Automation (E) runs operational runbooks but isn't a backup orchestrator."
+  },
+  {
+    "id": 90,
+    "question": "Which statement about Amazon EBS snapshots is TRUE?",
+    "options": {
+      "A": "Snapshots are full copies every time and consume the same size as the volume",
+      "B": "Snapshots are incremental and store only changed blocks since the last snapshot",
+      "C": "Snapshots are not stored in AWS and must be downloaded",
+      "D": "Snapshots require the volume to be detached",
+      "E": "Snapshots cannot be copied across Regions"
+    },
+    "correctAnswer": "B",
+    "explanation": "EBS snapshots are incremental point-in-time copies that save only changed blocks after the initial snapshot. They are stored by AWS (in S3 under the hood, not visible). You can snapshot in-use volumes, and snapshots can be copied across Regions."
+  },
+  {
+    "id": 91,
+    "question": "Which Amazon Route 53 routing policy uses health checks to route traffic to a primary endpoint and fails over to a secondary when the primary is unhealthy?",
+    "options": {
+      "A": "Weighted",
+      "B": "Latency-based",
+      "C": "Geolocation",
+      "D": "Failover",
+      "E": "Multivalue answer"
+    },
+    "correctAnswer": "D",
+    "explanation": "Failover routing directs traffic to a primary resource and, based on health checks, fails over to a secondary when the primary becomes unhealthy. Weighted (A) distributes by weight. Latency-based (B) chooses the lowest-latency Region. Geolocation (C) routes by user location. Multivalue answer (E) returns multiple records for basic availability."
+  },
+  {
+    "id": 92,
+    "question": "You manage a large, shared S3 dataset accessed by many applications and teams. Which feature simplifies permission management by providing unique hostnames and policies per application?",
+    "options": {
+      "A": "S3 Access Points",
+      "B": "S3 Pre-signed URLs",
+      "C": "S3 Replication",
+      "D": "S3 Object Lock",
+      "E": "S3 Select"
+    },
+    "correctAnswer": "A",
+    "explanation": "S3 Access Points create dedicated access endpoints with their own policies for specific applications or teams, simplifying access control for shared buckets. Pre-signed URLs (B) are temporary object-level access. Replication (C) copies objects. Object Lock (D) enforces WORM. S3 Select (E) retrieves partial object data via SQL."
+  },
+  {
+    "id": 93,
+    "question": "Which S3 setting helps prevent public exposure of data by overriding bucket policies and ACLs that would otherwise allow public access?",
+    "options": {
+      "A": "S3 Versioning",
+      "B": "S3 Block Public Access",
+      "C": "S3 Lifecycle Rules",
+      "D": "S3 Transfer Acceleration",
+      "E": "S3 Server Access Logging"
+    },
+    "correctAnswer": "B",
+    "explanation": "S3 Block Public Access provides account- and bucket-level controls that block public ACLs and policies. Versioning (A) stores versions. Lifecycle (C) manages transitions/expirations. Transfer Acceleration (D) speeds data transfer. Server Access Logging (E) records access logs."
+  },
+  {
+    "id": 94,
+    "question": "Which AWS capability analyzes IAM policies and resource policies to help you identify resources that are shared with external principals?",
+    "options": {
+      "A": "IAM Access Analyzer",
+      "B": "AWS Security Hub",
+      "C": "AWS CloudTrail",
+      "D": "AWS Config",
+      "E": "Amazon Detective"
+    },
+    "correctAnswer": "A",
+    "explanation": "IAM Access Analyzer uses automated reasoning to identify resources that are accessible from outside your account/organization. Security Hub (B) aggregates findings. CloudTrail (C) logs API calls. Config (D) tracks configuration changes. Detective (E) analyzes security events' relationships but not policy-based external access discovery."
+  },
+  {
+    "id": 95,
+    "question": "Which of the following is NOT a pillar of the AWS Well-Architected Framework?",
+    "options": {
+      "A": "Security",
+      "B": "Reliability",
+      "C": "Performance Efficiency",
+      "D": "User Experience",
+      "E": "Cost Optimization"
+    },
+    "correctAnswer": "D",
+    "explanation": "The pillars are Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability. 'User Experience' is not a pillar."
+  },
+  {
+    "id": 96,
+    "question": "Which service provides static anycast IP addresses and improves availability and performance for TCP/UDP applications by routing over the AWS global network?",
+    "options": {
+      "A": "Amazon CloudFront",
+      "B": "AWS Global Accelerator",
+      "C": "Elastic Load Balancing",
+      "D": "Amazon Route 53",
+      "E": "AWS Direct Connect"
+    },
+    "correctAnswer": "B",
+    "explanation": "AWS Global Accelerator provides two static anycast IPs and routes user traffic via the AWS global network to the optimal endpoint, improving availability and performance for TCP/UDP apps. CloudFront (A) is a CDN that caches content. ELB (C) balances within a Region. Route 53 (D) is DNS. Direct Connect (E) is private connectivity to AWS."
+  },
+  {
+    "id": 97,
+    "question": "You must automatically discover and protect sensitive data (such as PII) in S3 buckets using machine learning. Which service should you use?",
+    "options": {
+      "A": "Amazon Macie",
+      "B": "Amazon GuardDuty",
+      "C": "AWS Config",
+      "D": "AWS CloudTrail",
+      "E": "AWS Key Management Service (KMS)"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Macie uses ML to discover, classify, and protect sensitive data in S3. GuardDuty (B) is threat detection. Config (C) tracks configuration compliance. CloudTrail (D) audits API calls. KMS (E) manages encryption keys, not content discovery."
+  },
+  {
+    "id": 98,
+    "question": "In AWS Organizations, what is the primary purpose of Service Control Policies (SCPs)?",
+    "options": {
+      "A": "To grant additional permissions to IAM users",
+      "B": "To define VPC network access rules",
+      "C": "To set the maximum permissions that accounts or OUs can have",
+      "D": "To enable billing alerts across accounts",
+      "E": "To rotate access keys automatically"
+    },
+    "correctAnswer": "C",
+    "explanation": "SCPs set the maximum permissions boundary for member accounts or organizational units; they do not grant permissions by themselves. Granting permissions (A) is done via IAM policies in the account. VPC rules (B) are network configs. Billing alerts (D) use Budgets/CloudWatch. Key rotation (E) is an IAM feature."
+  },
+  {
+    "id": 99,
+    "question": "You need to replicate S3 objects automatically to a bucket in another Region for compliance. Which prerequisite must be enabled on both source and destination buckets?",
+    "options": {
+      "A": "Bucket ACLs",
+      "B": "S3 Versioning",
+      "C": "S3 Object Lock",
+      "D": "S3 Transfer Acceleration",
+      "E": "S3 Access Points"
+    },
+    "correctAnswer": "B",
+    "explanation": "Cross-Region Replication (CRR) requires S3 Versioning to be enabled on both the source and destination buckets. ACLs (A) are not required. Object Lock (C) is for WORM retention. Transfer Acceleration (D) speeds transfers. Access Points (E) simplify access but are not a CRR prerequisite."
+  },
+  {
+    "id": 100,
+    "question": "Which AWS service automatically assesses resources like EC2 instances, container images in ECR, and Lambda functions for software vulnerabilities and unintended network exposure?",
+    "options": {
+      "A": "Amazon Inspector",
+      "B": "AWS GuardDuty",
+      "C": "AWS Security Hub",
+      "D": "AWS Audit Manager",
+      "E": "AWS WAF"
+    },
+    "correctAnswer": "A",
+    "explanation": "Amazon Inspector continuously scans EC2, ECR container images, and Lambda functions for known vulnerabilities and network exposure. GuardDuty (B) detects threats via log analysis. Security Hub (C) aggregates findings. Audit Manager (D) helps audit readiness. WAF (E) filters web requests."
+  }
+]
