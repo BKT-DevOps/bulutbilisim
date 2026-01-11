@@ -564,6 +564,30 @@ for (let i = 0; i < data.length; i++) {
 
   await page.setContent(fullHtml, { waitUntil: "networkidle" });
 
+  if (config.autoHeight) {
+    await page.addStyleTag({
+      content: `
+        html, body { height: auto !important; }
+        body { min-height: 0 !important; }
+        .canvas { height: auto !important; }
+        .card { min-height: 0 !important; }
+      `,
+    });
+    const contentHeight = await page.evaluate(() => {
+      const body = document.body;
+      const html = document.documentElement;
+      return Math.ceil(
+        Math.max(
+          body.scrollHeight,
+          html.scrollHeight,
+          body.offsetHeight,
+          html.offsetHeight
+        )
+      );
+    });
+    await page.setViewportSize({ width: viewport.width, height: contentHeight });
+  }
+
   // Build filename
   const vars = {
     topic,
@@ -596,11 +620,19 @@ for (let i = 0; i < data.length; i++) {
     }
   }
 
-  await page.screenshot({
-    path: outFile,
-    type: format === "jpg" ? "jpeg" : "png",
-    fullPage: true,
-  });
+  if (config.autoHeight && config.clipSelector) {
+    const el = page.locator(config.clipSelector);
+    await el.screenshot({
+      path: outFile,
+      type: format === "jpg" ? "jpeg" : "png",
+    });
+  } else {
+    await page.screenshot({
+      path: outFile,
+      type: format === "jpg" ? "jpeg" : "png",
+      fullPage: !config.autoHeight,
+    });
+  }
 
   console.log(`✅ [${i + 1}/${total}] -> ${outFile}`);
 }

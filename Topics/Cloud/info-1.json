@@ -1,0 +1,127 @@
+[
+  {
+    "id": "what-is-it-01",
+    "title": "What is an Instance In Cloud Computing?",
+    "content": "An instance in cloud computing is a virtual server resource provided by a third-party cloud provider. While you can manage and maintain physical servers on-premises, instances let you rent CPU, memory, storage, and networking on demand and scale them up or down as needed, paying only for the capacity you consume."
+  },
+  {
+    "id": "what-is-it-02",
+    "title": "What is Cloud Infrastructure?",
+    "content": "Cloud infrastructure is the collection of hardware, virtualization, storage, networking, and platform software that cloud providers operate in their data centers. Organizations consume it as managed services, avoiding capital expense while gaining elastic scale, global reach, and automated operations."
+  },
+  {
+    "id": "what-is-it-03",
+    "title": "What is a Private Cloud?",
+    "content": "A private cloud is a cloud environment dedicated to a single organization, with isolated compute, storage, and networking. It provides self-service and elasticity like public cloud while meeting stricter control, compliance, or data residency requirements."
+  },
+  {
+    "id": "what-is-it-04",
+    "title": "What is a Public Cloud?",
+    "content": "A public cloud delivers on-demand IT resources—compute, storage, networking, and higher-level services—over the internet from a third-party provider. You provision what you need in minutes, scale elastically, and pay per use instead of buying and running your own hardware."
+  },
+  {
+    "id": "what-is-it-05",
+    "title": "What is Hybrid Cloud?",
+    "content": "Hybrid cloud is an IT strategy that connects on-premises environments and private clouds with public cloud services. It lets you place workloads where they run best and move them as needs change, using consistent management and networking across locations."
+  },
+  {
+    "id": "what-is-it-06",
+    "title": "What is Cloud Storage?",
+    "content": "Cloud storage is a managed service that stores data on provider-operated infrastructure and makes it available over secure networks. It offers virtually unlimited capacity, built-in durability across devices or locations, lifecycle policies, and global access without buying storage hardware."
+  },
+  {
+    "id": "what-is-it-07",
+    "title": "What is Object Storage?",
+    "content": "Object storage keeps data as discrete objects in a flat namespace with rich metadata and unique IDs. It scales to petabytes and beyond, provides high durability by distributing objects across devices or regions, and is ideal for data lakes, backups, media, and analytics."
+  },
+  {
+    "id": "what-is-it-08",
+    "title": "What is Block Storage?",
+    "content": "Block storage splits data into fixed-size blocks and presents them to servers as raw volumes with low-latency access. It’s commonly used for databases and transactional workloads that need predictable performance and fine-grained control at the filesystem level."
+  },
+  {
+    "id": "what-is-it-09",
+    "title": "What is Cloud Hosting?",
+    "content": "Cloud hosting runs websites and applications on virtual servers spread across a provider’s infrastructure rather than a single physical machine. It improves reliability and scalability by drawing from a resource pool and lets you adjust capacity quickly as traffic changes."
+  },
+  {
+    "id": "what-is-it-10",
+    "title": "What is Containerization?",
+    "content": "Containerization packages application code with its runtime, libraries, and dependencies into a portable image. Containers start fast, run consistently across environments, and improve resource efficiency—ideal for microservices and CI/CD workflows."
+  },
+  {
+    "id": "what-is-it-11",
+    "title": "What is Container Orchestration?",
+    "content": "Container orchestration automates deployment, scaling, networking, and lifecycle management for fleets of containers. It ensures desired state, reschedules failing workloads, rolls out updates safely, and abstracts underlying infrastructure complexity."
+  },
+  {
+    "id": "what-is-it-12",
+    "title": "What is Docker?",
+    "content": "Docker is a platform and tooling for building, shipping, and running containers. It standardizes image formats, provides developer-friendly workflows, and enables consistent application behavior from laptops to production clusters."
+  },
+  {
+    "id": "what-is-it-13",
+    "title": "What is Kubernetes (K8S)?",
+    "content": "Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications. It schedules pods on nodes, maintains desired state, handles service discovery and networking, and supports rolling updates and self-healing."
+  },
+  {
+    "id": "what-is-it-14",
+    "title": "What is a Kubernetes Cluster?",
+    "content": "A Kubernetes cluster is a set of machines—control plane plus worker nodes—that run and manage containerized workloads. The control plane schedules and reconciles the cluster state, while nodes execute pods and report health and resource usage."
+  },
+  {
+    "id": "what-is-it-15",
+    "title": "What is Serverless Computing?",
+    "content": "Serverless computing lets developers run code without managing servers or capacity. The provider handles provisioning and scaling automatically, and you are billed for actual execution time and resource use instead of idle capacity."
+  },
+  {
+    "id": "what-is-it-16",
+    "title": "What is Serverless Architecture?",
+    "content": "A serverless architecture composes applications from managed services and event-driven functions. It reduces operational overhead, scales transparently with demand, and enables rapid iteration, especially for APIs, data processing, and automation."
+  },
+  {
+    "id": "what-is-it-17",
+    "title": "What is a Serverless Database?",
+    "content": "A serverless database abstracts away instance sizing and maintenance while scaling capacity and throughput automatically. You pay for the reads, writes, and storage you consume, enabling bursty or unpredictable workloads without manual tuning."
+  },
+  {
+    "id": "what-is-it-18",
+    "title": "What is Virtualization?",
+    "content": "Virtualization uses software to simulate hardware, allowing multiple virtual machines to share a single physical server. It increases utilization, simplifies isolation and recovery, and underpins modern cloud and on-premises consolidation."
+  },
+  {
+    "id": "what-is-it-19",
+    "title": "What is Load Balancing?",
+    "content": "Load balancing distributes incoming traffic across multiple backend servers to improve performance and availability. It monitors health, removes unhealthy targets, and supports strategies like round-robin, least connections, or latency-based routing."
+  },
+  {
+    "id": "what-is-it-20",
+    "title": "What is a CDN (Content Delivery Network)?",
+    "content": "A CDN is a distributed network of edge servers that cache and serve content closer to users. By reducing distance and offloading origin servers, CDNs cut latency, improve throughput, and enhance resilience during traffic spikes."
+  },
+  {
+    "id": "what-is-it-21",
+    "title": "What is Network Latency?",
+    "content": "Network latency is the time it takes for data to travel from source to destination and back. Lower latency improves interactivity; it’s influenced by distance, congestion, routing, and protocol overhead."
+  },
+  {
+    "id": "what-is-it-22",
+    "title": "What is Edge Computing?",
+    "content": "Edge computing processes data near where it’s generated—on devices or nearby edge sites—instead of centralized data centers. It reduces latency and bandwidth costs and enables real-time use cases such as IoT control and AR/VR."
+  },
+  {
+    "id": "what-is-it-23",
+    "title": "What is Infrastructure as Code (IaC)?",
+    "content": "Infrastructure as Code defines and manages infrastructure using machine-readable configuration files. It enables repeatable environments, versioned changes, automated provisioning, and safer rollbacks through the same practices used in software development."
+  },
+  {
+    "id": "what-is-it-24",
+    "title": "What is Cloud Migration?",
+    "content": "Cloud migration is the planned movement of applications, data, and IT assets from on-premises or other environments into cloud services. Teams choose strategies like rehost, replatform, or refactor to balance speed, cost, and modernization."
+  },
+  {
+    "id": "what-is-it-25",
+    "title": "What is Cloud Native?",
+    "content": "Cloud-native is an approach to building and running scalable, resilient applications that leverage managed cloud services, containers, microservices, and continuous delivery. It optimizes for automation, elasticity, and rapid change."
+  }
+]

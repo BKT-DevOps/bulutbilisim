@@ -1,0 +1,252 @@
+[
+  {
+    "id": "what-is-it-101",
+    "title": "What is MongoDB?",
+    "content": "MongoDB is a document-oriented NoSQL database that stores data as flexible JSON-like documents. It supports dynamic schemas, secondary indexes, aggregation pipelines, and horizontal scaling via sharding, making it suitable for catalogs, event data, and content platforms."
+  },
+  {
+    "id": "what-is-it-102",
+    "title": "What is Apache Cassandra?",
+    "content": "Apache Cassandra is a distributed, wide-column NoSQL database built for high write throughput, linear scalability, and fault tolerance. Data is replicated across nodes and data centers with tunable consistency, serving time-series, IoT, and user activity workloads."
+  },
+  {
+    "id": "what-is-it-103",
+    "title": "What is Apache HBase?",
+    "content": "Apache HBase is a distributed, column-family store that runs on HDFS and provides real-time reads and writes on massive, sparse datasets. It’s well-suited for random access over petabyte-scale data with strong consistency at the row level."
+  },
+  {
+    "id": "what-is-it-104",
+    "title": "What is Elasticsearch?",
+    "content": "Elasticsearch is a distributed search and analytics engine built on Lucene. It indexes documents for near real-time full-text search, aggregations, and log analytics, supporting scalable clusters, REST APIs, and schema-on-write mappings."
+  },
+  {
+    "id": "what-is-it-105",
+    "title": "What is OpenSearch?",
+    "content": "OpenSearch is an open-source search, analytics, and observability suite derived from Elasticsearch and Kibana. It provides distributed indexing, query, dashboards, and alerting for use cases like log analytics and application monitoring."
+  },
+  {
+    "id": "what-is-it-106",
+    "title": "What is the ELK Stack?",
+    "content": "The ELK stack—Elasticsearch, Logstash, and Kibana—is a toolchain for ingesting, indexing, and visualizing machine data. Logstash processes and ships logs, Elasticsearch stores and queries them, and Kibana provides dashboards and exploration."
+  },
+  {
+    "id": "what-is-it-107",
+    "title": "What is Apache Kafka?",
+    "content": "Apache Kafka is a distributed event streaming platform for high-throughput, low-latency ingestion and processing of real-time data. It decouples producers and consumers via durable topics, supports stream processing, and scales horizontally."
+  },
+  {
+    "id": "what-is-it-108",
+    "title": "What is Apache Spark?",
+    "content": "Apache Spark is a distributed compute engine for large-scale data processing with in-memory acceleration. It provides APIs for batch, SQL, streaming, machine learning, and graph workloads across clusters."
+  },
+  {
+    "id": "what-is-it-109",
+    "title": "What is Apache Flink?",
+    "content": "Apache Flink is a stateful stream and batch processing engine designed for low-latency, high-throughput applications. It offers exactly-once semantics, event-time processing, and advanced state management for real-time analytics."
+  },
+  {
+    "id": "what-is-it-110",
+    "title": "What is Hadoop?",
+    "content": "Apache Hadoop is an ecosystem for distributed storage and processing of large datasets. HDFS stores data across commodity servers, and MapReduce processes data in parallel, with related projects expanding capabilities for scheduling and metadata."
+  },
+  {
+    "id": "what-is-it-111",
+    "title": "What is Presto (PrestoDB)?",
+    "content": "Presto is a distributed SQL query engine that runs interactive analytics across data lakes and diverse sources without moving data. It executes queries in parallel, returning results quickly at scale."
+  },
+  {
+    "id": "what-is-it-112",
+    "title": "What is Apache Iceberg?",
+    "content": "Apache Iceberg is an open table format for data lakes that brings ACID transactions, schema evolution, partition evolution, and hidden partitioning to large analytic tables, improving reliability and performance of lakehouse architectures."
+  },
+  {
+    "id": "what-is-it-113",
+    "title": "What is Open Source?",
+    "content": "Open source is a model where software source code is publicly available to use, modify, and distribute under permissive or copyleft licenses. It enables collaborative development, transparency, and faster innovation across communities and vendors."
+  },
+  {
+    "id": "what-is-it-114",
+    "title": "What are Developer Tools?",
+    "content": "Developer tools include languages, frameworks, build systems, debuggers, linters, package managers, and IDE extensions that streamline coding, testing, and delivery. They improve productivity, quality, and repeatability of software engineering."
+  },
+  {
+    "id": "what-is-it-115",
+    "title": "What is Business Intelligence (BI)?",
+    "content": "Business Intelligence comprises tools and practices that transform data into dashboards, reports, and self-service analytics. BI democratizes insights for decision-makers with governed metrics, visualizations, and ad hoc exploration."
+  },
+  {
+    "id": "what-is-it-116",
+    "title": "What is Business Analytics?",
+    "content": "Business analytics applies statistical and computational techniques to describe, diagnose, predict, and prescribe actions from business data. It informs strategy, operations, and performance optimization across functions."
+  },
+  {
+    "id": "what-is-it-117",
+    "title": "What is Operational Analytics?",
+    "content": "Operational analytics fuses telemetry from applications, infrastructure, and business processes to monitor health and optimize operations. It correlates events and metrics to uncover issues, trends, and improvement opportunities in near real time."
+  },
+  {
+    "id": "what-is-it-118",
+    "title": "What is Operational Intelligence (OI)?",
+    "content": "Operational intelligence analyzes live, continuous data streams to provide situational awareness and timely actions. It supports alerting, anomaly detection, and decision support for IT, IoT, and industrial systems."
+  },
+  {
+    "id": "what-is-it-119",
+    "title": "What is Predictive Analytics?",
+    "content": "Predictive analytics uses historical and current data with statistical models and machine learning to forecast future outcomes. Organizations apply it to demand planning, risk scoring, maintenance, and personalization."
+  },
+  {
+    "id": "what-is-it-120",
+    "title": "What is Data Analytics?",
+    "content": "Data analytics is the process of collecting, preparing, exploring, and modeling data to generate insights that guide decisions. It ranges from descriptive summaries to advanced modeling and real-time analysis."
+  },
+  {
+    "id": "what-is-it-121",
+    "title": "What is Data Visualization?",
+    "content": "Data visualization communicates information through charts, graphs, and interactive dashboards. Good visuals expose patterns, distributions, and outliers, enabling faster understanding and better storytelling with data."
+  },
+  {
+    "id": "what-is-it-122",
+    "title": "What is Machine Learning?",
+    "content": "Machine learning builds models that learn patterns from data to make predictions or decisions without explicit programming. Common tasks include classification, regression, clustering, and recommendation."
+  },
+  {
+    "id": "what-is-it-123",
+    "title": "What is Deep Learning?",
+    "content": "Deep learning uses multi-layer neural networks to learn complex representations from large datasets. It powers breakthroughs in vision, speech, language, and generative modeling with high-capacity architectures."
+  },
+  {
+    "id": "what-is-it-124",
+    "title": "What is Reinforcement Learning?",
+    "content": "Reinforcement learning trains agents to take actions in an environment to maximize cumulative reward. Through exploration and feedback, policies are learned for sequential decision-making under uncertainty."
+  },
+  {
+    "id": "what-is-it-125",
+    "title": "What is RLHF?",
+    "content": "Reinforcement Learning from Human Feedback combines human preference data with reinforcement learning to align model behavior with human intent. It improves usefulness and safety of generative and conversational systems."
+  },
+  {
+    "id": "what-is-it-126",
+    "title": "What is Transfer Learning?",
+    "content": "Transfer learning adapts a model pre-trained on a large, general dataset to a related, narrower task with less data. It accelerates training and improves performance by reusing learned representations."
+  },
+  {
+    "id": "what-is-it-127",
+    "title": "What is Overfitting?",
+    "content": "Overfitting occurs when a model memorizes training data noise rather than learning generalizable patterns. It leads to poor performance on new data and is mitigated with regularization, more data, and validation."
+  },
+  {
+    "id": "what-is-it-128",
+    "title": "What is Boosting?",
+    "content": "Boosting is an ensemble technique that builds a strong learner by sequentially training weak learners to focus on previous errors. Algorithms like AdaBoost, Gradient Boosting, and XGBoost reduce bias and improve accuracy."
+  },
+  {
+    "id": "what-is-it-129",
+    "title": "What is Feature Engineering?",
+    "content": "Feature engineering creates, selects, and transforms variables from raw data to improve model performance. It includes encoding, normalization, interaction terms, and domain-driven signals curated for learning."
+  },
+  {
+    "id": "what-is-it-130",
+    "title": "What is Hyperparameter Tuning?",
+    "content": "Hyperparameter tuning searches configurations—such as learning rates, depths, and regularization—to optimize model performance. Techniques include grid search, random search, Bayesian optimization, and early stopping."
+  },
+  {
+    "id": "what-is-it-131",
+    "title": "What is Data Labeling?",
+    "content": "Data labeling annotates raw inputs with meaningful tags—classes, spans, or bounding boxes—so supervised models can learn from examples. Quality control and guidelines are key to consistent labels and accurate models."
+  },
+  {
+    "id": "what-is-it-132",
+    "title": "What is Natural Language Processing (NLP)?",
+    "content": "NLP enables computers to interpret and generate human language. It covers tokenization, parsing, embeddings, sequence modeling, and tasks like translation, Q&A, summarization, and sentiment analysis."
+  },
+  {
+    "id": "what-is-it-133",
+    "title": "What is Text Classification?",
+    "content": "Text classification assigns documents to predefined categories using features learned from text. It underpins spam filtering, intent detection, topic routing, and triage in content-heavy workflows."
+  },
+  {
+    "id": "what-is-it-134",
+    "title": "What is Text Analysis?",
+    "content": "Text analysis extracts structure, entities, relationships, and sentiment from unstructured text. It combines linguistic rules and machine learning to turn documents, chats, and reviews into actionable data."
+  },
+  {
+    "id": "what-is-it-135",
+    "title": "What is Sentiment Analysis?",
+    "content": "Sentiment analysis determines the emotional polarity—positive, negative, or neutral—of text. It helps brands monitor perception, triage support, and tailor messaging based on customer feedback."
+  },
+  {
+    "id": "what-is-it-136",
+    "title": "What is Computer Vision?",
+    "content": "Computer vision teaches machines to interpret images and video—detecting objects, segmenting scenes, and recognizing patterns. It enables quality inspection, medical imaging, autonomy, and biometrics."
+  },
+  {
+    "id": "what-is-it-137",
+    "title": "What is Facial Recognition?",
+    "content": "Facial recognition detects and matches human faces in images or video for verification or identification. Deployments must consider accuracy, consent, fairness, and applicable regulations to manage risk."
+  },
+  {
+    "id": "what-is-it-138",
+    "title": "What is OCR (Optical Character Recognition)?",
+    "content": "OCR converts images of text—such as scans or photos—into machine-readable characters. It enables digitization, searchability, and automation of document-heavy processes like invoicing and records management."
+  },
+  {
+    "id": "what-is-it-139",
+    "title": "What is Speech to Text?",
+    "content": "Speech-to-text transcribes spoken audio into written text using acoustic models, language models, and decoding. It powers voice assistants, captions, notes, and analytics for calls and meetings."
+  },
+  {
+    "id": "what-is-it-140",
+    "title": "What is Text to Speech?",
+    "content": "Text-to-speech synthesizes natural-sounding audio from text by mapping characters to phonemes and waveforms. Modern neural TTS supports multiple voices, styles, and languages for accessibility and UX."
+  },
+  {
+    "id": "what-is-it-141",
+    "title": "What is an Audio-to-Text Converter?",
+    "content": "An audio-to-text converter is transcription software that automatically recognizes speech and produces text outputs. It accelerates documentation, enables search, and feeds downstream NLP pipelines for analysis."
+  },
+  {
+    "id": "what-is-it-142",
+    "title": "What is an LLM (Large Language Model)?",
+    "content": "An LLM is a large neural model, typically transformer-based, trained on vast text corpora to perform language understanding and generation. It powers chat, coding assist, retrieval, and content creation tasks."
+  },
+  {
+    "id": "what-is-it-143",
+    "title": "What is GPT?",
+    "content": "Generative Pre-trained Transformer (GPT) refers to a family of transformer models pre-trained on large text datasets and fine-tuned for tasks. They generate coherent text, follow instructions, and support tool-augmented workflows."
+  },
+  {
+    "id": "what-is-it-144",
+    "title": "What are Transformers in AI?",
+    "content": "Transformers are neural architectures that use self-attention to model relationships within sequences. They enable parallel training, long-range context, and state-of-the-art results in language, vision, and multimodal AI."
+  },
+  {
+    "id": "what-is-it-145",
+    "title": "What are Embeddings in Machine Learning?",
+    "content": "Embeddings map discrete items—words, images, users—into dense vectors that capture semantic relationships. They enable similarity search, recommendations, and as inputs for downstream models."
+  },
+  {
+    "id": "what-is-it-146",
+    "title": "What is RAG (Retrieval-Augmented Generation)?",
+    "content": "Retrieval-Augmented Generation augments a generative model with a search over external knowledge to ground responses. It improves accuracy and freshness without retraining by injecting relevant context into prompts."
+  },
+  {
+    "id": "what-is-it-147",
+    "title": "What is LangChain?",
+    "content": "LangChain is an open-source framework for building applications on top of large language models. It provides abstractions for prompts, memory, tools, chains, and retrieval to compose complex LLM workflows."
+  },
+  {
+    "id": "what-is-it-148",
+    "title": "What is AIOps?",
+    "content": "AIOps applies machine learning and advanced analytics to IT operations data to detect anomalies, correlate events, and automate remediation. It reduces noise, speeds incident response, and improves reliability at scale."
+  },
+  {
+    "id": "what-is-it-149",
+    "title": "What is MLOps?",
+    "content": "MLOps standardizes and automates the end-to-end lifecycle of machine learning—data, training, evaluation, deployment, and monitoring. It improves reproducibility, governance, and time to value for ML systems."
+  },
+  {
+    "id": "what-is-it-150",
+    "title": "What are AI Agents?",
+    "content": "AI agents are software systems that can perceive context, plan, and act toward goals, often orchestrating tools and data sources autonomously. They break tasks into steps, call external services, and adapt based on feedback."
+  }
+]

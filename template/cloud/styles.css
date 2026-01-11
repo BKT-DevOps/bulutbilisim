@@ -1,0 +1,285 @@
+/* ================================
+   RESET + BASE
+================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg: #0a0f1e;
+  --bg-soft: #111a2c;
+  --card: rgba(255,255,255,0.06);
+  --card-strong: rgba(255,255,255,0.1);
+  --border: rgba(255,255,255,0.16);
+  --text: #f7f9ff;
+  --muted: rgba(247,249,255,0.72);
+  --accent: #2dd4bf;
+  --accent-2: #f59e0b;
+  --accent-3: #60a5fa;
+}
+
+html, body { width: 100%; height: 100%; }
+
+body{
+  font-family: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1400px 900px at 10% 10%, rgba(45,212,191,0.20), transparent 60%),
+    radial-gradient(1200px 800px at 90% 12%, rgba(96,165,250,0.18), transparent 55%),
+    radial-gradient(1000px 700px at 50% 90%, rgba(245,158,11,0.18), transparent 55%),
+    var(--bg);
+}
+
+/* ================================
+   CANVAS
+================================ */
+.canvas{
+  width: 100%;
+  padding: clamp(14px, 2.2vw, 38px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.card{
+  width: 100%;
+  padding: clamp(18px, 2.6vw, 46px);
+  border-radius: clamp(22px, 2.4vw, 40px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 120px rgba(5,10,20,0.6);
+  backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.6vw, 24px);
+}
+
+.card::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,0.06), transparent 40%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 12px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.edge-glow{
+  position: absolute;
+  inset: auto -20% -30% auto;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(45,212,191,0.25), transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+/* ================================
+   HEADER
+================================ */
+.header{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr) auto;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 20px);
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 18px);
+  min-width: 0;
+}
+
+.logo-wrap{
+  width: clamp(56px, 6vw, 104px);
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(16px, 1.8vw, 26px);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logo-wrap.hidden{
+  visibility: hidden;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.logo-wrap.secondary{
+  width: clamp(48px, 5.4vw, 88px);
+}
+
+.logo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-text{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 12px);
+}
+
+.community{
+  font-size: clamp(16px, 1.8vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.group{
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 800;
+  font-family: "Bricolage Grotesque", "Work Sans", system-ui, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(8px, 1vw, 14px);
+}
+
+.pill{
+  padding: clamp(6px, 0.9vw, 10px) clamp(10px, 1.2vw, 14px);
+  border-radius: 999px;
+  font-size: clamp(13px, 1.4vw, 20px);
+  font-weight: 700;
+  color: #07121f;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  box-shadow: 0 16px 36px rgba(0,0,0,0.28);
+  white-space: nowrap;
+}
+
+/* ================================
+   HERO
+================================ */
+.hero{
+  position: relative;
+  z-index: 1;
+}
+
+.title{
+  font-family: "Bricolage Grotesque", "Work Sans", system-ui, sans-serif;
+  font-size: clamp(40px, 5.2vw, 90px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+  text-shadow: 0 18px 60px rgba(0,0,0,0.35);
+}
+
+/* ================================
+   CONTENT BLOCKS
+================================ */
+.block{
+  position: relative;
+  z-index: 1;
+  padding: clamp(12px, 1.6vw, 22px);
+  border-radius: clamp(18px, 2.2vw, 30px);
+  background: var(--card-strong);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+  display: grid;
+  gap: clamp(8px, 1.2vw, 14px);
+}
+
+.block-title{
+  font-size: clamp(14px, 1.4vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.block-body{
+  font-size: clamp(20px, 2.6vw, 38px);
+  line-height: 1.6;
+  font-weight: 600;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.example-body{
+  font-family: "SFMono-Regular", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  font-size: clamp(16px, 1.9vw, 28px);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.example:has(.example-body:empty){
+  display: none;
+}
+
+/* ================================
+   FOOTER
+================================ */
+.footer{
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(6px, 1vw, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 1.6vw, 20px);
+  padding-top: clamp(4px, 0.8vw, 10px);
+  color: var(--muted);
+  font-size: clamp(15px, 1.6vw, 24px);
+  font-weight: 600;
+}
+
+.footer-right{
+  padding: clamp(6px, 0.8vw, 10px) clamp(10px, 1.2vw, 16px);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+}
+
+/* ================================
+   PHONE / STORY BOOST
+================================ */
+@media (max-aspect-ratio: 3/4) {
+  .card{
+    padding: clamp(24px, 4vw, 64px);
+  }
+  .title{
+    font-size: clamp(46px, 6.2vw, 106px);
+  }
+  .block-body{
+    font-size: clamp(22px, 2.9vw, 42px);
+  }
+}
+
+/* ================================
+   SMALL WIDTH
+================================ */
+@media (max-width: 720px){
+  .header{
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .meta{
+    justify-content: flex-start;
+  }
+  .logo-wrap.secondary{
+    display: none;
+  }
+}

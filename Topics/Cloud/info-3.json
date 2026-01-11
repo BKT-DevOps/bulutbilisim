@@ -1,0 +1,252 @@
+[
+  {
+    "id": "what-is-it-051",
+    "title": "What is Code Quality?",
+    "content": "Code quality describes how reliable, readable, secure, and maintainable code is. High-quality code follows standards, minimizes complexity, handles errors, includes tests, and is easy to change—reducing defects and speeding up delivery."
+  },
+  {
+    "id": "what-is-it-052",
+    "title": "What is Infrastructure as Code (IaC)?",
+    "content": "Infrastructure as Code uses declarative or imperative files to define and provision infrastructure. It enables repeatable environments, version control, automated rollouts, and safe rollbacks through the same practices used for application code."
+  },
+  {
+    "id": "what-is-it-053",
+    "title": "What is Cloud Migration?",
+    "content": "Cloud migration is the planned movement of applications, data, and services to cloud platforms. Teams choose strategies such as rehost, replatform, refactor, or replace to optimize cost, agility, and modernization while controlling risk."
+  },
+  {
+    "id": "what-is-it-054",
+    "title": "What is Cloud Native?",
+    "content": "Cloud-native is an approach to building scalable, resilient software that leverages managed cloud services, containers, microservices, automation, and continuous delivery to support rapid change and elastic demand."
+  },
+  {
+    "id": "what-is-it-055",
+    "title": "What is Load Balancing?",
+    "content": "Load balancing distributes traffic across multiple servers or services to improve performance and availability. It monitors target health, removes unhealthy instances, and supports policies like round-robin, least connections, and latency-based routing."
+  },
+  {
+    "id": "what-is-it-056",
+    "title": "What is Object Storage?",
+    "content": "Object storage keeps data as objects with unique IDs and rich metadata in a flat namespace. It scales massively, provides high durability via replication or erasure coding, and suits data lakes, backups, media, and analytics."
+  },
+  {
+    "id": "what-is-it-057",
+    "title": "What is Block Storage?",
+    "content": "Block storage presents raw volumes to servers and provides low-latency, consistent I/O. It is ideal for databases and transactional workloads that need filesystem-level control and predictable performance."
+  },
+  {
+    "id": "what-is-it-058",
+    "title": "What is Cloud Hosting?",
+    "content": "Cloud hosting runs websites and apps on virtual servers spread across provider infrastructure. It offers rapid scaling, higher availability, and managed operations compared to single-machine or on-premises hosting."
+  },
+  {
+    "id": "what-is-it-059",
+    "title": "What is Edge Computing?",
+    "content": "Edge computing processes data close to where it is generated—on devices or local edge sites—instead of centralized data centers. It reduces latency and bandwidth, enabling real-time use cases such as IoT control and immersive experiences."
+  },
+  {
+    "id": "what-is-it-060",
+    "title": "What is a CDN (Content Delivery Network)?",
+    "content": "A CDN caches and serves content from globally distributed edge servers. It shortens network distance, lowers latency, offloads origin servers, and improves resilience during traffic spikes."
+  },
+  {
+    "id": "what-is-it-061",
+    "title": "What is Network Latency?",
+    "content": "Network latency is the delay between a request and its response over a network. It is affected by physical distance, routing, congestion, and protocol overhead, and lower latency improves interactive user experiences."
+  },
+  {
+    "id": "what-is-it-062",
+    "title": "What is Routing?",
+    "content": "Routing selects paths for data packets to travel across networks. Routers evaluate metrics and policies to forward traffic efficiently and reliably between nodes and autonomous systems."
+  },
+  {
+    "id": "what-is-it-063",
+    "title": "What is CIDR?",
+    "content": "Classless Inter-Domain Routing (CIDR) is a flexible IP address allocation and routing scheme that uses prefixes to aggregate ranges. It improves route efficiency and conserves address space compared to classful networking."
+  },
+  {
+    "id": "what-is-it-064",
+    "title": "What is DNS?",
+    "content": "The Domain Name System (DNS) translates human-friendly domain names into IP addresses so clients can locate services. It uses hierarchical zones, caching, and record types such as A, AAAA, CNAME, and TXT."
+  },
+  {
+    "id": "what-is-it-065",
+    "title": "What is DDNS?",
+    "content": "Dynamic DNS (DDNS) automatically updates DNS records when IP addresses change. It keeps name-to-address mappings accurate for devices or services that receive dynamic assignments."
+  },
+  {
+    "id": "what-is-it-066",
+    "title": "What is IPsec?",
+    "content": "IPsec is a suite of protocols that adds authentication and encryption to IP traffic. It secures data at the network layer using modes such as transport and tunnel with mechanisms like IKE for key management."
+  },
+  {
+    "id": "what-is-it-067",
+    "title": "What is ICMP?",
+    "content": "The Internet Control Message Protocol (ICMP) communicates network diagnostics and error conditions, such as unreachable destinations or time exceeded. Tools like ping and traceroute rely on ICMP messages."
+  },
+  {
+    "id": "what-is-it-068",
+    "title": "What is BGP?",
+    "content": "Border Gateway Protocol (BGP) exchanges routing information between autonomous systems on the internet. It selects routes based on policies and path attributes, enabling scalable, fault-tolerant global connectivity."
+  },
+  {
+    "id": "what-is-it-069",
+    "title": "What is a VPN (Virtual Private Network)?",
+    "content": "A VPN creates an encrypted tunnel over public networks to connect users or sites securely. It masks IP addresses, protects data in transit, and enables remote access to private resources."
+  },
+  {
+    "id": "what-is-it-070",
+    "title": "What is Multi-Factor Authentication (MFA)?",
+    "content": "MFA requires multiple independent factors—something you know, have, or are—to verify identity. It mitigates credential theft by adding one-time codes, security keys, or biometrics beyond passwords."
+  },
+  {
+    "id": "what-is-it-071",
+    "title": "What is SSO (Single Sign-On)?",
+    "content": "Single Sign-On lets users access multiple applications after a single authentication. It improves user experience and security by centralizing identity, reducing password sprawl, and enabling unified access policies."
+  },
+  {
+    "id": "what-is-it-072",
+    "title": "What is an SSL/TLS Certificate?",
+    "content": "An SSL/TLS certificate is a credential issued within a public key infrastructure that authenticates a server’s identity and enables encrypted HTTPS connections. It contains a public key and metadata signed by a trusted certificate authority."
+  },
+  {
+    "id": "what-is-it-073",
+    "title": "What is Endpoint Security?",
+    "content": "Endpoint security protects devices such as laptops and mobiles from malware and unauthorized access. It combines policies and tools like antivirus, EDR, disk encryption, and configuration hardening."
+  },
+  {
+    "id": "what-is-it-074",
+    "title": "What is Cybersecurity?",
+    "content": "Cybersecurity safeguards systems, networks, applications, and data against threats. It spans prevention, detection, response, and recovery across people, processes, and technology to maintain confidentiality, integrity, and availability."
+  },
+  {
+    "id": "what-is-it-075",
+    "title": "What is Security Analytics?",
+    "content": "Security analytics collects and analyzes logs, events, and telemetry to detect anomalies and threats. It correlates signals across sources to surface incidents and guide investigation and response."
+  },
+  {
+    "id": "what-is-it-076",
+    "title": "What is Cloud Storage?",
+    "content": "Cloud storage is a managed service that stores data on provider infrastructure with secure access over networks. It offers elastic capacity, durability, lifecycle policies, and global availability without owning hardware."
+  },
+  {
+    "id": "what-is-it-077",
+    "title": "What is a Data Lake?",
+    "content": "A data lake is a centralized repository that stores raw, structured, and unstructured data at scale. Analytics tools pull and transform the data on demand for dashboards, machine learning, and real-time processing."
+  },
+  {
+    "id": "what-is-it-078",
+    "title": "What is a Data Warehouse?",
+    "content": "A data warehouse is a curated, high-performance store optimized for analytical queries and reporting. It integrates data from multiple sources, organizes it into schemas, and serves many concurrent users with fast results."
+  },
+  {
+    "id": "what-is-it-079",
+    "title": "What is a Data Mart?",
+    "content": "A data mart is a subject- or department-focused subset of enterprise data designed for faster, relevant analysis. It provides simplified schemas and curated datasets tailored to specific stakeholder needs."
+  },
+  {
+    "id": "what-is-it-080",
+    "title": "What is a Data Pipeline?",
+    "content": "A data pipeline is a chain of processes that ingest, validate, transform, and deliver data from sources to destinations. It supports batch and streaming modes, enabling consistent, reliable flows for analytics and operations."
+  },
+  {
+    "id": "what-is-it-081",
+    "title": "What is Data Integration?",
+    "content": "Data integration unifies disparate datasets from applications and platforms into a consistent view. It uses connectors, mapping, and transformation to reduce silos and support analytics, reporting, and workflows."
+  },
+  {
+    "id": "what-is-it-082",
+    "title": "What is Data Migration?",
+    "content": "Data migration moves data between systems or storage with planning for integrity, security, and minimal downtime. It includes format conversion, validation, and reconciliation to ensure correctness post-cutover."
+  },
+  {
+    "id": "what-is-it-083",
+    "title": "What is Data Management?",
+    "content": "Data management encompasses the policies, processes, and tools for collecting, storing, securing, and using data effectively. It improves data quality, accessibility, and compliance across the organization."
+  },
+  {
+    "id": "what-is-it-084",
+    "title": "What is Data Governance?",
+    "content": "Data governance sets rules, roles, and controls to ensure data is accurate, secure, compliant, and usable. It aligns data initiatives with business goals and provides stewardship, catalogs, and lineage."
+  },
+  {
+    "id": "what-is-it-085",
+    "title": "What is Data Strategy?",
+    "content": "Data strategy is a long-term plan for how an organization collects, manages, shares, and analyzes data to achieve outcomes. It defines priorities, architecture, skills, and governance for sustainable value."
+  },
+  {
+    "id": "what-is-it-086",
+    "title": "What is Data Modeling?",
+    "content": "Data modeling creates visual and logical representations of data structures and relationships. It guides schema design, integration approaches, and analytics by clarifying entities, attributes, and constraints."
+  },
+  {
+    "id": "what-is-it-087",
+    "title": "What is Data Architecture?",
+    "content": "Data architecture defines the standards, models, and platforms that govern how data is collected, stored, moved, and accessed. It ensures scalability, security, and quality while reducing duplication and silos."
+  },
+  {
+    "id": "what-is-it-088",
+    "title": "What is Data Cleansing?",
+    "content": "Data cleansing identifies and corrects errors, inconsistencies, and missing values in datasets. It improves model accuracy and decision-making by standardizing formats and validating business rules."
+  },
+  {
+    "id": "what-is-it-089",
+    "title": "What is Data Preparation?",
+    "content": "Data preparation transforms raw inputs into analysis-ready datasets by collecting, cleaning, enriching, labeling, and exploring. It often consumes the majority of effort in analytics and machine learning projects."
+  },
+  {
+    "id": "what-is-it-090",
+    "title": "What is Data Augmentation?",
+    "content": "Data augmentation creates synthetic variations of existing data to enlarge training sets and improve model generalization. Techniques include image transforms, text paraphrasing, and noise injection."
+  },
+  {
+    "id": "what-is-it-091",
+    "title": "What is Data Masking?",
+    "content": "Data masking obscures sensitive fields by substitution, shuffling, or tokenization so non-production environments can use realistic data without exposing secrets. Proper masking is irreversible without original references."
+  },
+  {
+    "id": "what-is-it-092",
+    "title": "What is Data Backup?",
+    "content": "Data backup creates recoverable copies of systems and datasets to protect against loss from failures, mistakes, or attacks. Strategies include full, incremental, and versioned backups with offsite or cloud storage."
+  },
+  {
+    "id": "what-is-it-093",
+    "title": "What is Data Sharing?",
+    "content": "Data sharing makes the same data securely available to multiple applications, teams, or partners. It involves access controls, contracts, formats, and governance to maintain integrity while enabling collaboration."
+  },
+  {
+    "id": "what-is-it-094",
+    "title": "What is a Data Catalog?",
+    "content": "A data catalog inventories datasets, schemas, lineage, owners, and usage to support discovery and governance. It provides context so users can find, trust, and reuse data consistently across the organization."
+  },
+  {
+    "id": "what-is-it-095",
+    "title": "What is a Database?",
+    "content": "A database is an organized store of information managed by a database management system (DBMS). It supports CRUD operations, indexing, transactions, and security for structured or unstructured data."
+  },
+  {
+    "id": "what-is-it-096",
+    "title": "What is a SQL Database?",
+    "content": "A SQL database stores data in tables with rows and columns and uses Structured Query Language for manipulation and queries. It supports relations, constraints, and ACID transactions for consistency and integrity."
+  },
+  {
+    "id": "what-is-it-097",
+    "title": "What are NoSQL Databases?",
+    "content": "NoSQL databases use flexible schemas and specialized models—key-value, document, column-family, or graph—to scale horizontally and support diverse workloads like caching, catalogs, events, and social graphs."
+  },
+  {
+    "id": "what-is-it-098",
+    "title": "What is a Relational Database?",
+    "content": "A relational database organizes data into related tables linked by keys. It enforces constraints and supports joins to query relationships, making it suitable for transactional systems and analytics."
+  },
+  {
+    "id": "what-is-it-099",
+    "title": "What is MySQL?",
+    "content": "MySQL is a widely used open-source relational database known for performance, reliability, and tooling. It powers web applications and products with features like replication, indexing, and SQL standards support."
+  },
+  {
+    "id": "what-is-it-100",
+    "title": "What is PostgreSQL?",
+    "content": "PostgreSQL is an advanced open-source relational database with strong SQL compliance, extensibility, and support for JSON. It offers robustness, concurrency, and features such as window functions, foreign data wrappers, and rich indexing."
+  }
+]

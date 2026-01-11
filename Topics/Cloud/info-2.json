@@ -1,0 +1,127 @@
+[
+  {
+    "id": "what-is-it-026",
+    "title": "What is Web Hosting?",
+    "content": "Web hosting is a managed service that stores website and web application assets—code, images, videos, and data—on servers connected to the internet. Providers handle hardware, operating systems, security, backups, and performance so you can publish content and scale capacity without operating physical infrastructure."
+  },
+  {
+    "id": "what-is-it-027",
+    "title": "What is a Web Application?",
+    "content": "A web application is software that runs in a browser and communicates with remote services over HTTP or WebSockets. It delivers interactive functionality—such as search, forms, dashboards, and media—without requiring local installation, and can be updated centrally to reach users across devices and platforms."
+  },
+  {
+    "id": "what-is-it-028",
+    "title": "What is an API (Application Programming Interface)?",
+    "content": "An API is a standardized contract that lets one software component request data or actions from another. It defines endpoints, methods, inputs, and outputs so systems integrate predictably, enabling modular architectures, reuse of capabilities, and secure, auditable data exchange across applications."
+  },
+  {
+    "id": "what-is-it-029",
+    "title": "What is a RESTful API?",
+    "content": "A RESTful API applies Representational State Transfer principles—stateless requests, resource-oriented URLs, standard HTTP methods, and consistent status codes—to make network communication simple and scalable. Clients operate on resources using GET, POST, PUT/PATCH, and DELETE, and servers remain stateless to support horizontal scaling."
+  },
+  {
+    "id": "what-is-it-030",
+    "title": "What is an SDK?",
+    "content": "A software development kit (SDK) is a curated set of libraries, tools, samples, and documentation that accelerates building applications for a specific platform or service. SDKs reduce boilerplate, enforce best practices, and provide typed interfaces and utilities for authentication, error handling, and testing."
+  },
+  {
+    "id": "what-is-it-031",
+    "title": "What is an IDE (Integrated Development Environment)?",
+    "content": "An IDE is a developer workspace that bundles an editor, build tools, debugger, test runner, and extensions into one application. It increases productivity with code intelligence, refactoring aids, integrated terminals, source control, and project templates, helping teams maintain quality and velocity."
+  },
+  {
+    "id": "what-is-it-032",
+    "title": "What is Java?",
+    "content": "Java is a general-purpose, object-oriented programming language and runtime designed for portability, security, and performance. Its virtual machine (JVM) lets the same compiled bytecode run on many platforms, and its ecosystem spans web services, enterprise applications, Android, and big data tooling."
+  },
+  {
+    "id": "what-is-it-033",
+    "title": "What is Python?",
+    "content": "Python is a high-level programming language known for readability and rich libraries. It supports multiple paradigms and has strong ecosystems for web development, automation, data science, and machine learning, making it well-suited for rapid prototyping and production workloads alike."
+  },
+  {
+    "id": "what-is-it-034",
+    "title": "What is JavaScript (JS)?",
+    "content": "JavaScript is the lingua franca of the web for client-side interactivity and, via runtimes like Node.js, server-side development. It powers dynamic UI behavior, asynchronous I/O, and modular application design, with modern features such as promises, modules, and typed supersets like TypeScript."
+  },
+  {
+    "id": "what-is-it-035",
+    "title": "What is .NET?",
+    "content": ".NET is an open-source developer platform comprising runtimes, languages (such as C# and F#), and libraries for building cross-platform applications. It provides a unified model for web, desktop, mobile, cloud, and IoT, with managed memory, robust tooling, and high-performance frameworks."
+  },
+  {
+    "id": "what-is-it-036",
+    "title": "What is Django?",
+    "content": "Django is a Python web framework that follows the model–template–view pattern and emphasizes security and rapid development. It includes ORM, authentication, admin, forms, and routing out of the box, enabling teams to deliver maintainable web applications quickly with convention over configuration."
+  },
+  {
+    "id": "what-is-it-037",
+    "title": "What is Flutter?",
+    "content": "Flutter is an open-source UI toolkit for building natively compiled applications from a single codebase for mobile, web, and desktop. Using the Dart language and a reactive rendering engine, it provides fast development cycles, expressive widgets, and consistent look-and-feel across platforms."
+  },
+  {
+    "id": "what-is-it-038",
+    "title": "What is Architecture Diagramming?",
+    "content": "Architecture diagramming is the practice of visually modeling system components, data flows, integrations, and boundaries to communicate design intent. Diagrams clarify responsibilities, dependencies, and nonfunctional requirements, improving stakeholder alignment, risk identification, and implementation planning."
+  },
+  {
+    "id": "what-is-it-039",
+    "title": "What is DevOps?",
+    "content": "DevOps is a culture and set of practices that unify software development and operations to deliver changes rapidly and reliably. It emphasizes automation, collaboration, continuous integration and delivery, observability, and shared ownership to improve lead time, deployment frequency, and service stability."
+  },
+  {
+    "id": "what-is-it-040",
+    "title": "What is DevSecOps?",
+    "content": "DevSecOps extends DevOps by embedding security controls, testing, and threat modeling throughout the software lifecycle. Security becomes a shared responsibility, with automated checks—such as static analysis, dependency scanning, and policy enforcement—integrated into CI/CD pipelines and runtime monitoring."
+  },
+  {
+    "id": "what-is-it-041",
+    "title": "What is Continuous Integration?",
+    "content": "Continuous Integration (CI) is the practice of frequently merging code changes and automatically building and testing them. CI surfaces defects early, enables fast feedback, and creates a reliable baseline for subsequent steps like packaging, provisioning, and deployment."
+  },
+  {
+    "id": "what-is-it-042",
+    "title": "What is Continuous Testing?",
+    "content": "Continuous testing runs automated tests across the delivery pipeline—unit, integration, end-to-end, performance, and security—to validate changes continuously. It reduces release risk, supports faster cycles, and ensures that quality gates are enforced before code reaches production."
+  },
+  {
+    "id": "what-is-it-043",
+    "title": "What is Unit Testing?",
+    "content": "Unit testing verifies the smallest testable parts of code in isolation using deterministic inputs and expected outputs. It improves code design and maintainability, accelerates refactoring, and provides a safety net that prevents regressions during rapid development."
+  },
+  {
+    "id": "what-is-it-044",
+    "title": "What is SDLC (Software Development Lifecycle)?",
+    "content": "SDLC is a structured process for delivering software—from ideation and requirements through design, implementation, testing, deployment, and maintenance. It balances scope, time, and quality with governance and feedback loops to reduce risk and improve outcomes."
+  },
+  {
+    "id": "what-is-it-045",
+    "title": "What is ALM (Application Lifecycle Management)?",
+    "content": "ALM encompasses the governance, tooling, and collaboration required to manage an application from inception to retirement. It integrates planning, development, testing, release, operations, and compliance, providing traceability and control over artifacts and changes."
+  },
+  {
+    "id": "what-is-it-046",
+    "title": "What is Configuration Management?",
+    "content": "Configuration management tracks and enforces known-good settings for systems, applications, and infrastructure over time. It automates provisioning and drift correction, maintains compliance baselines, and documents changes for auditability and reproducibility."
+  },
+  {
+    "id": "what-is-it-047",
+    "title": "What is Version Control?",
+    "content": "Version control records changes to files, supports branching and merging, and enables collaborative development with history and rollback. It underpins modern workflows, allowing teams to experiment safely and integrate contributions from many authors."
+  },
+  {
+    "id": "what-is-it-048",
+    "title": "What is Git?",
+    "content": "Git is a distributed version control system that stores snapshots of code locally and synchronizes changes through pushes, pulls, and merges. Its branching model enables parallel work, and features like pull requests and hooks integrate with CI/CD and code review practices."
+  },
+  {
+    "id": "what-is-it-049",
+    "title": "What is a Repo?",
+    "content": "A repository (repo) is a structured storage location for source code and related assets, including configuration, tests, and documentation. Repos centralize collaboration, issue tracking, and automation, providing discoverability and governance for software projects."
+  },
+  {
+    "id": "what-is-it-050",
+    "title": "What is Debugging?",
+    "content": "Debugging is the methodical process of identifying, reproducing, and fixing defects in software. Engineers use logs, breakpoints, profilers, and tracing to isolate root causes, then apply fixes and tests to prevent recurrence and ensure expected behavior."
+  }
+]

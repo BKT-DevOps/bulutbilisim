@@ -22,7 +22,9 @@
     "build:announcement:social": "node scripts/build.mjs --config Topics/Announcement/social.config.json",
     "build:git:quiz": "node scripts/build.mjs --config Topics/Git/quiz.config.json",
     "build:git:info": "node scripts/build.mjs --config Topics/Git/info.config.json",
-    "build:oyun:quiz": "node scripts/build.mjs --config Topics/Oyun/quiz.config.json"
+    "build:oyun:quiz": "node scripts/build.mjs --config Topics/Oyun/quiz.config.json",
+    "build:cloud:info-1": "node scripts/build.mjs --config Topics/Cloud/info-1.config.json",
+    "build:cloud:info-2": "node scripts/build.mjs --config Topics/Cloud/info-2.config.json"
   },
   "keywords": [],
   "author": "",

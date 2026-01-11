@@ -1,0 +1,217 @@
+[
+  {
+    "id": "what-is-it-251",
+    "title": "What is Data Modeling?",
+    "content": "Data modeling diagrams entities, attributes, and relationships to guide schema design and integration. It clarifies constraints and supports analytics by formalizing how data should be structured."
+  },
+  {
+    "id": "what-is-it-252",
+    "title": "What is Data Architecture?",
+    "content": "Data architecture defines standards, models, and platforms for data collection, storage, movement, and access. It ensures scalability, security, and quality while reducing duplication and silos."
+  },
+  {
+    "id": "what-is-it-253",
+    "title": "What is Data Cleansing?",
+    "content": "Data cleansing detects and fixes errors, inconsistencies, and missing values. It standardizes formats and applies validation rules to improve analytics and machine learning accuracy."
+  },
+  {
+    "id": "what-is-it-254",
+    "title": "What is Data Preparation?",
+    "content": "Data preparation converts raw inputs into analysis‑ready datasets by collecting, cleaning, enriching, labeling, and exploring. It often represents the bulk of effort in ML projects."
+  },
+  {
+    "id": "what-is-it-255",
+    "title": "What is Data Augmentation?",
+    "content": "Data augmentation creates synthetic variations of existing data—images, text, audio—to expand training sets and improve generalization for machine learning models."
+  },
+  {
+    "id": "what-is-it-256",
+    "title": "What is Data Masking?",
+    "content": "Data masking obfuscates sensitive fields via substitution, shuffling, or tokenization so realistic datasets can be used in testing or analytics without exposing secrets."
+  },
+  {
+    "id": "what-is-it-257",
+    "title": "What is Data Backup?",
+    "content": "Data backup produces recoverable copies of systems and datasets to protect against loss from failures, mistakes, or attacks, using full, incremental, or versioned strategies."
+  },
+  {
+    "id": "what-is-it-258",
+    "title": "What is Data Sharing?",
+    "content": "Data sharing makes datasets securely available to multiple apps, teams, or partners under governance. It uses access controls, contracts, and formats to maintain integrity."
+  },
+  {
+    "id": "what-is-it-259",
+    "title": "What is a Data Catalog?",
+    "content": "A data catalog inventories datasets, schemas, lineage, owners, and usage. It improves discovery and trust so users can find and reuse data consistently."
+  },
+  {
+    "id": "what-is-it-260",
+    "title": "What is a Database?",
+    "content": "A database is an organized store managed by a DBMS that provides CRUD operations, indexing, transactions, and security for structured and unstructured information."
+  },
+  {
+    "id": "what-is-it-261",
+    "title": "What is a SQL Database?",
+    "content": "A SQL database uses tables, rows, and columns with Structured Query Language to query and manipulate data. It supports relations, constraints, and ACID transactions."
+  },
+  {
+    "id": "what-is-it-262",
+    "title": "What are NoSQL Databases?",
+    "content": "NoSQL databases adopt flexible schemas and models—key‑value, document, column‑family, and graph—to scale horizontally and support diverse workloads."
+  },
+  {
+    "id": "what-is-it-263",
+    "title": "What is a Relational Database?",
+    "content": "A relational database organizes data into related tables linked by keys and supports joins to query relationships for transactional and analytical needs."
+  },
+  {
+    "id": "what-is-it-264",
+    "title": "What is MySQL?",
+    "content": "MySQL is a popular open‑source relational database known for performance and tooling. It supports replication, indexing, and SQL standards for web and product backends."
+  },
+  {
+    "id": "what-is-it-265",
+    "title": "What is PostgreSQL?",
+    "content": "PostgreSQL is an advanced open‑source relational database with strong SQL compliance, extensibility, JSON support, and rich indexing for robust, concurrent workloads."
+  },
+  {
+    "id": "what-is-it-266",
+    "title": "What is Web Hosting?",
+    "content": "Web hosting stores and serves websites and apps on internet‑connected servers. Providers manage hardware, security, backups, and scaling so teams focus on content and code."
+  },
+  {
+    "id": "what-is-it-267",
+    "title": "What is a Web Application?",
+    "content": "A web application runs in a browser and communicates with remote services, delivering interactive functionality without local installation and enabling centralized updates."
+  },
+  {
+    "id": "what-is-it-268",
+    "title": "What is Code Quality?",
+    "content": "Code quality captures reliability, readability, security, and maintainability. Adhering to standards, tests, and clear structure reduces defects and accelerates delivery."
+  },
+  {
+    "id": "what-is-it-269",
+    "title": "What is Continuous Integration?",
+    "content": "Continuous Integration frequently merges code and automatically builds and tests it to surface defects early, establish a reliable baseline, and enable rapid iteration."
+  },
+  {
+    "id": "what-is-it-270",
+    "title": "What is Continuous Testing?",
+    "content": "Continuous testing runs automated checks across the pipeline—unit, integration, end‑to‑end, performance, and security—to enforce quality gates before release."
+  },
+  {
+    "id": "what-is-it-271",
+    "title": "What is Unit Testing?",
+    "content": "Unit testing verifies small, isolated pieces of code with deterministic inputs and expected outputs, improving design and preventing regressions during change."
+  },
+  {
+    "id": "what-is-it-272",
+    "title": "What is SDLC?",
+    "content": "The software development lifecycle structures delivery from requirements through design, implementation, testing, deployment, and maintenance with governance and feedback."
+  },
+  {
+    "id": "what-is-it-273",
+    "title": "What is ALM?",
+    "content": "Application Lifecycle Management coordinates planning, development, testing, release, operations, and compliance with traceability to manage software from inception to retirement."
+  },
+  {
+    "id": "what-is-it-274",
+    "title": "What is Version Control?",
+    "content": "Version control records file changes, supports branching and merging, and enables collaborative workflows with history, rollback, and code review integration."
+  },
+  {
+    "id": "what-is-it-275",
+    "title": "What is Git?",
+    "content": "Git is a distributed VCS that stores snapshots locally and synchronizes through pushes and pulls. Its branching model supports parallel work and integrates with CI/CD."
+  },
+  {
+    "id": "what-is-it-276",
+    "title": "What is a Repo?",
+    "content": "A repository is a structured storage for source code and assets that centralizes collaboration, issues, automation, and governance for software projects."
+  },
+  {
+    "id": "what-is-it-277",
+    "title": "What is an IDE?",
+    "content": "An integrated development environment bundles editor, build tools, debugger, tests, terminals, and extensions to boost productivity and quality for developers."
+  },
+  {
+    "id": "what-is-it-278",
+    "title": "What is an SDK?",
+    "content": "A software development kit packages libraries, tools, samples, and docs to accelerate building on a platform or API, enforcing best practices and reducing boilerplate."
+  },
+  {
+    "id": "what-is-it-279",
+    "title": "What is Infrastructure as Code?",
+    "content": "Infrastructure as Code defines environments with machine‑readable files to provision, update, and roll back consistently using the same practices as application code."
+  },
+  {
+    "id": "what-is-it-280",
+    "title": "What is DevOps?",
+    "content": "DevOps unifies development and operations through automation, collaboration, CI/CD, observability, and shared ownership to deliver changes rapidly and reliably."
+  },
+  {
+    "id": "what-is-it-281",
+    "title": "What is DevSecOps?",
+    "content": "DevSecOps integrates security into every stage of delivery with automated checks—static analysis, dependency scanning, policies—and runtime monitoring as shared responsibility."
+  },
+  {
+    "id": "what-is-it-282",
+    "title": "What is API?",
+    "content": "An application programming interface is a contract of endpoints, methods, inputs, and outputs that enables predictable integration and modular system design."
+  },
+  {
+    "id": "what-is-it-283",
+    "title": "What is a RESTful API?",
+    "content": "A RESTful API applies stateless, resource‑oriented principles, standard HTTP verbs, and status codes so clients can operate on resources predictably and at scale."
+  },
+  {
+    "id": "what-is-it-284",
+    "title": "What is MQTT?",
+    "content": "MQTT is a lightweight publish‑subscribe messaging protocol for IoT devices over constrained networks. It minimizes overhead and supports device‑to‑cloud and cloud‑to‑device messaging."
+  },
+  {
+    "id": "what-is-it-285",
+    "title": "What is ICMP?",
+    "content": "ICMP communicates network diagnostics and error conditions, enabling tools like ping and traceroute to report reachability and path characteristics."
+  },
+  {
+    "id": "what-is-it-286",
+    "title": "What is BGP?",
+    "content": "Border Gateway Protocol exchanges routes between autonomous systems and selects paths based on policies and attributes to keep internet connectivity scalable and resilient."
+  },
+  {
+    "id": "what-is-it-287",
+    "title": "What is DNS?",
+    "content": "DNS maps human‑readable names to IP addresses via hierarchical zones and caching, allowing clients to locate services across networks."
+  },
+  {
+    "id": "what-is-it-288",
+    "title": "What is DDNS?",
+    "content": "Dynamic DNS automatically updates records when IP addresses change so name‑to‑address mappings remain accurate for dynamically assigned endpoints."
+  },
+  {
+    "id": "what-is-it-289",
+    "title": "What is a VPN?",
+    "content": "A virtual private network creates an encrypted tunnel over public networks to connect users or sites securely and enable remote access to private resources."
+  },
+  {
+    "id": "what-is-it-290",
+    "title": "What is MFA?",
+    "content": "Multi‑factor authentication verifies identity using multiple independent factors—knowledge, possession, or inherence—to mitigate credential theft beyond passwords."
+  },
+  {
+    "id": "what-is-it-291",
+    "title": "What is SSO?",
+    "content": "Single Sign‑On lets users access multiple applications after one authentication, improving experience and centralizing access policies and auditing."
+  },
+  {
+    "id": "what-is-it-292",
+    "title": "What is 5G?",
+    "content": "5G is the fifth generation cellular network offering higher throughput, lower latency, and greater capacity than 4G, enabling advanced applications like AR, IoT, and autonomous systems."
+  },
+  {
+    "id": "what-is-it-293",
+    "title": "What is a Data Center?",
+    "content": "A data center is a physical facility housing servers, storage, networking, and supporting infrastructure. It provides power, cooling, security, and connectivity for hosting digital systems."
+  }
+]

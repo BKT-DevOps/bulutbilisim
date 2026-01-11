@@ -1,0 +1,252 @@
+[
+  {
+    "id": "what-is-it-201",
+    "title": "What is Blockchain Technology?",
+    "content": "Blockchain is a distributed ledger that stores transactions in linked, immutable blocks replicated across nodes. Consensus mechanisms and cryptography provide tamper resistance and a shared, auditable record for assets and workflows."
+  },
+  {
+    "id": "what-is-it-202",
+    "title": "What is Hyperledger Fabric?",
+    "content": "Hyperledger Fabric is a modular, permissioned blockchain framework that supports pluggable consensus, private channels, and configurable smart contracts. It enables enterprise consortia to transact with fine‑grained access control."
+  },
+  {
+    "id": "what-is-it-203",
+    "title": "What is Web3?",
+    "content": "Web3 refers to decentralized web technologies—blockchains, smart contracts, and distributed storage—that shift data ownership and control from centralized platforms to users and communities through open protocols and tokenized incentives."
+  },
+  {
+    "id": "what-is-it-204",
+    "title": "What is Quantum Computing?",
+    "content": "Quantum computing leverages quantum bits and phenomena like superposition and entanglement to solve certain problems faster than classical methods. Potential applications include optimization, simulation, cryptography, and materials discovery."
+  },
+  {
+    "id": "what-is-it-205",
+    "title": "What is Supercomputing?",
+    "content": "Supercomputing uses massively parallel processors and high‑speed interconnects to run extremely large, compute‑intensive workloads. It enables scientific simulations, genomics, climate modeling, and AI training at national‑lab scale."
+  },
+  {
+    "id": "what-is-it-206",
+    "title": "What is Grid Computing?",
+    "content": "Grid computing federates distributed resources across locations to tackle large tasks collaboratively. It aggregates idle compute, coordinates scheduling, and combines results for workloads like research simulations and analytics."
+  },
+  {
+    "id": "what-is-it-207",
+    "title": "What is Distributed Computing?",
+    "content": "Distributed computing makes multiple machines collaborate on a task via partitioning, replication, and coordination. It improves scalability and fault tolerance for services and data processing at global scale."
+  },
+  {
+    "id": "what-is-it-208",
+    "title": "What is EUC (End‑User Computing)?",
+    "content": "End‑user computing provides secure, managed access to desktops, apps, and data from any device or location. It combines policies, identity, and delivery technologies like VDI and DaaS to support hybrid work."
+  },
+  {
+    "id": "what-is-it-209",
+    "title": "What is Mobile Application Development?",
+    "content": "Mobile app development builds software for smartphones and tablets, often backed by cloud APIs. It covers native, cross‑platform, and web approaches plus testing, distribution, telemetry, and secure authentication."
+  },
+  {
+    "id": "what-is-it-210",
+    "title": "What is Mobile Cloud Computing?",
+    "content": "Mobile cloud computing offloads heavy processing and storage from devices to cloud services. Apps call APIs for compute, data, and personalization, improving performance and compatibility across heterogeneous hardware."
+  },
+  {
+    "id": "what-is-it-211",
+    "title": "What is AJAX?",
+    "content": "Asynchronous JavaScript and XML (AJAX) updates parts of a web page by sending background requests without full reloads. It enhances responsiveness for forms, filters, and interactive UI components."
+  },
+  {
+    "id": "what-is-it-212",
+    "title": "What is CIAM (Customer Identity and Access Management)?",
+    "content": "CIAM provides sign‑up, sign‑in, consent, and preference management for customer‑facing apps. It balances frictionless access with security via MFA, risk signals, and compliance with privacy regulations."
+  },
+  {
+    "id": "what-is-it-213",
+    "title": "What is iPaaS?",
+    "content": "Integration Platform as a Service delivers cloud tooling and connectors to integrate applications and data without custom middleware. It abstracts mapping and orchestration so non‑specialists can automate cross‑app workflows."
+  },
+  {
+    "id": "what-is-it-214",
+    "title": "What is Data Science?",
+    "content": "Data science applies statistics, machine learning, and computing to extract insights and build predictive models. It spans data engineering, experimentation, visualization, and deployment for measurable business impact."
+  },
+  {
+    "id": "what-is-it-215",
+    "title": "What is Enterprise Software?",
+    "content": "Enterprise software serves organizational needs—CRM, ERP, analytics, collaboration, and operations. It emphasizes scalability, integration, security, configurability, and lifecycle support across departments and geographies."
+  },
+  {
+    "id": "what-is-it-216",
+    "title": "What is a Framework in Programming and Engineering?",
+    "content": "A framework is a reusable set of components and conventions that accelerates development and enforces architecture patterns. It provides scaffolding, abstractions, and extension points for consistent, maintainable solutions."
+  },
+  {
+    "id": "what-is-it-217",
+    "title": "What is XML?",
+    "content": "Extensible Markup Language (XML) encodes documents and data in a hierarchical, self‑describing format with schemas for validation. It supports interoperability across platforms and is used in APIs, configuration, and documents."
+  },
+  {
+    "id": "what-is-it-218",
+    "title": "What is JSON?",
+    "content": "JavaScript Object Notation (JSON) is a lightweight, human‑readable data interchange format. Its key‑value and array structures map naturally to code, making it the default payload for modern web and cloud APIs."
+  },
+  {
+    "id": "what-is-it-219",
+    "title": "What is ETL (Extract, Transform, Load)?",
+    "content": "ETL consolidates data from sources into a target store by extracting, cleaning, transforming, and loading. It enables analytics, governance, and reporting with consistent schemas and quality controls."
+  },
+  {
+    "id": "what-is-it-220",
+    "title": "What is EDI (Electronic Data Interchange)?",
+    "content": "EDI automates B2B document exchange—orders, invoices, shipping notices—using standardized formats and secure transport. It reduces manual entry, errors, and cycle times across supply chains."
+  },
+  {
+    "id": "what-is-it-221",
+    "title": "What is OLAP (Online Analytical Processing)?",
+    "content": "OLAP organizes data into multidimensional cubes for fast, interactive analysis. It supports slicing, dicing, drill‑down, and aggregations to answer complex business questions across dimensions and hierarchies."
+  },
+  {
+    "id": "what-is-it-222",
+    "title": "What is EUC (End‑User Computing)?",
+    "content": "End‑user computing equips the workforce with secure, remote access to applications and desktops across devices, enforcing policies and providing centralized management for productivity and safety."
+  },
+  {
+    "id": "what-is-it-223",
+    "title": "What is VDI (Virtual Desktop Infrastructure)?",
+    "content": "VDI hosts virtual desktops on centralized servers and streams them to endpoints. It simplifies updates, strengthens security, and supports remote work with consistent environments and policy control."
+  },
+  {
+    "id": "what-is-it-224",
+    "title": "What is Cloud File Storage?",
+    "content": "Cloud file storage delivers shared, POSIX‑style file systems as a managed service accessible over NFS/SMB. It supports lift‑and‑shift workloads that need file semantics without refactoring to object or block."
+  },
+  {
+    "id": "what-is-it-225",
+    "title": "What is NAS (Network‑Attached Storage)?",
+    "content": "NAS provides dedicated storage over a network for file sharing and collaboration. It offers centralized capacity, snapshots, and access controls for teams and applications using standard file protocols."
+  },
+  {
+    "id": "what-is-it-226",
+    "title": "What is Cloud Networking?",
+    "content": "Cloud networking builds virtual networks, subnets, gateways, and security groups to connect cloud resources and users. It replaces or augments traditional WANs with software‑defined, scalable connectivity."
+  },
+  {
+    "id": "what-is-it-227",
+    "title": "What is Streaming Data?",
+    "content": "Streaming data is continuously emitted records from sources like sensors, apps, and logs. Platforms ingest, buffer, and process streams with low latency to enable monitoring, personalization, and real‑time decisions."
+  },
+  {
+    "id": "what-is-it-228",
+    "title": "What is Real‑Time Data Streaming?",
+    "content": "Real‑time data streaming collects and analyzes events as they happen to produce immediate insights. It powers alerting, fraud detection, recommendations, and telemetry dashboards without batch delays."
+  },
+  {
+    "id": "what-is-it-229",
+    "title": "What is EUC (End‑User Computing)?",
+    "content": "EUC consolidates technologies—VDI, DaaS, identity, device management—so end users can securely access digital resources anywhere, with policies and monitoring to protect data and compliance."
+  },
+  {
+    "id": "what-is-it-230",
+    "title": "What is Cloud Infrastructure?",
+    "content": "Cloud infrastructure is the underlying compute, storage, networking, and platform software operated by providers. It is consumed on demand as services with elasticity, global reach, and managed operations."
+  },
+  {
+    "id": "what-is-it-231",
+    "title": "What is Cloud Native?",
+    "content": "Cloud‑native development embraces managed services, containers, microservices, and CI/CD to build scalable, resilient systems that evolve rapidly and leverage automation and observability by design."
+  },
+  {
+    "id": "what-is-it-232",
+    "title": "What is Kubernetes (K8s)?",
+    "content": "Kubernetes orchestrates containers across clusters, maintaining desired state with declarative specs. It manages scheduling, scaling, service discovery, configuration, and rolling updates with self‑healing capabilities."
+  },
+  {
+    "id": "what-is-it-233",
+    "title": "What is a Kubernetes Cluster?",
+    "content": "A Kubernetes cluster comprises a control plane and worker nodes that run pods. The control plane reconciles desired and current state, while nodes execute workloads and report health and resource usage."
+  },
+  {
+    "id": "what-is-it-234",
+    "title": "What is Docker?",
+    "content": "Docker provides tooling to build, ship, and run container images consistently across environments. It standardizes packaging and simplifies local development, CI, and deployment to orchestrators."
+  },
+  {
+    "id": "what-is-it-235",
+    "title": "What is Serverless Architecture?",
+    "content": "Serverless architecture composes applications from event‑driven functions and managed services, removing server management and enabling automatic scaling and pay‑per‑use cost models."
+  },
+  {
+    "id": "what-is-it-236",
+    "title": "What is Serverless Computing?",
+    "content": "Serverless computing executes code on demand with automatic scaling and billing for actual usage. Providers handle provisioning, patching, and capacity so teams focus on business logic and events."
+  },
+  {
+    "id": "what-is-it-237",
+    "title": "What is a Serverless Database?",
+    "content": "A serverless database scales storage and throughput automatically, abstracts instance sizing, and charges for reads, writes, and storage. It suits bursty or unpredictable workloads that need built‑in availability."
+  },
+  {
+    "id": "what-is-it-238",
+    "title": "What is a Private Cloud?",
+    "content": "A private cloud delivers cloud capabilities to a single organization with isolated resources and governance. It offers self‑service and elasticity while meeting stricter control and compliance needs."
+  },
+  {
+    "id": "what-is-it-239",
+    "title": "What is a Public Cloud?",
+    "content": "A public cloud provides on‑demand IT resources over the internet from a third‑party provider. It enables rapid provisioning, elastic scaling, and access to advanced services without owning hardware."
+  },
+  {
+    "id": "what-is-it-240",
+    "title": "What is Hybrid Cloud?",
+    "content": "Hybrid cloud connects on‑premises and private environments with public cloud to move and run workloads where they fit best, using consistent policies, networking, and automation across locations."
+  },
+  {
+    "id": "what-is-it-241",
+    "title": "What is Edge Computing?",
+    "content": "Edge computing processes data near its source—on devices or local sites—to reduce latency and bandwidth. It enables real‑time control, analytics, and offline resilience for IoT and interactive apps."
+  },
+  {
+    "id": "what-is-it-242",
+    "title": "What is a Data Lake?",
+    "content": "A data lake stores raw, structured, and unstructured data centrally at low cost. Tools transform and query data as needed for dashboards, machine learning, and streaming analytics."
+  },
+  {
+    "id": "what-is-it-243",
+    "title": "What is a Data Warehouse?",
+    "content": "A data warehouse provides curated, performant storage for analytical queries. It integrates sources, enforces schemas, and serves many users concurrently with optimized execution and governance."
+  },
+  {
+    "id": "what-is-it-244",
+    "title": "What is a Data Mart?",
+    "content": "A data mart focuses data on a single domain or department for faster, relevant analysis. It simplifies schemas and curates datasets aligned to specific stakeholder goals."
+  },
+  {
+    "id": "what-is-it-245",
+    "title": "What is a Data Pipeline?",
+    "content": "A data pipeline ingests, validates, transforms, and delivers data from sources to sinks across batch and streaming paths. It ensures reliable, repeatable flows for analytics and operations."
+  },
+  {
+    "id": "what-is-it-246",
+    "title": "What is Data Integration?",
+    "content": "Data integration combines datasets from diverse systems into a consistent view via connectors, mapping, and transformation. It reduces silos and powers analytics and automation."
+  },
+  {
+    "id": "what-is-it-247",
+    "title": "What is Data Migration?",
+    "content": "Data migration moves data between platforms with planning for integrity, security, and minimal downtime. It includes format conversion, validation, and reconciliation post‑cutover."
+  },
+  {
+    "id": "what-is-it-248",
+    "title": "What is Data Management?",
+    "content": "Data management governs collection, storage, protection, and usage of data. It improves quality, accessibility, and compliance through policies, tooling, and stewardship."
+  },
+  {
+    "id": "what-is-it-249",
+    "title": "What is Data Governance?",
+    "content": "Data governance sets roles, rules, and controls to keep data accurate, secure, compliant, and usable. It aligns initiatives with business outcomes and provides catalogs and lineage."
+  },
+  {
+    "id": "what-is-it-250",
+    "title": "What is Data Strategy?",
+    "content": "Data strategy defines how an organization will collect, manage, share, and analyze data to achieve goals. It covers architecture, priorities, skills, and governance to deliver sustainable value."
+  }
+]

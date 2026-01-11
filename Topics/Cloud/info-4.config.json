@@ -1,0 +1,16 @@
+{
+  "topic": "Cloud",
+  "input": "topics/cloud/info-4.json",
+  "template": "cloud",
+  "outputTemplate": "cloud-4",
+  "startDate": "2026-01-25",
+  "perDay": 1,
+  "autoHeight": true,
+  "clipSelector": ".card",
+  "format": "png",
+  "size": "custom",
+  "width": 1080,
+  "height": 1400,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_k{qno}_{id}.{ext}"
+}
