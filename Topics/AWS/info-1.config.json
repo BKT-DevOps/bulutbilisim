@@ -3,7 +3,7 @@
   "input": "topics/aws/info-1.json",
   "template": "info",
   "outputTemplate": "info-1",
-  "startDate": "2026-01-07",
+  "startDate": "2026-01-14",
   "perDay": 1,
   "format": "png",
   "size": "custom",
