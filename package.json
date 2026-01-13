@@ -28,7 +28,8 @@
     "build:cloud:info-3": "node scripts/build.mjs --config Topics/Cloud/info-3.config.json",
     "build:cloud:info-4": "node scripts/build.mjs --config Topics/Cloud/info-4.config.json",
     "build:cloud:info-5": "node scripts/build.mjs --config Topics/Cloud/info-5.config.json",
-    "build:cloud:info-6": "node scripts/build.mjs --config Topics/Cloud/info-6.config.json"
+    "build:cloud:info-6": "node scripts/build.mjs --config Topics/Cloud/info-6.config.json",
+    "build:feature:card": "node scripts/build.mjs --config Topics/feature/something.config.json"
     
   },
   "keywords": [],

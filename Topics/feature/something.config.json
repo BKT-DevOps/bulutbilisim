@@ -1,0 +1,13 @@
+{
+  "topic": "Feature",
+  "input": "topics/feature/something.json",
+  "template": "feature",
+  "startDate": "2026-01-08",
+  "perDay": 1,
+  "format": "png",
+  "size": "custom",
+  "width": 1080,
+  "height": 1300,
+  "onExists": "overwrite",
+  "filenamePattern": "{set}_{date}_k{qno}_{id}.{ext}"
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "git-info-0001",
+    "title": "Rebase (ozellikle interactive)",
+    "content": "Rebase, commit tarihcesini duzenlemek ve daha temiz bir history uretmek icin kullanilir. Interactive rebase ile commitleri birlestirebilir, mesaj duzeltebilir, hatta yeniden siralayabilirsiniz.",
+    "example": "git rebase -i HEAD~5",
+    "footer": "git rebase -i HEAD~5"
+  },
+  {
+    "id": "git-info-0002",
+    "title": "Cherry-pick ile tek commit tasima",
+    "content": "Cherry-pick, baska bir branch'ten belirli commitleri secip mevcut branch'e uygular. Hotfix veya secili ozellik transferi icin idealdir.",
+    "example": "git cherry-pick a1b2c3d",
+    "footer": "git cherry-pick a1b2c3d"
+  }
+]
