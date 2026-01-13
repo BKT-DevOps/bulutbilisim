@@ -24,12 +24,17 @@
     "build:git:info": "node scripts/build.mjs --config Topics/Git/info.config.json",
     "build:oyun:quiz": "node scripts/build.mjs --config Topics/Oyun/quiz.config.json",
     "build:cloud:info-1": "node scripts/build.mjs --config Topics/Cloud/info-1.config.json",
-    "build:cloud:info-2": "node scripts/build.mjs --config Topics/Cloud/info-2.config.json"
+    "build:cloud:info-2": "node scripts/build.mjs --config Topics/Cloud/info-2.config.json",
+    "build:cloud:info-3": "node scripts/build.mjs --config Topics/Cloud/info-3.config.json",
+    "build:cloud:info-4": "node scripts/build.mjs --config Topics/Cloud/info-4.config.json",
+    "build:cloud:info-5": "node scripts/build.mjs --config Topics/Cloud/info-5.config.json",
+    "build:cloud:info-6": "node scripts/build.mjs --config Topics/Cloud/info-6.config.json"
+    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0" 
   }
 }
